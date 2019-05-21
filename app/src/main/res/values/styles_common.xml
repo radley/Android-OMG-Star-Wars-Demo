@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<!-- <style name="ActionbarSpinner" parent="Widget.AppCompat.Base.Spinner"></style> -->
+	<style name="ActionbarSpinner"></style>
+
+	<style name="Button">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+
+	<style name="BorderlessButton">
+		<item name="android:textColor">?android:textColorPrimary</item>
+	</style>
+
+	<!-- <item name="android:fontFamily">sans-serif-light</item> -->
+	<style name="CheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+
+	<style name="ImageButton">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+
+	<style name="ImageButton.FAB">
+		<item name="android:gravity">center</item>
+	</style>
+
+	<style name="ImageView">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+
+	<style name="Layout">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+
+	<style name="TextAppearance.Medium" parent="TextAppearance.AppCompat.Medium"/>
+
+	<style name="TextAppearance.Body" parent="TextAppearance.AppCompat.Body1"/>
+
+	<style name="TextAppearance.Body2" parent="TextAppearance.AppCompat.Body2"/>
+
+	<style name="TextAppearance.Caption" parent="TextAppearance.AppCompat.Caption"/>
+
+	<style name="TextAppearance.Small" parent="TextAppearance.AppCompat.Small"/>
+
+	<style name="TextAppearance.Subhead" parent="TextAppearance.AppCompat.Subhead"/>
+
+	<style name="TextAppearance.Title" parent="TextAppearance.AppCompat.Title"/>
+
+
+	<style name="TextAppearance.Headline" parent="TextAppearance.AppCompat.Headline"/>
+
+	<style name="TextAppearance.Display1" parent="TextAppearance.AppCompat.Display1"/>
+
+	<style name="TextAppearance.Display2" parent="TextAppearance.AppCompat.Display2"/>
+
+	<style name="TextAppearance.Display3" parent="TextAppearance.AppCompat.Display3"/>
+
+	<style name="TextAppearance.Display4" parent="TextAppearance.AppCompat.Display4"/>
+
+	<style name="TextView" parent="TextAppearance.AppCompat">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textColor">?android:textColorPrimary</item>
+	</style>
+
+	<style name="TextView.Medium" parent="TextAppearance.AppCompat.Medium">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textColor">?android:textColorPrimary</item>
+	</style>
+
+	<style name="TextView.Body1" parent="TextAppearance.AppCompat.Body1">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textColor">?android:textColorPrimary</item>
+	</style>
+
+	<style name="TextView.Body2" parent="TextAppearance.AppCompat.Body2">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textColor">?android:textColorPrimary</item>
+	</style>
+
+	<style name="TextView.Caption" parent="TextAppearance.AppCompat.Caption">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textColor">?android:textColorPrimary</item>
+	</style>
+
+	<style name="TextView.Subhead" parent="TextAppearance.AppCompat.Subhead">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textColor">?android:textColorPrimary</item>
+	</style>
+
+	<style name="TextView.Title" parent="TextAppearance.AppCompat.Title">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:textColor">?android:textColorPrimary</item>
+	</style>
+
+	<style name="SeekBar">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+
+	<style name="Toolbar">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:background">?colorPrimary</item>
+		<item name="android:minHeight">?attr/actionBarSize</item>
+	</style>
+
+
+</resources>

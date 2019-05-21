@@ -1,0 +1,4 @@
+
+<resources>
+    <integer name="grid_span_count">2</integer>
+</resources>
