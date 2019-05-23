@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/detail_padding">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.4">
+
+            <TextView
+                style="@style/Text.Overline.Detail"
+                android:layout_width="wrap_content"
+                android:text="@string/dob"/>
+
+            <TextView
+                android:id="@+id/dob"
+                style="@style/Text.Body2.Detail"
+                android:layout_width="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.6">
+
+            <TextView
+                style="@style/Text.Overline.Detail"
+                android:layout_width="wrap_content"
+                android:text="@string/homeworld"/>
+
+            <TextView
+                android:id="@+id/homeworld"
+                style="@style/Text.Body2.Detail"
+                android:layout_width="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.4">
+
+            <TextView
+                style="@style/Text.Overline.Detail"
+                android:layout_width="wrap_content"
+                android:text="@string/species"/>
+
+            <TextView
+                android:id="@+id/species"
+                style="@style/Text.Body2.Detail"
+                android:layout_width="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.3">
+
+            <TextView
+                style="@style/Text.Overline.Detail"
+                android:layout_width="wrap_content"
+                android:text="@string/height"/>
+
+            <TextView
+                android:id="@+id/height"
+                style="@style/Text.Body2.Detail"
+                android:layout_width="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.3">
+
+            <TextView
+                style="@style/Text.Overline.Detail"
+                android:layout_width="wrap_content"
+                android:text="@string/mass"/>
+
+            <TextView
+                android:id="@+id/mass"
+                style="@style/Text.Body2.Detail"
+                android:layout_width="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.4">
+
+            <TextView
+                style="@style/Text.Overline.Detail"
+                android:layout_width="wrap_content"
+                android:text="@string/gender"/>
+
+            <TextView
+                android:id="@+id/gender"
+                style="@style/Text.Body2.Detail"
+                android:layout_width="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.3">
+
+            <TextView
+                style="@style/Text.Overline.Detail"
+                android:layout_width="wrap_content"
+                android:text="@string/hair_color"/>
+
+            <TextView
+                android:id="@+id/hair_color"
+                style="@style/Text.Body2.Detail"
+                android:layout_width="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.3">
+
+            <TextView
+                style="@style/Text.Overline.Detail"
+                android:layout_width="wrap_content"
+                android:text="@string/skin_color"/>
+
+            <TextView
+                android:id="@+id/skin_color"
+                style="@style/Text.Body2.Detail"
+                android:layout_width="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="32dp" />
+
+
+</LinearLayout>

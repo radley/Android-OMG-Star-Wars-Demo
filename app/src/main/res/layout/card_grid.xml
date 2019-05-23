@@ -1,11 +1,12 @@
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="8dp"
-    app:cornerFamily="cut"
-    app:cardElevation="3dp">
+    app:cardElevation="3dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +14,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/grid_thumbnail"
+            android:id="@+id/thumbnail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
@@ -21,7 +22,7 @@
             android:scaleType="fitCenter" />
 
         <TextView
-            android:id="@+id/grid_title"
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#33333d"
@@ -29,5 +30,5 @@
             android:minLines="2"
             android:padding="8dp" />
     </LinearLayout>
-</android.support.v7.widget.CardView>
+</androidx.cardview.widget.CardView>
 

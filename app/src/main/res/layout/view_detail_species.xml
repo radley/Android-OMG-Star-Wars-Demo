@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/detail_padding">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.4">
+
+            <TextView
+                style="@style/Text.Overline.Detail"
+                android:layout_width="wrap_content"
+                android:text="@string/classification"/>
+
+            <TextView
+                android:id="@+id/classification"
+                style="@style/Text.Body2.Detail"
+                android:layout_width="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.6">
+
+            <TextView
+                style="@style/Text.Overline.Detail"
+                android:layout_width="wrap_content"
+                android:text="@string/homeworld"/>
+
+            <TextView
+                android:id="@+id/homeworld"
+                style="@style/Text.Body2.Detail"
+                android:layout_width="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.4">
+
+            <TextView
+                style="@style/Text.Overline.Detail"
+                android:layout_width="wrap_content"
+                android:text="@string/designation"/>
+
+            <TextView
+                android:id="@+id/designation"
+                style="@style/Text.Body2.Detail"
+                android:layout_width="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.6">
+
+            <TextView
+                style="@style/Text.Overline.Detail"
+                android:layout_width="wrap_content"
+                android:text="@string/language"/>
+
+            <TextView
+                android:id="@+id/language"
+                style="@style/Text.Body2.Detail"
+                android:layout_width="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.4">
+
+            <TextView
+                style="@style/Text.Overline.Detail"
+                android:layout_width="wrap_content"
+                android:text="@string/average_height"/>
+
+            <TextView
+                android:id="@+id/average_height"
+                style="@style/Text.Body2.Detail"
+                android:layout_width="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.6">
+
+            <TextView
+                style="@style/Text.Overline.Detail"
+                android:layout_width="wrap_content"
+                android:text="@string/average_lifespan"/>
+
+            <TextView
+                android:id="@+id/average_lifespan"
+                style="@style/Text.Body2.Detail"
+                android:layout_width="wrap_content" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingRight="8dp"
+            android:layout_weight="0.4">
+
+            <TextView
+                style="@style/Text.Overline.Detail"
+                android:layout_width="wrap_content"
+                android:text="@string/skin_colors"/>
+
+            <TextView
+                android:id="@+id/skin_colors"
+                style="@style/Text.Body2.Detail"
+                android:layout_width="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingRight="8dp"
+            android:layout_weight="0.3">
+
+            <TextView
+                style="@style/Text.Overline.Detail"
+                android:layout_width="wrap_content"
+                android:text="@string/hair_color"/>
+
+            <TextView
+                android:id="@+id/hair_color"
+                style="@style/Text.Body2.Detail"
+                android:layout_width="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingRight="8dp"
+            android:layout_weight="0.3">
+
+            <TextView
+                style="@style/Text.Overline.Detail"
+                android:layout_width="wrap_content"
+                android:text="@string/eye_colors"/>
+
+            <TextView
+                android:id="@+id/eye_colors"
+                style="@style/Text.Body2.Detail"
+                android:layout_width="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="32dp" />
+
+
+</LinearLayout>

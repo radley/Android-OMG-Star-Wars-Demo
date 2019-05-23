@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/grid"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipToPadding="false"
-    android:orientation="vertical"
-    android:padding="@dimen/grid_padding"
-    android:scrollbarStyle="outsideOverlay"
-    android:scrollbars="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    app:layoutManager="android.support.v7.widget.GridLayoutManager"
-    app:spanCount="@integer/grid_span_count" />
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:padding="@dimen/grid_padding"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="@integer/grid_span_count" />
+
+
+</RelativeLayout>

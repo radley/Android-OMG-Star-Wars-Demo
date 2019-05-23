@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="dev.radley.omgstarwars">
+    package="dev.radley.omgstarwars"
+    tools:ignore="GoogleAppIndexingWarning">
 
     <application
         android:allowBackup="true"
@@ -18,13 +19,20 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".detail.FilmActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".detail.PeopleActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".detail.PlanetActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".detail.SpeciesActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".detail.StarshipActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".detail.VehicleActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <meta-data

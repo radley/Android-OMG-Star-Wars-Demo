@@ -24,6 +24,7 @@ import android.content.Intent;
 public class DetailIntentUtil {
     public static final String RESOURCE = "RESOURCE";
     public static final String IMAGE_URL = "IMAGE_URL";
+    public static final String PLACEHOLDER_IMAGE = "PLACEHOLDER_IMAGE";
     public static final int REQUEST_CODE = 0;
 
 

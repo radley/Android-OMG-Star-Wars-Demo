@@ -2,20 +2,20 @@ package dev.radley.omgstarwars.categories.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.swapi.models.Film;
 import com.swapi.sw.StarWarsApi;
 
-import java.util.ArrayList;
-
 import dev.radley.omgstarwars.R;
+import dev.radley.omgstarwars.Util.SWUtil;
 
 public abstract class CategoryFragment extends Fragment {
 
@@ -40,15 +40,17 @@ public abstract class CategoryFragment extends Fragment {
 
         mView = inflater.inflate(R.layout.fragment_category, container, false);
 
+        mRecyclerView = (RecyclerView) mView.findViewById(R.id.grid);
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), getResources().getInteger(R.integer.grid_span_count)));
 
         // using SWAPI SDK
-        // https://github.com/Oleur/SWAPI-Android-SDK
         StarWarsApi.init();
-        getGridItemsByPage(mPage);
+        initGrid();
 
         return mView;
     }
 
+    // called from activity to scroll back to top
     public RecyclerView getRecyclerView() {
         return mRecyclerView;
     }
@@ -56,5 +58,7 @@ public abstract class CategoryFragment extends Fragment {
 
     // To override
     protected abstract void getGridItemsByPage(int page);
+    protected abstract void initGrid();
+    protected abstract void populateGrid();
 
 }

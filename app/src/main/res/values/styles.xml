@@ -1,22 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Text" parent="TextAppearance.AppCompat">
+    <style name="Text" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
-    <style name="Text.Body1" parent="TextAppearance.AppCompat.Body1">
+    <style name="Text.Body1" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/open_sans</item>
     </style>
 
-    <style name="Text.Display2" parent="TextAppearance.AppCompat.Display2">
+    <style name="Text.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/open_sans</item>
+    </style>
+
+    <style name="Text.Body2.Detail">
+        <item name="android:lineSpacingMultiplier">1.0</item>
+    </style>
+
+    <style name="Text.Display2" parent="TextAppearance.MaterialComponents.Headline4">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/passion_one_bold</item>
+    </style>
+
+    <style name="Text.Overline" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#aaffffff</item>
+        <item name="android:fontFamily">@font/open_sans</item>
+    </style>
+
+    <style name="Text.Overline.Detail">
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <style name="Text.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/open_sans</item>
     </style>
 
 </resources>

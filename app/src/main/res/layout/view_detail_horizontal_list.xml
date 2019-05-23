@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="32dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/Text.Display2"
+        android:layout_width="match_parent"
+        android:paddingLeft="24dp"
+        android:paddingBottom="16dp"/>
+
+    <HorizontalScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:minHeight="60dp">
+
+        <LinearLayout
+            android:id="@+id/horizontal_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Space
+                android:layout_width="16dp"
+                android:layout_height="16dp" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</LinearLayout>

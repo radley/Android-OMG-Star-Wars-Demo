@@ -10,54 +10,65 @@
     <string name="category_id_vehicles">vehicles</string>
 
     <string name="category_people">People!</string>
-    <string name="category_film">Films!</string>
-    <string name="category_planet">Planets!</string>
+    <string name="category_films">Films!</string>
+    <string name="category_planets">Planets!</string>
     <string name="category_species">Species!</string>
-    <string name="category_starship">Starships!</string>
-    <string name="category_vehicle">Vehicles!</string>
+    <string name="category_starships">Starships!</string>
+    <string name="category_vehicles">Vehicles!</string>
+
+    <!-- film -->
+    <string name="opening_crawl">Opening Crawl</string>
+    <string name="release_date">Release Date</string>
+    <string name="director">Director</string>
+    <string name="producer">Producer(s)</string>
+    <string name="edited">Edited</string>
+
+    <!-- people -->
+    <string name="species">Species</string>
+    <string name="height">Height</string>
+    <string name="mass">Mass</string>
+    <string name="hair_color">Hair</string>
+    <string name="skin_color">Skin</string>
+    <string name="eye_color">Eyes</string>
+    <string name="dob">Date of Birth</string>
+    <string name="gender">Gender</string>
+    <string name="homeworld">Home World</string>
+
+    <!-- planet -->
+    <string name="rotation_period">Rotation</string>
+    <string name="orbital_period">Orbit</string>
+    <string name="diameter">Diameter</string>
+    <string name="climate">Climate</string>
+    <string name="gravity">Gravity</string>
+    <string name="terrain">Terrain</string>
+    <string name="surface_water">Surface Water</string>
+    <string name="population">Population</string>
+
+    <!-- species -->
+    <string name="classification">Classification</string>
+    <string name="designation">Designation</string>
+    <string name="average_height">Avg Height</string>
+    <string name="skin_colors">Skin</string>
+    <string name="hair_colors">Hair</string>
+    <string name="eye_colors">Eyes</string>
+    <string name="average_lifespan">Avg Lifespan</string>
+    <string name="language">Language</string>
+
+    <!-- starship / vehicle -->
+    <string name="model">Model</string>
+    <string name="starship_class">Starship Class</string>
+    <string name="manufacturer">Manufacturer</string>
+    <string name="cost_in_credits">Price</string>
+    <string name="length">Length</string>
+    <string name="cargo_capacity">Cargo Capacity</string>
+    <string name="crew">Crew</string>
+    <string name="passengers">Passengers</string>
+    <string name="consumables">Consumables</string>
+    <string name="hyperdrive_rating">Hyperdrive Class</string>
+    <string name="mglt">MGLT</string>
+    <string name="max_atmosphering_speed">Land/Air Speed</string>
 
 
-    <string name="large_text">
-        "Material is the metaphor.\n\n"
 
-        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
-        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
-        "technologically advanced and open to imagination and magic.\n"
-        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
-        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
-        "flexibility of the material creates new affordances that supercede those in the physical "
-        "world, without breaking the rules of physics.\n"
-        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
-        "interact, and exist in space and in relation to each other. Realistic lighting shows "
-        "seams, divides space, and indicates moving parts.\n\n"
-        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
-        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
-        "flexibility of the material creates new affordances that supercede those in the physical "
-        "world, without breaking the rules of physics.\n"
-        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
-        "interact, and exist in space and in relation to each other. Realistic lighting shows "
-        "seams, divides space, and indicates moving parts.\n\n"
-        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
-        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
-        "flexibility of the material creates new affordances that supercede those in the physical "
-        "world, without breaking the rules of physics.\n"
-        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
-        "interact, and exist in space and in relation to each other. Realistic lighting shows "
-        "seams, divides space, and indicates moving parts.\n\n"
-        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
-        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
-        "flexibility of the material creates new affordances that supercede those in the physical "
-        "world, without breaking the rules of physics.\n"
-        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
-        "interact, and exist in space and in relation to each other. Realistic lighting shows "
-        "seams, divides space, and indicates moving parts.\n\n"
-        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
-        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
-        "flexibility of the material creates new affordances that supercede those in the physical "
-        "world, without breaking the rules of physics.\n"
-        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
-        "interact, and exist in space and in relation to each other. Realistic lighting shows "
-        "seams, divides space, and indicates moving parts.\n\n"
-    </string>
     <string name="action_settings">Settings</string>
 </resources>
