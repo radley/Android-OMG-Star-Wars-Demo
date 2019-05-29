@@ -2,9 +2,7 @@ package dev.radley.omgstarwars.categories.fragments;
 
 import android.content.Intent;
 import android.util.Log;
-import android.view.View;
 
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.swapi.models.Species;
@@ -15,16 +13,17 @@ import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.Util.DetailIntentUtil;
-import dev.radley.omgstarwars.Util.SWUtil;
+import dev.radley.omgstarwars.Util.OmgSWUtil;
 import dev.radley.omgstarwars.categories.adapter.SpeciesAdapter;
 import dev.radley.omgstarwars.categories.listener.OnBottomReachedListener;
 import dev.radley.omgstarwars.categories.listener.OnItemSelectedListener;
+import dev.radley.omgstarwars.data.OmgStarWarsApi;
 import dev.radley.omgstarwars.detail.SpeciesActivity;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class SpeciesFragment extends CategoryFragment {
+public class SpeciesFragment extends BaseCategoryFragment {
 
 
     protected SpeciesAdapter mAdapter;
@@ -57,7 +56,7 @@ public class SpeciesFragment extends CategoryFragment {
                 final Intent intent = new Intent(getActivity(), SpeciesActivity.class);
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.putExtra(DetailIntentUtil.RESOURCE, mList.get(position));
-                intent.putExtra(DetailIntentUtil.IMAGE_URL,SWUtil.getAssetImage("species", mList.get(position).url));
+                intent.putExtra(DetailIntentUtil.IMAGE_URL, OmgSWUtil.getAssetImage("species", mList.get(position).url));
                 intent.putExtra(DetailIntentUtil.PLACEHOLDER_IMAGE, R.drawable.placeholder_species);
 
                 startActivity(intent);
@@ -82,7 +81,7 @@ public class SpeciesFragment extends CategoryFragment {
 
         mLoading = true;
 
-        StarWarsApi.getApi().getAllSpecies(page, new Callback<SWModelList<Species>>() {
+        OmgStarWarsApi.getApi().getAllSpecies(page, new Callback<SWModelList<Species>>() {
 
             @Override
             public void success(SWModelList list, Response response) {
@@ -94,7 +93,7 @@ public class SpeciesFragment extends CategoryFragment {
 
                 mLoading = false;
                 //Something wrong
-                Log.d(SWUtil.getTag(), "error: " + error);
+                Log.d(OmgSWUtil.getTag(), "error: " + error);
             }
         });
     }
@@ -111,7 +110,7 @@ public class SpeciesFragment extends CategoryFragment {
 
         } else { // update list
 
-            Log.d(SWUtil.getTag(), "update list");
+            Log.d(OmgSWUtil.getTag(), "update list");
 
             int curSize = mAdapter.getItemCount();
             mList.addAll(list.results);

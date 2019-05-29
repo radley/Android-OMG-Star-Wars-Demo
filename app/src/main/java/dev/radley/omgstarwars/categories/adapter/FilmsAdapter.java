@@ -11,13 +11,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.swapi.models.Film;
 
 import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.SWUtil;
+import dev.radley.omgstarwars.Util.OmgSWUtil;
 
 public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> {
 
@@ -60,11 +62,13 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
         holder.titleText.setText(item.title);
 
         RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.tall_placeholder);
+                .placeholder(R.drawable.tall_placeholder)
+                .diskCacheStrategy(DiskCacheStrategy.ALL);
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)
-                .load(Uri.parse(SWUtil.getAssetImage("films", item.url)))
+                .load(Uri.parse(OmgSWUtil.getAssetImage("films", item.url)))
+                .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.thumbnail);
     }
 

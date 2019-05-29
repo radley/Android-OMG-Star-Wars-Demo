@@ -11,13 +11,13 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/Text.Overline.Detail"
+            style="@style/TextView.Overline.Detail"
             android:layout_width="wrap_content"
             android:text="@string/opening_crawl" />
 
         <TextView
             android:id="@+id/opening_crawl"
-            style="@style/Text.Body2.Detail"
+            style="@style/TextView.Body2.Detail"
             android:layout_width="wrap_content" />
     </LinearLayout>
 
@@ -28,33 +28,33 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/Text.Overline.Detail"
+            style="@style/TextView.Overline.Detail"
             android:layout_width="match_parent"
             android:text="@string/release_date" />
 
         <TextView
             android:id="@+id/release_date"
-            style="@style/Text.Body2.Detail"
+            style="@style/TextView.Body2.Detail"
             android:layout_width="match_parent" />
 
         <TextView
-            style="@style/Text.Overline.Detail"
+            style="@style/TextView.Overline.Detail"
             android:layout_width="match_parent"
             android:text="@string/director" />
 
         <TextView
             android:id="@+id/director"
-            style="@style/Text.Body2.Detail"
+            style="@style/TextView.Body2.Detail"
             android:layout_width="match_parent" />
 
         <TextView
-            style="@style/Text.Overline.Detail"
+            style="@style/TextView.Overline.Detail"
             android:layout_width="match_parent"
             android:text="@string/producer" />
 
         <TextView
             android:id="@+id/producer"
-            style="@style/Text.Body2.Detail"
+            style="@style/TextView.Body2.Detail"
             android:layout_width="match_parent" />
     </LinearLayout>
 

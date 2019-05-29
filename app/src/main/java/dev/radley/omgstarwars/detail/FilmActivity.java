@@ -1,6 +1,5 @@
 package dev.radley.omgstarwars.detail;
 
-import android.util.Log;
 import android.widget.TextView;
 
 import com.swapi.models.Film;
@@ -11,11 +10,10 @@ import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.SWUtil;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
-public class FilmActivity extends DetailActivity{
+public class FilmActivity extends BaseDetailActivity {
 
 
     protected Film mFilm;
@@ -28,7 +26,7 @@ public class FilmActivity extends DetailActivity{
 
     @Override
     protected void updateTitle() {
-        mActionBar.setTitle(mFilm.title);
+        mActionBar.setTitle(mFilm.title + "!");
 
     }
 
@@ -52,12 +50,6 @@ public class FilmActivity extends DetailActivity{
     @Override
     protected void addListViews() {
 
-        Log.d(SWUtil.getTag(), "mFilm.charactersUrls: " + mFilm.charactersUrls);
-        Log.d(SWUtil.getTag(), "mFilm.speciesUrls: " + mFilm.speciesUrls);
-        Log.d(SWUtil.getTag(), "mFilm.planetsUrls: " + mFilm.planetsUrls);
-        Log.d(SWUtil.getTag(), "mFilm.starshipsUrls: " + mFilm.starshipsUrls);
-        Log.d(SWUtil.getTag(), "mFilm.vehiclesUrls: " + mFilm.vehiclesUrls);
-
         if(mFilm.charactersUrls != null && mFilm.charactersUrls.size() > 0)
             addPeopleList(mFilm.charactersUrls);
 
@@ -72,7 +64,5 @@ public class FilmActivity extends DetailActivity{
 
         if(mFilm.vehiclesUrls != null && mFilm.vehiclesUrls.size() > 0)
             addVehiclesList(mFilm.vehiclesUrls);
-
     }
-
 }

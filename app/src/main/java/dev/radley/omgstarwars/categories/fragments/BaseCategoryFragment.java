@@ -7,17 +7,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.swapi.sw.StarWarsApi;
-
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.SWUtil;
+import dev.radley.omgstarwars.data.OmgStarWarsApi;
 
-public abstract class CategoryFragment extends Fragment {
+public abstract class BaseCategoryFragment extends Fragment {
 
 
     protected Context mContext;
@@ -41,10 +38,9 @@ public abstract class CategoryFragment extends Fragment {
         mView = inflater.inflate(R.layout.fragment_category, container, false);
 
         mRecyclerView = (RecyclerView) mView.findViewById(R.id.grid);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), getResources().getInteger(R.integer.grid_span_count)));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), getSpanCount()));
 
-        // using SWAPI SDK
-        StarWarsApi.init();
+        OmgStarWarsApi.init();
         initGrid();
 
         return mView;
@@ -53,6 +49,10 @@ public abstract class CategoryFragment extends Fragment {
     // called from activity to scroll back to top
     public RecyclerView getRecyclerView() {
         return mRecyclerView;
+    }
+
+    protected int getSpanCount() {
+        return getResources().getInteger(R.integer.grid_span_count_tall);
     }
 
 

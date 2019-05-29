@@ -1,7 +1,6 @@
 package dev.radley.omgstarwars.detail;
 
 
-import android.util.Log;
 import android.widget.TextView;
 
 import com.swapi.models.Vehicle;
@@ -9,9 +8,8 @@ import com.swapi.models.Vehicle;
 import java.io.Serializable;
 
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.SWUtil;
 
-public class VehicleActivity extends DetailActivity{
+public class VehicleActivity extends BaseDetailActivity {
 
     protected Vehicle mVehicle;
 
@@ -23,7 +21,7 @@ public class VehicleActivity extends DetailActivity{
 
     @Override
     protected void updateTitle() {
-        mActionBar.setTitle(mVehicle.name);
+        mActionBar.setTitle(mVehicle.name +"!");
 
     }
 
@@ -36,29 +34,45 @@ public class VehicleActivity extends DetailActivity{
 
         ((TextView) mDetailView.findViewById(R.id.model)).setText(mVehicle.model);
         ((TextView) mDetailView.findViewById(R.id.manufacturer)).setText(mVehicle.manufacturer);
-        ((TextView) mDetailView.findViewById(R.id.cost_in_credits)).setText(getFormattedNumber(mVehicle.costInCredits) +" CR");
-        ((TextView) mDetailView.findViewById(R.id.length)).setText(getFormattedNumber(mVehicle.length) + " m");
-        ((TextView) mDetailView.findViewById(R.id.cargo_capacity)).setText(getFormattedNumber(mVehicle.cargoCapacity) + " metric tons");
         ((TextView) mDetailView.findViewById(R.id.crew)).setText(getFormattedNumber(mVehicle.crew));
         ((TextView) mDetailView.findViewById(R.id.passengers)).setText(getFormattedNumber(mVehicle.passengers));
         ((TextView) mDetailView.findViewById(R.id.consumables)).setText(getFormattedNumber(mVehicle.consumables));
 
+        String length = getFormattedNumber(mVehicle.length);
+
+        if(!length.equals("n/a") && !length.equals("unknown")) {
+            length += " m";
+        }
+        ((TextView) mDetailView.findViewById(R.id.length)).setText(length);
+
+
+        String cargo = getFormattedNumber(mVehicle.cargoCapacity);
+
+        if(!cargo.equals("n/a") && !cargo.equals("unknown")) {
+            cargo += "  metric tons";
+        }
+        ((TextView) mDetailView.findViewById(R.id.cargo_capacity)).setText(cargo);
+
+
+        String price = getFormattedNumber(mVehicle.costInCredits);
+
+        if(!price.equals("n/a") && !price.equals("unknown")) {
+            price += " CR";
+        }
+        ((TextView) mDetailView.findViewById(R.id.cost_in_credits)).setText(price);
+
+
         String airspeed = getFormattedNumber(mVehicle.maxAtmospheringSpeed);
 
-        if(!airspeed.equals("n/a")) {
+        if(!airspeed.equals("n/a") && !airspeed.equals("unknown")) {
             airspeed += " kph";
         }
-
         ((TextView) mDetailView.findViewById(R.id.max_atmosphering_speed)).setText(airspeed);
-
         addListViews();
     }
 
     @Override
     protected void addListViews() {
-
-        Log.d(SWUtil.getTag(), "mVehicle.filmsUrls: " + mVehicle.filmsUrls);
-        Log.d(SWUtil.getTag(), "mVehicle.pilotsUrls: " + mVehicle.pilotsUrls);
 
         if(mVehicle.filmsUrls != null && mVehicle.filmsUrls.size() > 0)
             addFilmsList(mVehicle.filmsUrls);

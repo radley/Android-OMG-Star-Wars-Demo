@@ -1,12 +1,10 @@
 package dev.radley.omgstarwars.Util;
 
 
-import android.util.Log;
+public class OmgSWUtil {
+    private static final OmgSWUtil ourInstance = new OmgSWUtil();
 
-public class SWUtil {
-    private static final SWUtil ourInstance = new SWUtil();
-
-    public static SWUtil getInstance() {
+    public static OmgSWUtil getInstance() {
         return ourInstance;
     }
 
@@ -14,7 +12,7 @@ public class SWUtil {
     protected static String API_URL = "https://swapi.co/api/";
     protected static String ASSETS_URL = "file:///android_asset/";
 
-    private SWUtil() {
+    private OmgSWUtil() {
     }
 
     public static String getTag() {

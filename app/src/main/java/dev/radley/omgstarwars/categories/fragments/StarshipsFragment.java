@@ -2,9 +2,7 @@ package dev.radley.omgstarwars.categories.fragments;
 
 import android.content.Intent;
 import android.util.Log;
-import android.view.View;
 
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.swapi.models.Starship;
@@ -15,16 +13,17 @@ import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.Util.DetailIntentUtil;
-import dev.radley.omgstarwars.Util.SWUtil;
+import dev.radley.omgstarwars.Util.OmgSWUtil;
 import dev.radley.omgstarwars.categories.adapter.StarshipsAdapter;
 import dev.radley.omgstarwars.categories.listener.OnBottomReachedListener;
 import dev.radley.omgstarwars.categories.listener.OnItemSelectedListener;
+import dev.radley.omgstarwars.data.OmgStarWarsApi;
 import dev.radley.omgstarwars.detail.StarshipActivity;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class StarshipsFragment extends CategoryFragment {
+public class StarshipsFragment extends BaseCategoryFragment {
 
 
     protected StarshipsAdapter mAdapter;
@@ -47,6 +46,11 @@ public class StarshipsFragment extends CategoryFragment {
     }
 
     @Override
+    protected int getSpanCount() {
+        return getResources().getInteger(R.integer.grid_span_count_wide);
+    }
+
+    @Override
     protected void populateGrid() {
         mAdapter = new StarshipsAdapter(getContext(), mList);
         mRecyclerView.setAdapter(mAdapter);
@@ -57,7 +61,7 @@ public class StarshipsFragment extends CategoryFragment {
                 final Intent intent = new Intent(getActivity(), StarshipActivity.class);
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.putExtra(DetailIntentUtil.RESOURCE, mList.get(position));
-                intent.putExtra(DetailIntentUtil.IMAGE_URL,SWUtil.getAssetImage("starships", mList.get(position).url));
+                intent.putExtra(DetailIntentUtil.IMAGE_URL, OmgSWUtil.getAssetImage("starships", mList.get(position).url));
                 intent.putExtra(DetailIntentUtil.PLACEHOLDER_IMAGE, R.drawable.placeholder_starship);
 
                 startActivity(intent);
@@ -82,7 +86,7 @@ public class StarshipsFragment extends CategoryFragment {
 
         mLoading = true;
 
-        StarWarsApi.getApi().getAllStarships(page, new Callback<SWModelList<Starship>>() {
+        OmgStarWarsApi.getApi().getAllStarships(page, new Callback<SWModelList<Starship>>() {
 
             @Override
             public void success(SWModelList list, Response response) {
@@ -94,7 +98,7 @@ public class StarshipsFragment extends CategoryFragment {
 
                 mLoading = false;
                 //Something wrong
-                Log.d(SWUtil.getTag(), "error: " + error);
+                Log.d(OmgSWUtil.getTag(), "error: " + error);
             }
         });
     }
@@ -112,7 +116,7 @@ public class StarshipsFragment extends CategoryFragment {
 
         } else { // update list
 
-            Log.d(SWUtil.getTag(), "update list");
+            Log.d(OmgSWUtil.getTag(), "update list");
 
             int curSize = mAdapter.getItemCount();
             mList.addAll(list.results);

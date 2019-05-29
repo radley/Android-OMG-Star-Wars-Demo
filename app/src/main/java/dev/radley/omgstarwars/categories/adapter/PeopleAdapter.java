@@ -11,14 +11,16 @@ import android.widget.TextView;
 
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.swapi.models.People;
 
 import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.SWUtil;
+import dev.radley.omgstarwars.Util.OmgSWUtil;
 import dev.radley.omgstarwars.categories.listener.OnBottomReachedListener;
+
 
 public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder> {
 
@@ -67,7 +69,8 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)
-                .load(Uri.parse(SWUtil.getAssetImage("people", item.url)))
+                .load(Uri.parse(OmgSWUtil.getAssetImage("people", item.url)))
+                .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.thumbnail);
 
         if (position == mPeople.size() - 1){

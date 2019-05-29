@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.transition.DrawableCrossFadeFactory;
 import com.swapi.models.Film;
@@ -28,36 +29,42 @@ import com.swapi.models.Planet;
 import com.swapi.models.Species;
 import com.swapi.models.Starship;
 import com.swapi.models.Vehicle;
-import com.swapi.sw.StarWarsApi;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.Util.DetailIntentUtil;
-import dev.radley.omgstarwars.Util.SWUtil;
+import dev.radley.omgstarwars.Util.OmgSWUtil;
+import dev.radley.omgstarwars.data.OmgStarWarsApi;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
-public abstract class DetailActivity extends AppCompatActivity {
+public abstract class BaseDetailActivity extends AppCompatActivity {
 
     protected ActionBar mActionBar;
+    protected Activity mActivity;
     protected Toolbar mToolbar;
     protected LinearLayout mLayout;
     protected View mDetailView;
-    protected Activity mActivity;
+    protected View mRootLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
         getWindow().getDecorView().setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         getWindow().setStatusBarColor(getResources().getColor(R.color.statusBar,null));
+
+        OmgStarWarsApi.init();
 
         setContentView(R.layout.activity_detail);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -68,6 +75,10 @@ public abstract class DetailActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        mRootLayout = (View) findViewById(R.id.root_layout);
+        mRootLayout.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
 
         mActionBar = getSupportActionBar();
@@ -106,7 +117,7 @@ public abstract class DetailActivity extends AppCompatActivity {
         Glide.with(this)
                 .setDefaultRequestOptions(requestOptions)
                 .load(Uri.parse(imagePath))
-                .transition(withCrossFade(factory))
+                .transition(DrawableTransitionOptions.withCrossFade())
                 .into(imageView);
     }
 
@@ -148,9 +159,9 @@ public abstract class DetailActivity extends AppCompatActivity {
 
         for (int i = 0; i < urlList.size(); i++) {
 
-            final int id = Integer.parseInt(SWUtil.getId(urlList.get(i)));
+            final int id = Integer.parseInt(OmgSWUtil.getId(urlList.get(i)));
 
-            StarWarsApi.getApi().getFilm(id, new Callback<Film>() {
+            OmgStarWarsApi.getApi().getFilm(id, new Callback<Film>() {
 
                 @SuppressLint("ClickableViewAccessibility")
                 @Override
@@ -164,7 +175,8 @@ public abstract class DetailActivity extends AppCompatActivity {
                     ImageView thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
                     Glide.with(thumbnail.getContext())
                             .setDefaultRequestOptions(requestOptions)
-                            .load(Uri.parse(SWUtil.getAssetImage("films", item.url)))
+                            .load(Uri.parse(OmgSWUtil.getAssetImage("films", item.url)))
+                            .transition(DrawableTransitionOptions.withCrossFade())
                             .into(thumbnail);
 
                     layout.addView(view);
@@ -177,7 +189,7 @@ public abstract class DetailActivity extends AppCompatActivity {
                             final Intent intent = new Intent(mActivity, FilmActivity.class);
                             intent.setAction(Intent.ACTION_VIEW);
                             intent.putExtra(DetailIntentUtil.RESOURCE, film);
-                            intent.putExtra(DetailIntentUtil.IMAGE_URL,SWUtil.getAssetImage("films", film.url));
+                            intent.putExtra(DetailIntentUtil.IMAGE_URL, OmgSWUtil.getAssetImage("films", film.url));
 
                             startActivity(intent);
                         }
@@ -187,7 +199,7 @@ public abstract class DetailActivity extends AppCompatActivity {
                 @Override
                 public void failure(RetrofitError error) {
                     //Something wrong
-                    Log.d(SWUtil.getTag(), "error: " + error);
+                    Log.d(OmgSWUtil.getTag(), "error: " + error);
                 }
             });
 
@@ -208,9 +220,9 @@ public abstract class DetailActivity extends AppCompatActivity {
 
         for (int i = 0; i < urlList.size(); i++) {
 
-            final int id = Integer.parseInt(SWUtil.getId(urlList.get(i)));
+            final int id = Integer.parseInt(OmgSWUtil.getId(urlList.get(i)));
 
-            StarWarsApi.getApi().getPeople(id, new Callback<People>() {
+            OmgStarWarsApi.getApi().getPeople(id, new Callback<People>() {
 
                 @SuppressLint("ClickableViewAccessibility")
                 @Override
@@ -224,7 +236,8 @@ public abstract class DetailActivity extends AppCompatActivity {
                     ImageView thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
                     Glide.with(thumbnail.getContext())
                             .setDefaultRequestOptions(requestOptions)
-                            .load(Uri.parse(SWUtil.getAssetImage("people", people.url)))
+                            .load(Uri.parse(OmgSWUtil.getAssetImage("people", people.url)))
+                            .transition(DrawableTransitionOptions.withCrossFade())
                             .into(thumbnail);
 
                     layout.addView(view);
@@ -237,7 +250,7 @@ public abstract class DetailActivity extends AppCompatActivity {
                             final Intent intent = new Intent(mActivity, PeopleActivity.class);
                             intent.setAction(Intent.ACTION_VIEW);
                             intent.putExtra(DetailIntentUtil.RESOURCE, people);
-                            intent.putExtra(DetailIntentUtil.IMAGE_URL,SWUtil.getAssetImage("people", people.url));
+                            intent.putExtra(DetailIntentUtil.IMAGE_URL, OmgSWUtil.getAssetImage("people", people.url));
 
                             startActivity(intent);
                         }
@@ -247,7 +260,7 @@ public abstract class DetailActivity extends AppCompatActivity {
                 @Override
                 public void failure(RetrofitError error) {
                     //Something wrong
-                    Log.d(SWUtil.getTag(), "error: " + error);
+                    Log.d(OmgSWUtil.getTag(), "error: " + error);
                 }
             });
 
@@ -268,9 +281,9 @@ public abstract class DetailActivity extends AppCompatActivity {
 
         for (int i = 0; i < urlList.size(); i++) {
 
-            final int id = Integer.parseInt(SWUtil.getId(urlList.get(i)));
+            final int id = Integer.parseInt(OmgSWUtil.getId(urlList.get(i)));
 
-            StarWarsApi.getApi().getPlanet(id, new Callback<Planet>() {
+            OmgStarWarsApi.getApi().getPlanet(id, new Callback<Planet>() {
 
                 @SuppressLint("ClickableViewAccessibility")
                 @Override
@@ -285,7 +298,8 @@ public abstract class DetailActivity extends AppCompatActivity {
                     ImageView thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
                     Glide.with(thumbnail.getContext())
                             .setDefaultRequestOptions(requestOptions)
-                            .load(Uri.parse(SWUtil.getAssetImage("planets", item.url)))
+                            .load(Uri.parse(OmgSWUtil.getAssetImage("planets", item.url)))
+                            .transition(DrawableTransitionOptions.withCrossFade())
                             .into(thumbnail);
 
                     layout.addView(view);
@@ -298,7 +312,7 @@ public abstract class DetailActivity extends AppCompatActivity {
                             final Intent intent = new Intent(mActivity, PlanetActivity.class);
                             intent.setAction(Intent.ACTION_VIEW);
                             intent.putExtra(DetailIntentUtil.RESOURCE, planet);
-                            intent.putExtra(DetailIntentUtil.IMAGE_URL,SWUtil.getAssetImage("planets", planet.url));
+                            intent.putExtra(DetailIntentUtil.IMAGE_URL, OmgSWUtil.getAssetImage("planets", planet.url));
 
                             startActivity(intent);
                         }
@@ -308,7 +322,7 @@ public abstract class DetailActivity extends AppCompatActivity {
                 @Override
                 public void failure(RetrofitError error) {
                     //Something wrong
-                    Log.d(SWUtil.getTag(), "error: " + error);
+                    Log.d(OmgSWUtil.getTag(), "error: " + error);
                 }
             });
         }
@@ -327,9 +341,9 @@ public abstract class DetailActivity extends AppCompatActivity {
 
         for (int i = 0; i < urlList.size(); i++) {
 
-            final int id = Integer.parseInt(SWUtil.getId(urlList.get(i)));
+            final int id = Integer.parseInt(OmgSWUtil.getId(urlList.get(i)));
 
-            StarWarsApi.getApi().getSpecies(id, new Callback<Species>() {
+            OmgStarWarsApi.getApi().getSpecies(id, new Callback<Species>() {
 
                 @SuppressLint("ClickableViewAccessibility")
                 @Override
@@ -343,7 +357,8 @@ public abstract class DetailActivity extends AppCompatActivity {
                     ImageView thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
                     Glide.with(thumbnail.getContext())
                             .setDefaultRequestOptions(requestOptions)
-                            .load(Uri.parse(SWUtil.getAssetImage("species", item.url)))
+                            .load(Uri.parse(OmgSWUtil.getAssetImage("species", item.url)))
+                            .transition(DrawableTransitionOptions.withCrossFade())
                             .into(thumbnail);
 
                     layout.addView(view);
@@ -356,7 +371,7 @@ public abstract class DetailActivity extends AppCompatActivity {
                             final Intent intent = new Intent(mActivity, SpeciesActivity.class);
                             intent.setAction(Intent.ACTION_VIEW);
                             intent.putExtra(DetailIntentUtil.RESOURCE, species);
-                            intent.putExtra(DetailIntentUtil.IMAGE_URL,SWUtil.getAssetImage("species", species.url));
+                            intent.putExtra(DetailIntentUtil.IMAGE_URL, OmgSWUtil.getAssetImage("species", species.url));
 
                             startActivity(intent);
                         }
@@ -366,7 +381,7 @@ public abstract class DetailActivity extends AppCompatActivity {
                 @Override
                 public void failure(RetrofitError error) {
                     //Something wrong
-                    Log.d(SWUtil.getTag(), "error: " + error);
+                    Log.d(OmgSWUtil.getTag(), "error: " + error);
                 }
             });
 
@@ -386,9 +401,9 @@ public abstract class DetailActivity extends AppCompatActivity {
 
         for (int i = 0; i < urlList.size(); i++) {
 
-            final int id = Integer.parseInt(SWUtil.getId(urlList.get(i)));
+            final int id = Integer.parseInt(OmgSWUtil.getId(urlList.get(i)));
 
-            StarWarsApi.getApi().getStarship(id, new Callback<Starship>() {
+            OmgStarWarsApi.getApi().getStarship(id, new Callback<Starship>() {
 
                 @SuppressLint("ClickableViewAccessibility")
                 @Override
@@ -403,7 +418,8 @@ public abstract class DetailActivity extends AppCompatActivity {
                     ImageView thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
                     Glide.with(thumbnail.getContext())
                             .setDefaultRequestOptions(requestOptions)
-                            .load(Uri.parse(SWUtil.getAssetImage("starships", item.url)))
+                            .load(Uri.parse(OmgSWUtil.getAssetImage("starships", item.url)))
+                            .transition(DrawableTransitionOptions.withCrossFade())
                             .into(thumbnail);
 
                     layout.addView(view);
@@ -416,7 +432,7 @@ public abstract class DetailActivity extends AppCompatActivity {
                             final Intent intent = new Intent(mActivity, StarshipActivity.class);
                             intent.setAction(Intent.ACTION_VIEW);
                             intent.putExtra(DetailIntentUtil.RESOURCE, starship);
-                            intent.putExtra(DetailIntentUtil.IMAGE_URL,SWUtil.getAssetImage("starships", starship.url));
+                            intent.putExtra(DetailIntentUtil.IMAGE_URL, OmgSWUtil.getAssetImage("starships", starship.url));
 
                             startActivity(intent);
                         }
@@ -426,7 +442,7 @@ public abstract class DetailActivity extends AppCompatActivity {
                 @Override
                 public void failure(RetrofitError error) {
                     //Something wrong
-                    Log.d(SWUtil.getTag(), "error: " + error);
+                    Log.d(OmgSWUtil.getTag(), "error: " + error);
                 }
             });
         }
@@ -445,9 +461,9 @@ public abstract class DetailActivity extends AppCompatActivity {
 
         for (int i = 0; i < urlList.size(); i++) {
 
-            final int id = Integer.parseInt(SWUtil.getId(urlList.get(i)));
+            final int id = Integer.parseInt(OmgSWUtil.getId(urlList.get(i)));
 
-            StarWarsApi.getApi().getVehicle(id, new Callback<Vehicle>() {
+            OmgStarWarsApi.getApi().getVehicle(id, new Callback<Vehicle>() {
 
                 @SuppressLint("ClickableViewAccessibility")
                 @Override
@@ -462,7 +478,8 @@ public abstract class DetailActivity extends AppCompatActivity {
                     ImageView thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
                     Glide.with(thumbnail.getContext())
                             .setDefaultRequestOptions(requestOptions)
-                            .load(Uri.parse(SWUtil.getAssetImage("vehicles", item.url)))
+                            .load(Uri.parse(OmgSWUtil.getAssetImage("vehicles", item.url)))
+                            .transition(DrawableTransitionOptions.withCrossFade())
                             .into(thumbnail);
 
                     layout.addView(view);
@@ -475,7 +492,7 @@ public abstract class DetailActivity extends AppCompatActivity {
                             final Intent intent = new Intent(mActivity, VehicleActivity.class);
                             intent.setAction(Intent.ACTION_VIEW);
                             intent.putExtra(DetailIntentUtil.RESOURCE, vehicle);
-                            intent.putExtra(DetailIntentUtil.IMAGE_URL,SWUtil.getAssetImage("vehicles", vehicle.url));
+                            intent.putExtra(DetailIntentUtil.IMAGE_URL, OmgSWUtil.getAssetImage("vehicles", vehicle.url));
 
                             startActivity(intent);
                         }
@@ -485,7 +502,7 @@ public abstract class DetailActivity extends AppCompatActivity {
                 @Override
                 public void failure(RetrofitError error) {
                     //Something wrong
-                    Log.d(SWUtil.getTag(), "error: " + error);
+                    Log.d(OmgSWUtil.getTag(), "error: " + error);
                 }
             });
         }
@@ -495,19 +512,19 @@ public abstract class DetailActivity extends AppCompatActivity {
 
         final TextView homeWorldText = (TextView) mDetailView.findViewById(R.id.homeworld);
 
-        Log.d(SWUtil.getTag(), "homeWorldUrl: " + homeWorldUrl);
-        Log.d(SWUtil.getTag(), "homeWorldUrl.substring(0, 4: " + homeWorldUrl.substring(0, 4));
+        Log.d(OmgSWUtil.getTag(), "homeWorldUrl: " + homeWorldUrl);
+        Log.d(OmgSWUtil.getTag(), "homeWorldUrl.substring(0, 4: " + homeWorldUrl.substring(0, 4));
 
         if(!homeWorldUrl.substring(0, 4).equals("http")) {
             homeWorldText.setText(homeWorldUrl);
             return;
         }
 
-        int id = Integer.parseInt(SWUtil.getId(homeWorldUrl));
+        int id = Integer.parseInt(OmgSWUtil.getId(homeWorldUrl));
 
-        Log.d(SWUtil.getTag(), "id: " + id);
+        Log.d(OmgSWUtil.getTag(), "id: " + id);
 
-        StarWarsApi.getApi().getPlanet(id, new Callback<Planet>() {
+        OmgStarWarsApi.getApi().getPlanet(id, new Callback<Planet>() {
 
             @Override
             public void success(Planet item, Response response) {
@@ -522,7 +539,7 @@ public abstract class DetailActivity extends AppCompatActivity {
                         final Intent intent = new Intent(mActivity, PlanetActivity.class);
                         intent.setAction(Intent.ACTION_VIEW);
                         intent.putExtra(DetailIntentUtil.RESOURCE, planet);
-                        intent.putExtra(DetailIntentUtil.IMAGE_URL,SWUtil.getAssetImage("planets", planet.url));
+                        intent.putExtra(DetailIntentUtil.IMAGE_URL, OmgSWUtil.getAssetImage("planets", planet.url));
 
                         startActivity(intent);
                     }
@@ -541,19 +558,19 @@ public abstract class DetailActivity extends AppCompatActivity {
 
         final TextView homeWorldText = (TextView) mDetailView.findViewById(R.id.species);
 
-        Log.d(SWUtil.getTag(), "speciesUrl: " + speciesUrl);
-        Log.d(SWUtil.getTag(), "speciesUrl.substring(0, 4: " + speciesUrl.substring(0, 4));
+        Log.d(OmgSWUtil.getTag(), "speciesUrl: " + speciesUrl);
+        Log.d(OmgSWUtil.getTag(), "speciesUrl.substring(0, 4: " + speciesUrl.substring(0, 4));
 
         if(!speciesUrl.substring(0, 4).equals("http")) {
             homeWorldText.setText(speciesUrl);
             return;
         }
 
-        int id = Integer.parseInt(SWUtil.getId(speciesUrl));
+        int id = Integer.parseInt(OmgSWUtil.getId(speciesUrl));
 
-        Log.d(SWUtil.getTag(), "id: " + id);
+        Log.d(OmgSWUtil.getTag(), "id: " + id);
 
-        StarWarsApi.getApi().getSpecies(id, new Callback<Species>() {
+        OmgStarWarsApi.getApi().getSpecies(id, new Callback<Species>() {
 
             @Override
             public void success(Species item, Response response) {
@@ -568,7 +585,7 @@ public abstract class DetailActivity extends AppCompatActivity {
                         final Intent intent = new Intent(mActivity, SpeciesActivity.class);
                         intent.setAction(Intent.ACTION_VIEW);
                         intent.putExtra(DetailIntentUtil.RESOURCE, species);
-                        intent.putExtra(DetailIntentUtil.IMAGE_URL,SWUtil.getAssetImage("species", species.url));
+                        intent.putExtra(DetailIntentUtil.IMAGE_URL, OmgSWUtil.getAssetImage("species", species.url));
 
                         startActivity(intent);
                     }

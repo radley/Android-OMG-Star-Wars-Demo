@@ -1,7 +1,6 @@
 package dev.radley.omgstarwars.detail;
 
 
-import android.util.Log;
 import android.widget.TextView;
 
 import com.swapi.models.Planet;
@@ -9,9 +8,8 @@ import com.swapi.models.Planet;
 import java.io.Serializable;
 
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.SWUtil;
 
-public class PlanetActivity extends DetailActivity{
+public class PlanetActivity extends BaseDetailActivity {
 
     protected Planet mPlanet;
 
@@ -23,7 +21,7 @@ public class PlanetActivity extends DetailActivity{
 
     @Override
     protected void updateTitle() {
-        mActionBar.setTitle(mPlanet.name);
+        mActionBar.setTitle(mPlanet.name + "!");
 
     }
 
@@ -32,25 +30,41 @@ public class PlanetActivity extends DetailActivity{
 
         insertDetailView(R.layout.view_detail_planet);
 
-
-
-        ((TextView) mDetailView.findViewById(R.id.rotation_period)).setText(mPlanet.rotationPeriod + " days");
-        ((TextView) mDetailView.findViewById(R.id.orbital_period)).setText(mPlanet.orbitalPeriod + " days");
-        ((TextView) mDetailView.findViewById(R.id.diameter)).setText(getFormattedNumber(mPlanet.diameter) + " km");
         ((TextView) mDetailView.findViewById(R.id.climate)).setText(mPlanet.climate);
         ((TextView) mDetailView.findViewById(R.id.gravity)).setText(mPlanet.gravity);
         ((TextView) mDetailView.findViewById(R.id.terrain)).setText(mPlanet.terrain);
-        ((TextView) mDetailView.findViewById(R.id.surface_water)).setText(mPlanet.surfaceWater +"%");
         ((TextView) mDetailView.findViewById(R.id.population)).setText(getFormattedNumber(mPlanet.population));
+
+        String rotationPeriod = mPlanet.rotationPeriod;
+        if(!rotationPeriod.equals("n/a") && !rotationPeriod.equals("unknown"))
+            rotationPeriod += " days";
+
+        ((TextView) mDetailView.findViewById(R.id.rotation_period)).setText(rotationPeriod);
+
+        String orbitalPeriod = mPlanet.orbitalPeriod;
+        if(!orbitalPeriod.equals("n/a") && !orbitalPeriod.equals("unknown"))
+            orbitalPeriod += " days";
+
+        ((TextView) mDetailView.findViewById(R.id.orbital_period)).setText(orbitalPeriod);
+
+        String diameter = mPlanet.diameter;
+        if(!diameter.equals("n/a") && !diameter.equals("unknown"))
+            diameter += " km";
+
+        ((TextView) mDetailView.findViewById(R.id.diameter)).setText(diameter);
+
+        String surfaceWater = mPlanet.surfaceWater;
+        if(!surfaceWater.equals("n/a") && !surfaceWater.equals("unknown"))
+            surfaceWater += "%";
+
+
+        ((TextView) mDetailView.findViewById(R.id.surface_water)).setText(surfaceWater);
 
         addListViews();
     }
 
     @Override
     protected void addListViews() {
-
-        Log.d(SWUtil.getTag(), "mPlanet.filmsUrls: " + mPlanet.filmsUrls);
-        Log.d(SWUtil.getTag(), "mPlanet.residentsUrls: " + mPlanet.residentsUrls);
 
         if(mPlanet.filmsUrls != null && mPlanet.filmsUrls.size() > 0)
             addFilmsList(mPlanet.filmsUrls);

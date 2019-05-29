@@ -56,7 +56,7 @@
 
     <!-- starship / vehicle -->
     <string name="model">Model</string>
-    <string name="starship_class">Starship Class</string>
+    <string name="starship_class">Class</string>
     <string name="manufacturer">Manufacturer</string>
     <string name="cost_in_credits">Price</string>
     <string name="length">Length</string>

@@ -17,13 +17,13 @@
             android:layout_weight="0.4">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/dob"/>
 
             <TextView
                 android:id="@+id/dob"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -34,14 +34,16 @@
             android:layout_weight="0.6">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/homeworld"/>
 
             <TextView
                 android:id="@+id/homeworld"
-                style="@style/Text.Body2.Detail"
-                android:layout_width="wrap_content" />
+                style="@style/TextView.Body2.Detail"
+                android:layout_width="wrap_content"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"/>
         </LinearLayout>
 
     </LinearLayout>
@@ -59,14 +61,16 @@
             android:layout_weight="0.4">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/species"/>
 
             <TextView
                 android:id="@+id/species"
-                style="@style/Text.Body2.Detail"
-                android:layout_width="wrap_content" />
+                style="@style/TextView.Body2.Detail"
+                android:layout_width="wrap_content"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:clickable="true"/>
 
         </LinearLayout>
 
@@ -77,13 +81,13 @@
             android:layout_weight="0.3">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/height"/>
 
             <TextView
                 android:id="@+id/height"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -95,13 +99,13 @@
             android:layout_weight="0.3">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/mass"/>
 
             <TextView
                 android:id="@+id/mass"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -121,13 +125,13 @@
             android:layout_weight="0.4">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/gender"/>
 
             <TextView
                 android:id="@+id/gender"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -139,13 +143,13 @@
             android:layout_weight="0.3">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/hair_color"/>
 
             <TextView
                 android:id="@+id/hair_color"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -157,13 +161,13 @@
             android:layout_weight="0.3">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/skin_color"/>
 
             <TextView
                 android:id="@+id/skin_color"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>

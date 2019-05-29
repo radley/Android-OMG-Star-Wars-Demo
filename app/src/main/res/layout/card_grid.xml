@@ -1,10 +1,12 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="3dp"
+    android:background="@color/colorPrimaryDark"
     android:foreground="?android:attr/selectableItemBackground"
     android:clickable="true">
 
@@ -19,15 +21,13 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:cropToPadding="true"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitCenter"
+            android:contentDescription="TODO" />
 
         <TextView
             android:id="@+id/title"
+            style="@style/TextView.Body2.Card"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#33333d"
-            android:maxLines="2"
-            android:minLines="2"
             android:padding="8dp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

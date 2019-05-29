@@ -18,13 +18,13 @@
             android:layout_weight="0.4">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/climate"/>
 
             <TextView
                 android:id="@+id/climate"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -36,13 +36,13 @@
             android:layout_weight="0.6">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/terrain"/>
 
             <TextView
                 android:id="@+id/terrain"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -62,13 +62,13 @@
             android:layout_weight="0.4">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/population"/>
 
             <TextView
                 android:id="@+id/population"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -79,13 +79,13 @@
             android:layout_weight="0.3">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="diameter"/>
 
             <TextView
                 android:id="@+id/diameter"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -98,13 +98,13 @@
             android:layout_weight="0.3">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/surface_water"/>
 
             <TextView
                 android:id="@+id/surface_water"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -124,13 +124,13 @@
             android:layout_weight="0.4">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/gravity"/>
 
             <TextView
                 android:id="@+id/gravity"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -142,13 +142,13 @@
             android:layout_weight="0.3">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/rotation_period"/>
 
             <TextView
                 android:id="@+id/rotation_period"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -160,13 +160,13 @@
             android:layout_weight="0.3">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/orbital_period"/>
 
             <TextView
                 android:id="@+id/orbital_period"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>

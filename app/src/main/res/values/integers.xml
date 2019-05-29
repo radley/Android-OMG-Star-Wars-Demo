@@ -1,4 +1,5 @@
 
 <resources>
-    <integer name="grid_span_count">2</integer>
+    <integer name="grid_span_count_tall">3</integer>
+    <integer name="grid_span_count_wide">2</integer>
 </resources>

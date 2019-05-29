@@ -11,13 +11,14 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.swapi.models.Planet;
 
 import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.SWUtil;
+import dev.radley.omgstarwars.Util.OmgSWUtil;
 import dev.radley.omgstarwars.categories.listener.OnBottomReachedListener;
 
 public class PlanetsAdapter extends RecyclerView.Adapter<PlanetsAdapter.ViewHolder> {
@@ -67,7 +68,8 @@ public class PlanetsAdapter extends RecyclerView.Adapter<PlanetsAdapter.ViewHold
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)
-                .load(Uri.parse(SWUtil.getAssetImage("planets", item.url)))
+                .load(Uri.parse(OmgSWUtil.getAssetImage("planets", item.url)))
+                .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.thumbnail);
 
         if (position == mPlanets.size() - 1){

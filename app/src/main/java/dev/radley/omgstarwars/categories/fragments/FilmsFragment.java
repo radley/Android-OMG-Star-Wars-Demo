@@ -2,14 +2,12 @@ package dev.radley.omgstarwars.categories.fragments;
 
 
 import android.content.Intent;
-import androidx.recyclerview.widget.GridLayoutManager;
+
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 
 import com.swapi.models.Film;
 import com.swapi.models.SWModelList;
-import com.swapi.sw.StarWarsApi;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,15 +15,16 @@ import java.util.Comparator;
 
 import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.Util.DetailIntentUtil;
-import dev.radley.omgstarwars.Util.SWUtil;
+import dev.radley.omgstarwars.Util.OmgSWUtil;
 import dev.radley.omgstarwars.categories.adapter.FilmsAdapter;
 import dev.radley.omgstarwars.categories.listener.OnItemSelectedListener;
+import dev.radley.omgstarwars.data.OmgStarWarsApi;
 import dev.radley.omgstarwars.detail.FilmActivity;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class FilmsFragment extends CategoryFragment {
+public class FilmsFragment extends BaseCategoryFragment {
 
 
     protected FilmsAdapter mAdapter;
@@ -39,6 +38,7 @@ public class FilmsFragment extends CategoryFragment {
     @Override
     protected void initGrid() {
         if (mList.size() == 0) {
+
             getGridItemsByPage(mPage);
             return;
         }
@@ -58,7 +58,7 @@ public class FilmsFragment extends CategoryFragment {
                 final Intent intent = new Intent(getActivity(), FilmActivity.class);
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.putExtra(DetailIntentUtil.RESOURCE, mList.get(position));
-                intent.putExtra(DetailIntentUtil.IMAGE_URL,SWUtil.getAssetImage("films", mList.get(position).url));
+                intent.putExtra(DetailIntentUtil.IMAGE_URL, OmgSWUtil.getAssetImage("films", mList.get(position).url));
                 intent.putExtra(DetailIntentUtil.PLACEHOLDER_IMAGE, R.drawable.tall_placeholder);
 
                 startActivity(intent);
@@ -68,7 +68,7 @@ public class FilmsFragment extends CategoryFragment {
 
     protected void getGridItemsByPage(int page) {
 
-        StarWarsApi.getApi().getAllFilms(page, new Callback<SWModelList<Film>>() {
+        OmgStarWarsApi.getApi().getAllFilms(page, new Callback<SWModelList<Film>>() {
 
             @Override
             public void success(SWModelList list, Response response) {
@@ -78,7 +78,7 @@ public class FilmsFragment extends CategoryFragment {
             @Override
             public void failure(RetrofitError error) {
                 //Something wrong
-                Log.d(SWUtil.getTag(), "error: " + error);
+                Log.d(OmgSWUtil.getTag(), "error: " + error);
             }
         });
     }
@@ -88,7 +88,10 @@ public class FilmsFragment extends CategoryFragment {
         if (mList.size() == 0) {
             mTotalItems = list.count;
             mPageSize = list.results.size();
-            mList.addAll(list.results);
+
+            for (Object object : list.results) {
+                mList.add(((Film) object));
+            }
 
             // sort by episode
             Collections.sort(mList, new Comparator<Film>() {
@@ -100,7 +103,7 @@ public class FilmsFragment extends CategoryFragment {
             populateGrid();
 
         } else {
-            Log.d(SWUtil.getTag(), "skip");
+            Log.d(OmgSWUtil.getTag(), "skip");
         }
     }
 

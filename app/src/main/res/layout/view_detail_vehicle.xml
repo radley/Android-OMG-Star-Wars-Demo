@@ -18,13 +18,13 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/model" />
 
             <TextView
                 android:id="@+id/model"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -35,13 +35,13 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/manufacturer" />
 
             <TextView
                 android:id="@+id/manufacturer"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
     </LinearLayout>
@@ -60,13 +60,13 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/length" />
 
             <TextView
                 android:id="@+id/length"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -78,13 +78,13 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/cargo_capacity" />
 
             <TextView
                 android:id="@+id/cargo_capacity"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
     </LinearLayout>
@@ -102,13 +102,13 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/crew" />
 
             <TextView
                 android:id="@+id/crew"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -119,13 +119,13 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/passengers" />
 
             <TextView
                 android:id="@+id/passengers"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -136,13 +136,13 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/consumables" />
 
             <TextView
                 android:id="@+id/consumables"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
     </LinearLayout>
@@ -160,13 +160,13 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/max_atmosphering_speed" />
 
             <TextView
                 android:id="@+id/max_atmosphering_speed"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -177,13 +177,13 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/cost_in_credits" />
 
             <TextView
                 android:id="@+id/cost_in_credits"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
     </LinearLayout>

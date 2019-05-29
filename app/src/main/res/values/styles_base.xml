@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-	
-	<!-- <style name="ActionbarSpinner" parent="Widget.AppCompat.Base.Spinner"></style> -->
-	<style name="ActionbarSpinner"></style>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+	<style name="ActionBar.Title" parent="android:TextAppearance.Material.Widget.ActionBar.Title">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+
+	<style name="ActionBar.Title.Expanded" parent="TextAppearance.MaterialComponents.Headline4">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
 
 	<style name="Button">
 		<item name="android:layout_width">wrap_content</item>
@@ -13,8 +22,7 @@
 		<item name="android:textColor">?android:textColorPrimary</item>
 	</style>
 
-	<!-- <item name="android:fontFamily">sans-serif-light</item> -->
-	<style name="CheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+	<style name="CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
 		<item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>
 	</style>
@@ -22,10 +30,6 @@
 	<style name="ImageButton">
 		<item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>
-	</style>
-
-	<style name="ImageButton.FAB">
-		<item name="android:gravity">center</item>
 	</style>
 
 	<style name="ImageView">
@@ -38,71 +42,51 @@
 		<item name="android:layout_height">wrap_content</item>
 	</style>
 
-	<style name="TextAppearance.Medium" parent="TextAppearance.AppCompat.Medium"/>
-
-	<style name="TextAppearance.Body" parent="TextAppearance.AppCompat.Body1"/>
-
-	<style name="TextAppearance.Body2" parent="TextAppearance.AppCompat.Body2"/>
-
-	<style name="TextAppearance.Caption" parent="TextAppearance.AppCompat.Caption"/>
-
-	<style name="TextAppearance.Small" parent="TextAppearance.AppCompat.Small"/>
-
-	<style name="TextAppearance.Subhead" parent="TextAppearance.AppCompat.Subhead"/>
-
-	<style name="TextAppearance.Title" parent="TextAppearance.AppCompat.Title"/>
-
-
-	<style name="TextAppearance.Headline" parent="TextAppearance.AppCompat.Headline"/>
-
-	<style name="TextAppearance.Display1" parent="TextAppearance.AppCompat.Display1"/>
-
-	<style name="TextAppearance.Display2" parent="TextAppearance.AppCompat.Display2"/>
-
-	<style name="TextAppearance.Display3" parent="TextAppearance.AppCompat.Display3"/>
-
-	<style name="TextAppearance.Display4" parent="TextAppearance.AppCompat.Display4"/>
-
-	<style name="TextView" parent="TextAppearance.AppCompat">
+	<style name="TextView" parent="TextAppearance.MaterialComponents.Body1">
 		<item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:textColor">?android:textColorPrimary</item>
+		<item name="android:fontFamily">@font/nunito_sans</item>
+		<item name="fontFamily">@font/nunito_sans</item>
 	</style>
 
-	<style name="TextView.Medium" parent="TextAppearance.AppCompat.Medium">
+	<style name="TextView.Body1">
 		<item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:textColor">?android:textColorPrimary</item>
+		<item name="android:fontFamily">@font/nunito_sans</item>
+		<item name="fontFamily">@font/nunito_sans</item>
 	</style>
 
-	<style name="TextView.Body1" parent="TextAppearance.AppCompat.Body1">
+	<style name="TextView.Body2" parent="TextAppearance.MaterialComponents.Body2">
 		<item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:textColor">?android:textColorPrimary</item>
+		<item name="android:fontFamily">@font/nunito_sans</item>
+		<item name="fontFamily">@font/nunito_sans</item>
 	</style>
 
-	<style name="TextView.Body2" parent="TextAppearance.AppCompat.Body2">
+	<style name="TextView.Caption" parent="TextAppearance.MaterialComponents.Caption">
 		<item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:textColor">?android:textColorPrimary</item>
+		<item name="android:fontFamily">@font/nunito_sans</item>
+		<item name="fontFamily">@font/nunito_sans</item>
 	</style>
 
-	<style name="TextView.Caption" parent="TextAppearance.AppCompat.Caption">
+	<style name="TextView.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
 		<item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>
-		<item name="android:textColor">?android:textColorPrimary</item>
+		<item name="android:fontFamily">@font/passion_one</item>
+		<item name="fontFamily">@font/passion_one</item>
 	</style>
 
-	<style name="TextView.Subhead" parent="TextAppearance.AppCompat.Subhead">
+	<style name="TextView.Overline" parent="TextAppearance.MaterialComponents.Overline">
 		<item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>
-		<item name="android:textColor">?android:textColorPrimary</item>
-	</style>
-
-	<style name="TextView.Title" parent="TextAppearance.AppCompat.Title">
-		<item name="android:layout_width">wrap_content</item>
-		<item name="android:layout_height">wrap_content</item>
-		<item name="android:textColor">?android:textColorPrimary</item>
+		<item name="android:textColor">#aaffffff</item>
+		<item name="android:fontFamily">@font/nunito_sans_extrabold</item>
+		<item name="fontFamily">@font/nunito_sans_extrabold</item>
 	</style>
 
 	<style name="SeekBar">

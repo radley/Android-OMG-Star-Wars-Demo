@@ -18,17 +18,16 @@
             android:layout_weight="0.4">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/model"/>
 
             <TextView
                 android:id="@+id/model"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -36,13 +35,13 @@
             android:layout_weight="0.6">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
-                android:text="@string/starship_class"/>
+                android:text="@string/manufacturer"/>
 
             <TextView
-                android:id="@+id/starship_class"
-                style="@style/Text.Body2.Detail"
+                android:id="@+id/manufacturer"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -59,17 +58,19 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingRight="16dp"
             android:layout_weight="0.4">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
-                android:text="@string/cost_in_credits"/>
+                android:text="@string/starship_class"/>
 
             <TextView
-                android:id="@+id/cost_in_credits"
-                style="@style/Text.Body2.Detail"
+                android:id="@+id/starship_class"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -79,16 +80,16 @@
             android:layout_weight="0.6">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
-                android:text="@string/manufacturer"/>
+                android:text="@string/cost_in_credits"/>
 
             <TextView
-                android:id="@+id/manufacturer"
-                style="@style/Text.Body2.Detail"
+                android:id="@+id/cost_in_credits"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
-
         </LinearLayout>
+
     </LinearLayout>
 
     <Space
@@ -108,13 +109,13 @@
             android:layout_weight="0.4">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/length"/>
 
             <TextView
                 android:id="@+id/length"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -125,13 +126,13 @@
             android:layout_weight="0.6">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/cargo_capacity"/>
 
             <TextView
                 android:id="@+id/cargo_capacity"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
     </LinearLayout>
@@ -149,13 +150,13 @@
             android:layout_weight="0.4">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/crew"/>
 
             <TextView
                 android:id="@+id/crew"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -166,13 +167,13 @@
             android:layout_weight="0.3">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/passengers"/>
 
             <TextView
                 android:id="@+id/passengers"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -183,13 +184,13 @@
             android:layout_weight="0.3">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/consumables"/>
 
             <TextView
                 android:id="@+id/consumables"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
     </LinearLayout>
@@ -207,13 +208,13 @@
             android:layout_weight="0.4">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/hyperdrive_rating"/>
 
             <TextView
                 android:id="@+id/hyperdrive_rating"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -224,13 +225,13 @@
             android:layout_weight="0.3">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/mglt"/>
 
             <TextView
                 android:id="@+id/mglt"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -241,13 +242,13 @@
             android:layout_weight="0.3">
 
             <TextView
-                style="@style/Text.Overline.Detail"
+                style="@style/TextView.Overline.Detail"
                 android:layout_width="wrap_content"
                 android:text="@string/max_atmosphering_speed"/>
 
             <TextView
                 android:id="@+id/max_atmosphering_speed"
-                style="@style/Text.Body2.Detail"
+                style="@style/TextView.Body2.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
     </LinearLayout>

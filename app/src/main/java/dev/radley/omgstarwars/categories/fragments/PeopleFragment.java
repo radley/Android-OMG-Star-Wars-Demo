@@ -1,10 +1,9 @@
 package dev.radley.omgstarwars.categories.fragments;
 
 import android.content.Intent;
-import androidx.recyclerview.widget.GridLayoutManager;
+
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 
 import com.swapi.models.People;
 import com.swapi.models.SWModelList;
@@ -14,16 +13,17 @@ import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.Util.DetailIntentUtil;
-import dev.radley.omgstarwars.Util.SWUtil;
+import dev.radley.omgstarwars.Util.OmgSWUtil;
 import dev.radley.omgstarwars.categories.listener.OnBottomReachedListener;
 import dev.radley.omgstarwars.categories.listener.OnItemSelectedListener;
 import dev.radley.omgstarwars.categories.adapter.PeopleAdapter;
+import dev.radley.omgstarwars.data.OmgStarWarsApi;
 import dev.radley.omgstarwars.detail.PeopleActivity;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class PeopleFragment extends CategoryFragment {
+public class PeopleFragment extends BaseCategoryFragment {
 
 
     protected PeopleAdapter mAdapter;
@@ -56,7 +56,7 @@ public class PeopleFragment extends CategoryFragment {
                 final Intent intent = new Intent(getActivity(), PeopleActivity.class);
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.putExtra(DetailIntentUtil.RESOURCE, mList.get(position));
-                intent.putExtra(DetailIntentUtil.IMAGE_URL,SWUtil.getAssetImage("people", mList.get(position).url));
+                intent.putExtra(DetailIntentUtil.IMAGE_URL, OmgSWUtil.getAssetImage("people", mList.get(position).url));
                 intent.putExtra(DetailIntentUtil.PLACEHOLDER_IMAGE, R.drawable.placeholder_people);
 
                 startActivity(intent);
@@ -81,7 +81,7 @@ public class PeopleFragment extends CategoryFragment {
 
         mLoading = true;
 
-        StarWarsApi.getApi().getAllPeople(page, new Callback<SWModelList<People>>() {
+        OmgStarWarsApi.getApi().getAllPeople(page, new Callback<SWModelList<People>>() {
 
             @Override
             public void success(SWModelList list, Response response) {
@@ -93,7 +93,7 @@ public class PeopleFragment extends CategoryFragment {
 
                 mLoading = false;
                 //Something wrong
-                Log.d(SWUtil.getTag(), "error: " + error);
+                Log.d(OmgSWUtil.getTag(), "error: " + error);
             }
         });
     }
@@ -104,13 +104,17 @@ public class PeopleFragment extends CategoryFragment {
         if (mList.size() == 0) {
             mTotalItems = list.count;
             mPageSize = list.results.size();
-            mList.addAll(list.results);
+            //mList.addAll(list.results);
+
+            for (Object object : list.results) {
+                mList.add(((People) object));
+            }
 
             populateGrid();
 
         } else { // update list
 
-            Log.d(SWUtil.getTag(), "update list");
+            Log.d(OmgSWUtil.getTag(), "update list");
 
             int curSize = mAdapter.getItemCount();
             mList.addAll(list.results);

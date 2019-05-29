@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="ActionBar.Title.Detail">
+        <item name="android:maxLines">1</item>
+        <item name="android:fontFamily">@font/passion_one</item>
+        <item name="fontFamily">@font/passion_one</item>
+    </style>
+
+    <style name="ActionBar.Title.Expanded.Detail">
+        <item name="android:maxLines">4</item>
+        <item name="android:fontFamily">@font/passion_one</item>
+        <item name="fontFamily">@font/passion_one</item>
+    </style>
+
+    <style name="TextView.Body2.Card">
+        <item name="android:maxLines">2</item>
+        <item name="android:minLines">2</item>
+    </style>
+
+    <style name="TextView.Body2.Detail">
+        <item name="android:lineSpacingMultiplier">1.0</item>
+    </style>
+
+    <style name="TextView.Headline4.Detail">
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="TextView.Overline.Detail">
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+
+    <style name="TextView.Tab" parent="TextAppearance.Design.Tab">
+        <item name="android:fontFamily">@font/passion_one</item>
+        <item name="fontFamily">@font/passion_one</item>
+        <item name="android:paddingLeft">64dp</item>
+        <item name="android:paddingRight">64dp</item>
+        <item name="android:textSize">28dp</item>
+    </style>
+
+</resources>

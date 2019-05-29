@@ -10,7 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="256dp"
+        android:layout_height="280dp"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay">
 
@@ -61,7 +61,7 @@
                 app:tabIndicatorColor="@android:color/white"
                 app:tabSelectedTextColor="@android:color/white"
                 app:tabMode="scrollable"
-                app:tabTextColor="@color/white"/>
+                app:tabTextAppearance="@style/TextView.Tab" />
 
 
 
@@ -72,7 +72,7 @@
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#111"
+        android:background="@color/colorPrimaryDark"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <!--<include layout="@layout/content_scrolling" />-->

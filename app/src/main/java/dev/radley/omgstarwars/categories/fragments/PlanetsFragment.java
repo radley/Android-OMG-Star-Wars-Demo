@@ -2,9 +2,7 @@ package dev.radley.omgstarwars.categories.fragments;
 
 import android.content.Intent;
 import android.util.Log;
-import android.view.View;
 
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.swapi.models.Planet;
@@ -15,16 +13,17 @@ import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.Util.DetailIntentUtil;
-import dev.radley.omgstarwars.Util.SWUtil;
+import dev.radley.omgstarwars.Util.OmgSWUtil;
 import dev.radley.omgstarwars.categories.adapter.PlanetsAdapter;
 import dev.radley.omgstarwars.categories.listener.OnBottomReachedListener;
 import dev.radley.omgstarwars.categories.listener.OnItemSelectedListener;
+import dev.radley.omgstarwars.data.OmgStarWarsApi;
 import dev.radley.omgstarwars.detail.PlanetActivity;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class PlanetsFragment extends CategoryFragment {
+public class PlanetsFragment extends BaseCategoryFragment {
 
 
     protected PlanetsAdapter mAdapter;
@@ -57,7 +56,7 @@ public class PlanetsFragment extends CategoryFragment {
                 final Intent intent = new Intent(getActivity(), PlanetActivity.class);
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.putExtra(DetailIntentUtil.RESOURCE, mList.get(position));
-                intent.putExtra(DetailIntentUtil.IMAGE_URL,SWUtil.getAssetImage("planets", mList.get(position).url));
+                intent.putExtra(DetailIntentUtil.IMAGE_URL, OmgSWUtil.getAssetImage("planets", mList.get(position).url));
                 intent.putExtra(DetailIntentUtil.PLACEHOLDER_IMAGE, R.drawable.placeholder_planet);
 
                 startActivity(intent);
@@ -82,7 +81,7 @@ public class PlanetsFragment extends CategoryFragment {
 
         mLoading = true;
 
-        StarWarsApi.getApi().getAllPlanets(page, new Callback<SWModelList<Planet>>() {
+        OmgStarWarsApi.getApi().getAllPlanets(page, new Callback<SWModelList<Planet>>() {
 
             @Override
             public void success(SWModelList list, Response response) {
@@ -94,7 +93,7 @@ public class PlanetsFragment extends CategoryFragment {
 
                 mLoading = false;
                 //Something wrong
-                Log.d(SWUtil.getTag(), "error: " + error);
+                Log.d(OmgSWUtil.getTag(), "error: " + error);
             }
         });
     }
@@ -112,7 +111,7 @@ public class PlanetsFragment extends CategoryFragment {
 
         } else { // update list
 
-            Log.d(SWUtil.getTag(), "update list");
+            Log.d(OmgSWUtil.getTag(), "update list");
 
             int curSize = mAdapter.getItemCount();
             mList.addAll(list.results);

@@ -11,13 +11,14 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.swapi.models.Species;
 
 import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.SWUtil;
+import dev.radley.omgstarwars.Util.OmgSWUtil;
 import dev.radley.omgstarwars.categories.listener.OnBottomReachedListener;
 
 public class SpeciesAdapter extends RecyclerView.Adapter<SpeciesAdapter.ViewHolder> {
@@ -67,7 +68,8 @@ public class SpeciesAdapter extends RecyclerView.Adapter<SpeciesAdapter.ViewHold
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)
-                .load(Uri.parse(SWUtil.getAssetImage("species", item.url)))
+                .load(Uri.parse(OmgSWUtil.getAssetImage("species", item.url)))
+                .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.thumbnail);
 
         if (position == mSpecies.size() - 1){

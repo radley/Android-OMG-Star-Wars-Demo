@@ -1,14 +1,14 @@
 package dev.radley.omgstarwars.categories.model;
 
-import dev.radley.omgstarwars.categories.fragments.CategoryFragment;
+import dev.radley.omgstarwars.categories.fragments.BaseCategoryFragment;
 
 public class Category {
 
     protected String mId;
     protected String mName;
-    protected CategoryFragment mCategoryFragment;
+    protected BaseCategoryFragment mCategoryFragment;
 
-    public Category(String id, String name, CategoryFragment fragment) {
+    public Category(String id, String name, BaseCategoryFragment fragment) {
         mId = id;
         mName = name;
         mCategoryFragment = fragment;
@@ -22,7 +22,7 @@ public class Category {
         return mName;
     }
 
-    public CategoryFragment getCategoryFragment() {
+    public BaseCategoryFragment getCategoryFragment() {
         return mCategoryFragment;
     }
 
