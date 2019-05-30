@@ -69,6 +69,12 @@
     <string name="max_atmosphering_speed">Land/Air Speed</string>
 
 
+    <plurals name="result_count">
+        <item quantity="one">%1$d result for \"%2$s\".</item>
+        <item quantity="other">%1$d results for \"%2$s\".</item>
+    </plurals>
+
+
 
     <string name="action_settings">Settings</string>
 </resources>

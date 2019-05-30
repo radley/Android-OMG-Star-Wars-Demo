@@ -23,7 +23,7 @@
 
             <TextView
                 android:id="@+id/classification"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -40,7 +40,7 @@
 
             <TextView
                 android:id="@+id/homeworld"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -65,7 +65,7 @@
 
             <TextView
                 android:id="@+id/designation"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -83,7 +83,7 @@
 
             <TextView
                 android:id="@+id/language"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -109,7 +109,7 @@
 
             <TextView
                 android:id="@+id/average_height"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -127,7 +127,7 @@
 
             <TextView
                 android:id="@+id/average_lifespan"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -155,7 +155,7 @@
 
             <TextView
                 android:id="@+id/skin_colors"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -174,7 +174,7 @@
 
             <TextView
                 android:id="@+id/hair_color"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -193,7 +193,7 @@
 
             <TextView
                 android:id="@+id/eye_colors"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>

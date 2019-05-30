@@ -14,12 +14,17 @@
         <item name="fontFamily">@font/passion_one</item>
     </style>
 
-    <style name="TextView.Body2.Card">
+    <style name="TextView.Card" parent="TextView.Body2">
         <item name="android:maxLines">2</item>
         <item name="android:minLines">2</item>
     </style>
 
-    <style name="TextView.Body2.Detail">
+    <style name="TextView.Card.Small" parent="TextView.Caption">
+        <item name="android:maxLines">2</item>
+        <item name="android:minLines">2</item>
+    </style>
+
+    <style name="TextView.Detail" parent="TextView.Body2">
         <item name="android:lineSpacingMultiplier">1.0</item>
     </style>
 

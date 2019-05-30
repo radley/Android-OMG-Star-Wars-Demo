@@ -24,7 +24,7 @@
 
             <TextView
                 android:id="@+id/climate"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -42,7 +42,7 @@
 
             <TextView
                 android:id="@+id/terrain"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -68,7 +68,7 @@
 
             <TextView
                 android:id="@+id/population"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -85,7 +85,7 @@
 
             <TextView
                 android:id="@+id/diameter"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -104,7 +104,7 @@
 
             <TextView
                 android:id="@+id/surface_water"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -130,7 +130,7 @@
 
             <TextView
                 android:id="@+id/gravity"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -148,7 +148,7 @@
 
             <TextView
                 android:id="@+id/rotation_period"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -166,7 +166,7 @@
 
             <TextView
                 android:id="@+id/orbital_period"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>

@@ -24,7 +24,7 @@
 
             <TextView
                 android:id="@+id/model"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -41,7 +41,7 @@
 
             <TextView
                 android:id="@+id/manufacturer"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -68,7 +68,7 @@
 
             <TextView
                 android:id="@+id/starship_class"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -86,7 +86,7 @@
 
             <TextView
                 android:id="@+id/cost_in_credits"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -115,7 +115,7 @@
 
             <TextView
                 android:id="@+id/length"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -132,7 +132,7 @@
 
             <TextView
                 android:id="@+id/cargo_capacity"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
     </LinearLayout>
@@ -156,7 +156,7 @@
 
             <TextView
                 android:id="@+id/crew"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -173,7 +173,7 @@
 
             <TextView
                 android:id="@+id/passengers"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -190,7 +190,7 @@
 
             <TextView
                 android:id="@+id/consumables"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
     </LinearLayout>
@@ -214,7 +214,7 @@
 
             <TextView
                 android:id="@+id/hyperdrive_rating"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -231,7 +231,7 @@
 
             <TextView
                 android:id="@+id/mglt"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -248,7 +248,7 @@
 
             <TextView
                 android:id="@+id/max_atmosphering_speed"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
     </LinearLayout>

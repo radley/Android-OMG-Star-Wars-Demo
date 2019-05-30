@@ -6,7 +6,6 @@
     android:layout_margin="4dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="3dp"
-    android:background="@color/colorPrimaryDark"
     android:foreground="?android:attr/selectableItemBackground"
     android:clickable="true">
 
@@ -26,7 +25,8 @@
 
         <TextView
             android:id="@+id/title"
-            style="@style/TextView.Body2.Card"
+            style="@style/TextView.Card"
+            android:background="@color/cardGrey"
             android:layout_width="match_parent"
             android:padding="8dp" />
     </LinearLayout>

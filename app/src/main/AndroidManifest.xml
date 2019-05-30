@@ -16,7 +16,7 @@
         tools:replace="android:icon"
         >
         <activity
-            android:name=".categories.CategoriesActivity"
+            android:name=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -25,27 +25,31 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".detail.FilmActivity"
+        <activity android:name=".activity.SearchActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".detail.PeopleActivity"
+        <activity android:name=".activity.FilmActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".detail.PlanetActivity"
+        <activity android:name=".activity.PeopleActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".detail.SpeciesActivity"
+        <activity android:name=".activity.PlanetActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".detail.StarshipActivity"
+        <activity android:name=".activity.SpeciesActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".detail.VehicleActivity"
+        <activity android:name=".activity.StarshipActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".activity.VehicleActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 

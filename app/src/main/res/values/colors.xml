@@ -5,6 +5,7 @@
     <color name="colorAccent">#00be3d</color>
     <color name="statusBar">#44000000</color>
     <color name="transparentPrimary">#cc33333a</color>
-    <color name="transparentDark">#bb000004</color>
+    <color name="cardGrey">#42424b</color>
+    <color name="transparentDark">#d411111a</color>
     <color name="white">#fff</color>
 </resources>

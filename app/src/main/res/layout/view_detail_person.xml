@@ -23,7 +23,7 @@
 
             <TextView
                 android:id="@+id/dob"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
         </LinearLayout>
 
@@ -40,7 +40,7 @@
 
             <TextView
                 android:id="@+id/homeworld"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"/>
@@ -67,7 +67,7 @@
 
             <TextView
                 android:id="@+id/species"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"/>
@@ -87,7 +87,7 @@
 
             <TextView
                 android:id="@+id/height"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -105,7 +105,7 @@
 
             <TextView
                 android:id="@+id/mass"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -131,7 +131,7 @@
 
             <TextView
                 android:id="@+id/gender"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -149,7 +149,7 @@
 
             <TextView
                 android:id="@+id/hair_color"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>
@@ -167,7 +167,7 @@
 
             <TextView
                 android:id="@+id/skin_color"
-                style="@style/TextView.Body2.Detail"
+                style="@style/TextView.Detail"
                 android:layout_width="wrap_content" />
 
         </LinearLayout>

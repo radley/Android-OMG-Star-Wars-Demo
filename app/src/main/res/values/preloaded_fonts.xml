@@ -4,6 +4,7 @@
         <item>@font/nunito_sans</item>
         <item>@font/nunito_sans_bold</item>
         <item>@font/nunito_sans_extrabold</item>
+        <item>@font/nunito_sans_italic</item>
         <item>@font/passion_one</item>
     </array>
 </resources>
