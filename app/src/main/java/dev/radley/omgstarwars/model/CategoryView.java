@@ -6,12 +6,12 @@ public class CategoryView {
 
     protected String mId;
     protected String mName;
-    protected BaseCategoryFragment mCategoryFragment;
-
+    protected BaseCategoryFragment mFragment;
     public CategoryView(String id, String name, BaseCategoryFragment fragment) {
+
         mId = id;
         mName = name;
-        mCategoryFragment = fragment;
+        mFragment = fragment;
     }
 
     public String getId() {
@@ -22,8 +22,7 @@ public class CategoryView {
         return mName;
     }
 
-    public BaseCategoryFragment getCategoryFragment() {
-        return mCategoryFragment;
+    public BaseCategoryFragment getFragment() {
+        return mFragment;
     }
-
 }

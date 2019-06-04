@@ -20,7 +20,7 @@ public class PlanetActivity extends BaseDetailActivity {
 
     @Override
     protected void updateTitle() {
-        mActionBar.setTitle(mPlanet.name + "!");
+        mActionBar.setTitle(mPlanet.name);
 
     }
 

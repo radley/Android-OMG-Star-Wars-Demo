@@ -27,6 +27,7 @@
 
         <activity android:name=".activity.SearchActivity"
             android:theme="@style/AppTheme.NoActionBar"
+            android:noHistory="true"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".activity.FilmActivity"

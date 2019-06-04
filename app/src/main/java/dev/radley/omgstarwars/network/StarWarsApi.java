@@ -4,23 +4,21 @@ import android.os.Build;
 
 import java.io.IOException;
 
-import dev.radley.omgstarwars.data.OmgStarWars;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import retrofit.RestAdapter;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 // replaces com.swapi.sw.StarWarsApi to allow search
 
-public class OmgStarWarsApi {
+public class StarWarsApi {
 
-    private OmgStarWars mSwApi;
-    private static OmgStarWarsApi sInstance;
+    private StarWars mSwApi;
+    private static StarWarsApi sInstance;
 
-    private OmgStarWarsApi() {
+    private StarWarsApi() {
 
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
@@ -29,15 +27,12 @@ public class OmgStarWarsApi {
             public Response intercept(Chain chain) throws IOException {
                 Request original = chain.request();
 
-                // Customize the request
                 Request request = original.newBuilder()
                         .header("User-Agent", "swapi-android-" + Build.VERSION.RELEASE)
                         .method(original.method(), original.body())
                         .build();
 
                 Response response = chain.proceed(request);
-
-                // Customize or return the response
                 return response;
             }
         });
@@ -49,18 +44,18 @@ public class OmgStarWarsApi {
                 .baseUrl(APIConstants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        mSwApi = retrofit.create(OmgStarWars.class);
+        mSwApi = retrofit.create(StarWars.class);
     }
 
     public static void init() {
-        sInstance = new OmgStarWarsApi();
+        sInstance = new StarWarsApi();
     }
 
-    public static OmgStarWars getApi() {
+    public static StarWars getApi() {
         return sInstance.mSwApi;
     }
 
-    public void setApi(OmgStarWars starWarsApi) {
+    public void setApi(StarWars starWarsApi) {
         sInstance.mSwApi = starWarsApi;
     }
 }

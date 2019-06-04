@@ -21,7 +21,7 @@ public class VehicleActivity extends BaseDetailActivity {
 
     @Override
     protected void updateTitle() {
-        mActionBar.setTitle(mVehicle.name +"!");
+        mActionBar.setTitle(mVehicle.name);
 
     }
 

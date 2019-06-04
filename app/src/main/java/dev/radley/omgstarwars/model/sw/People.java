@@ -6,34 +6,29 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import dev.radley.omgstarwars.R;
+
 /**
  * Created by Oleur on 21/12/2014.
  * People model represents an individual person or character within the Star Wars universe.
  */
-public class People implements Serializable {
-    public String name;
+public class People extends SWModel implements Serializable {
+
+    public String gender;
+    public String height;
+    public String mass;
 
     @SerializedName("birth_year")
     public String birthYear;
 
-    public String gender;
-
     @SerializedName("hair_color")
     public String hairColor;
-
-    public String height;
 
     @SerializedName("homeworld")
     public String homeWorldUrl;
 
-    public String mass;
-
     @SerializedName("skin_color")
     public String skinColor;
-
-    public String created;
-    public String edited;
-    public String url;
 
     @SerializedName("films")
     public ArrayList<String> filmsUrls;
@@ -46,4 +41,9 @@ public class People implements Serializable {
 
     @SerializedName("vehicles")
     public ArrayList<String> vehiclesUrls;
+
+    @Override
+    public int getPlaceholderRes() {
+        return R.drawable.placeholder_people;
+    }
 }

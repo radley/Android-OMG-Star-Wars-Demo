@@ -1,26 +1,26 @@
 package dev.radley.omgstarwars.fragment;
 
-import android.content.Intent;
-
-import androidx.recyclerview.widget.RecyclerView;
+import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.DetailIntentUtil;
 import dev.radley.omgstarwars.Util.OmgSWUtil;
+import dev.radley.omgstarwars.adapter.PeopleAdapter;
+import dev.radley.omgstarwars.bundle.DetailIntentUtil;
+import dev.radley.omgstarwars.bundle.SearchIntentUtil;
 import dev.radley.omgstarwars.listener.OnBottomReachedListener;
 import dev.radley.omgstarwars.listener.RecyclerTouchListener;
-import dev.radley.omgstarwars.adapter.PeopleAdapter;
-import dev.radley.omgstarwars.model.sw.Film;
 import dev.radley.omgstarwars.model.sw.People;
+import dev.radley.omgstarwars.model.sw.SWModel;
 import dev.radley.omgstarwars.model.sw.SWModelList;
-import dev.radley.omgstarwars.network.OmgStarWarsApi;
-import dev.radley.omgstarwars.activity.PeopleActivity;
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
+import dev.radley.omgstarwars.network.StarWarsApi;
 import retrofit2.Call;
 
 public class PeopleFragment extends BaseCategoryFragment {
@@ -33,7 +33,42 @@ public class PeopleFragment extends BaseCategoryFragment {
     protected int mPageSize;
     protected boolean mLoading = false;
 
-    protected ArrayList<People> mList = new ArrayList<People>();
+    protected ArrayList<People> mList;
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+
+        Bundle arguments = getArguments();
+        if (arguments != null && arguments.containsKey(SearchIntentUtil.RESULT_LIST)) {
+
+            mList = (ArrayList<People>) arguments.getSerializable(SearchIntentUtil.RESULT_LIST);
+        } else {
+            mList = new ArrayList<People>();
+        }
+
+        StarWarsApi.init();
+        initGrid();
+
+        return mView;
+    }
+
+    public void updateList(ArrayList<Object> list) {
+
+        mList = new ArrayList<People>();
+        for (Object object : list) {
+            mList.add(((People) object));
+        }
+
+        mAdapter.notifyDataSetChanged();
+    }
+
+    public void clear(){
+        mList.clear();
+        if(mAdapter != null)
+            mAdapter.notifyDataSetChanged();
+    }
 
     @Override
     protected void initGrid() {
@@ -53,14 +88,7 @@ public class PeopleFragment extends BaseCategoryFragment {
 
             public void onItemSelected(RecyclerView.ViewHolder holder, int position) {
 
-                final Intent intent = new Intent(getActivity(), PeopleActivity.class);
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.putExtra(DetailIntentUtil.RESOURCE, mList.get(position));
-                intent.putExtra(DetailIntentUtil.IMAGE_URL, OmgSWUtil.getAssetImage("people", mList.get(position).url));
-                intent.putExtra(DetailIntentUtil.PLACEHOLDER_IMAGE, R.drawable.placeholder_people);
-
-                startActivity(intent);
-
+                startActivity(DetailIntentUtil.getIntent(getActivity(), mList.get(position).getCategoryId(), (SWModel) mList.get(position)));
             }
         });
 
@@ -81,7 +109,7 @@ public class PeopleFragment extends BaseCategoryFragment {
 
         mLoading = true;
 
-        Call<SWModelList<People>> call = OmgStarWarsApi.getApi().getAllPeople(page);
+        Call<SWModelList<People>> call = StarWarsApi.getApi().getAllPeople(page);
         call.enqueue(new retrofit2.Callback<SWModelList<People>>() {
 
             @Override
@@ -91,7 +119,7 @@ public class PeopleFragment extends BaseCategoryFragment {
 
             @Override
             public void onFailure(Call<SWModelList<People>> call, Throwable t) {
-                Log.d(OmgSWUtil.getTag(), "error: " + t.getMessage());
+                Log.d(OmgSWUtil.tag, "error: " + t.getMessage());
             }
         });
     }
@@ -112,7 +140,7 @@ public class PeopleFragment extends BaseCategoryFragment {
 
         } else { // update list
 
-            Log.d(OmgSWUtil.getTag(), "update list");
+            Log.d(OmgSWUtil.tag, "update list");
 
             int curSize = mAdapter.getItemCount();
             mList.addAll(list.results);

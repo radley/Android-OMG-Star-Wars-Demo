@@ -5,20 +5,19 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import dev.radley.omgstarwars.R;
+
 /**
  * Created by Oleur on 22/12/2014.
  * Planet model represents a large mass, planet or planetoid in the Star Wars Universe, at the time of 0 ABY.
  */
-public class Planet implements Serializable {
-    public String name;
+public class Planet extends SWModel implements Serializable {
+
     public String diameter;
     public String gravity;
     public String population;
     public String climate;
     public String terrain;
-    public String created;
-    public String edited;
-    public String url;
 
     @SerializedName("rotation_period")
     public String rotationPeriod;
@@ -34,4 +33,9 @@ public class Planet implements Serializable {
 
     @SerializedName("films")
     public ArrayList<String> filmsUrls;
+
+    @Override
+    public int getPlaceholderRes() {
+        return R.drawable.placeholder_planet;
+    }
 }

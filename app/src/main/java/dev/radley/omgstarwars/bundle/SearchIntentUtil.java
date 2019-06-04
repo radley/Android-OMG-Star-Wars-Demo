@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package dev.radley.omgstarwars.Util;
+package dev.radley.omgstarwars.bundle;
 
 import android.content.Intent;
 

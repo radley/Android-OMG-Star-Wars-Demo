@@ -32,6 +32,10 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
+    <style name="TextView.Spinner" parent="TextView.Headline5">
+        <item name="android:textAllCaps">true</item>
+    </style>
+
     <style name="TextView.Overline.Detail">
         <item name="android:paddingTop">24dp</item>
         <item name="android:paddingBottom">8dp</item>

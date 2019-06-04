@@ -1,4 +1,4 @@
-package dev.radley.omgstarwars.data;
+package dev.radley.omgstarwars.network;
 
 import dev.radley.omgstarwars.model.sw.Film;
 import dev.radley.omgstarwars.model.sw.People;
@@ -18,7 +18,7 @@ import retrofit2.http.Query;
 
 // upgraded from com.swapi.sw.StarWars to add search and Retrofit 2
 
-public interface OmgStarWars {
+public interface StarWars {
 
 
     @GET("films")

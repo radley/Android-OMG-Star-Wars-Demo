@@ -20,7 +20,7 @@ public class SpeciesActivity extends BaseDetailActivity {
 
     @Override
     protected void updateTitle() {
-        mActionBar.setTitle(mSpecies.name +"!");
+        mActionBar.setTitle(mSpecies.name);
 
     }
 

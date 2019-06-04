@@ -9,9 +9,9 @@ import retrofit.client.OkClient;
 import retrofit.client.Request;
 
 
-public class OmgStarWarsOkClient extends OkClient {
+public class StarWarsOkClient extends OkClient {
 
-    public OmgStarWarsOkClient() {
+    public StarWarsOkClient() {
         super();
     }
 

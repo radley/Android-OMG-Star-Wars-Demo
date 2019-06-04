@@ -25,7 +25,7 @@ public class FilmActivity extends BaseDetailActivity {
 
     @Override
     protected void updateTitle() {
-        mActionBar.setTitle(mFilm.title + "!");
+        mActionBar.setTitle(mFilm.title);
 
     }
 

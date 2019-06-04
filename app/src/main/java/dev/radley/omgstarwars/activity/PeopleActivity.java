@@ -20,7 +20,7 @@ public class PeopleActivity extends BaseDetailActivity {
 
     @Override
     protected void updateTitle() {
-        mActionBar.setTitle(mPerson.name + "!");
+        mActionBar.setTitle(mPerson.name);
 
     }
 

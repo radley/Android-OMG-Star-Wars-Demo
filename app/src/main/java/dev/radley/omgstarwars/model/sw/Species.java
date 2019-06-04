@@ -6,14 +6,17 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import dev.radley.omgstarwars.R;
+
 /**
  * Created by Oleur on 22/12/2014.
  * Species model represents a type of person or character within the Star Wars Universe.
  */
-public class Species implements Serializable {
-    public String name;
+public class Species extends SWModel implements Serializable {
+
     public String classification;
     public String designation;
+    public String language;
 
     @SerializedName("average_height")
     public String averageHeight;
@@ -33,14 +36,14 @@ public class Species implements Serializable {
     @SerializedName("homeworld")
     public String homeWorld;
 
-    public String language;
-    public String created;
-    public String edited;
-    public String url;
-
     @SerializedName("people")
     public ArrayList<String> peopleUrls;
 
     @SerializedName("films")
     public ArrayList<String> filmsUrls;
+
+    @Override
+    public int getPlaceholderRes() {
+        return R.drawable.placeholder_species;
+    }
 }

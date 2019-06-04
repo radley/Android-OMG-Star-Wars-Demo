@@ -1,26 +1,28 @@
 package dev.radley.omgstarwars.fragment;
 
 
-import android.content.Intent;
-
-import androidx.recyclerview.widget.RecyclerView;
+import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.DetailIntentUtil;
 import dev.radley.omgstarwars.Util.OmgSWUtil;
 import dev.radley.omgstarwars.adapter.FilmsAdapter;
+import dev.radley.omgstarwars.bundle.DetailIntentUtil;
+import dev.radley.omgstarwars.bundle.SearchIntentUtil;
 import dev.radley.omgstarwars.listener.RecyclerTouchListener;
 import dev.radley.omgstarwars.model.sw.Film;
+import dev.radley.omgstarwars.model.sw.SWModel;
 import dev.radley.omgstarwars.model.sw.SWModelList;
-import dev.radley.omgstarwars.network.OmgStarWarsApi;
-import dev.radley.omgstarwars.activity.FilmActivity;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
+import dev.radley.omgstarwars.network.StarWarsApi;
 import retrofit2.Call;
 import retrofit2.Callback;
 
@@ -33,7 +35,44 @@ public class FilmsFragment extends BaseCategoryFragment {
     protected int mPage = 1;
     protected int mPageSize;
 
-    protected ArrayList<Film> mList = new ArrayList<Film>();
+    protected ArrayList<Film> mList;
+
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
+
+        Bundle arguments = getArguments();
+        if (arguments != null && arguments.containsKey(SearchIntentUtil.RESULT_LIST))
+        {
+            mList = (ArrayList<Film>) arguments.getSerializable(SearchIntentUtil.RESULT_LIST);
+
+        } else {
+            mList = new ArrayList<Film>();
+        }
+
+
+        StarWarsApi.init();
+        initGrid();
+
+        return mView;
+    }
+
+    public void updateList(ArrayList<Object> list) {
+
+        mList = new ArrayList<Film>();
+        for (Object object : list) {
+            mList.add(((Film) object));
+        }
+        mAdapter.notifyDataSetChanged();
+    }
+
+    public void clear(){
+        mList.clear();
+        if(mAdapter != null)
+            mAdapter.notifyDataSetChanged();
+    }
 
     @Override
     protected void initGrid() {
@@ -55,20 +94,14 @@ public class FilmsFragment extends BaseCategoryFragment {
 
             public void onItemSelected(RecyclerView.ViewHolder holder, int position) {
 
-                final Intent intent = new Intent(getActivity(), FilmActivity.class);
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.putExtra(DetailIntentUtil.RESOURCE, mList.get(position));
-                intent.putExtra(DetailIntentUtil.IMAGE_URL, OmgSWUtil.getAssetImage("films", mList.get(position).url));
-                intent.putExtra(DetailIntentUtil.PLACEHOLDER_IMAGE, R.drawable.tall_placeholder);
-
-                startActivity(intent);
+                startActivity(DetailIntentUtil.getIntent(getActivity(), mList.get(position).getCategoryId(), (SWModel) mList.get(position)));
             }
         });
     }
 
     protected void getGridItemsByPage(int page) {
 
-        Call<SWModelList<Film>> call = OmgStarWarsApi.getApi().getAllFilms(page);
+        Call<SWModelList<Film>> call = StarWarsApi.getApi().getAllFilms(page);
         call.enqueue(new Callback<SWModelList<Film>>() {
 
             @Override
@@ -78,7 +111,7 @@ public class FilmsFragment extends BaseCategoryFragment {
 
             @Override
             public void onFailure(Call<SWModelList<Film>> call, Throwable t) {
-                Log.d(OmgSWUtil.getTag(), "error: " + t.getMessage());
+                Log.d(OmgSWUtil.tag, "error: " + t.getMessage());
             }
         });
     }
@@ -103,7 +136,7 @@ public class FilmsFragment extends BaseCategoryFragment {
             populateGrid();
 
         } else {
-            Log.d(OmgSWUtil.getTag(), "skip");
+            Log.d(OmgSWUtil.tag, "skip");
         }
     }
 

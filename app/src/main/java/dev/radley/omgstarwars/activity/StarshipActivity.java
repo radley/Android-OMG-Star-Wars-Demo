@@ -20,7 +20,7 @@ public class StarshipActivity extends BaseDetailActivity {
 
     @Override
     protected void updateTitle() {
-        mActionBar.setTitle(mStarship.name +"!");
+        mActionBar.setTitle(mStarship.name);
 
     }
 

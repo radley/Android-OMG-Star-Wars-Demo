@@ -11,8 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.network.OmgStarWarsApi;
 
 public abstract class BaseCategoryFragment extends Fragment {
 
@@ -39,10 +40,6 @@ public abstract class BaseCategoryFragment extends Fragment {
 
         mRecyclerView = (RecyclerView) mView.findViewById(R.id.grid);
         mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), getSpanCount()));
-
-        OmgStarWarsApi.init();
-        initGrid();
-
         return mView;
     }
 
@@ -50,15 +47,18 @@ public abstract class BaseCategoryFragment extends Fragment {
     public RecyclerView getRecyclerView() {
         return mRecyclerView;
     }
+    public abstract void updateList(ArrayList<Object> list);
+    public abstract void clear();
+
 
     protected int getSpanCount() {
         return getResources().getInteger(R.integer.grid_span_count_tall);
     }
 
-
     // To override
     protected abstract void getGridItemsByPage(int page);
     protected abstract void initGrid();
     protected abstract void populateGrid();
+
 
 }

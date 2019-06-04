@@ -9,20 +9,17 @@ import java.util.ArrayList;
  * Created by Oleur on 21/12/2014.
  * Film model represents a Star Wars single film.
  */
-public class Film implements Serializable {
+public class Film extends SWModel implements Serializable {
+
     public String title;
+    public String director;
+    public String producer;
 
     @SerializedName("episode_id")
     public int episodeId;
 
     @SerializedName("opening_crawl")
     public String openingCrawl;
-
-    public String director;
-    public String producer;
-    public String url;
-    public String created;
-    public String edited;
 
     @SerializedName("species")
     public ArrayList<String> speciesUrls;
@@ -38,4 +35,9 @@ public class Film implements Serializable {
 
     @SerializedName("characters")
     public ArrayList<String> charactersUrls;
+
+    @Override
+    public String getTitle() {
+        return title;
+    }
 }

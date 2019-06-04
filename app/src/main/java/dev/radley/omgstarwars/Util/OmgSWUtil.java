@@ -2,29 +2,9 @@ package dev.radley.omgstarwars.Util;
 
 
 public class OmgSWUtil {
-    private static final OmgSWUtil ourInstance = new OmgSWUtil();
 
-    public static OmgSWUtil getInstance() {
-        return ourInstance;
-    }
-
-    protected static String logTag = "OMGSW";
-    protected static String API_URL = "https://swapi.co/api/";
-    protected static String ASSETS_URL = "file:///android_asset/";
-
-    private OmgSWUtil() {
-    }
-
-    public static String getTag() {
-        return logTag;
-    }
-
-    public static String getApi() {
-        return API_URL;
-    }
-    public static String getAssets() {
-        return ASSETS_URL;
-    }
+    public static String tag = "OMGSW";
+    public static String ASSETS_URL = "file:///android_asset/";
 
     public static String getId(String url) {
         String string[] = url.split("/");
