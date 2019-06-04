@@ -43,6 +43,10 @@ public class SWModel implements Serializable {
     }
 
     public int getPlaceholderRes() {
-        return R.drawable.tall_placeholder;
+        return R.drawable.placeholder_tall;
+    }
+
+    public int getFallbackRes() {
+        return R.drawable.placeholder_tall;
     }
 }

@@ -41,8 +41,8 @@ public class SpeciesFragment extends BaseCategoryFragment {
         super.onCreateView(inflater, container, savedInstanceState);
 
         Bundle arguments = getArguments();
-        if (arguments != null && arguments.containsKey(SearchIntentUtil.RESULT_LIST)) {
 
+        if (arguments != null && arguments.containsKey(SearchIntentUtil.RESULT_LIST)) {
             mList = (ArrayList<Species>) arguments.getSerializable(SearchIntentUtil.RESULT_LIST);
         } else {
             mList = new ArrayList<Species>();
@@ -56,7 +56,7 @@ public class SpeciesFragment extends BaseCategoryFragment {
 
     public void updateList(ArrayList<Object> list) {
 
-        mList = new ArrayList<Species>();
+        mList.clear();
         for (Object object : list) {
             mList.add(((Species) object));
         }
@@ -134,11 +134,12 @@ public class SpeciesFragment extends BaseCategoryFragment {
             mPageSize = list.results.size();
             mList.addAll(list.results);
 
-            populateGrid();
-
-        } else { // update list
-
-            Log.d(OmgSWUtil.tag, "update list");
+            if(mAdapter != null) {
+                mAdapter.notifyDataSetChanged();
+            } else {
+                populateGrid();
+            }
+        } else { // append list
 
             int curSize = mAdapter.getItemCount();
             mList.addAll(list.results);

@@ -64,7 +64,7 @@ public class StarshipsAdapter extends RecyclerView.Adapter<StarshipsAdapter.View
         holder.titleText.setText(item.name);
 
         RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.placeholder_starship);
+                .placeholder(R.drawable.generic_starship);
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)

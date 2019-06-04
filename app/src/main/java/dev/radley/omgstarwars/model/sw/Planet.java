@@ -36,6 +36,11 @@ public class Planet extends SWModel implements Serializable {
 
     @Override
     public int getPlaceholderRes() {
-        return R.drawable.placeholder_planet;
+        return R.drawable.placeholder_square;
+    }
+
+    @Override
+    public int getFallbackRes() {
+        return R.drawable.generic_planet;
     }
 }

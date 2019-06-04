@@ -17,20 +17,19 @@ public class VehicleActivity extends BaseDetailActivity {
     protected void loadResource(Serializable resource) {
 
         mVehicle = (Vehicle)resource;
+        updateHero();
     }
 
     @Override
-    protected void updateTitle() {
-        mActionBar.setTitle(mVehicle.name);
-
+    protected void updateHero() {
+        mActionBar.setTitle(mVehicle.getTitle());
+        updateHeroImage(mVehicle.getImageAsset(), mVehicle.getPlaceholderRes(), mVehicle.getFallbackRes());
     }
 
     @Override
     protected void populateDetails() {
 
         insertDetailView(R.layout.view_detail_vehicle);
-
-
 
         ((TextView) mDetailView.findViewById(R.id.model)).setText(mVehicle.model);
         ((TextView) mDetailView.findViewById(R.id.manufacturer)).setText(mVehicle.manufacturer);

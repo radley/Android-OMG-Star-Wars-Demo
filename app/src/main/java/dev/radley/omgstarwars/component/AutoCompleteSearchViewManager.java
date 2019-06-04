@@ -11,32 +11,37 @@ import android.widget.ArrayAdapter;
 import androidx.appcompat.widget.SearchView;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.Util.OmgSWUtil;
 import dev.radley.omgstarwars.activity.SearchActivity;
 import dev.radley.omgstarwars.bundle.DetailIntentUtil;
 import dev.radley.omgstarwars.bundle.SearchIntentUtil;
+import dev.radley.omgstarwars.model.sw.People;
 import dev.radley.omgstarwars.model.sw.SWModel;
+
 
 public class AutoCompleteSearchViewManager extends SearchViewManager {
 
     protected ArrayAdapter<String> mAutoCompleteAdapter;
+    protected ArrayList<String> mResultTitles;
     protected SearchView.SearchAutoComplete mSearchAutoComplete;
 
 
     public AutoCompleteSearchViewManager(Activity activity, SearchView searchView) {
 
         super(activity, searchView);
-
+        mResultTitles = new ArrayList<String>();
     }
 
     @Override
     public void init(String category) {
 
         mCategory = category;
+        mSearchView.setQueryHint("Search " + mCategory + "...");
 
-        // add background color when expanded
+        // add background color to searchView while expanded
         mSearchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -67,7 +72,6 @@ public class AutoCompleteSearchViewManager extends SearchViewManager {
 
                 mActivity.startActivity(intent);
 
-                Log.d(OmgSWUtil.tag, "onQueryTextSubmit: " + query);
                 return false;
             }
 
@@ -77,24 +81,27 @@ public class AutoCompleteSearchViewManager extends SearchViewManager {
                 mQuery = searchTerm;
 
                 mHandler.removeCallbacksAndMessages(null);
-
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         startSearchLoop();
                     }
-                }, 300);
+                }, 500);
 
                 return true;
-
             }
         });
 
         mSearchAutoComplete = (SearchView.SearchAutoComplete) mSearchView.findViewById(androidx.appcompat.R.id.search_src_text);
+        mSearchAutoComplete.setThreshold(1);
+    }
+
+    protected void initAutoCompleteList() {
+
+        Log.d(OmgSWUtil.tag, "initAutoCompleteList()");
+
         mAutoCompleteAdapter = new ArrayAdapter<String>(mActivity, android.R.layout.simple_dropdown_item_1line, mResultTitles);
         mSearchAutoComplete.setAdapter(mAutoCompleteAdapter);
-
-        // on auto-complete item click
         mSearchAutoComplete.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int itemIndex, long id) {
@@ -104,11 +111,24 @@ public class AutoCompleteSearchViewManager extends SearchViewManager {
         });
     }
 
+    @Override
+    public void updateCategory(String category) {
+
+        super.updateCategory(category);
+        mResultTitles.clear();
+
+        if(mAutoCompleteAdapter != null)
+            mAutoCompleteAdapter.notifyDataSetChanged();
+    }
+
     protected void onSearchItemClick(int index) {
 
         Intent intent = DetailIntentUtil.getIntent(mActivity, mCategory, (SWModel) mResultItems.get(index));
 
         mSearchView.setQuery("", false);
+
+        // bug in AndroidX - icon won't revert to right side
+        // leftover bug from original searchView, was fixed in appCompat version
         mSearchView.setIconified(true);
 
         mActivity.startActivity(intent);
@@ -117,26 +137,39 @@ public class AutoCompleteSearchViewManager extends SearchViewManager {
     @Override
     protected void clearSearchResults() {
 
-        if(mQuery.length() < 2) {
-            mResultTitles.clear();
-            mResultItems.clear();
+        mResultTitles.clear();
+        mResultItems.clear();
 
-            mAutoCompleteAdapter.clear();
-            mSearchAutoComplete.setAdapter(mAutoCompleteAdapter);
-        }
+        if(mAutoCompleteAdapter != null)
+            mAutoCompleteAdapter.notifyDataSetChanged();
+
+        // notifyDataSetChanged doesn't always work
+        //mAutoCompleteAdapter = new ArrayAdapter<String>(mActivity, android.R.layout.simple_dropdown_item_1line, mResultTitles);
+        //mSearchAutoComplete.setAdapter(mAutoCompleteAdapter);
     }
 
 
     @Override
     protected void onSearchLoopComplete() {
 
-        // HACK: SearchAutoComplete expects to filter a single list, not display many pre-filtered lists.
-        // This mean we have to update it manually each time...
-        // also means it might not update consistently.
-
         Log.d(OmgSWUtil.tag, "onSearchLoopComplete()");
 
-        mAutoCompleteAdapter = new ArrayAdapter<String>(mActivity, android.R.layout.simple_dropdown_item_1line, mResultTitles);
-        mSearchAutoComplete.setAdapter(mAutoCompleteAdapter);
+        mResultTitles.clear();
+
+        if(mResultItems.size() > 0) {
+            for (Object object : mResultItems) {
+                mResultTitles.add(((SWModel) object).getTitle());
+            }
+        }
+
+        if(mAutoCompleteAdapter != null) {
+
+            // notifyDataSetChanged doesn't always work
+            mAutoCompleteAdapter = new ArrayAdapter<String>(mActivity, android.R.layout.simple_dropdown_item_1line, mResultTitles);
+            mSearchAutoComplete.setAdapter(mAutoCompleteAdapter);
+
+        } else {
+            initAutoCompleteList();
+        }
     }
 }

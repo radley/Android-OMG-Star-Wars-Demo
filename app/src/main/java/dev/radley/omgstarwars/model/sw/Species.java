@@ -44,6 +44,11 @@ public class Species extends SWModel implements Serializable {
 
     @Override
     public int getPlaceholderRes() {
-        return R.drawable.placeholder_species;
+        return R.drawable.placeholder_tall;
+    }
+
+    @Override
+    public int getFallbackRes() {
+        return R.drawable.generic_species;
     }
 }

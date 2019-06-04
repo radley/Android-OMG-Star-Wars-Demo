@@ -49,7 +49,6 @@ public class SearchActivity extends AppCompatActivity {
     protected TextView mResultsText;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,10 +112,6 @@ public class SearchActivity extends AppCompatActivity {
                 mResultList = data;
                 mQuery = query;
 
-                Log.d(OmgSWUtil.tag, "onLoadComplete()");
-                Log.d(OmgSWUtil.tag, "mQuery: " +mQuery);
-                Log.d(OmgSWUtil.tag, "mResultList: " +mResultList);
-
                 String myString = getResources().getQuantityString(R.plurals.result_count, mResultList.size(), mResultList.size(), mQuery);
                 mResultsText.setText(myString);
 
@@ -172,7 +167,6 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     protected void loadCategoryFragment() {
-
 
         // SW API only searches within categories
         if (mCategory.equals((mActivity.getString(R.string.category_id_films)))) {

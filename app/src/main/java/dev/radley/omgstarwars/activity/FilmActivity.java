@@ -14,19 +14,19 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 
 public class FilmActivity extends BaseDetailActivity {
 
-
     protected Film mFilm;
 
     @Override
     protected void loadResource(Serializable resource) {
 
         mFilm = (Film)resource;
+        updateHero();
     }
 
     @Override
-    protected void updateTitle() {
-        mActionBar.setTitle(mFilm.title);
-
+    protected void updateHero() {
+        mActionBar.setTitle(mFilm.getTitle());
+        updateHeroImage(mFilm.getImageAsset(), mFilm.getPlaceholderRes(), mFilm.getFallbackRes());
     }
 
     @Override

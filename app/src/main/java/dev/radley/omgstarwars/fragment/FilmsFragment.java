@@ -44,10 +44,9 @@ public class FilmsFragment extends BaseCategoryFragment {
         super.onCreateView(inflater, container, savedInstanceState);
 
         Bundle arguments = getArguments();
-        if (arguments != null && arguments.containsKey(SearchIntentUtil.RESULT_LIST))
-        {
-            mList = (ArrayList<Film>) arguments.getSerializable(SearchIntentUtil.RESULT_LIST);
 
+        if (arguments != null && arguments.containsKey(SearchIntentUtil.RESULT_LIST)) {
+            mList = (ArrayList<Film>) arguments.getSerializable(SearchIntentUtil.RESULT_LIST);
         } else {
             mList = new ArrayList<Film>();
         }
@@ -61,7 +60,7 @@ public class FilmsFragment extends BaseCategoryFragment {
 
     public void updateList(ArrayList<Object> list) {
 
-        mList = new ArrayList<Film>();
+        mList.clear();
         for (Object object : list) {
             mList.add(((Film) object));
         }
@@ -133,10 +132,14 @@ public class FilmsFragment extends BaseCategoryFragment {
                 }
             });
 
-            populateGrid();
+            if(mAdapter != null) {
+                mAdapter.notifyDataSetChanged();
+            } else {
+                populateGrid();
+            }
 
         } else {
-            Log.d(OmgSWUtil.tag, "skip");
+            mAdapter.notifyDataSetChanged();
         }
     }
 

@@ -16,12 +16,13 @@ public class SpeciesActivity extends BaseDetailActivity {
     protected void loadResource(Serializable resource) {
 
         mSpecies = (Species)resource;
+        updateHero();
     }
 
     @Override
-    protected void updateTitle() {
-        mActionBar.setTitle(mSpecies.name);
-
+    protected void updateHero() {
+        mActionBar.setTitle(mSpecies.getTitle());
+        updateHeroImage(mSpecies.getImageAsset(), mSpecies.getPlaceholderRes(), mSpecies.getFallbackRes());
     }
 
     @Override

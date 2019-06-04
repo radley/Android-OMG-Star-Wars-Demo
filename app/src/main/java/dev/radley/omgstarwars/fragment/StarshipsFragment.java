@@ -26,15 +26,12 @@ import retrofit2.Call;
 
 public class StarshipsFragment extends BaseCategoryFragment {
 
-
-    protected StarshipsAdapter mAdapter;
-
+    protected ArrayList<Starship> mList;
     protected int mTotalItems;
     protected int mPage = 1;
     protected int mPageSize;
     protected boolean mLoading = false;
-
-    protected ArrayList<Starship> mList;
+    protected StarshipsAdapter mAdapter;
 
     @Nullable
     @Override
@@ -42,8 +39,8 @@ public class StarshipsFragment extends BaseCategoryFragment {
         super.onCreateView(inflater, container, savedInstanceState);
 
         Bundle arguments = getArguments();
-        if (arguments != null && arguments.containsKey(SearchIntentUtil.RESULT_LIST)) {
 
+        if (arguments != null && arguments.containsKey(SearchIntentUtil.RESULT_LIST)) {
             mList = (ArrayList<Starship>) arguments.getSerializable(SearchIntentUtil.RESULT_LIST);
         } else {
             mList = new ArrayList<Starship>();
@@ -55,11 +52,9 @@ public class StarshipsFragment extends BaseCategoryFragment {
         return mView;
     }
 
-
-
     public void updateList(ArrayList<Object> list) {
 
-        mList = new ArrayList<Starship>();
+        mList.clear();
         for (Object object : list) {
             mList.add(((Starship) object));
         }
@@ -72,16 +67,13 @@ public class StarshipsFragment extends BaseCategoryFragment {
             mAdapter.notifyDataSetChanged();
     }
 
-
     @Override
     protected void initGrid() {
-
 
         if (mList.size() == 0) {
             getGridItemsByPage(mPage);
             return;
         }
-
         populateGrid();
     }
 
@@ -96,7 +88,6 @@ public class StarshipsFragment extends BaseCategoryFragment {
             public void onItemSelected(RecyclerView.ViewHolder holder, int position) {
 
                 startActivity(DetailIntentUtil.getIntent(getActivity(), mList.get(position).getCategoryId(), (SWModel) mList.get(position)));
-
             }
         });
 
@@ -110,7 +101,6 @@ public class StarshipsFragment extends BaseCategoryFragment {
                 }
             }
         });
-
     }
 
     @Override
@@ -146,11 +136,13 @@ public class StarshipsFragment extends BaseCategoryFragment {
             mPageSize = list.results.size();
             mList.addAll(list.results);
 
-            populateGrid();
+            if(mAdapter != null) {
+                mAdapter.notifyDataSetChanged();
+            } else {
+                populateGrid();
+            }
 
-        } else { // update list
-
-            Log.d(OmgSWUtil.tag, "update list");
+        } else { // append list
 
             int curSize = mAdapter.getItemCount();
             mList.addAll(list.results);

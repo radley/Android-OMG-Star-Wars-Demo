@@ -62,7 +62,7 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
         holder.titleText.setText(item.title);
 
         RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.tall_placeholder)
+                .placeholder(R.drawable.placeholder_tall)
                 .diskCacheStrategy(DiskCacheStrategy.ALL);
 
         Glide.with(holder.thumbnail.getContext())

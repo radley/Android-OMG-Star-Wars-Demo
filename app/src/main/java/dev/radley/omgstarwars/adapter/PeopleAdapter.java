@@ -65,7 +65,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder
         holder.titleText.setText(item.name);
 
         RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.placeholder_people);
+                .placeholder(R.drawable.generic_people);
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)

@@ -66,7 +66,7 @@ public class VehiclesAdapter extends RecyclerView.Adapter<VehiclesAdapter.ViewHo
         holder.titleText.setText(item.name);
 
         RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.placeholder_vehicle);
+                .placeholder(R.drawable.generic_vehicle);
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)

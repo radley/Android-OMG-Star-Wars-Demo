@@ -87,26 +87,23 @@ public abstract class BaseDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         loadResource(intent.getSerializableExtra(DetailIntentUtil.SW_RESOURCE));
-        updateHeroImage(intent.getStringExtra(DetailIntentUtil.IMAGE_URL), intent.getIntExtra(DetailIntentUtil.PLACEHOLDER_IMAGE, 0));
-        updateTitle();
-
         mLayout = (LinearLayout) findViewById(R.id.detail_layout);
         populateDetails();
     }
 
     protected abstract void loadResource(Serializable resource);
-    protected abstract void updateTitle();
+    protected abstract void updateHero();
     protected abstract void populateDetails();
     protected abstract void addListViews();
 
-
-    protected void updateHeroImage(String imagePath, int placeholder) {
+    protected void updateHeroImage(String imagePath, int placeholder, int fallback) {
 
         DrawableCrossFadeFactory factory =
                 new DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(false).build();
 
         RequestOptions requestOptions = new RequestOptions()
-                .placeholder(placeholder);
+                .placeholder(placeholder)
+                .fallback(fallback);
 
         ImageView imageView = (ImageView) findViewById(R.id.hero_image);
         Glide.with(this)
@@ -150,7 +147,8 @@ public abstract class BaseDetailActivity extends AppCompatActivity {
         final LinearLayout layout = view.findViewById(R.id.horizontal_list);
 
         final RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.tall_placeholder);
+                .placeholder(R.drawable.placeholder_tall)
+                .fallback(R.drawable.placeholder_tall);
 
         for (int i = 0; i < urlList.size(); i++) {
 
@@ -210,7 +208,8 @@ public abstract class BaseDetailActivity extends AppCompatActivity {
         final LinearLayout layout = view.findViewById(R.id.horizontal_list);
 
         final RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.placeholder_people);
+                .placeholder(R.drawable.placeholder_tall)
+                .fallback(R.drawable.generic_people);
 
         for (int i = 0; i < urlList.size(); i++) {
 
@@ -270,7 +269,8 @@ public abstract class BaseDetailActivity extends AppCompatActivity {
         final LinearLayout layout = view.findViewById(R.id.horizontal_list);
 
         final RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.placeholder_planet);
+                .placeholder(R.drawable.placeholder_square)
+                .fallback(R.drawable.generic_planet);
 
         for (int i = 0; i < urlList.size(); i++) {
 
@@ -330,7 +330,8 @@ public abstract class BaseDetailActivity extends AppCompatActivity {
         final LinearLayout layout = view.findViewById(R.id.horizontal_list);
 
         final RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.placeholder_species);
+                .placeholder(R.drawable.placeholder_tall)
+                .fallback(R.drawable.generic_species);
 
         for (int i = 0; i < urlList.size(); i++) {
 
@@ -389,7 +390,8 @@ public abstract class BaseDetailActivity extends AppCompatActivity {
         final LinearLayout layout = view.findViewById(R.id.horizontal_list);
 
         final RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.placeholder_starship);
+                .placeholder(R.drawable.placeholder_wide)
+                .fallback(R.drawable.generic_starship);
 
         for (int i = 0; i < urlList.size(); i++) {
 
@@ -449,7 +451,7 @@ public abstract class BaseDetailActivity extends AppCompatActivity {
         final LinearLayout layout = view.findViewById(R.id.horizontal_list);
 
         final RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.placeholder_vehicle);
+                .placeholder(R.drawable.generic_vehicle);
 
         for (int i = 0; i < urlList.size(); i++) {
 
@@ -503,17 +505,12 @@ public abstract class BaseDetailActivity extends AppCompatActivity {
 
         final TextView homeWorldText = (TextView) mDetailView.findViewById(R.id.homeworld);
 
-        Log.d(OmgSWUtil.tag, "homeWorldUrl: " + homeWorldUrl);
-        Log.d(OmgSWUtil.tag, "homeWorldUrl.substring(0, 4: " + homeWorldUrl.substring(0, 4));
-
         if(!homeWorldUrl.substring(0, 4).equals("http")) {
             homeWorldText.setText(homeWorldUrl);
             return;
         }
 
         int id = Integer.parseInt(OmgSWUtil.getId(homeWorldUrl));
-
-        Log.d(OmgSWUtil.tag, "id: " + id);
 
         Call<Planet> call = StarWarsApi.getApi().getPlanet(id);
         call.enqueue(new Callback<Planet>() {
@@ -549,17 +546,12 @@ public abstract class BaseDetailActivity extends AppCompatActivity {
 
         final TextView textView = (TextView) mDetailView.findViewById(R.id.species);
 
-        Log.d(OmgSWUtil.tag, "speciesUrl: " + speciesUrl);
-        Log.d(OmgSWUtil.tag, "speciesUrl.substring(0, 4: " + speciesUrl.substring(0, 4));
-
         if(!speciesUrl.substring(0, 4).equals("http")) {
             textView.setText(speciesUrl);
             return;
         }
 
         int id = Integer.parseInt(OmgSWUtil.getId(speciesUrl));
-
-        Log.d(OmgSWUtil.tag, "id: " + id);
 
         Call<Species> call = StarWarsApi.getApi().getSpecies(id);
         call.enqueue(new Callback<Species>() {

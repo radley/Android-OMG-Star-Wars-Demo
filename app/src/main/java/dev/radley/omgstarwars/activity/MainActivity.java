@@ -2,10 +2,8 @@ package dev.radley.omgstarwars.activity;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -33,23 +31,15 @@ import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.Util.OmgSWUtil;
 import dev.radley.omgstarwars.component.AutoCompleteSearchViewManager;
 import dev.radley.omgstarwars.fragment.BaseCategoryFragment;
-import dev.radley.omgstarwars.bundle.DetailIntentUtil;
 import dev.radley.omgstarwars.model.CategoryView;
 import dev.radley.omgstarwars.model.CategoryViewList;
-import dev.radley.omgstarwars.model.sw.SWModel;
 
 public class MainActivity extends AppCompatActivity {
 
     protected Activity mActivity;
     protected AppBarLayout mAppBarLayout;
-
-    protected ArrayList<String> mSearchResultTitles;
     protected ArrayList<Object> mSearchResultItems;
-    protected Handler mHandler = new Handler();
-    protected int mPage;
-
     protected PagerAdapter mPagerAdapter;
-    //protected SearchView mSearchView;
     protected AutoCompleteSearchViewManager mSearchViewManager;
     protected String mCurrentCategory;
     protected TabLayout mTabLayout;
@@ -75,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         initCategories();
         initLayout();
-        updateHeroImage(0);
+
 
     }
 
@@ -105,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            Log.d(OmgSWUtil.tag, "sCategories.get(position) = " + sCategories.get(position));
             return sCategories.get(position).getFragment();
         }
 
@@ -124,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
     protected void initLayout() {
 
         mPager = (ViewPager) findViewById(R.id.pager);
+
+        // quick hack for frag recycling
         mPager.setOffscreenPageLimit(sCategories.size());
 
         mPagerAdapter = new MyPagerAdapter(this, getSupportFragmentManager());
@@ -149,14 +140,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Give the TabLayout the ViewPager
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
         mTabLayout.setupWithViewPager(mPager);
         mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mPager) {
 
-            // scroll to top
+            // scroll to top on double-click
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
+
                 BaseCategoryFragment fragment = (BaseCategoryFragment) mPager.getAdapter()
                         .instantiateItem(mPager, mPager.getCurrentItem());
 
@@ -169,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
 
-                // only show Tabbar background color when extended (or close)
+                // show background color when open
                 if (Math.abs(verticalOffset) < 24) {
                     mTabLayout.setBackgroundColor(getApplicationContext().getColor(R.color.transparentPrimaryDark));
 
@@ -178,9 +169,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        updateHeroImage(0);
     }
 
-    public void updateHeroImage(int position) {
+    protected void updateHeroImage(int position) {
 
         String id = sCategories.get(position).getId();
 
@@ -188,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
                 new DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(false).build();
 
         RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.hero_placeholder);
+                .placeholder(R.drawable.placeholder_hero);
 
         ImageView imageView = (ImageView) findViewById(R.id.hero_image);
         Glide.with(this)
@@ -196,14 +189,5 @@ public class MainActivity extends AppCompatActivity {
                 .load(Uri.parse("file:///android_asset/categories/" + id + ".jpg"))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(imageView);
-    }
-
-    protected void initSearch() {
-
-    }
-
-    protected Intent getDetailIntent(int index) {
-
-        return DetailIntentUtil.getIntent(this, mCurrentCategory, (SWModel) mSearchResultItems.get(index));
     }
 }

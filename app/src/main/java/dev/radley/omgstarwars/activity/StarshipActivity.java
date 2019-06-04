@@ -16,20 +16,19 @@ public class StarshipActivity extends BaseDetailActivity {
     protected void loadResource(Serializable resource) {
 
         mStarship = (Starship)resource;
+        updateHero();
     }
 
     @Override
-    protected void updateTitle() {
-        mActionBar.setTitle(mStarship.name);
-
+    protected void updateHero() {
+        mActionBar.setTitle(mStarship.getTitle());
+        updateHeroImage(mStarship.getImageAsset(), mStarship.getPlaceholderRes(), mStarship.getFallbackRes());
     }
 
     @Override
     protected void populateDetails() {
 
         insertDetailView(R.layout.view_detail_starship);
-
-
 
         ((TextView) mDetailView.findViewById(R.id.model)).setText(mStarship.model);
         ((TextView) mDetailView.findViewById(R.id.starship_class)).setText(mStarship.starshipClass);

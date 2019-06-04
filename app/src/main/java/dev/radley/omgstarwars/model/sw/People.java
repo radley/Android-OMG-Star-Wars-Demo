@@ -44,6 +44,11 @@ public class People extends SWModel implements Serializable {
 
     @Override
     public int getPlaceholderRes() {
-        return R.drawable.placeholder_people;
+        return R.drawable.placeholder_tall;
+    }
+
+    @Override
+    public int getFallbackRes() {
+        return R.drawable.generic_people;
     }
 }

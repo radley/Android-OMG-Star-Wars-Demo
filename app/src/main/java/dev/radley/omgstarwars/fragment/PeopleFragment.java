@@ -41,8 +41,8 @@ public class PeopleFragment extends BaseCategoryFragment {
         super.onCreateView(inflater, container, savedInstanceState);
 
         Bundle arguments = getArguments();
-        if (arguments != null && arguments.containsKey(SearchIntentUtil.RESULT_LIST)) {
 
+        if (arguments != null && arguments.containsKey(SearchIntentUtil.RESULT_LIST)) {
             mList = (ArrayList<People>) arguments.getSerializable(SearchIntentUtil.RESULT_LIST);
         } else {
             mList = new ArrayList<People>();
@@ -56,7 +56,7 @@ public class PeopleFragment extends BaseCategoryFragment {
 
     public void updateList(ArrayList<Object> list) {
 
-        mList = new ArrayList<People>();
+        mList.clear();
         for (Object object : list) {
             mList.add(((People) object));
         }
@@ -136,11 +136,13 @@ public class PeopleFragment extends BaseCategoryFragment {
                 mList.add(((People) object));
             }
 
-            populateGrid();
+            if(mAdapter != null) {
+                mAdapter.notifyDataSetChanged();
+            } else {
+                populateGrid();
+            }
 
-        } else { // update list
-
-            Log.d(OmgSWUtil.tag, "update list");
+        } else { // append list
 
             int curSize = mAdapter.getItemCount();
             mList.addAll(list.results);

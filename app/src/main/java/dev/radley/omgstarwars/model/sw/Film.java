@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import dev.radley.omgstarwars.R;
+
 /**
  * Created by Oleur on 21/12/2014.
  * Film model represents a Star Wars single film.
@@ -39,5 +41,15 @@ public class Film extends SWModel implements Serializable {
     @Override
     public String getTitle() {
         return title;
+    }
+
+    @Override
+    public int getPlaceholderRes() {
+        return R.drawable.placeholder_tall;
+    }
+
+    @Override
+    public int getFallbackRes() {
+        return R.drawable.placeholder_tall;
     }
 }

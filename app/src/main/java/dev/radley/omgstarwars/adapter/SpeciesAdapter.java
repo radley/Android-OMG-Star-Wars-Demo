@@ -65,7 +65,7 @@ public class SpeciesAdapter extends RecyclerView.Adapter<SpeciesAdapter.ViewHold
         holder.titleText.setText(item.name);
 
         RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.placeholder_species);
+                .placeholder(R.drawable.generic_species);
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)

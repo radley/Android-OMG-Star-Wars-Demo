@@ -41,6 +41,7 @@ public class DetailIntentUtil {
     public static final String SW_RESOURCE = "SW_RESOURCE";
     public static final String IMAGE_URL = "IMAGE_URL";
     public static final String PLACEHOLDER_IMAGE = "PLACEHOLDER_IMAGE";
+    public static final String FALLBACK_IMAGE = "FALLBACK_IMAGE";
     public static final int REQUEST_CODE = 0;
 
     private static Intent intent;
@@ -87,8 +88,6 @@ public class DetailIntentUtil {
             intent = new Intent(activity, FilmActivity.class);
             intent.setAction(Intent.ACTION_VIEW);
             intent.putExtra(DetailIntentUtil.SW_RESOURCE, film);
-            intent.putExtra(DetailIntentUtil.IMAGE_URL, film.getImageAsset());
-            intent.putExtra(DetailIntentUtil.PLACEHOLDER_IMAGE, film.getPlaceholderRes());
 
         } else if (category.equals((activity.getString(R.string.category_id_people)))) {
 
@@ -97,8 +96,6 @@ public class DetailIntentUtil {
             intent = new Intent(activity, PeopleActivity.class);
             intent.setAction(Intent.ACTION_VIEW);
             intent.putExtra(DetailIntentUtil.SW_RESOURCE, people);
-            intent.putExtra(DetailIntentUtil.IMAGE_URL, people.getImageAsset());
-            intent.putExtra(DetailIntentUtil.PLACEHOLDER_IMAGE, people.getPlaceholderRes());
 
 
         } else if (category.equals((activity.getString(R.string.category_id_planets)))) {
@@ -108,8 +105,6 @@ public class DetailIntentUtil {
             intent = new Intent(activity, PlanetActivity.class);
             intent.setAction(Intent.ACTION_VIEW);
             intent.putExtra(DetailIntentUtil.SW_RESOURCE, planet);
-            intent.putExtra(DetailIntentUtil.IMAGE_URL, planet.getImageAsset());
-            intent.putExtra(DetailIntentUtil.PLACEHOLDER_IMAGE, planet.getPlaceholderRes());
 
         } else if (category.equals((activity.getString(R.string.category_id_species)))) {
 
@@ -118,8 +113,6 @@ public class DetailIntentUtil {
             intent = new Intent(activity, SpeciesActivity.class);
             intent.setAction(Intent.ACTION_VIEW);
             intent.putExtra(DetailIntentUtil.SW_RESOURCE, species);
-            intent.putExtra(DetailIntentUtil.IMAGE_URL, species.getImageAsset());
-            intent.putExtra(DetailIntentUtil.PLACEHOLDER_IMAGE, species.getPlaceholderRes());
 
         } else if (category.equals((activity.getString(R.string.category_id_starships)))) {
 
@@ -128,8 +121,6 @@ public class DetailIntentUtil {
             intent = new Intent(activity, StarshipActivity.class);
             intent.setAction(Intent.ACTION_VIEW);
             intent.putExtra(DetailIntentUtil.SW_RESOURCE, starship);
-            intent.putExtra(DetailIntentUtil.IMAGE_URL, starship.getImageAsset());
-            intent.putExtra(DetailIntentUtil.PLACEHOLDER_IMAGE, starship.getPlaceholderRes());
 
         } else if (category.equals((activity.getString(R.string.category_id_vehicles)))) {
 
@@ -138,8 +129,6 @@ public class DetailIntentUtil {
             intent = new Intent(activity, VehicleActivity.class);
             intent.setAction(Intent.ACTION_VIEW);
             intent.putExtra(DetailIntentUtil.SW_RESOURCE, vehicle);
-            intent.putExtra(DetailIntentUtil.IMAGE_URL, vehicle.getImageAsset());
-            intent.putExtra(DetailIntentUtil.PLACEHOLDER_IMAGE, vehicle.getPlaceholderRes());
 
         } else {
             // will never happen

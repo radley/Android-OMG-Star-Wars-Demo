@@ -64,7 +64,7 @@ public class PlanetsAdapter extends RecyclerView.Adapter<PlanetsAdapter.ViewHold
         holder.titleText.setText(item.name);
 
         RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.placeholder_planet);
+                .placeholder(R.drawable.generic_planet);
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)

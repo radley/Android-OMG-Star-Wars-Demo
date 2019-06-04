@@ -24,7 +24,7 @@ public class SearchViewManager {
 
     protected Activity mActivity;
 
-    protected ArrayList<String> mResultTitles;
+
     protected ArrayList<Object> mResultItems;
     protected Call<SWModelList<Film>> mCallFilm;
     protected Call<SWModelList<People>> mCallPeople;
@@ -47,7 +47,7 @@ public class SearchViewManager {
         mActivity = activity;
         mSearchView = searchView;
 
-        mResultTitles = new ArrayList<>();
+
         mResultItems = new ArrayList<>();
 
         this.listener = null;
@@ -70,14 +70,8 @@ public class SearchViewManager {
     public void updateCategory(String category) {
 
         mCategory = category;
-
-        mResultTitles.clear();
         mResultItems.clear();
 
-        //mSearchItem.collapseActionView();
-        //mSearchView.setIconified(true);
-
-        // add default hint
         mSearchView.setQueryHint("Search " + mCategory + "...");
         mSearchView.setQuery("", false);
     }
@@ -146,11 +140,8 @@ public class SearchViewManager {
 
     protected void clearSearchResults() {
 
-        mResultTitles.clear();
         mResultItems.clear();
-
         listener.onClearSearchResults();
-
     }
 
     protected void onSearchLoopComplete() {
@@ -158,34 +149,32 @@ public class SearchViewManager {
         listener.onLoadComplete(mResultItems, mQuery);
     }
 
-
-
     protected void searchFilms() {
 
         if(mCallFilm != null && mCallFilm.isExecuted())
             mCallFilm.cancel();
 
+        clearSearchResults();
+
         if(mQuery.length() < 2){
-            clearSearchResults();
             return;
         }
 
-        Log.d(OmgSWUtil.tag, "searchFilms(): " + mQuery);
+        getFilmsByPage(mPage);
+    }
 
+    protected void getFilmsByPage(int page) {
         mCallFilm = StarWarsApi.getApi().searchFilms(mPage, mQuery);
         mCallFilm.enqueue(new retrofit2.Callback<SWModelList<Film>>() {
 
             @Override
             public void onResponse(Call<SWModelList<Film>> call, retrofit2.Response<SWModelList<Film>> response) {
 
-                Log.d(OmgSWUtil.tag, "onResponse(): " + mQuery);
                 onFilmSearchSuccess(response.body());
             }
 
             @Override
             public void onFailure(Call<SWModelList<Film>> call, Throwable t) {
-
-                Log.d(OmgSWUtil.tag, "onFailure(): " + mQuery);
                 Log.d(OmgSWUtil.tag, "error: " + t.getMessage());
             }
         });
@@ -193,20 +182,13 @@ public class SearchViewManager {
 
     protected void onFilmSearchSuccess(SWModelList list) {
 
-        // clear if first page
-        if(mPage == 1) {
-            mResultTitles.clear();
-            mResultItems.clear();
-        }
-
         for (Object object : list.results) {
             mResultItems.add(((Film) object));
-            mResultTitles.add(((Film) object).title);
         }
 
         if(list.next != null) {
             mPage++;
-            searchFilms();
+            getFilmsByPage(mPage);
         } else {
             onSearchLoopComplete();
         }
@@ -219,13 +201,16 @@ public class SearchViewManager {
         if(mCallPeople != null && mCallPeople.isExecuted())
             mCallPeople.cancel();
 
+        clearSearchResults();
+
         if(mQuery.length() < 2){
-            clearSearchResults();
             return;
         }
 
+        getPeopleByPage(mPage);
+    }
 
-        Log.d(OmgSWUtil.tag, "searchFilms(): " + mQuery);
+    protected void getPeopleByPage(int page) {
 
         mCallPeople = StarWarsApi.getApi().searchPeople(mPage, mQuery);
         mCallPeople.enqueue(new retrofit2.Callback<SWModelList<People>>() {
@@ -244,20 +229,13 @@ public class SearchViewManager {
 
     protected void onPeopleSearchSuccess(SWModelList list) {
 
-        // clear if first page
-        if(mPage == 1) {
-            mResultTitles.clear();
-            mResultItems.clear();
-        }
-
         for (Object object : list.results) {
             mResultItems.add(((People) object));
-            mResultTitles.add(((People) object).name);
         }
 
         if(list.next != null) {
             mPage++;
-            searchPeople();
+            getPeopleByPage(mPage);
         } else {
             onSearchLoopComplete();
         }
@@ -268,10 +246,17 @@ public class SearchViewManager {
         if(mCallPlanets != null && mCallPlanets.isExecuted())
             mCallPlanets.cancel();
 
+        clearSearchResults();
+
         if(mQuery.length() < 2){
-            clearSearchResults();
             return;
         }
+
+        getPlanetsByPage(mPage);
+
+    }
+
+    protected void getPlanetsByPage(int page) {
 
         mCallPlanets = StarWarsApi.getApi().searchPlanets(mPage, mQuery);
         mCallPlanets.enqueue(new retrofit2.Callback<SWModelList<Planet>>() {
@@ -286,24 +271,18 @@ public class SearchViewManager {
                 Log.d(OmgSWUtil.tag, "error: " + t.getMessage());
             }
         });
+
     }
 
     protected void onPlanetsSearchSuccess(SWModelList list) {
 
-        // clear if first page
-        if(mPage == 1) {
-            mResultTitles.clear();
-            mResultItems.clear();
-        }
-
         for (Object object : list.results) {
             mResultItems.add(((Planet) object));
-            mResultTitles.add(((Planet) object).name);
         }
 
         if(list.next != null) {
             mPage++;
-            searchPlanets();
+            getPlanetsByPage(mPage);
         } else {
             onSearchLoopComplete();
         }
@@ -314,10 +293,17 @@ public class SearchViewManager {
         if(mCallSpecies != null && mCallSpecies.isExecuted())
             mCallSpecies.cancel();
 
+        clearSearchResults();
+
         if(mQuery.length() < 2){
-            clearSearchResults();
             return;
         }
+
+        getSpeciesByPage(mPage);
+
+    }
+
+    protected void getSpeciesByPage(int page) {
 
         mCallSpecies = StarWarsApi.getApi().searchSpecies(mPage, mQuery);
         mCallSpecies.enqueue(new retrofit2.Callback<SWModelList<Species>>() {
@@ -336,20 +322,13 @@ public class SearchViewManager {
 
     protected void onSpeciesSearchSuccess(SWModelList list) {
 
-        // clear if first page
-        if(mPage == 1) {
-            mResultTitles.clear();
-            mResultItems.clear();
-        }
-
         for (Object object : list.results) {
             mResultItems.add(((Species) object));
-            mResultTitles.add(((Species) object).name);
         }
 
         if(list.next != null) {
             mPage++;
-            searchSpecies();
+            getSpeciesByPage(mPage);
         } else {
             onSearchLoopComplete();
         }
@@ -358,14 +337,22 @@ public class SearchViewManager {
     protected void searchStarships() {
 
         if(mCallStarships != null && mCallStarships.isExecuted())
+        {
             mCallStarships.cancel();
+        }
+
+        clearSearchResults();
 
         if(mQuery.length() < 2){
-            clearSearchResults();
             return;
         }
 
-        mCallStarships = StarWarsApi.getApi().searchStarships(mPage, mQuery);
+        getStarshipsByPage(mPage);
+    }
+
+    protected void getStarshipsByPage(int page) {
+
+        mCallStarships = StarWarsApi.getApi().searchStarships(page, mQuery);
         mCallStarships.enqueue(new retrofit2.Callback<SWModelList<Starship>>() {
 
             @Override
@@ -382,20 +369,13 @@ public class SearchViewManager {
 
     protected void onStarshipsSearchSuccess(SWModelList list) {
 
-        // clear if first page
-        if(mPage == 1) {
-            mResultTitles.clear();
-            mResultItems.clear();
-        }
-
         for (Object object : list.results) {
             mResultItems.add(((Starship) object));
-            mResultTitles.add(((Starship) object).name);
         }
 
         if(list.next != null) {
             mPage++;
-            searchStarships();
+            getStarshipsByPage(mPage);
         } else {
             onSearchLoopComplete();
         }
@@ -406,10 +386,16 @@ public class SearchViewManager {
         if(mCallVehicles != null && mCallVehicles.isExecuted())
             mCallVehicles.cancel();
 
+        clearSearchResults();
+
         if(mQuery.length() < 2){
-            clearSearchResults();
             return;
         }
+
+        getVehiclesByPage(mPage);
+    }
+
+    protected void getVehiclesByPage(int page) {
 
         mCallVehicles = StarWarsApi.getApi().searchVehicles(mPage, mQuery);
         mCallVehicles.enqueue(new retrofit2.Callback<SWModelList<Vehicle>>() {
@@ -428,20 +414,13 @@ public class SearchViewManager {
 
     protected void onVehiclesSearchSuccess(SWModelList list) {
 
-        // clear if first page
-        if(mPage == 1) {
-            mResultTitles.clear();
-            mResultItems.clear();
-        }
-
         for (Object object : list.results) {
             mResultItems.add(((Vehicle) object));
-            mResultTitles.add(((Vehicle) object).name);
         }
 
         if(list.next != null) {
             mPage++;
-            searchVehicles();
+            getVehiclesByPage(mPage);
         } else {
             onSearchLoopComplete();
         }

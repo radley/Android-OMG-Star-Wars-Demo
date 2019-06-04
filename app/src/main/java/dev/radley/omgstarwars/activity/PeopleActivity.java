@@ -16,12 +16,13 @@ public class PeopleActivity extends BaseDetailActivity {
     protected void loadResource(Serializable resource) {
 
         mPerson = (People)resource;
+        updateHero();
     }
 
     @Override
-    protected void updateTitle() {
-        mActionBar.setTitle(mPerson.name);
-
+    protected void updateHero() {
+        mActionBar.setTitle(mPerson.getTitle());
+        updateHeroImage(mPerson.getImageAsset(), mPerson.getPlaceholderRes(), mPerson.getFallbackRes());
     }
 
     @Override

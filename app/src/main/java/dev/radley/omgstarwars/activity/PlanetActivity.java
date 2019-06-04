@@ -16,12 +16,13 @@ public class PlanetActivity extends BaseDetailActivity {
     protected void loadResource(Serializable resource) {
 
         mPlanet = (Planet)resource;
+        updateHero();
     }
 
     @Override
-    protected void updateTitle() {
-        mActionBar.setTitle(mPlanet.name);
-
+    protected void updateHero() {
+        mActionBar.setTitle(mPlanet.getTitle());
+        updateHeroImage(mPlanet.getImageAsset(), mPlanet.getPlaceholderRes(), mPlanet.getFallbackRes());
     }
 
     @Override

@@ -41,6 +41,11 @@ public class Vehicle extends SWModel implements Serializable {
 
     @Override
     public int getPlaceholderRes() {
-        return R.drawable.placeholder_vehicle;
+        return R.drawable.placeholder_wide;
+    }
+
+    @Override
+    public int getFallbackRes() {
+        return R.drawable.generic_vehicle;
     }
 }
