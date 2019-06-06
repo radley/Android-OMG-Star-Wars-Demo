@@ -20,17 +20,18 @@ import java.util.ArrayList;
 import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.Util.Util;
 import dev.radley.omgstarwars.listener.OnBottomReachedListener;
+import dev.radley.omgstarwars.model.sw.SWModel;
 import dev.radley.omgstarwars.model.sw.Species;
 
 public class SpeciesAdapter extends RecyclerView.Adapter<SpeciesAdapter.ViewHolder> {
 
 
-    private ArrayList<Species> mSpecies;
+    private ArrayList<SWModel> mSpecies;
     private Context mContext;
     private final LayoutInflater mLayoutInflater;
     OnBottomReachedListener onBottomReachedListener;
 
-    public SpeciesAdapter(Context context, ArrayList<Species> species) {
+    public SpeciesAdapter(Context context, ArrayList<SWModel> species) {
         mSpecies = species;
         mLayoutInflater = LayoutInflater.from(context);
         mContext = context;
@@ -61,7 +62,7 @@ public class SpeciesAdapter extends RecyclerView.Adapter<SpeciesAdapter.ViewHold
     @Override
     public void onBindViewHolder(SpeciesAdapter.ViewHolder holder, int position) {
 
-        Species item = mSpecies.get(position);
+        SWModel item = mSpecies.get(position);
         holder.titleText.setText(item.name);
 
         RequestOptions requestOptions = new RequestOptions()
@@ -75,7 +76,6 @@ public class SpeciesAdapter extends RecyclerView.Adapter<SpeciesAdapter.ViewHold
                 .into(holder.thumbnail);
 
         if (position == mSpecies.size() - 1){
-
             onBottomReachedListener.onBottomReached(position);
         }
     }

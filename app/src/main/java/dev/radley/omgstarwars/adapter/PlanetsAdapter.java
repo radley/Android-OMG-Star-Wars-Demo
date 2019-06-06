@@ -20,16 +20,17 @@ import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.Util.Util;
 import dev.radley.omgstarwars.listener.OnBottomReachedListener;
 import dev.radley.omgstarwars.model.sw.Planet;
+import dev.radley.omgstarwars.model.sw.SWModel;
 
 public class PlanetsAdapter extends RecyclerView.Adapter<PlanetsAdapter.ViewHolder> {
 
 
-    private ArrayList<Planet> mPlanets;
+    private ArrayList<SWModel> mPlanets;
     private Context mContext;
     private final LayoutInflater mLayoutInflater;
     OnBottomReachedListener onBottomReachedListener;
 
-    public PlanetsAdapter(Context context, ArrayList<Planet> people) {
+    public PlanetsAdapter(Context context, ArrayList<SWModel> people) {
         mPlanets = people;
         mLayoutInflater = LayoutInflater.from(context);
         mContext = context;
@@ -60,7 +61,7 @@ public class PlanetsAdapter extends RecyclerView.Adapter<PlanetsAdapter.ViewHold
     @Override
     public void onBindViewHolder(PlanetsAdapter.ViewHolder holder, int position) {
 
-        Planet item = mPlanets.get(position);
+        SWModel item = mPlanets.get(position);
         holder.titleText.setText(item.name);
 
         RequestOptions requestOptions = new RequestOptions()
@@ -74,7 +75,6 @@ public class PlanetsAdapter extends RecyclerView.Adapter<PlanetsAdapter.ViewHold
                 .into(holder.thumbnail);
 
         if (position == mPlanets.size() - 1){
-
             onBottomReachedListener.onBottomReached(position);
         }
     }

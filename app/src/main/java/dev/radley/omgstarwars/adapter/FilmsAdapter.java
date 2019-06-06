@@ -11,25 +11,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
+import dev.radley.omgstarwars.listener.OnBottomReachedListener;
 import dev.radley.omgstarwars.model.sw.Film;
 import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.Util.Util;
+import dev.radley.omgstarwars.model.sw.SWModel;
 
 public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> {
 
 
-    private ArrayList<Film> mFilms;
+    private ArrayList<SWModel> mSWModelList;
     private Context mContext;
     private final LayoutInflater mLayoutInflater;
+    private OnBottomReachedListener onBottomReachedListener;
 
-    public FilmsAdapter(Context context, ArrayList<Film> list) {
-        mFilms = list;
+    public FilmsAdapter(Context context, ArrayList<SWModel> list) {
+        mSWModelList = list;
         mLayoutInflater = LayoutInflater.from(context);
         mContext = context;
     }
@@ -58,23 +60,32 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        Film item = mFilms.get(position);
+        SWModel item = mSWModelList.get(position);
         holder.titleText.setText(item.getTitle());
 
         RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.placeholder_tall);
+                .placeholder(R.drawable.placeholder_tall)
+                .error(R.drawable.placeholder_tall);
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)
                 .load(Uri.parse(Util.getAssetImage("films", item.url)))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.thumbnail);
+
+        if (position == mSWModelList.size() - 1){
+            onBottomReachedListener.onBottomReached(position);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return mFilms.size();
+        return mSWModelList.size();
     }
 
+    public void setOnBottomReachedListener(OnBottomReachedListener onBottomReachedListener){
+
+        this.onBottomReachedListener = onBottomReachedListener;
+    }
 
 }

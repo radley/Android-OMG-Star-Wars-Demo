@@ -23,6 +23,7 @@ import androidx.fragment.app.FragmentTransaction;
 import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
+import dev.radley.omgstarwars.Util.Util;
 import dev.radley.omgstarwars.bundle.SearchExtras;
 import dev.radley.omgstarwars.fragment.BaseCategoryFragment;
 import dev.radley.omgstarwars.model.SpinnerCategory;
@@ -35,7 +36,7 @@ public class SearchActivity extends AppCompatActivity implements BaseCategoryFra
     
     protected BaseCategoryFragment mCurrentFragment;
     protected SearchView mSearchView;
-    protected SearchViewModel mModel;
+    protected SearchViewModel mViewModel;
     protected Spinner mSpinner;
     protected TextView mResultsText;
     protected Handler mHandler = new Handler();
@@ -59,17 +60,17 @@ public class SearchActivity extends AppCompatActivity implements BaseCategoryFra
         });
 
         mActivity = this;
-        mModel = new SearchViewModel(this);
+        mViewModel = new SearchViewModel(this);
 
         Intent intent = getIntent();
         Bundle bundle = getIntent().getExtras();
         
         if(intent.hasExtra(SearchExtras.QUERY)) {
-            mModel.setQuery(intent.getStringExtra(SearchExtras.QUERY));
+            mViewModel.setQuery(intent.getStringExtra(SearchExtras.QUERY));
         }
 
         if(intent.hasExtra(SearchExtras.CATEGORY)) {
-            mModel.setCategory(intent.getStringExtra(SearchExtras.CATEGORY));
+            mViewModel.setCategory(intent.getStringExtra(SearchExtras.CATEGORY));
         }
 
         mResultsText = (TextView) findViewById(R.id.results_text);
@@ -82,8 +83,8 @@ public class SearchActivity extends AppCompatActivity implements BaseCategoryFra
         getMenuInflater().inflate(R.menu.menu_search, menu);
 
         mSearchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-        mSearchView.setQueryHint("Search " + mModel.getCategory() + "...");
-        mSearchView.setQuery(mModel.getQuery(), false);
+        mSearchView.setQueryHint("Search " + mViewModel.getCategory() + "...");
+        mSearchView.setQuery(mViewModel.getQuery(), false);
         mSearchView.setIconified(false);
 
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -96,7 +97,8 @@ public class SearchActivity extends AppCompatActivity implements BaseCategoryFra
             @Override
             public boolean onQueryTextChange(final String query) {
 
-                mModel.setQuery(query);
+                // remove spaces and symbols
+                final String newQuery = Util.getTrimmedQuery(query);
 
                 mHandler.removeCallbacksAndMessages(null);
 
@@ -106,13 +108,17 @@ public class SearchActivity extends AppCompatActivity implements BaseCategoryFra
                     @Override
                     public void run() {
 
-                        mResultsText.setText(getString(R.string.search_delay_message));
-                        mCurrentFragment.getResultsFor(query);
+                        if(!mViewModel.getQuery().equals(newQuery)) {
+
+                            mViewModel.setQuery(Util.getTrimmedQuery(query));
+                            mResultsText.setText(getString(R.string.search_delay_message));
+                            mCurrentFragment.getResultsFor(query);
+                        }
+
                     }
                 }, 500);
 
                 return true;
-
             }
         });
 
@@ -123,10 +129,10 @@ public class SearchActivity extends AppCompatActivity implements BaseCategoryFra
 
     public void onResultUpdate(int count) {
 
-        if(mModel.getQuery().length() < 2) {
+        if(mViewModel.getQuery().length() < 2) {
             mResultsText.setText("");
         } else {
-            mResultsText.setText(mModel.getResultsDescription(count));
+            mResultsText.setText(mViewModel.getResultsDescription(count));
         }
     }
 
@@ -140,15 +146,15 @@ public class SearchActivity extends AppCompatActivity implements BaseCategoryFra
         mSpinner = (Spinner) findViewById(R.id.spinner);
         mSpinner.setAdapter(adapter);
 
-        mSpinner.setSelection(mModel.getCategoryIndex());
+        mSpinner.setSelection(mViewModel.getCategoryIndex());
         mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
 
-                if(!mModel.getCategory().equals(mModel.getCategories().get(position).getId())) {
+                if(!mViewModel.getCategory().equals(mViewModel.getCategories().get(position).getId())) {
 
-                    mModel.setCategory(mModel.getCategories().get(position).getId());
+                    mViewModel.setCategory(mViewModel.getCategories().get(position).getId());
                     mSearchView.clearFocus();
                     mResultsText.setText("");
                     loadCategoryFragment();
@@ -181,10 +187,10 @@ public class SearchActivity extends AppCompatActivity implements BaseCategoryFra
 
     protected void loadCategoryFragment() {
 
-        mCurrentFragment = mModel.getCategoryFragment();
+        mCurrentFragment = mViewModel.getCategoryFragment();
 
         Bundle bundle = new Bundle();
-        bundle.putString(SearchExtras.QUERY, mModel.getQuery());
+        bundle.putString(SearchExtras.QUERY, mViewModel.getQuery());
         mCurrentFragment.setArguments(bundle);
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

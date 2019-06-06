@@ -1,15 +1,14 @@
 package dev.radley.omgstarwars.model.viewmodel;
 
-import android.app.Application;
 import android.content.Context;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
+import dev.radley.omgstarwars.Util.Util;
 import dev.radley.omgstarwars.fragment.BaseCategoryFragment;
 import dev.radley.omgstarwars.fragment.FilmsFragment;
 import dev.radley.omgstarwars.fragment.PeopleFragment;
@@ -18,7 +17,6 @@ import dev.radley.omgstarwars.fragment.SpeciesFragment;
 import dev.radley.omgstarwars.fragment.StarshipsFragment;
 import dev.radley.omgstarwars.fragment.VehiclesFragment;
 import dev.radley.omgstarwars.model.SpinnerCategory;
-import dev.radley.omgstarwars.model.SpinnerCategoryList;
 
 public class SearchViewModel extends ViewModel {
 
@@ -48,6 +46,7 @@ public class SearchViewModel extends ViewModel {
     }
 
     public void setQuery(String query) {
+
         mQuery = query;
     }
 
@@ -65,7 +64,10 @@ public class SearchViewModel extends ViewModel {
     }
 
     public String getResultsDescription(int count) {
-        return mContext.getResources().getQuantityString(R.plurals.result_count, count, count, mQuery);
+        if(count >= 0)
+            return mContext.getResources().getQuantityString(R.plurals.result_count, count, count, mQuery);
+
+        return mContext.getResources().getString(R.string.search_error);
     }
 
     public int getCategoryIndex() {

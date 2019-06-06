@@ -59,7 +59,7 @@ public class AutoCompleteSearchViewManager extends SearchViewManager {
 
                 final Intent intent = new Intent(mActivity, SearchActivity.class);
                 intent.setAction(Intent.ACTION_VIEW);
-                intent.putExtra(SearchExtras.QUERY, query);
+                intent.putExtra(SearchExtras.QUERY, Util.getTrimmedQuery(query));
                 intent.putExtra(SearchExtras.CATEGORY, mCategory);
 
                 Bundle bundle = new Bundle();
@@ -75,9 +75,9 @@ public class AutoCompleteSearchViewManager extends SearchViewManager {
             }
 
             @Override
-            public boolean onQueryTextChange(String searchTerm) {
+            public boolean onQueryTextChange(String query) {
 
-                mQuery = searchTerm;
+                mQuery = Util.getTrimmedQuery(query);
 
                 mHandler.removeCallbacksAndMessages(null);
                 mHandler.postDelayed(new Runnable() {

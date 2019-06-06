@@ -20,6 +20,7 @@ import dev.radley.omgstarwars.bundle.DetailExtras;
 import dev.radley.omgstarwars.bundle.SearchExtras;
 import dev.radley.omgstarwars.listener.OnBottomReachedListener;
 import dev.radley.omgstarwars.listener.RecyclerTouchListener;
+import dev.radley.omgstarwars.model.sw.SWModel;
 import dev.radley.omgstarwars.model.sw.Vehicle;
 import dev.radley.omgstarwars.model.viewmodel.category.VehiclesViewModel;
 
@@ -41,14 +42,15 @@ public class VehiclesFragment extends BaseCategoryFragment {
             query = arguments.getString(SearchExtras.QUERY);
 
         mViewModel = ViewModelProviders.of(this).get(VehiclesViewModel.class);
-        mViewModel.getVehicles(query).observe(this, new Observer<ArrayList<Vehicle>>() {
+        mViewModel.getList(query).observe(this, new Observer<ArrayList<SWModel>>() {
+
             @Override
-            public void onChanged(@Nullable ArrayList<Vehicle> filmList) {
+            public void onChanged(@Nullable ArrayList<SWModel> list) {
 
                 if(mAdapter != null) {
                     mAdapter.notifyDataSetChanged();
                 } else {
-                    mAdapter = new VehiclesAdapter(getActivity(), filmList);
+                    mAdapter = new VehiclesAdapter(getActivity(), list);
                     mAdapter.setOnBottomReachedListener(new OnBottomReachedListener() {
 
                         @Override
@@ -64,14 +66,14 @@ public class VehiclesFragment extends BaseCategoryFragment {
 
                 // search activity results count
                 if(mSearchCallback != null)
-                    mSearchCallback.onResultUpdate(filmList.size());
+                    mSearchCallback.onResultUpdate(mViewModel.getCount());
             }
         });
 
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext()) {
 
             public void onItemSelected(RecyclerView.ViewHolder holder, int position) {
-                startActivity(DetailExtras.getIntent(getActivity(), mViewModel.getCategoryId(position), (Vehicle) mViewModel.getVehicle(position)));
+                startActivity(DetailExtras.getIntent(getActivity(), mViewModel.getCategoryId(position), (Vehicle) mViewModel.getItem(position)));
             }
         });
 

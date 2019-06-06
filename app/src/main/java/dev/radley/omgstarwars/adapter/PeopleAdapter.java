@@ -20,18 +20,18 @@ import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.Util.Util;
 import dev.radley.omgstarwars.listener.OnBottomReachedListener;
 import dev.radley.omgstarwars.model.sw.People;
-
+import dev.radley.omgstarwars.model.sw.SWModel;
 
 public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder> {
 
 
-    private ArrayList<People> mPeople;
+    private ArrayList<SWModel> mSWModelList;
     private Context mContext;
     private final LayoutInflater mLayoutInflater;
-    OnBottomReachedListener onBottomReachedListener;
+    private OnBottomReachedListener onBottomReachedListener;
 
-    public PeopleAdapter(Context context, ArrayList<People> people) {
-        mPeople = people;
+    public PeopleAdapter(Context context, ArrayList<SWModel> people) {
+        mSWModelList = people;
         mLayoutInflater = LayoutInflater.from(context);
         mContext = context;
     }
@@ -57,11 +57,10 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder
         return new PeopleAdapter.ViewHolder(view);
     }
 
-
     @Override
     public void onBindViewHolder(PeopleAdapter.ViewHolder holder, int position) {
 
-        People item = mPeople.get(position);
+        SWModel item = mSWModelList.get(position);
         holder.titleText.setText(item.name);
 
         RequestOptions requestOptions = new RequestOptions()
@@ -74,15 +73,14 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.thumbnail);
 
-        if (position == mPeople.size() - 1){
-
+        if (position == mSWModelList.size() - 1){
             onBottomReachedListener.onBottomReached(position);
         }
     }
 
     @Override
     public int getItemCount() {
-        return mPeople.size();
+        return mSWModelList.size();
     }
 
     public void setOnBottomReachedListener(OnBottomReachedListener onBottomReachedListener){

@@ -19,17 +19,18 @@ import java.util.ArrayList;
 import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.Util.Util;
 import dev.radley.omgstarwars.listener.OnBottomReachedListener;
+import dev.radley.omgstarwars.model.sw.SWModel;
 import dev.radley.omgstarwars.model.sw.Starship;
 
 public class StarshipsAdapter extends RecyclerView.Adapter<StarshipsAdapter.ViewHolder> {
 
 
-    private ArrayList<Starship> mStarships;
+    private ArrayList<SWModel> mStarships;
     private Context mContext;
     private final LayoutInflater mLayoutInflater;
     OnBottomReachedListener onBottomReachedListener;
 
-    public StarshipsAdapter(Context context, ArrayList<Starship> starships) {
+    public StarshipsAdapter(Context context, ArrayList<SWModel> starships) {
         mStarships = starships;
         mLayoutInflater = LayoutInflater.from(context);
         mContext = context;
@@ -60,7 +61,7 @@ public class StarshipsAdapter extends RecyclerView.Adapter<StarshipsAdapter.View
     @Override
     public void onBindViewHolder(StarshipsAdapter.ViewHolder holder, int position) {
 
-        Starship item = mStarships.get(position);
+        SWModel item = mStarships.get(position);
         holder.titleText.setText(item.name);
 
         RequestOptions requestOptions = new RequestOptions()
@@ -74,7 +75,6 @@ public class StarshipsAdapter extends RecyclerView.Adapter<StarshipsAdapter.View
                 .into(holder.thumbnail);
 
         if (position == mStarships.size() - 1){
-
             onBottomReachedListener.onBottomReached(position);
         }
     }

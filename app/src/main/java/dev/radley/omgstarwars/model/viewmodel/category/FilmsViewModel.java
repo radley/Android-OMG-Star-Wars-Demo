@@ -2,11 +2,6 @@ package dev.radley.omgstarwars.model.viewmodel.category;
 
 import android.util.Log;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -17,58 +12,22 @@ import dev.radley.omgstarwars.network.StarWarsApi;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-public class FilmsViewModel extends ViewModel {
+public class FilmsViewModel extends CaegoryViewModel {
 
-    private ArrayList<Film> mFilmList;
     private Call<SWModelList<Film>> mCallFilm;
-    private int mPage = 1;
-    private String mQuery;
-
-    //this is the data that we will fetch asynchronously
-    private MutableLiveData<ArrayList<Film>> mLiveData;
-
-    public FilmsViewModel() {
-        mFilmList = new ArrayList<Film>();
-        StarWarsApi.init();
-    }
-
-    //we will call this method if we already have data
-    public LiveData<ArrayList<Film>> getFilms(String query) {
-
-        //if the list is null
-        if (mLiveData == null) {
-            mLiveData = new MutableLiveData<ArrayList<Film>>();
-
-            if(query.equals("")) {
-
-                //load asynchronously from server
-                loadFilms();
-            } else {
-
-                search(query);
-            }
-        }
-
-        //finally we will return the list
-        return mLiveData;
-    }
-
-    public String getCategoryId(int position) {
-        return mFilmList.get(position).getCategoryId();
-    }
 
     public Film getItem(int position) {
-        return mFilmList.get(position);
+        return (Film) mSWModelList.get(position);
     }
 
-    protected void loadFilms() {
+    protected void loadByPage() {
 
         mCallFilm = StarWarsApi.getApi().getAllFilms(mPage);
         mCallFilm.enqueue(new Callback<SWModelList<Film>>() {
 
             @Override
             public void onResponse(Call<SWModelList<Film>> call, retrofit2.Response<SWModelList<Film>> response) {
-                onCallbackSuccess(response.body());
+                onLoadSuccess(response.body());
             }
 
             @Override
@@ -78,7 +37,9 @@ public class FilmsViewModel extends ViewModel {
         });
     }
 
-    protected void onCallbackSuccess(SWModelList<Film> list) {
+    protected void onLoadSuccess(SWModelList<Film> list) {
+
+        mCount = list.count;
 
         // sort by episode
         Collections.sort(list.results, new Comparator<Film>() {
@@ -88,10 +49,10 @@ public class FilmsViewModel extends ViewModel {
         });
 
         for (Object object : list.results) {
-            mFilmList.add(((Film) object));
+            mSWModelList.add(((Film) object));
         }
 
-        mLiveData.setValue(mFilmList);
+        mLiveData.setValue(mSWModelList);
     }
 
 
@@ -102,51 +63,34 @@ public class FilmsViewModel extends ViewModel {
         if(mCallFilm != null && mCallFilm.isExecuted())
             mCallFilm.cancel();
 
-        mFilmList.clear();
+        mSWModelList.clear();
 
         if(mQuery.length() < 2){
-            mLiveData.setValue(mFilmList);
+            mLiveData.setValue(mSWModelList);
             return;
         }
 
-        getFilmsByPage(mPage);
+        searchByPage();
     }
 
-    protected void getFilmsByPage(int page) {
+    protected void searchByPage() {
         mCallFilm = StarWarsApi.getApi().searchFilms(mPage, mQuery);
         mCallFilm.enqueue(new retrofit2.Callback<SWModelList<Film>>() {
 
             @Override
             public void onResponse(Call<SWModelList<Film>> call, retrofit2.Response<SWModelList<Film>> response) {
 
-                onFilmSearchSuccess(response.body());
+                onSearchResponse(response.body());
             }
 
             @Override
             public void onFailure(Call<SWModelList<Film>> call, Throwable t) {
                 Log.d(Util.tag, "error: " + t.getMessage());
-                onFilmSearchFailure();
+                onSearchFailure();
             }
         });
+
     }
 
-    protected void onFilmSearchSuccess(SWModelList list) {
 
-        for (Object object : list.results) {
-            mFilmList.add(((Film) object));
-        }
-
-        if(list.next != null) {
-            mPage++;
-            getFilmsByPage(mPage);
-        } else {
-
-            mLiveData.setValue(mFilmList);
-        }
-    }
-
-    protected void onFilmSearchFailure() {
-
-        mLiveData.setValue(mFilmList);
-    }
 }

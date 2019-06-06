@@ -1,6 +1,7 @@
 package dev.radley.omgstarwars.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import dev.radley.omgstarwars.Util.Util;
 import dev.radley.omgstarwars.adapter.FilmsAdapter;
 import dev.radley.omgstarwars.bundle.DetailExtras;
 import dev.radley.omgstarwars.bundle.SearchExtras;
+import dev.radley.omgstarwars.listener.OnBottomReachedListener;
 import dev.radley.omgstarwars.listener.RecyclerTouchListener;
 import dev.radley.omgstarwars.model.sw.Film;
+import dev.radley.omgstarwars.model.sw.SWModel;
 import dev.radley.omgstarwars.model.viewmodel.category.FilmsViewModel;
 
 public class FilmsFragment extends BaseCategoryFragment {
@@ -36,20 +40,30 @@ public class FilmsFragment extends BaseCategoryFragment {
             query = arguments.getString(SearchExtras.QUERY);
 
         mViewModel = ViewModelProviders.of(this).get(FilmsViewModel.class);
-        mViewModel.getFilms(query).observe(this, new Observer<ArrayList<Film>>() {
+        mViewModel.getList(query).observe(this, new Observer<ArrayList<SWModel>>() {
             @Override
-            public void onChanged(@Nullable ArrayList<Film> filmList) {
+            public void onChanged(@Nullable ArrayList<SWModel> list) {
 
                 if(mAdapter != null) {
                     mAdapter.notifyDataSetChanged();
                 } else {
-                    mAdapter = new FilmsAdapter(getActivity(), filmList);
+                    mAdapter = new FilmsAdapter(getActivity(), list);
+                    mAdapter.setOnBottomReachedListener(new OnBottomReachedListener() {
+
+                        @Override
+                        public void onBottomReached(int position) {
+
+                            Log.d(Util.tag, "setOnBottomReachedListener: " + position);
+                            mViewModel.getNextPage();
+                        }
+                    });
+
                     mRecyclerView.setAdapter(mAdapter);
                 }
 
                 // search activity results count
                 if(mSearchCallback != null)
-                    mSearchCallback.onResultUpdate(filmList.size());
+                    mSearchCallback.onResultUpdate(mViewModel.getCount());
             }
         });
 

@@ -20,18 +20,19 @@ import java.util.ArrayList;
 import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.Util.Util;
 import dev.radley.omgstarwars.listener.OnBottomReachedListener;
+import dev.radley.omgstarwars.model.sw.SWModel;
 import dev.radley.omgstarwars.model.sw.Vehicle;
 
 
 public class VehiclesAdapter extends RecyclerView.Adapter<VehiclesAdapter.ViewHolder> {
 
 
-    private ArrayList<Vehicle> mVehicles;
+    private ArrayList<SWModel> mVehicles;
     private Context mContext;
     private final LayoutInflater mLayoutInflater;
     OnBottomReachedListener onBottomReachedListener;
 
-    public VehiclesAdapter(Context context, ArrayList<Vehicle> vehicles) {
+    public VehiclesAdapter(Context context, ArrayList<SWModel> vehicles) {
         mVehicles = vehicles;
         mLayoutInflater = LayoutInflater.from(context);
         mContext = context;
@@ -62,7 +63,7 @@ public class VehiclesAdapter extends RecyclerView.Adapter<VehiclesAdapter.ViewHo
     @Override
     public void onBindViewHolder(VehiclesAdapter.ViewHolder holder, int position) {
 
-        Vehicle item = mVehicles.get(position);
+        SWModel item = mVehicles.get(position);
         holder.titleText.setText(item.name);
 
         RequestOptions requestOptions = new RequestOptions()
@@ -76,7 +77,6 @@ public class VehiclesAdapter extends RecyclerView.Adapter<VehiclesAdapter.ViewHo
                 .into(holder.thumbnail);
 
         if (position == mVehicles.size() - 1){
-
             onBottomReachedListener.onBottomReached(position);
         }
     }

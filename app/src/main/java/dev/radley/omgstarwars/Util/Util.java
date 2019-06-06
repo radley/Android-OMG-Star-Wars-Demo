@@ -19,4 +19,9 @@ public class Util {
     public static String getAssetImage(String category, String url) {
         return ASSETS_URL +category +"/" +getId(url) +".jpg";
     }
+
+    public static String getTrimmedQuery(String query) {
+        query = query.replaceAll("[^a-zA-Z0-9]", "");
+        return query.toLowerCase();
+    }
 }

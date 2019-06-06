@@ -75,6 +75,7 @@
     </plurals>
 
     <string name="search_delay_message">Searching...</string>
+    <string name="search_error">Ugh, search error.</string>
 
     <string name="action_settings">Settings</string>
 </resources>

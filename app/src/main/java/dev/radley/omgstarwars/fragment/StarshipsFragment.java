@@ -20,6 +20,7 @@ import dev.radley.omgstarwars.bundle.DetailExtras;
 import dev.radley.omgstarwars.bundle.SearchExtras;
 import dev.radley.omgstarwars.listener.OnBottomReachedListener;
 import dev.radley.omgstarwars.listener.RecyclerTouchListener;
+import dev.radley.omgstarwars.model.sw.SWModel;
 import dev.radley.omgstarwars.model.sw.Starship;
 import dev.radley.omgstarwars.model.viewmodel.category.StarshipsViewModel;
 
@@ -41,14 +42,14 @@ public class StarshipsFragment extends BaseCategoryFragment {
             query = arguments.getString(SearchExtras.QUERY);
 
         mViewModel = ViewModelProviders.of(this).get(StarshipsViewModel.class);
-        mViewModel.getStarships(query).observe(this, new Observer<ArrayList<Starship>>() {
+        mViewModel.getList(query).observe(this, new Observer<ArrayList<SWModel>>() {
             @Override
-            public void onChanged(@Nullable ArrayList<Starship> filmList) {
+            public void onChanged(@Nullable ArrayList<SWModel> list) {
 
                 if(mAdapter != null) {
                     mAdapter.notifyDataSetChanged();
                 } else {
-                    mAdapter = new StarshipsAdapter(getActivity(), filmList);
+                    mAdapter = new StarshipsAdapter(getActivity(), list);
                     mAdapter.setOnBottomReachedListener(new OnBottomReachedListener() {
 
                         @Override
@@ -64,7 +65,7 @@ public class StarshipsFragment extends BaseCategoryFragment {
 
                 // search activity results count
                 if(mSearchCallback != null)
-                    mSearchCallback.onResultUpdate(filmList.size());
+                    mSearchCallback.onResultUpdate(mViewModel.getCount());
             }
         });
 
