@@ -18,7 +18,7 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.OmgSWUtil;
+import dev.radley.omgstarwars.Util.Util;
 import dev.radley.omgstarwars.listener.OnBottomReachedListener;
 import dev.radley.omgstarwars.model.sw.Species;
 
@@ -65,11 +65,12 @@ public class SpeciesAdapter extends RecyclerView.Adapter<SpeciesAdapter.ViewHold
         holder.titleText.setText(item.name);
 
         RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.generic_species);
+                .placeholder(R.drawable.placeholder_tall)
+                .error(R.drawable.generic_species);
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)
-                .load(Uri.parse(OmgSWUtil.getAssetImage("species", item.url)))
+                .load(Uri.parse(Util.getAssetImage("species", item.url)))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.thumbnail);
 

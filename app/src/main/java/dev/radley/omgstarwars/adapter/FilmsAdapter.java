@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 import dev.radley.omgstarwars.model.sw.Film;
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.OmgSWUtil;
+import dev.radley.omgstarwars.Util.Util;
 
 public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> {
 
@@ -59,15 +59,14 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         Film item = mFilms.get(position);
-        holder.titleText.setText(item.title);
+        holder.titleText.setText(item.getTitle());
 
         RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.placeholder_tall)
-                .diskCacheStrategy(DiskCacheStrategy.ALL);
+                .placeholder(R.drawable.placeholder_tall);
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)
-                .load(Uri.parse(OmgSWUtil.getAssetImage("films", item.url)))
+                .load(Uri.parse(Util.getAssetImage("films", item.url)))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.thumbnail);
     }

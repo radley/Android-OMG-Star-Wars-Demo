@@ -97,7 +97,7 @@ public interface StarWars {
 //    void getAllStarships(@Query("page") int var1, Callback<SWModelList<Starship>> var2);
 //
 //    @GET("/starships/{id}/")
-//    void getStarship(@Path("id") int var1, Callback<Starship> var2);
+//    void getItem(@Path("id") int var1, Callback<Starship> var2);
 
 //    @GET("/vehicles/")
 //    void getAllVehicles(@Query("page") int var1, Callback<SWModelList<Vehicle>> var2);
@@ -115,32 +115,32 @@ public interface StarWars {
 //    void getAllPlanets(@Query("page") int var1, Callback<SWModelList<Planet>> var2);
 //
 //    @GET("/planets/{id}/")
-//    void getPlanet(@Path("id") int var1, Callback<Planet> var2);
+//    void getItem(@Path("id") int var1, Callback<Planet> var2);
 
 
     //    @GET("/films/")
-//    public void searchFilms(@Query("page") int page, @Query("search") String term,
-//                            Callback<SWModelList<Film>> callback);
+//    public void search(@Query("page") int page, @Query("search") String term,
+//                            Callback<SWModelList<Film>> mSearchCallback);
 
 //    @GET("/people/")
-//    public void searchPeople(@Query("page") int page, @Query("search") String term,
-//                             Callback<SWModelList<People>> callback);
+//    public void search(@Query("page") int page, @Query("search") String term,
+//                             Callback<SWModelList<People>> mSearchCallback);
 
 //    @GET("/planet/")
 //    public void searchPlanets(@Query("page") int page, @Query("search") String term,
-//                             Callback<SWModelList<Planet>> callback);
+//                             Callback<SWModelList<Planet>> mSearchCallback);
 
 //    @GET("/species/")
 //    public void searchSpecies(@Query("page") int page, @Query("search") String term,
-//                              Callback<SWModelList<Species>> callback);
+//                              Callback<SWModelList<Species>> mSearchCallback);
 
 //    @GET("/starships/")
 //    public void searchStarships(@Query("page") int page, @Query("search") String term,
-//                               Callback<SWModelList<Starship>> callback);
+//                               Callback<SWModelList<Starship>> mSearchCallback);
 
 //    @GET("/vehicles/")
 //    public void searchVehicles(@Query("page") int page, @Query("search") String term,
-//                              Callback<SWModelList<Vehicle>> callback);
+//                              Callback<SWModelList<Vehicle>> mSearchCallback);
 
 //    @GET("/")
 //    void getRootUrls(Callback<Root> var1);

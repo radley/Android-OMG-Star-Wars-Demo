@@ -1,39 +1,29 @@
 package dev.radley.omgstarwars.fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import dev.radley.omgstarwars.Util.OmgSWUtil;
 import dev.radley.omgstarwars.adapter.PeopleAdapter;
-import dev.radley.omgstarwars.bundle.DetailIntentUtil;
-import dev.radley.omgstarwars.bundle.SearchIntentUtil;
+import dev.radley.omgstarwars.bundle.DetailExtras;
+import dev.radley.omgstarwars.bundle.SearchExtras;
 import dev.radley.omgstarwars.listener.OnBottomReachedListener;
 import dev.radley.omgstarwars.listener.RecyclerTouchListener;
 import dev.radley.omgstarwars.model.sw.People;
-import dev.radley.omgstarwars.model.sw.SWModel;
-import dev.radley.omgstarwars.model.sw.SWModelList;
-import dev.radley.omgstarwars.network.StarWarsApi;
-import retrofit2.Call;
+import dev.radley.omgstarwars.model.viewmodel.category.PeopleViewModel;
 
 public class PeopleFragment extends BaseCategoryFragment {
 
-
     protected PeopleAdapter mAdapter;
-
-    protected int mTotalItems;
-    protected int mPage = 1;
-    protected int mPageSize;
-    protected boolean mLoading = false;
-
-    protected ArrayList<People> mList;
+    protected PeopleViewModel mViewModel;
 
     @Nullable
     @Override
@@ -41,117 +31,56 @@ public class PeopleFragment extends BaseCategoryFragment {
         super.onCreateView(inflater, container, savedInstanceState);
 
         Bundle arguments = getArguments();
+        String query = "";
 
-        if (arguments != null && arguments.containsKey(SearchIntentUtil.RESULT_LIST)) {
-            mList = (ArrayList<People>) arguments.getSerializable(SearchIntentUtil.RESULT_LIST);
-        } else {
-            mList = new ArrayList<People>();
-        }
+        if (arguments != null && arguments.containsKey(SearchExtras.QUERY))
+            query = arguments.getString(SearchExtras.QUERY);
 
-        StarWarsApi.init();
-        initGrid();
+        mViewModel = ViewModelProviders.of(this).get(PeopleViewModel.class);
+        mViewModel.getPeople(query).observe(this, new Observer<ArrayList<People>>() {
+
+            @Override
+            public void onChanged(@Nullable ArrayList<People> filmList) {
+
+                if(mAdapter != null) {
+                    mAdapter.notifyDataSetChanged();
+                } else {
+                    mAdapter = new PeopleAdapter(getActivity(), filmList);
+                    mAdapter.setOnBottomReachedListener(new OnBottomReachedListener() {
+
+                        @Override
+                        public void onBottomReached(int position) {
+                            mViewModel.getNextPage();
+                        }
+                    });
+
+                    mRecyclerView.setAdapter(mAdapter);
+                }
+
+                // search activity results count
+                if(mSearchCallback != null)
+                    mSearchCallback.onResultUpdate(filmList.size());
+            }
+        });
+
+        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext()) {
+
+            public void onItemSelected(RecyclerView.ViewHolder holder, int position) {
+                startActivity(DetailExtras.getIntent(getActivity(), mViewModel.getCategoryId(position), (People) mViewModel.getItem(position)));
+            }
+        });
 
         return mView;
     }
 
-    public void updateList(ArrayList<Object> list) {
-
-        mList.clear();
-        for (Object object : list) {
-            mList.add(((People) object));
-        }
-
-        mAdapter.notifyDataSetChanged();
-    }
-
-    public void clear(){
-        mList.clear();
-        if(mAdapter != null)
-            mAdapter.notifyDataSetChanged();
+    @Override
+    public void onDestroyView() {
+        mAdapter = null;
+        super.onDestroyView();
     }
 
     @Override
-    protected void initGrid() {
-        if (mList.size() == 0) {
-            getGridItemsByPage(mPage);
-            return;
-        }
-
-        populateGrid();
+    public void getResultsFor(String query) {
+        mViewModel.search(query);
     }
-
-    @Override
-    protected void populateGrid() {
-        mAdapter = new PeopleAdapter(getContext(), mList);
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext()) {
-
-            public void onItemSelected(RecyclerView.ViewHolder holder, int position) {
-
-                startActivity(DetailIntentUtil.getIntent(getActivity(), mList.get(position).getCategoryId(), (SWModel) mList.get(position)));
-            }
-        });
-
-        mAdapter.setOnBottomReachedListener(new OnBottomReachedListener() {
-
-            @Override
-            public void onBottomReached(int position) {
-                if (mTotalItems > mList.size() && !mLoading) {
-                    mPage++;
-                    getGridItemsByPage(mPage);
-                }
-            }
-        });
-
-    }
-
-    protected void getGridItemsByPage(int page) {
-
-        mLoading = true;
-
-        Call<SWModelList<People>> call = StarWarsApi.getApi().getAllPeople(page);
-        call.enqueue(new retrofit2.Callback<SWModelList<People>>() {
-
-            @Override
-            public void onResponse(Call<SWModelList<People>> call, retrofit2.Response<SWModelList<People>> response) {
-                onCallbackSuccess(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<SWModelList<People>> call, Throwable t) {
-                Log.d(OmgSWUtil.tag, "error: " + t.getMessage());
-            }
-        });
-    }
-
-    protected void onCallbackSuccess(SWModelList<People> list) {
-
-        // init new list
-        if (mList.size() == 0) {
-            mTotalItems = list.count;
-            mPageSize = list.results.size();
-            //mList.addAll(list.results);
-
-            for (Object object : list.results) {
-                mList.add(((People) object));
-            }
-
-            if(mAdapter != null) {
-                mAdapter.notifyDataSetChanged();
-            } else {
-                populateGrid();
-            }
-
-        } else { // append list
-
-            int curSize = mAdapter.getItemCount();
-            mList.addAll(list.results);
-            mAdapter.notifyItemRangeInserted(curSize, list.results.size());
-        }
-
-        mLoading = false;
-    }
-
-
-
 }

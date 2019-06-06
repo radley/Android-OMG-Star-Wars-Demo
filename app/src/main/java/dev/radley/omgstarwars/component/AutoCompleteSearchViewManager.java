@@ -14,11 +14,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.OmgSWUtil;
+import dev.radley.omgstarwars.Util.Util;
 import dev.radley.omgstarwars.activity.SearchActivity;
-import dev.radley.omgstarwars.bundle.DetailIntentUtil;
-import dev.radley.omgstarwars.bundle.SearchIntentUtil;
-import dev.radley.omgstarwars.model.sw.People;
+import dev.radley.omgstarwars.bundle.DetailExtras;
+import dev.radley.omgstarwars.bundle.SearchExtras;
 import dev.radley.omgstarwars.model.sw.SWModel;
 
 
@@ -60,11 +59,11 @@ public class AutoCompleteSearchViewManager extends SearchViewManager {
 
                 final Intent intent = new Intent(mActivity, SearchActivity.class);
                 intent.setAction(Intent.ACTION_VIEW);
-                intent.putExtra(SearchIntentUtil.QUERY, query);
-                intent.putExtra(SearchIntentUtil.CATEGORY, mCategory);
+                intent.putExtra(SearchExtras.QUERY, query);
+                intent.putExtra(SearchExtras.CATEGORY, mCategory);
 
                 Bundle bundle = new Bundle();
-                bundle.putSerializable(SearchIntentUtil.RESULT_LIST, (Serializable) mResultItems);
+                bundle.putSerializable(SearchExtras.RESULT_LIST, (Serializable) mResultItems);
                 intent.putExtras(bundle);
 
                 mSearchView.setQuery("", false);
@@ -98,7 +97,7 @@ public class AutoCompleteSearchViewManager extends SearchViewManager {
 
     protected void initAutoCompleteList() {
 
-        Log.d(OmgSWUtil.tag, "initAutoCompleteList()");
+        Log.d(Util.tag, "initAutoCompleteList()");
 
         mAutoCompleteAdapter = new ArrayAdapter<String>(mActivity, android.R.layout.simple_dropdown_item_1line, mResultTitles);
         mSearchAutoComplete.setAdapter(mAutoCompleteAdapter);
@@ -123,7 +122,7 @@ public class AutoCompleteSearchViewManager extends SearchViewManager {
 
     protected void onSearchItemClick(int index) {
 
-        Intent intent = DetailIntentUtil.getIntent(mActivity, mCategory, (SWModel) mResultItems.get(index));
+        Intent intent = DetailExtras.getIntent(mActivity, mCategory, (SWModel) mResultItems.get(index));
 
         mSearchView.setQuery("", false);
 
@@ -152,7 +151,7 @@ public class AutoCompleteSearchViewManager extends SearchViewManager {
     @Override
     protected void onSearchLoopComplete() {
 
-        Log.d(OmgSWUtil.tag, "onSearchLoopComplete()");
+        Log.d(Util.tag, "onSearchLoopComplete()");
 
         mResultTitles.clear();
 

@@ -7,31 +7,27 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.OmgSWUtil;
+import dev.radley.omgstarwars.Util.Util;
 import dev.radley.omgstarwars.adapter.StarshipsAdapter;
-import dev.radley.omgstarwars.bundle.DetailIntentUtil;
-import dev.radley.omgstarwars.bundle.SearchIntentUtil;
+import dev.radley.omgstarwars.bundle.DetailExtras;
+import dev.radley.omgstarwars.bundle.SearchExtras;
 import dev.radley.omgstarwars.listener.OnBottomReachedListener;
 import dev.radley.omgstarwars.listener.RecyclerTouchListener;
-import dev.radley.omgstarwars.model.sw.SWModel;
-import dev.radley.omgstarwars.model.sw.SWModelList;
 import dev.radley.omgstarwars.model.sw.Starship;
-import dev.radley.omgstarwars.network.StarWarsApi;
-import retrofit2.Call;
+import dev.radley.omgstarwars.model.viewmodel.category.StarshipsViewModel;
 
 public class StarshipsFragment extends BaseCategoryFragment {
 
-    protected ArrayList<Starship> mList;
-    protected int mTotalItems;
-    protected int mPage = 1;
-    protected int mPageSize;
-    protected boolean mLoading = false;
     protected StarshipsAdapter mAdapter;
+    protected StarshipsViewModel mViewModel;
+
 
     @Nullable
     @Override
@@ -39,68 +35,47 @@ public class StarshipsFragment extends BaseCategoryFragment {
         super.onCreateView(inflater, container, savedInstanceState);
 
         Bundle arguments = getArguments();
+        String query = "";
 
-        if (arguments != null && arguments.containsKey(SearchIntentUtil.RESULT_LIST)) {
-            mList = (ArrayList<Starship>) arguments.getSerializable(SearchIntentUtil.RESULT_LIST);
-        } else {
-            mList = new ArrayList<Starship>();
-        }
+        if (arguments != null && arguments.containsKey(SearchExtras.QUERY))
+            query = arguments.getString(SearchExtras.QUERY);
 
-        StarWarsApi.init();
-        initGrid();
+        mViewModel = ViewModelProviders.of(this).get(StarshipsViewModel.class);
+        mViewModel.getStarships(query).observe(this, new Observer<ArrayList<Starship>>() {
+            @Override
+            public void onChanged(@Nullable ArrayList<Starship> filmList) {
 
-        return mView;
-    }
+                if(mAdapter != null) {
+                    mAdapter.notifyDataSetChanged();
+                } else {
+                    mAdapter = new StarshipsAdapter(getActivity(), filmList);
+                    mAdapter.setOnBottomReachedListener(new OnBottomReachedListener() {
 
-    public void updateList(ArrayList<Object> list) {
+                        @Override
+                        public void onBottomReached(int position) {
 
-        mList.clear();
-        for (Object object : list) {
-            mList.add(((Starship) object));
-        }
-        mAdapter.notifyDataSetChanged();
-    }
+                            Log.d(Util.tag, "setOnBottomReachedListener: " + position);
+                            mViewModel.getNextPage();
+                        }
+                    });
 
-    public void clear(){
-        mList.clear();
-        if(mAdapter != null)
-            mAdapter.notifyDataSetChanged();
-    }
+                    mRecyclerView.setAdapter(mAdapter);
+                }
 
-    @Override
-    protected void initGrid() {
-
-        if (mList.size() == 0) {
-            getGridItemsByPage(mPage);
-            return;
-        }
-        populateGrid();
-    }
-
-    @Override
-    protected void populateGrid() {
-
-        mAdapter = new StarshipsAdapter(getContext(), mList);
-        mRecyclerView.setAdapter(mAdapter);
+                // search activity results count
+                if(mSearchCallback != null)
+                    mSearchCallback.onResultUpdate(filmList.size());
+            }
+        });
 
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext()) {
 
             public void onItemSelected(RecyclerView.ViewHolder holder, int position) {
-
-                startActivity(DetailIntentUtil.getIntent(getActivity(), mList.get(position).getCategoryId(), (SWModel) mList.get(position)));
+                startActivity(DetailExtras.getIntent(getActivity(), mViewModel.getCategoryId(position), (Starship) mViewModel.getItem(position)));
             }
         });
 
-        mAdapter.setOnBottomReachedListener(new OnBottomReachedListener() {
-
-            @Override
-            public void onBottomReached(int position) {
-                if (mTotalItems > mList.size() && !mLoading) {
-                    mPage++;
-                    getGridItemsByPage(mPage);
-                }
-            }
-        });
+        return mView;
     }
 
     @Override
@@ -108,50 +83,14 @@ public class StarshipsFragment extends BaseCategoryFragment {
         return getResources().getInteger(R.integer.grid_span_count_wide);
     }
 
-
-    protected void getGridItemsByPage(int page) {
-
-        mLoading = true;
-
-        Call<SWModelList<Starship>> call = StarWarsApi.getApi().getAllStarships(page);
-        call.enqueue(new retrofit2.Callback<SWModelList<Starship>>() {
-
-            @Override
-            public void onResponse(Call<SWModelList<Starship>> call, retrofit2.Response<SWModelList<Starship>> response) {
-                onCallbackSuccess(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<SWModelList<Starship>> call, Throwable t) {
-                Log.d(OmgSWUtil.tag, "error: " + t.getMessage());
-            }
-        });
+    @Override
+    public void onDestroyView() {
+        mAdapter = null;
+        super.onDestroyView();
     }
 
-    protected void onCallbackSuccess(SWModelList<Starship> list) {
-
-        // init new list
-        if (mList.size() == 0) {
-            mTotalItems = list.count;
-            mPageSize = list.results.size();
-            mList.addAll(list.results);
-
-            if(mAdapter != null) {
-                mAdapter.notifyDataSetChanged();
-            } else {
-                populateGrid();
-            }
-
-        } else { // append list
-
-            int curSize = mAdapter.getItemCount();
-            mList.addAll(list.results);
-            mAdapter.notifyItemRangeInserted(curSize, list.results.size());
-        }
-
-        mLoading = false;
+    @Override
+    public void getResultsFor(String query) {
+        mViewModel.search(query);
     }
-
-
-
 }

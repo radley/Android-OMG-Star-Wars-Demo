@@ -18,7 +18,7 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.OmgSWUtil;
+import dev.radley.omgstarwars.Util.Util;
 import dev.radley.omgstarwars.listener.OnBottomReachedListener;
 import dev.radley.omgstarwars.model.sw.Vehicle;
 
@@ -66,11 +66,12 @@ public class VehiclesAdapter extends RecyclerView.Adapter<VehiclesAdapter.ViewHo
         holder.titleText.setText(item.name);
 
         RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.generic_vehicle);
+                .placeholder(R.drawable.placeholder_wide)
+                .error(R.drawable.generic_vehicle);
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)
-                .load(Uri.parse(OmgSWUtil.getAssetImage("vehicles", item.url)))
+                .load(Uri.parse(Util.getAssetImage("vehicles", item.url)))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.thumbnail);
 

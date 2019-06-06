@@ -1,4 +1,4 @@
-package dev.radley.omgstarwars.activity;
+package dev.radley.omgstarwars.activity.old;
 
 import android.app.Activity;
 import android.content.Context;

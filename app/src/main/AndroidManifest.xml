@@ -30,27 +30,27 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".activity.FilmActivity"
+        <activity android:name=".activity.detail.FilmActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".activity.PeopleActivity"
+        <activity android:name=".activity.detail.PeopleActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".activity.PlanetActivity"
+        <activity android:name=".activity.detail.PlanetActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".activity.SpeciesActivity"
+        <activity android:name=".activity.detail.SpeciesActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".activity.StarshipActivity"
+        <activity android:name=".activity.detail.StarshipActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".activity.VehicleActivity"
+        <activity android:name=".activity.detail.VehicleActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
 

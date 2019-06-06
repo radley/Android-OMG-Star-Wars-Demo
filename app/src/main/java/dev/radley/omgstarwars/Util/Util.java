@@ -1,7 +1,12 @@
 package dev.radley.omgstarwars.Util;
 
 
-public class OmgSWUtil {
+import android.content.Context;
+import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+
+public class Util {
 
     public static String tag = "OMGSW";
     public static String ASSETS_URL = "file:///android_asset/";

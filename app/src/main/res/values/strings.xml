@@ -74,7 +74,7 @@
         <item quantity="other">%1$d results for \"%2$s\".</item>
     </plurals>
 
-
+    <string name="search_delay_message">Searching...</string>
 
     <string name="action_settings">Settings</string>
 </resources>

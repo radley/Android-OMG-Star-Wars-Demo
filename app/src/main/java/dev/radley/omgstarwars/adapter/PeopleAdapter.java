@@ -17,7 +17,7 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.OmgSWUtil;
+import dev.radley.omgstarwars.Util.Util;
 import dev.radley.omgstarwars.listener.OnBottomReachedListener;
 import dev.radley.omgstarwars.model.sw.People;
 
@@ -65,11 +65,12 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder
         holder.titleText.setText(item.name);
 
         RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.generic_people);
+                .placeholder(R.drawable.placeholder_tall)
+                .error(R.drawable.generic_people);
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)
-                .load(Uri.parse(OmgSWUtil.getAssetImage("people", item.url)))
+                .load(Uri.parse(Util.getAssetImage("people", item.url)))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.thumbnail);
 
@@ -88,6 +89,4 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder
 
         this.onBottomReachedListener = onBottomReachedListener;
     }
-
-
 }

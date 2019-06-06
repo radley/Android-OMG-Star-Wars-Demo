@@ -1,8 +1,7 @@
-package dev.radley.omgstarwars.activity;
+package dev.radley.omgstarwars.activity.old;
 
 
 import android.widget.TextView;
-
 
 import java.io.Serializable;
 

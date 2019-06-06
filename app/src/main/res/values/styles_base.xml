@@ -50,6 +50,11 @@
 		<item name="fontFamily">@font/nunito_sans</item>
 	</style>
 
+	<style name="TextView.Italic">
+		<item name="android:fontFamily">@font/nunito_sans_italic</item>
+		<item name="fontFamily">@font/nunito_sans_italic</item>
+	</style>
+
 	<style name="TextView.Body1">
 		<item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>

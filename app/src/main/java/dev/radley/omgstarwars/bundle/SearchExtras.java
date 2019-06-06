@@ -21,7 +21,7 @@ import android.content.Intent;
 /**
  * Holding intent extra names and utility methods for intent handling.
  */
-public class SearchIntentUtil {
+public class SearchExtras {
     public static final String QUERY = "QUERY";
     public static final String CATEGORY = "CATEGORY";
     public static final String RESULT_LIST = "RESULT_LIST";

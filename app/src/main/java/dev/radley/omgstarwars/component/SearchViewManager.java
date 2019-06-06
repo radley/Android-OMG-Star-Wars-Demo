@@ -9,7 +9,7 @@ import androidx.appcompat.widget.SearchView;
 import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.OmgSWUtil;
+import dev.radley.omgstarwars.Util.Util;
 import dev.radley.omgstarwars.model.sw.Film;
 import dev.radley.omgstarwars.model.sw.People;
 import dev.radley.omgstarwars.model.sw.Planet;
@@ -175,7 +175,7 @@ public class SearchViewManager {
 
             @Override
             public void onFailure(Call<SWModelList<Film>> call, Throwable t) {
-                Log.d(OmgSWUtil.tag, "error: " + t.getMessage());
+                Log.d(Util.tag, "error: " + t.getMessage());
             }
         });
     }
@@ -222,7 +222,7 @@ public class SearchViewManager {
 
             @Override
             public void onFailure(Call<SWModelList<People>> call, Throwable t) {
-                Log.d(OmgSWUtil.tag, "error: " + t.getMessage());
+                Log.d(Util.tag, "error: " + t.getMessage());
             }
         });
     }
@@ -268,7 +268,7 @@ public class SearchViewManager {
 
             @Override
             public void onFailure(Call<SWModelList<Planet>> call, Throwable t) {
-                Log.d(OmgSWUtil.tag, "error: " + t.getMessage());
+                Log.d(Util.tag, "error: " + t.getMessage());
             }
         });
 
@@ -315,7 +315,7 @@ public class SearchViewManager {
 
             @Override
             public void onFailure(Call<SWModelList<Species>> call, Throwable t) {
-                Log.d(OmgSWUtil.tag, "error: " + t.getMessage());
+                Log.d(Util.tag, "error: " + t.getMessage());
             }
         });
     }
@@ -362,7 +362,7 @@ public class SearchViewManager {
 
             @Override
             public void onFailure(Call<SWModelList<Starship>> call, Throwable t) {
-                Log.d(OmgSWUtil.tag, "error: " + t.getMessage());
+                Log.d(Util.tag, "error: " + t.getMessage());
             }
         });
     }
@@ -407,7 +407,7 @@ public class SearchViewManager {
 
             @Override
             public void onFailure(Call<SWModelList<Vehicle>> call, Throwable t) {
-                Log.d(OmgSWUtil.tag, "error: " + t.getMessage());
+                Log.d(Util.tag, "error: " + t.getMessage());
             }
         });
     }

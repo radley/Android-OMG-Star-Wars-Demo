@@ -4,7 +4,7 @@ package dev.radley.omgstarwars.model.sw;
 import java.io.Serializable;
 
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.OmgSWUtil;
+import dev.radley.omgstarwars.Util.Util;
 
 public class SWModel implements Serializable {
 
@@ -39,7 +39,7 @@ public class SWModel implements Serializable {
 
         // example: file:///android_asset/films/2.jpg
 
-        return OmgSWUtil.ASSETS_URL + getCategoryId() +"/"+ getId() +".jpg";
+        return Util.ASSETS_URL + getCategoryId() +"/"+ getId() +".jpg";
     }
 
     public int getPlaceholderRes() {

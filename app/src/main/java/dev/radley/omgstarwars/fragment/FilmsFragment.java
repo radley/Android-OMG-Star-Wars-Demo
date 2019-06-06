@@ -1,42 +1,28 @@
 package dev.radley.omgstarwars.fragment;
 
-
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
-import dev.radley.omgstarwars.Util.OmgSWUtil;
 import dev.radley.omgstarwars.adapter.FilmsAdapter;
-import dev.radley.omgstarwars.bundle.DetailIntentUtil;
-import dev.radley.omgstarwars.bundle.SearchIntentUtil;
+import dev.radley.omgstarwars.bundle.DetailExtras;
+import dev.radley.omgstarwars.bundle.SearchExtras;
 import dev.radley.omgstarwars.listener.RecyclerTouchListener;
 import dev.radley.omgstarwars.model.sw.Film;
-import dev.radley.omgstarwars.model.sw.SWModel;
-import dev.radley.omgstarwars.model.sw.SWModelList;
-import dev.radley.omgstarwars.network.StarWarsApi;
-import retrofit2.Call;
-import retrofit2.Callback;
+import dev.radley.omgstarwars.model.viewmodel.category.FilmsViewModel;
 
 public class FilmsFragment extends BaseCategoryFragment {
 
-
     protected FilmsAdapter mAdapter;
-
-    protected int mTotalItems;
-    protected int mPage = 1;
-    protected int mPageSize;
-
-    protected ArrayList<Film> mList;
-
+    protected FilmsViewModel mViewModel;
 
     @Nullable
     @Override
@@ -44,106 +30,47 @@ public class FilmsFragment extends BaseCategoryFragment {
         super.onCreateView(inflater, container, savedInstanceState);
 
         Bundle arguments = getArguments();
+        String query = "";
 
-        if (arguments != null && arguments.containsKey(SearchIntentUtil.RESULT_LIST)) {
-            mList = (ArrayList<Film>) arguments.getSerializable(SearchIntentUtil.RESULT_LIST);
-        } else {
-            mList = new ArrayList<Film>();
-        }
+        if (arguments != null && arguments.containsKey(SearchExtras.QUERY))
+            query = arguments.getString(SearchExtras.QUERY);
 
+        mViewModel = ViewModelProviders.of(this).get(FilmsViewModel.class);
+        mViewModel.getFilms(query).observe(this, new Observer<ArrayList<Film>>() {
+            @Override
+            public void onChanged(@Nullable ArrayList<Film> filmList) {
 
-        StarWarsApi.init();
-        initGrid();
+                if(mAdapter != null) {
+                    mAdapter.notifyDataSetChanged();
+                } else {
+                    mAdapter = new FilmsAdapter(getActivity(), filmList);
+                    mRecyclerView.setAdapter(mAdapter);
+                }
 
-        return mView;
-    }
-
-    public void updateList(ArrayList<Object> list) {
-
-        mList.clear();
-        for (Object object : list) {
-            mList.add(((Film) object));
-        }
-        mAdapter.notifyDataSetChanged();
-    }
-
-    public void clear(){
-        mList.clear();
-        if(mAdapter != null)
-            mAdapter.notifyDataSetChanged();
-    }
-
-    @Override
-    protected void initGrid() {
-        if (mList.size() == 0) {
-
-            getGridItemsByPage(mPage);
-            return;
-        }
-
-        populateGrid();
-    }
-
-    @Override
-    protected void populateGrid() {
-        mAdapter = new FilmsAdapter(getContext(), mList);
-        mRecyclerView.setAdapter(mAdapter);
+                // search activity results count
+                if(mSearchCallback != null)
+                    mSearchCallback.onResultUpdate(filmList.size());
+            }
+        });
 
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext()) {
 
             public void onItemSelected(RecyclerView.ViewHolder holder, int position) {
-
-                startActivity(DetailIntentUtil.getIntent(getActivity(), mList.get(position).getCategoryId(), (SWModel) mList.get(position)));
+                startActivity(DetailExtras.getIntent(getActivity(), mViewModel.getCategoryId(position), (Film) mViewModel.getItem(position)));
             }
         });
+
+        return mView;
     }
 
-    protected void getGridItemsByPage(int page) {
-
-        Call<SWModelList<Film>> call = StarWarsApi.getApi().getAllFilms(page);
-        call.enqueue(new Callback<SWModelList<Film>>() {
-
-            @Override
-            public void onResponse(Call<SWModelList<Film>> call, retrofit2.Response<SWModelList<Film>> response) {
-                onCallbackSuccess(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<SWModelList<Film>> call, Throwable t) {
-                Log.d(OmgSWUtil.tag, "error: " + t.getMessage());
-            }
-        });
+    @Override
+    public void onDestroyView() {
+        mAdapter = null;
+        super.onDestroyView();
     }
 
-    protected void onCallbackSuccess(SWModelList<Film> list) {
-
-        if (mList.size() == 0) {
-            mTotalItems = list.count;
-            mPageSize = list.results.size();
-
-            for (Object object : list.results) {
-                mList.add(((Film) object));
-            }
-
-            // sort by episode
-            Collections.sort(mList, new Comparator<Film>() {
-                public int compare(Film o1, Film o2) {
-                    return o1.episodeId - o2.episodeId;
-                }
-            });
-
-            if(mAdapter != null) {
-                mAdapter.notifyDataSetChanged();
-            } else {
-                populateGrid();
-            }
-
-        } else {
-            mAdapter.notifyDataSetChanged();
-        }
-    }
-
-    protected void onFirstCallback() {
-
+    @Override
+    public void getResultsFor(String query) {
+        mViewModel.search(query);
     }
 }

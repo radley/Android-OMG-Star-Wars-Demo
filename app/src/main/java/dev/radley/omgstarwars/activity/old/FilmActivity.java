@@ -1,4 +1,4 @@
-package dev.radley.omgstarwars.activity;
+package dev.radley.omgstarwars.activity.old;
 
 import android.widget.TextView;
 
@@ -9,8 +9,6 @@ import java.time.format.DateTimeFormatter;
 
 import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.model.sw.Film;
-
-import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class FilmActivity extends BaseDetailActivity {
 

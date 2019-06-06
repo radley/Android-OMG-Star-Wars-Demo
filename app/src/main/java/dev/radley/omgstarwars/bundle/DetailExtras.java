@@ -20,12 +20,12 @@ import android.app.Activity;
 import android.content.Intent;
 
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.activity.FilmActivity;
-import dev.radley.omgstarwars.activity.PeopleActivity;
-import dev.radley.omgstarwars.activity.PlanetActivity;
-import dev.radley.omgstarwars.activity.SpeciesActivity;
-import dev.radley.omgstarwars.activity.StarshipActivity;
-import dev.radley.omgstarwars.activity.VehicleActivity;
+import dev.radley.omgstarwars.activity.detail.FilmActivity;
+import dev.radley.omgstarwars.activity.detail.PeopleActivity;
+import dev.radley.omgstarwars.activity.detail.PlanetActivity;
+import dev.radley.omgstarwars.activity.detail.SpeciesActivity;
+import dev.radley.omgstarwars.activity.detail.StarshipActivity;
+import dev.radley.omgstarwars.activity.detail.VehicleActivity;
 import dev.radley.omgstarwars.model.sw.Film;
 import dev.radley.omgstarwars.model.sw.People;
 import dev.radley.omgstarwars.model.sw.Planet;
@@ -37,12 +37,9 @@ import dev.radley.omgstarwars.model.sw.Vehicle;
 /**
  * Holding intent extra names and utility methods for intent handling.
  */
-public class DetailIntentUtil {
-    public static final String SW_RESOURCE = "SW_RESOURCE";
+public class DetailExtras {
+    public static final String MODEL = "MODEL";
     public static final String IMAGE_URL = "IMAGE_URL";
-    public static final String PLACEHOLDER_IMAGE = "PLACEHOLDER_IMAGE";
-    public static final String FALLBACK_IMAGE = "FALLBACK_IMAGE";
-    public static final int REQUEST_CODE = 0;
 
     private static Intent intent;
 
@@ -87,7 +84,7 @@ public class DetailIntentUtil {
 
             intent = new Intent(activity, FilmActivity.class);
             intent.setAction(Intent.ACTION_VIEW);
-            intent.putExtra(DetailIntentUtil.SW_RESOURCE, film);
+            intent.putExtra(DetailExtras.MODEL, film);
 
         } else if (category.equals((activity.getString(R.string.category_id_people)))) {
 
@@ -95,7 +92,7 @@ public class DetailIntentUtil {
 
             intent = new Intent(activity, PeopleActivity.class);
             intent.setAction(Intent.ACTION_VIEW);
-            intent.putExtra(DetailIntentUtil.SW_RESOURCE, people);
+            intent.putExtra(DetailExtras.MODEL, people);
 
 
         } else if (category.equals((activity.getString(R.string.category_id_planets)))) {
@@ -104,7 +101,7 @@ public class DetailIntentUtil {
 
             intent = new Intent(activity, PlanetActivity.class);
             intent.setAction(Intent.ACTION_VIEW);
-            intent.putExtra(DetailIntentUtil.SW_RESOURCE, planet);
+            intent.putExtra(DetailExtras.MODEL, planet);
 
         } else if (category.equals((activity.getString(R.string.category_id_species)))) {
 
@@ -112,7 +109,7 @@ public class DetailIntentUtil {
 
             intent = new Intent(activity, SpeciesActivity.class);
             intent.setAction(Intent.ACTION_VIEW);
-            intent.putExtra(DetailIntentUtil.SW_RESOURCE, species);
+            intent.putExtra(DetailExtras.MODEL, species);
 
         } else if (category.equals((activity.getString(R.string.category_id_starships)))) {
 
@@ -120,7 +117,7 @@ public class DetailIntentUtil {
 
             intent = new Intent(activity, StarshipActivity.class);
             intent.setAction(Intent.ACTION_VIEW);
-            intent.putExtra(DetailIntentUtil.SW_RESOURCE, starship);
+            intent.putExtra(DetailExtras.MODEL, starship);
 
         } else if (category.equals((activity.getString(R.string.category_id_vehicles)))) {
 
@@ -128,7 +125,7 @@ public class DetailIntentUtil {
 
             intent = new Intent(activity, VehicleActivity.class);
             intent.setAction(Intent.ACTION_VIEW);
-            intent.putExtra(DetailIntentUtil.SW_RESOURCE, vehicle);
+            intent.putExtra(DetailExtras.MODEL, vehicle);
 
         } else {
             // will never happen

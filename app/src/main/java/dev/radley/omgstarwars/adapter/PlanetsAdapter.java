@@ -17,7 +17,7 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.OmgSWUtil;
+import dev.radley.omgstarwars.Util.Util;
 import dev.radley.omgstarwars.listener.OnBottomReachedListener;
 import dev.radley.omgstarwars.model.sw.Planet;
 
@@ -64,11 +64,12 @@ public class PlanetsAdapter extends RecyclerView.Adapter<PlanetsAdapter.ViewHold
         holder.titleText.setText(item.name);
 
         RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.generic_planet);
+                .placeholder(R.drawable.placeholder_square)
+                .error(R.drawable.generic_planet);
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)
-                .load(Uri.parse(OmgSWUtil.getAssetImage("planets", item.url)))
+                .load(Uri.parse(Util.getAssetImage("planets", item.url)))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.thumbnail);
 

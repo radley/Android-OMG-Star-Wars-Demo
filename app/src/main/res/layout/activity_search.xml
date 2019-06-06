@@ -29,13 +29,12 @@
 
             <TextView
                 android:id="@+id/results_text"
-                style="@style/TextView"
+                style="@style/TextView.Italic"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:alpha="0.5"
                 android:paddingLeft="24dp"
-                android:fontFamily="@font/nunito_sans_italic"
                 android:gravity="center_vertical"
                 android:paddingRight="16dp" />
 

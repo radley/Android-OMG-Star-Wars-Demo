@@ -17,7 +17,7 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.OmgSWUtil;
+import dev.radley.omgstarwars.Util.Util;
 import dev.radley.omgstarwars.listener.OnBottomReachedListener;
 import dev.radley.omgstarwars.model.sw.Starship;
 
@@ -64,11 +64,12 @@ public class StarshipsAdapter extends RecyclerView.Adapter<StarshipsAdapter.View
         holder.titleText.setText(item.name);
 
         RequestOptions requestOptions = new RequestOptions()
-                .placeholder(R.drawable.generic_starship);
+                .placeholder(R.drawable.placeholder_wide)
+                .error(R.drawable.generic_starship);
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)
-                .load(Uri.parse(OmgSWUtil.getAssetImage("starships", item.url)))
+                .load(Uri.parse(Util.getAssetImage("starships", item.url)))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.thumbnail);
 

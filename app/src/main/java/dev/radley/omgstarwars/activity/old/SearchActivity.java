@@ -1,4 +1,4 @@
-package dev.radley.omgstarwars.activity;
+package dev.radley.omgstarwars.activity.old;
 
 import android.app.Activity;
 import android.content.Context;
@@ -59,7 +59,7 @@ public class SearchActivity extends AppCompatActivity implements BaseCategoryFra
         });
 
         mActivity = this;
-        mModel = new SearchViewModel(this);
+        mModel = new SearchViewModel(getApplication());
 
         Intent intent = getIntent();
         Bundle bundle = getIntent().getExtras();
