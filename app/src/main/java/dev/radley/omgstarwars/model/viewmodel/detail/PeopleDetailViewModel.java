@@ -1,15 +1,21 @@
 package dev.radley.omgstarwars.model.viewmodel.detail;
 
 
-import java.time.Instant;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+
+import java.util.ArrayList;
 
 import dev.radley.omgstarwars.model.sw.People;
 
 
-public class PeopleDetailViewModel extends DetailViewModel {
+public class PeopleDetailViewModel extends BaseDetailViewModel {
 
+
+    public PeopleDetailViewModel(@NonNull Application application) {
+        super(application);
+    }
 
     public String getBirthYear() {
         return ((People) mModel).birthYear;
@@ -52,16 +58,10 @@ public class PeopleDetailViewModel extends DetailViewModel {
 
         return mass;
     }
-    
 
     @Override
     public boolean hasRelatedFilms() {
         return (((People) mModel).filmsUrls != null && ((People) mModel).filmsUrls.size() > 0);
-    }
-
-    @Override
-    public boolean hasRelatedSpecies() {
-        return (((People) mModel).speciesUrls != null && ((People) mModel).speciesUrls.size() > 0);
     }
 
     @Override
@@ -74,4 +74,15 @@ public class PeopleDetailViewModel extends DetailViewModel {
         return (((People) mModel).vehiclesUrls != null && ((People) mModel).vehiclesUrls.size() > 0);
     }
 
+    public ArrayList<String> getFilmsUrls() {
+        return ((People) mModel).filmsUrls;
+    }
+
+    public ArrayList<String> getStarshipUrls() {
+        return ((People) mModel).starshipsUrls;
+    }
+
+    public ArrayList<String> getVehicleUrls() {
+        return ((People) mModel).vehiclesUrls;
+    }
 }

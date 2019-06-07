@@ -2,8 +2,6 @@ package dev.radley.omgstarwars.activity.detail;
 
 import android.widget.TextView;
 
-import androidx.lifecycle.ViewModelProviders;
-
 import java.io.Serializable;
 
 import dev.radley.omgstarwars.R;
@@ -19,7 +17,7 @@ public class FilmActivity extends BaseDetailActivity {
     @Override
     protected void init(Serializable resource) {
 
-        mViewModel = ViewModelProviders.of(this).get(FilmDetailViewModel.class);
+        mViewModel = new FilmDetailViewModel(getApplication());
         mViewModel.setModel(resource);
 
         mActionBar.setTitle(mViewModel.getTitle());
@@ -44,23 +42,23 @@ public class FilmActivity extends BaseDetailActivity {
     protected void addListViews() {
 
         if(mViewModel.hasRelatedPeople()){
-//            addPeopleList();
+            addPeopleList(mViewModel.getPeopleUrls(), mViewModel.getPeopleRowTitle());
         }
 
         if(mViewModel.hasRelatedSpecies()) {
-//            addSpeciesList();
+            addSpeciesList(mViewModel.getSpeciesUrls(), mViewModel.getSpeciesRowTitle());
         }
 
         if(mViewModel.hasRelatedStarships()) {
-//            addStarshipsList();
+            addStarshipsList(mViewModel.getStarshipUrls(), mViewModel.getStarshipsRowTitle());
         }
 
         if(mViewModel.hasRelatedVehicles()) {
-//            addVehiclesList();
+            addVehiclesList(mViewModel.getVehicleUrls(), mViewModel.getVehiclesRowTitle());
         }
 
         if(mViewModel.hasRelatedPlanets()) {
-//            addPlanetsList();
+            addPlanetsList(mViewModel.getPlanetUrls(), mViewModel.getPlanetsRowTitle());
         }
     }
 }

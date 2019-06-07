@@ -70,7 +70,7 @@ public class PlanetsAdapter extends RecyclerView.Adapter<PlanetsAdapter.ViewHold
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)
-                .load(Uri.parse(Util.getAssetImage("planets", item.url)))
+                .load(Uri.parse(item.getImageAsset()))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.thumbnail);
 

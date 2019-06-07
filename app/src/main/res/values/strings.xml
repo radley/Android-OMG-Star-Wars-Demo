@@ -16,6 +16,10 @@
     <string name="category_starships">Starships!</string>
     <string name="category_vehicles">Vehicles!</string>
 
+    <string name="category_characters">Characters!</string>
+    <string name="category_residents">Residents!</string>
+    <string name="category_pilots">Pilots!</string>
+
     <!-- film -->
     <string name="opening_crawl">Opening Crawl</string>
     <string name="release_date">Release Date</string>

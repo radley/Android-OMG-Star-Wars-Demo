@@ -46,15 +46,15 @@ public class PeopleActivity extends BaseDetailActivity {
     protected void addListViews() {
 
         if(mViewModel.hasRelatedFilms()) {
-//            addFilmsList();
+            addFilmList(mViewModel.getFilmsUrls(), mViewModel.getFilmsRowTitle());
         }
 
         if(mViewModel.hasRelatedStarships()) {
-//            addStarshipsList();
+            addStarshipsList(mViewModel.getStarshipUrls(), mViewModel.getStarshipsRowTitle());
         }
 
         if(mViewModel.hasRelatedVehicles()) {
-//            addVehiclesList();
+            addVehiclesList(mViewModel.getVehicleUrls(), mViewModel.getVehiclesRowTitle());
         }
 
     }

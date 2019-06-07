@@ -1,11 +1,22 @@
 package dev.radley.omgstarwars.model.viewmodel.detail;
 
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+
+import java.util.ArrayList;
+
+import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.model.sw.Vehicle;
 
 
-public class VehicleDetailViewModel extends DetailViewModel {
+public class VehicleDetailViewModel extends BaseDetailViewModel {
 
+
+    public VehicleDetailViewModel(@NonNull Application application) {
+        super(application);
+    }
 
     public String getModel() {
         return ((Vehicle) mModel).model;
@@ -68,6 +79,11 @@ public class VehicleDetailViewModel extends DetailViewModel {
     }
 
     @Override
+    public String getPeopleRowTitle() {
+        return mApplication.getString(R.string.category_pilots);
+    }
+
+    @Override
     public boolean hasRelatedFilms() {
         return (((Vehicle) mModel).filmsUrls != null && ((Vehicle) mModel).filmsUrls.size() > 0);
     }
@@ -76,6 +92,14 @@ public class VehicleDetailViewModel extends DetailViewModel {
     @Override
     public boolean hasRelatedPeople() {
         return (((Vehicle) mModel).pilotsUrls != null && ((Vehicle) mModel).pilotsUrls.size() > 0);
+    }
+
+    public ArrayList<String> getFilmsUrls() {
+        return ((Vehicle) mModel).filmsUrls;
+    }
+
+    public ArrayList<String> getPeopleUrls() {
+        return ((Vehicle) mModel).pilotsUrls;
     }
 
 

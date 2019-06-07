@@ -41,14 +41,4 @@ public class People extends SWModel implements Serializable {
 
     @SerializedName("vehicles")
     public ArrayList<String> vehiclesUrls;
-
-    @Override
-    public int getPlaceholderRes() {
-        return R.drawable.placeholder_tall;
-    }
-
-    @Override
-    public int getFallbackRes() {
-        return R.drawable.generic_people;
-    }
 }

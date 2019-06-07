@@ -1,11 +1,21 @@
 package dev.radley.omgstarwars.model.viewmodel.detail;
 
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+
+import java.util.ArrayList;
+
 import dev.radley.omgstarwars.model.sw.Species;
 
 
-public class SpeciesDetailViewModel extends DetailViewModel {
+public class SpeciesDetailViewModel extends BaseDetailViewModel {
 
+
+    public SpeciesDetailViewModel(@NonNull Application application) {
+        super(application);
+    }
 
     public String getClassification() {
         return ((Species) mModel).classification;
@@ -56,6 +66,10 @@ public class SpeciesDetailViewModel extends DetailViewModel {
     @Override
     public boolean hasRelatedFilms() {
         return (((Species) mModel).filmsUrls != null && ((Species) mModel).filmsUrls.size() > 0);
+    }
+
+    public ArrayList<String> getFilmsUrls() {
+        return ((Species) mModel).filmsUrls;
     }
 
 }

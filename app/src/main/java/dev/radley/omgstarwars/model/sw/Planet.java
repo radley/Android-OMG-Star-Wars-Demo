@@ -34,13 +34,4 @@ public class Planet extends SWModel implements Serializable {
     @SerializedName("films")
     public ArrayList<String> filmsUrls;
 
-    @Override
-    public int getPlaceholderRes() {
-        return R.drawable.placeholder_square;
-    }
-
-    @Override
-    public int getFallbackRes() {
-        return R.drawable.generic_planet;
-    }
 }

@@ -41,12 +41,4 @@ public class SWModel implements Serializable {
 
         return Util.ASSETS_URL + getCategoryId() +"/"+ getId() +".jpg";
     }
-
-    public int getPlaceholderRes() {
-        return R.drawable.placeholder_tall;
-    }
-
-    public int getFallbackRes() {
-        return R.drawable.placeholder_tall;
-    }
 }

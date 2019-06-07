@@ -70,7 +70,7 @@ public class StarshipsAdapter extends RecyclerView.Adapter<StarshipsAdapter.View
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)
-                .load(Uri.parse(Util.getAssetImage("starships", item.url)))
+                .load(Uri.parse(item.getImageAsset()))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.thumbnail);
 

@@ -9,7 +9,7 @@ import dev.radley.omgstarwars.network.StarWarsApi;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-public class SpeciesViewModel extends CaegoryViewModel {
+public class SpeciesViewModel extends CategoryViewModel {
 
     private Call<SWModelList<Species>> mCallSpecies;
 

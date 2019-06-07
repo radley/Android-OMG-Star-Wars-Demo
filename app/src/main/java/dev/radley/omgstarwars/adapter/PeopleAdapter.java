@@ -61,7 +61,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder
     public void onBindViewHolder(PeopleAdapter.ViewHolder holder, int position) {
 
         SWModel item = mSWModelList.get(position);
-        holder.titleText.setText(item.name);
+        holder.titleText.setText(item.getTitle());
 
         RequestOptions requestOptions = new RequestOptions()
                 .placeholder(R.drawable.placeholder_tall)
@@ -69,7 +69,7 @@ public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)
-                .load(Uri.parse(Util.getAssetImage("people", item.url)))
+                .load(Uri.parse(item.getImageAsset()))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.thumbnail);
 

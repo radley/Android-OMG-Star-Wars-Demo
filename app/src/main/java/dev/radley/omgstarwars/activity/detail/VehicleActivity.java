@@ -49,11 +49,11 @@ public class VehicleActivity extends BaseDetailActivity {
     protected void addListViews() {
 
         if(mViewModel.hasRelatedFilms()) {
-//            addFilmsList();
+            addFilmList(mViewModel.getFilmsUrls(), mViewModel.getFilmsRowTitle());
         }
 
         if(mViewModel.hasRelatedPeople()){
-//            addPeopleList();
+            addPeopleList(mViewModel.getPeopleUrls(), mViewModel.getPeopleRowTitle());
         }
     }
 }

@@ -71,7 +71,7 @@ public class SpeciesAdapter extends RecyclerView.Adapter<SpeciesAdapter.ViewHold
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)
-                .load(Uri.parse(Util.getAssetImage("species", item.url)))
+                .load(Uri.parse(item.getImageAsset()))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.thumbnail);
 

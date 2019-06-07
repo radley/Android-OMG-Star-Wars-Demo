@@ -69,7 +69,7 @@ public class FilmsAdapter extends RecyclerView.Adapter<FilmsAdapter.ViewHolder> 
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)
-                .load(Uri.parse(Util.getAssetImage("films", item.url)))
+                .load(Uri.parse(item.getImageAsset()))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.thumbnail);
 

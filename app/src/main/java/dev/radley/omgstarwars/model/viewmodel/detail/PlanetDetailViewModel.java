@@ -1,15 +1,22 @@
 package dev.radley.omgstarwars.model.viewmodel.detail;
 
 
-import java.time.Instant;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
+import android.app.Application;
 
+import androidx.annotation.NonNull;
+
+import java.util.ArrayList;
+
+import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.model.sw.Planet;
 
 
-public class PlanetDetailViewModel extends DetailViewModel {
+public class PlanetDetailViewModel extends BaseDetailViewModel {
 
+
+    public PlanetDetailViewModel(@NonNull Application application) {
+        super(application);
+    }
 
     public String getClimate() {
         return ((Planet) mModel).climate;
@@ -60,6 +67,10 @@ public class PlanetDetailViewModel extends DetailViewModel {
         return surfaceWater;
     }
 
+    public String getPeopleRowTitle() {
+        return mApplication.getString(R.string.category_residents);
+    }
+
     @Override
     public boolean hasRelatedFilms() {
         return (((Planet) mModel).filmsUrls != null && ((Planet) mModel).filmsUrls.size() > 0);
@@ -69,6 +80,14 @@ public class PlanetDetailViewModel extends DetailViewModel {
     @Override
     public boolean hasRelatedPeople() {
         return (((Planet) mModel).residentsUrls != null && ((Planet) mModel).residentsUrls.size() > 0);
+    }
+
+    public ArrayList<String> getFilmsUrls() {
+        return ((Planet) mModel).filmsUrls;
+    }
+
+    public ArrayList<String> getPeopleUrls() {
+        return ((Planet) mModel).residentsUrls;
     }
 
 

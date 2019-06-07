@@ -13,7 +13,7 @@ import dev.radley.omgstarwars.model.sw.SWModel;
 import dev.radley.omgstarwars.model.sw.SWModelList;
 import dev.radley.omgstarwars.network.StarWarsApi;
 
-public abstract class CaegoryViewModel extends ViewModel {
+public abstract class CategoryViewModel extends ViewModel {
 
     protected ArrayList<SWModel> mSWModelList;
     protected int mCount = 0;
@@ -23,7 +23,7 @@ public abstract class CaegoryViewModel extends ViewModel {
     //this is the data that we will fetch asynchronously
     protected MutableLiveData<ArrayList<SWModel>> mLiveData;
 
-    public CaegoryViewModel() {
+    public CategoryViewModel() {
 
         mSWModelList = new ArrayList<SWModel>();
         StarWarsApi.init();

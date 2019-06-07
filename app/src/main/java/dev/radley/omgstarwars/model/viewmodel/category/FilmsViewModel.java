@@ -12,7 +12,7 @@ import dev.radley.omgstarwars.network.StarWarsApi;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-public class FilmsViewModel extends CaegoryViewModel {
+public class FilmsViewModel extends CategoryViewModel {
 
     private Call<SWModelList<Film>> mCallFilm;
 

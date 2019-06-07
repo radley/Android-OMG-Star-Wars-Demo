@@ -42,14 +42,4 @@ public class Film extends SWModel implements Serializable {
     public String getTitle() {
         return title;
     }
-
-    @Override
-    public int getPlaceholderRes() {
-        return R.drawable.placeholder_tall;
-    }
-
-    @Override
-    public int getFallbackRes() {
-        return R.drawable.placeholder_tall;
-    }
 }

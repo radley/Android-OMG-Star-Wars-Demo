@@ -9,7 +9,7 @@ import dev.radley.omgstarwars.network.StarWarsApi;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-public class VehiclesViewModel extends CaegoryViewModel {
+public class VehiclesViewModel extends CategoryViewModel {
     
     private Call<SWModelList<Vehicle>> mCallVehicles;
 

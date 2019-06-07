@@ -46,7 +46,7 @@ public class SpeciesActivity extends BaseDetailActivity {
     protected void addListViews() {
 
         if(mViewModel.hasRelatedFilms()) {
-//            addFilmsList();
+            addFilmList(mViewModel.getFilmsUrls(), mViewModel.getFilmsRowTitle());
         }
     }
 }

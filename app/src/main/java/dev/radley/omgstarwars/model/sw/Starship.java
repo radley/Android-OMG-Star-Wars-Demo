@@ -20,14 +20,4 @@ public class Starship extends Vehicle implements Serializable {
 
     @SerializedName("MGLT")
     public String mglt;
-
-    @Override
-    public int getPlaceholderRes() {
-        return R.drawable.placeholder_wide;
-    }
-
-    @Override
-    public int getFallbackRes() {
-        return R.drawable.generic_starship;
-    }
 }

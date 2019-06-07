@@ -72,7 +72,7 @@ public class VehiclesAdapter extends RecyclerView.Adapter<VehiclesAdapter.ViewHo
 
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)
-                .load(Uri.parse(Util.getAssetImage("vehicles", item.url)))
+                .load(Uri.parse(item.getImageAsset()))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.thumbnail);
 
