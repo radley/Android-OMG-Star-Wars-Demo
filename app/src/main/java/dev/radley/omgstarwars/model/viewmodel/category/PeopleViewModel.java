@@ -24,7 +24,7 @@ public class PeopleViewModel extends CategoryViewModel {
 
             @Override
             public void onResponse(Call<SWModelList<People>> call, retrofit2.Response<SWModelList<People>> response) {
-                onLoadSuccess(response.body());
+                onLoadResponse(response.body());
             }
 
             @Override
@@ -34,15 +34,17 @@ public class PeopleViewModel extends CategoryViewModel {
         });
     }
 
-    protected void onLoadSuccess(SWModelList<People> list) {
+    protected void onLoadResponse(SWModelList<People> list) {
 
-        mCount = list.count;
+        if(list != null) {
+            mCount = list.count;
 
-        for (Object object : list.results) {
-            mSWModelList.add(((People) object));
+            for (Object object : list.results) {
+                mSWModelList.add(((People) object));
+            }
+
+            mLiveData.setValue(mSWModelList);
         }
-
-        mLiveData.setValue(mSWModelList);
     }
 
     public void search(String query) {

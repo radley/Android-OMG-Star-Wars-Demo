@@ -24,7 +24,7 @@ public class VehiclesViewModel extends CategoryViewModel {
 
             @Override
             public void onResponse(Call<SWModelList<Vehicle>> call, retrofit2.Response<SWModelList<Vehicle>> response) {
-                onLoadSuccess(response.body());
+                onLoadResponse(response.body());
             }
 
             @Override
@@ -34,15 +34,17 @@ public class VehiclesViewModel extends CategoryViewModel {
         });
     }
 
-    protected void onLoadSuccess(SWModelList<Vehicle> list) {
+    protected void onLoadResponse(SWModelList<Vehicle> list) {
 
-        mCount = list.count;
+        if(list != null) {
+            mCount = list.count;
 
-        for (Object object : list.results) {
-            mSWModelList.add(((Vehicle) object));
+            for (Object object : list.results) {
+                mSWModelList.add(((Vehicle) object));
+            }
+
+            mLiveData.setValue(mSWModelList);
         }
-
-        mLiveData.setValue(mSWModelList);
     }
 
     public void search(String query) {

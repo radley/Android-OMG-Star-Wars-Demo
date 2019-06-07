@@ -24,7 +24,7 @@ public class StarshipsViewModel extends CategoryViewModel {
 
             @Override
             public void onResponse(Call<SWModelList<Starship>> call, retrofit2.Response<SWModelList<Starship>> response) {
-                onLoadSuccess(response.body());
+                onLoadResponse(response.body());
             }
 
             @Override
@@ -34,15 +34,17 @@ public class StarshipsViewModel extends CategoryViewModel {
         });
     }
 
-    protected void onLoadSuccess(SWModelList<Starship> list) {
+    protected void onLoadResponse(SWModelList<Starship> list) {
 
-        mCount = list.count;
+        if(list != null) {
+            mCount = list.count;
 
-        for (Object object : list.results) {
-            mSWModelList.add(((Starship) object));
+            for (Object object : list.results) {
+                mSWModelList.add(((Starship) object));
+            }
+
+            mLiveData.setValue(mSWModelList);
         }
-
-        mLiveData.setValue(mSWModelList);
     }
 
     public void search(String query) {

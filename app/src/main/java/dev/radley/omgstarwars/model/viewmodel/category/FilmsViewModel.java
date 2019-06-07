@@ -27,7 +27,7 @@ public class FilmsViewModel extends CategoryViewModel {
 
             @Override
             public void onResponse(Call<SWModelList<Film>> call, retrofit2.Response<SWModelList<Film>> response) {
-                onLoadSuccess(response.body());
+                onLoadResponse(response.body());
             }
 
             @Override
@@ -37,22 +37,24 @@ public class FilmsViewModel extends CategoryViewModel {
         });
     }
 
-    protected void onLoadSuccess(SWModelList<Film> list) {
+    protected void onLoadResponse(SWModelList<Film> list) {
 
-        mCount = list.count;
+        if(list != null) {
+            mCount = list.count;
 
-        // sort by episode
-        Collections.sort(list.results, new Comparator<Film>() {
-            public int compare(Film o1, Film o2) {
-                return o1.episodeId - o2.episodeId;
+            // sort by episode
+            Collections.sort(list.results, new Comparator<Film>() {
+                public int compare(Film o1, Film o2) {
+                    return o1.episodeId - o2.episodeId;
+                }
+            });
+
+            for (Object object : list.results) {
+                mSWModelList.add(((Film) object));
             }
-        });
 
-        for (Object object : list.results) {
-            mSWModelList.add(((Film) object));
+            mLiveData.setValue(mSWModelList);
         }
-
-        mLiveData.setValue(mSWModelList);
     }
 
 

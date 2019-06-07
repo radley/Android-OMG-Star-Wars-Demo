@@ -52,6 +52,14 @@ public class FilmDetailViewModel extends BaseDetailViewModel {
         return mApplication.getString(R.string.category_characters);
     }
 
+    public int getHeroPlaceholderRes() {
+        return R.drawable.placeholder_tall;
+    }
+
+    public int getHeroFallbackRes() {
+        return R.drawable.placeholder_tall;
+    }
+
     @Override
     public boolean hasRelatedPeople() {
         return (((Film) mModel).charactersUrls != null && ((Film) mModel).charactersUrls.size() > 0);

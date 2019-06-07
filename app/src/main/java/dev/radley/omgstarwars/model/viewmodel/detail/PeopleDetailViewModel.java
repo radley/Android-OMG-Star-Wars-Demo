@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
+import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.model.sw.People;
 
 
@@ -57,6 +58,12 @@ public class PeopleDetailViewModel extends BaseDetailViewModel {
             mass += " kg";
 
         return mass;
+    }
+
+
+    @Override
+    public int getHeroFallbackRes() {
+        return R.drawable.generic_people;
     }
 
     @Override

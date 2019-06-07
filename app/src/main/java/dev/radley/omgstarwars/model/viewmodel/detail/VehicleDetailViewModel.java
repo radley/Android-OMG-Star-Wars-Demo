@@ -84,6 +84,16 @@ public class VehicleDetailViewModel extends BaseDetailViewModel {
     }
 
     @Override
+    public int getHeroPlaceholderRes() {
+        return R.drawable.placeholder_wide;
+    }
+
+    @Override
+    public int getHeroFallbackRes() {
+        return R.drawable.generic_vehicle;
+    }
+
+    @Override
     public boolean hasRelatedFilms() {
         return (((Vehicle) mModel).filmsUrls != null && ((Vehicle) mModel).filmsUrls.size() > 0);
     }

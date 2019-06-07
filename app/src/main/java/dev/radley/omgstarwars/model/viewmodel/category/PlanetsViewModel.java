@@ -24,7 +24,7 @@ public class PlanetsViewModel extends CategoryViewModel {
 
             @Override
             public void onResponse(Call<SWModelList<Planet>> call, retrofit2.Response<SWModelList<Planet>> response) {
-                onLoadSuccess(response.body());
+                onLoadResponse(response.body());
             }
 
             @Override
@@ -34,15 +34,17 @@ public class PlanetsViewModel extends CategoryViewModel {
         });
     }
 
-    protected void onLoadSuccess(SWModelList<Planet> list) {
+    protected void onLoadResponse(SWModelList<Planet> list) {
 
-        mCount = list.count;
+        if(list != null) {
+            mCount = list.count;
 
-        for (Object object : list.results) {
-            mSWModelList.add(((Planet) object));
+            for (Object object : list.results) {
+                mSWModelList.add(((Planet) object));
+            }
+
+            mLiveData.setValue(mSWModelList);
         }
-
-        mLiveData.setValue(mSWModelList);
     }
 
     public void search(String query) {

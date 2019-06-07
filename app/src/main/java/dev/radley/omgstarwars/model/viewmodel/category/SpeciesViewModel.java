@@ -26,7 +26,7 @@ public class SpeciesViewModel extends CategoryViewModel {
 
             @Override
             public void onResponse(Call<SWModelList<Species>> call, retrofit2.Response<SWModelList<Species>> response) {
-                onLoadSuccess(response.body());
+                onLoadResponse(response.body());
             }
 
             @Override
@@ -36,15 +36,17 @@ public class SpeciesViewModel extends CategoryViewModel {
         });
     }
 
-    protected void onLoadSuccess(SWModelList<Species> list) {
+    protected void onLoadResponse(SWModelList<Species> list) {
 
-        mCount = list.count;
+        if(list != null) {
+            mCount = list.count;
 
-        for (Object object : list.results) {
-            mSWModelList.add(((Species) object));
+            for (Object object : list.results) {
+                mSWModelList.add(((Species) object));
+            }
+
+            mLiveData.setValue(mSWModelList);
         }
-
-        mLiveData.setValue(mSWModelList);
     }
 
     public void search(String query) {

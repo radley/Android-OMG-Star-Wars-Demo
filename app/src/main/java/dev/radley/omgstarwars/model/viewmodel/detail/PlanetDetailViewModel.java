@@ -67,6 +67,16 @@ public class PlanetDetailViewModel extends BaseDetailViewModel {
         return surfaceWater;
     }
 
+    @Override
+    public int getHeroPlaceholderRes() {
+        return R.drawable.placeholder_square;
+    }
+
+    @Override
+    public int getHeroFallbackRes() {
+        return R.drawable.generic_planet;
+    }
+
     public String getPeopleRowTitle() {
         return mApplication.getString(R.string.category_residents);
     }

@@ -49,9 +49,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        getWindow().setStatusBarColor(getResources().getColor(R.color.transparentPrimaryDark, null));
-//        getWindow().setNavigationBarColor(getResources().getColor(R.color.transparentPrimary, null));
-
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

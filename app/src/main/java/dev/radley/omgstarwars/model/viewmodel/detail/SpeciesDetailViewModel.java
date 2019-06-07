@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
+import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.model.sw.Species;
 
 
@@ -61,6 +62,11 @@ public class SpeciesDetailViewModel extends BaseDetailViewModel {
 
     public String getHomeworldUrl() {
         return ((Species) mModel).homeWorld;
+    }
+
+    @Override
+    public int getHeroFallbackRes() {
+        return R.drawable.generic_species;
     }
 
     @Override
