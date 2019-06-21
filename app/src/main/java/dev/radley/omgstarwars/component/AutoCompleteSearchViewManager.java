@@ -3,7 +3,6 @@ package dev.radley.omgstarwars.component;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,11 +13,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.Util;
-import dev.radley.omgstarwars.activity.SearchActivity;
+import dev.radley.omgstarwars.util.Util;
+import dev.radley.omgstarwars.ui.search.SearchActivity;
 import dev.radley.omgstarwars.bundle.DetailExtras;
 import dev.radley.omgstarwars.bundle.SearchExtras;
-import dev.radley.omgstarwars.model.sw.SWModel;
+import dev.radley.omgstarwars.network.model.SWModel;
+import timber.log.Timber;
 
 
 public class AutoCompleteSearchViewManager extends SearchViewManager {
@@ -97,7 +97,7 @@ public class AutoCompleteSearchViewManager extends SearchViewManager {
 
     protected void initAutoCompleteList() {
 
-        Log.d(Util.tag, "initAutoCompleteList()");
+        Timber.d("initAutoCompleteList()");
 
         mAutoCompleteAdapter = new ArrayAdapter<String>(mActivity, android.R.layout.simple_dropdown_item_1line, mResultTitles);
         mSearchAutoComplete.setAdapter(mAutoCompleteAdapter);
@@ -122,7 +122,7 @@ public class AutoCompleteSearchViewManager extends SearchViewManager {
 
     protected void onSearchItemClick(int index) {
 
-        Intent intent = DetailExtras.getIntent(mActivity, mCategory, (SWModel) mResultItems.get(index));
+        Intent intent = DetailExtras.getIntent(mActivity, (SWModel) mResultItems.get(index));
 
         mSearchView.setQuery("", false);
 
@@ -151,7 +151,7 @@ public class AutoCompleteSearchViewManager extends SearchViewManager {
     @Override
     protected void onSearchLoopComplete() {
 
-        Log.d(Util.tag, "onSearchLoopComplete()");
+        Timber.d("onSearchLoopComplete()");
 
         mResultTitles.clear();
 

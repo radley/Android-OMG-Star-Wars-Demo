@@ -1,15 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/grid"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clipToPadding="false"
-    android:orientation="vertical"
-    android:padding="@dimen/grid_padding"
-    android:scrollbarStyle="outsideOverlay"
-    android:scrollbars="vertical"
-    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    app:spanCount="@integer/grid_span_count_tall" />
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:padding="@dimen/grid_padding"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:spanCount="@integer/grid_span_count_tall" />
+
+    <Button
+        style="@style/Button"
+        android:id="@+id/retry_button"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="@string/retry"
+        android:visibility="gone"
+        android:layout_centerInParent="true"/>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="32dp"/>
+
+</RelativeLayout>

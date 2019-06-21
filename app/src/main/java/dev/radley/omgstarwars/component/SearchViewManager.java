@@ -2,23 +2,22 @@ package dev.radley.omgstarwars.component;
 
 import android.app.Activity;
 import android.os.Handler;
-import android.util.Log;
 
 import androidx.appcompat.widget.SearchView;
 
 import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.Util.Util;
-import dev.radley.omgstarwars.model.sw.Film;
-import dev.radley.omgstarwars.model.sw.People;
-import dev.radley.omgstarwars.model.sw.Planet;
-import dev.radley.omgstarwars.model.sw.SWModelList;
-import dev.radley.omgstarwars.model.sw.Species;
-import dev.radley.omgstarwars.model.sw.Starship;
-import dev.radley.omgstarwars.model.sw.Vehicle;
-import dev.radley.omgstarwars.network.StarWarsApi;
+import dev.radley.omgstarwars.network.model.Film;
+import dev.radley.omgstarwars.network.model.People;
+import dev.radley.omgstarwars.network.model.Planet;
+import dev.radley.omgstarwars.network.model.SWModelList;
+import dev.radley.omgstarwars.network.model.Species;
+import dev.radley.omgstarwars.network.model.Starship;
+import dev.radley.omgstarwars.network.model.Vehicle;
+import dev.radley.omgstarwars.network.api.StarWarsService;
 import retrofit2.Call;
+import timber.log.Timber;
 
 public class SearchViewManager {
 
@@ -164,7 +163,7 @@ public class SearchViewManager {
     }
 
     protected void getFilmsByPage(int page) {
-        mCallFilm = StarWarsApi.getApi().searchFilms(mPage, mQuery);
+        mCallFilm = StarWarsService.getApiInstance().searchFilms(mPage, mQuery);
         mCallFilm.enqueue(new retrofit2.Callback<SWModelList<Film>>() {
 
             @Override
@@ -175,7 +174,7 @@ public class SearchViewManager {
 
             @Override
             public void onFailure(Call<SWModelList<Film>> call, Throwable t) {
-                Log.d(Util.tag, "error: " + t.getMessage());
+                Timber.d("error: " + t.getMessage());
             }
         });
     }
@@ -212,7 +211,7 @@ public class SearchViewManager {
 
     protected void getPeopleByPage(int page) {
 
-        mCallPeople = StarWarsApi.getApi().searchPeople(mPage, mQuery);
+        mCallPeople = StarWarsService.getApiInstance().searchPeople(mPage, mQuery);
         mCallPeople.enqueue(new retrofit2.Callback<SWModelList<People>>() {
 
             @Override
@@ -222,7 +221,7 @@ public class SearchViewManager {
 
             @Override
             public void onFailure(Call<SWModelList<People>> call, Throwable t) {
-                Log.d(Util.tag, "error: " + t.getMessage());
+                Timber.d("error: " + t.getMessage());
             }
         });
     }
@@ -258,7 +257,7 @@ public class SearchViewManager {
 
     protected void getPlanetsByPage(int page) {
 
-        mCallPlanets = StarWarsApi.getApi().searchPlanets(mPage, mQuery);
+        mCallPlanets = StarWarsService.getApiInstance().searchPlanets(mPage, mQuery);
         mCallPlanets.enqueue(new retrofit2.Callback<SWModelList<Planet>>() {
 
             @Override
@@ -268,7 +267,7 @@ public class SearchViewManager {
 
             @Override
             public void onFailure(Call<SWModelList<Planet>> call, Throwable t) {
-                Log.d(Util.tag, "error: " + t.getMessage());
+                Timber.d("error: " + t.getMessage());
             }
         });
 
@@ -305,7 +304,7 @@ public class SearchViewManager {
 
     protected void getSpeciesByPage(int page) {
 
-        mCallSpecies = StarWarsApi.getApi().searchSpecies(mPage, mQuery);
+        mCallSpecies = StarWarsService.getApiInstance().searchSpecies(mPage, mQuery);
         mCallSpecies.enqueue(new retrofit2.Callback<SWModelList<Species>>() {
 
             @Override
@@ -315,7 +314,7 @@ public class SearchViewManager {
 
             @Override
             public void onFailure(Call<SWModelList<Species>> call, Throwable t) {
-                Log.d(Util.tag, "error: " + t.getMessage());
+                Timber.d("error: " + t.getMessage());
             }
         });
     }
@@ -352,7 +351,7 @@ public class SearchViewManager {
 
     protected void getStarshipsByPage(int page) {
 
-        mCallStarships = StarWarsApi.getApi().searchStarships(page, mQuery);
+        mCallStarships = StarWarsService.getApiInstance().searchStarships(page, mQuery);
         mCallStarships.enqueue(new retrofit2.Callback<SWModelList<Starship>>() {
 
             @Override
@@ -362,7 +361,7 @@ public class SearchViewManager {
 
             @Override
             public void onFailure(Call<SWModelList<Starship>> call, Throwable t) {
-                Log.d(Util.tag, "error: " + t.getMessage());
+                Timber.d("error: " + t.getMessage());
             }
         });
     }
@@ -397,7 +396,7 @@ public class SearchViewManager {
 
     protected void getVehiclesByPage(int page) {
 
-        mCallVehicles = StarWarsApi.getApi().searchVehicles(mPage, mQuery);
+        mCallVehicles = StarWarsService.getApiInstance().searchVehicles(mPage, mQuery);
         mCallVehicles.enqueue(new retrofit2.Callback<SWModelList<Vehicle>>() {
 
             @Override
@@ -407,7 +406,7 @@ public class SearchViewManager {
 
             @Override
             public void onFailure(Call<SWModelList<Vehicle>> call, Throwable t) {
-                Log.d(Util.tag, "error: " + t.getMessage());
+                Timber.d("error: " + t.getMessage());
             }
         });
     }

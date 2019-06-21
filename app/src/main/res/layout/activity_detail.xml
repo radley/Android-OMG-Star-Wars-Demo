@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".activity.detail.BaseDetailActivity">
+    tools:context=".ui.detail.common.BaseDetailActivity">
 
     <ImageView
         android:id="@+id/hero_image"
@@ -48,11 +48,11 @@
         android:layout_height="match_parent"
         android:background="@color/transparentDark"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".activity.MainActivity"
+        tools:context=".ui.browse.BrowseCategoriesActivity"
         tools:showIn="@layout/activity_detail">
 
         <LinearLayout
-            android:id="@+id/detail_layout"
+            android:id="@+id/details_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" />
