@@ -15,6 +15,7 @@
         <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
+        <!--<item name="shapeAppearanceMediumComponent">@style/AppShapeAppearance.MediumComponent</item>-->
     </style>
 
     <style name="AppThemeToolbar" parent="AppTheme">
@@ -23,6 +24,11 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light"/>
+
+    <style name="AppShapeAppearance.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamilyBottomRight">cut</item>
+        <item name="cornerSizeBottomRight">16dp</item>
+    </style>
 
 
 </resources>

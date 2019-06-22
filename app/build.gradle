@@ -23,6 +23,12 @@ android {
     }
 }
 
+def lifeCycleExtensionsVersion = '2.2.0-alpha01'
+def retrofitVersion = '2.5.0'
+def daggerVersion = '2.13'
+def glideVersion = '4.9.0'
+def rxJavaVersion = '2.1.0'
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -30,32 +36,30 @@ dependencies {
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.0.0"
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
-
-    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0-alpha01"
-    annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.2.0-alpha01"
-
     implementation 'com.google.android.material:material:1.1.0-alpha07'
 
-
-    // glide
-    implementation 'com.github.bumptech.glide:glide:4.9.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
-
-    // logging
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
-    // retrofit2
-    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
-
-    // rxjava
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
-
-
-    // detail view multi-line text in toolbar
+    // enables multiline text in detail activity expanded title
     implementation 'net.opacapp:multiline-collapsingtoolbar:27.1.1'
+
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifeCycleExtensionsVersion"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifeCycleExtensionsVersion"
+
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+
+    implementation "io.reactivex.rxjava2:rxandroid:$rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'

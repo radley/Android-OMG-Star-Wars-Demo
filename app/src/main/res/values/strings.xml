@@ -98,7 +98,7 @@
         <item quantity="other">%1$d results for \"%2$s\".</item>
     </plurals>
 
-    <string name="search_delay_message">Searching...</string>
+    <string name="search_delay_message">Searching…</string>
     <string name="search_error">Ugh, search error.</string>
 
     <string name="action_settings">Settings</string>
@@ -118,4 +118,5 @@
     <string name="detail_tonnage">%s metric tons</string>
     <string name="detail_credits">%s CR</string>
     <string name="detail_speed_kph">%s kph</string>
+    <string name="search_query_hint">Search %s…</string>
 </resources>

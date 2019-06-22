@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ui.browse.BrowseCategoriesActivity">
+    tools:context=".view.SearchActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -46,11 +46,22 @@
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <FrameLayout
-        android:id="@+id/fragment_placeholder"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/grid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/grid_padding"
+        android:paddingLeft="@dimen/grid_padding"
+        android:paddingRight="@dimen/grid_padding"
+        android:paddingBottom="@dimen/navbar_padding"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:spanCount="@integer/grid_span_count_search" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

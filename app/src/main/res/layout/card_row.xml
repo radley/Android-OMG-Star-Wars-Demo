@@ -1,15 +1,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="116dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingLeft="16dp">
+    android:paddingLeft="16dp"
+    tools:ignore="RtlHardcoded,RtlSymmetry">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
+        app:cardCornerRadius="@dimen/card_corner_radius"
         app:cardElevation="3dp"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground">

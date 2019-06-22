@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ui.detail.common.BaseDetailActivity">
+    tools:context=".view.DetailActivity">
 
     <ImageView
         android:id="@+id/hero_image"
@@ -23,6 +23,7 @@
         android:background="@drawable/detail_hero_gradient"
         android:theme="@style/AppTheme.AppBarOverlay">
 
+        <!-- enables multiline text in detail activity expanded title -->
         <net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
@@ -48,13 +49,14 @@
         android:layout_height="match_parent"
         android:background="@color/transparentDark"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".ui.browse.BrowseCategoriesActivity"
+        tools:context=".view.BrowserActivity"
         tools:showIn="@layout/activity_detail">
 
         <LinearLayout
             android:id="@+id/details_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/navbar_padding"
             android:orientation="vertical" />
 
     </androidx.core.widget.NestedScrollView>

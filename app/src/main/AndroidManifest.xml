@@ -17,7 +17,7 @@
         tools:replace="android:icon"
         >
         <activity
-            android:name=".ui.browse.BrowseCategoriesActivity"
+            android:name=".view.BrowserActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -26,37 +26,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.detail.DetailActivity"
+        <activity android:name=".view.DetailActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ui.search.SearchActivity"
+        <activity android:name=".view.SearchActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
-
-        <activity android:name=".ui.detail.film.FilmDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".ui.detail.people.PeopleDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".ui.detail.planet.PlanetDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".ui.detail.species.SpeciesDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".ui.detail.starship.StarshipDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".ui.detail.vehicle.VehicleDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

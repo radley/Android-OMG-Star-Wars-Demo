@@ -22,6 +22,12 @@
 		<item name="android:textColor">?android:textColorPrimary</item>
 	</style>
 
+	<style name="Card" parent="Widget.MaterialComponents.CardView">
+		<item name="cornerFamilyBottomRight">cut</item>
+		<item name="cornerSizeBottomRight">32dp</item>
+		<item name="cardElevation">8dp</item>
+	</style>
+
 	<style name="CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
 		<item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>
