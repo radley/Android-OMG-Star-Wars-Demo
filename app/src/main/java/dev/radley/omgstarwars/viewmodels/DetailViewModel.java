@@ -22,6 +22,10 @@ import dev.radley.omgstarwars.models.Species;
 import dev.radley.omgstarwars.models.Starship;
 import dev.radley.omgstarwars.models.Vehicle;
 import dev.radley.omgstarwars.utilities.FormatUtils;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableSingleObserver;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import timber.log.Timber;
@@ -34,6 +38,7 @@ public class DetailViewModel extends ViewModel {
     @Inject
     StarWarsService service;
 
+    private CompositeDisposable compositeDisposable;
     protected SWModel model;
 
     private MutableLiveData<ArrayList<SWModel>> filmsData;
@@ -53,6 +58,14 @@ public class DetailViewModel extends ViewModel {
     public DetailViewModel() {
 
         DaggerApiComponent.create().inject(this);
+        compositeDisposable = new CompositeDisposable();
+    }
+
+    /**
+     * Take out the trash...
+     */
+    public void clear() {
+        compositeDisposable.dispose();
     }
 
     public void setModel(Serializable resource) {
@@ -75,6 +88,40 @@ public class DetailViewModel extends ViewModel {
         return model.getImagePath();
     }
 
+    /**
+     * Returns list from model (if any) of related items by type
+     *
+     * @return ArrayList<String>
+     */
+    public ArrayList<String> getFilms() {
+        return model.getRelatedFilms();
+    }
+
+    public ArrayList<String> getPeople() {
+        return model.getRelatedPeople();
+    }
+
+    public ArrayList<String> getPlanets() {
+        return model.getPlanets();
+    }
+
+    public ArrayList<String> getSpecies() {
+        return model.getRelatedSpecies();
+    }
+
+    public ArrayList<String> getStarships() {
+        return model.getRelatedStarships();
+    }
+
+    public ArrayList<String> getVehicles() {
+        return model.getRelatedVehicles();
+    }
+
+    /**
+     * People & Species have homeworld value with url link to Planet
+     *
+     * @return String
+     */
     public String getHomeWorld()
     {
         if(model instanceof People) {
@@ -86,6 +133,11 @@ public class DetailViewModel extends ViewModel {
         return null;
     }
 
+    /**
+     * People has species value with url link to Species
+     *
+     * @return String
+     */
     public String getSingleSpecies()
     {
         if(model instanceof People) {
@@ -95,57 +147,9 @@ public class DetailViewModel extends ViewModel {
         return null;
     }
 
-    /**
-     * Returns related films list from model (if any)
-     * @return ArrayList<String>
-     */
-    public ArrayList<String> getFilms() {
-        return model.getRelatedFilms();
-    }
 
     /**
-     * Returns related people list from model (if any)
-     * @return ArrayList<String>
-     */
-    public ArrayList<String> getPeople() {
-        return model.getRelatedPeople();
-    }
-
-    /**
-     * Returns related planets list from model (if any)
-     * @return ArrayList<String>
-     */
-    public ArrayList<String> getPlanets() {
-        return model.getPlanets();
-    }
-
-    /**
-     * Returns related species list from model (if any)
-     * @return ArrayList<String>
-     */
-    public ArrayList<String> getSpecies() {
-        return model.getRelatedSpecies();
-    }
-
-    /**
-     * Returns related starhips list from model (if any)
-     * @return ArrayList<String>
-     */
-    public ArrayList<String> getStarships() {
-        return model.getRelatedStarships();
-    }
-
-    /**
-     * Returns related vehicles list from model (if any)
-     * @return ArrayList<String>
-     */
-    public ArrayList<String> getVehicles() {
-        return model.getRelatedVehicles();
-    }
-
-
-    /**
-     * Returns model-specific title for related films
+     * Returns model-specific titles
      *
      * @return String
      */
@@ -153,47 +157,22 @@ public class DetailViewModel extends ViewModel {
         return model.getRelatedFilmsTitle();
     }
 
-    /**
-     * Returns model-specific title for related people
-     *
-     * @return String
-     */
     public String getRelatedPeopleTitle() {
         return model.getRelatedPeopleTitle();
     }
 
-    /**
-     * Returns model-specific title for related planets
-     *
-     * @return String
-     */
     public String getRelatedPlanetsTitle() {
         return model.getRelatedPlanetsTitle();
     }
 
-    /**
-     * Returns model-specific title for related species
-     *
-     * @return String
-     */
     public String getRelatedSpeciesTitle() {
         return model.getRelatedSpeciesTitle();
     }
 
-    /**
-     * Returns model-specific title for related starships
-     *
-     * @return String
-     */
     public String getRelatedStarshipsTitle() {
         return model.getRelatedStarshipsTitle();
     }
 
-    /**
-     * Returns model-specific title for related vehicles
-     *
-     * @return String
-     */
     public String getRelatedVehiclesTitle() {
         return model.getRelatedVehiclesTitle();
     }
@@ -209,6 +188,7 @@ public class DetailViewModel extends ViewModel {
 
         ArrayList<SWModel> list = new ArrayList<>();
 
+
         //if the list is null
         if (filmsData == null) {
             filmsData = new MutableLiveData<>();
@@ -217,22 +197,23 @@ public class DetailViewModel extends ViewModel {
 
                 final int id = FormatUtils.getId(urlList.get(i));
 
-                Call<Film> call = service.getApi().getFilm(id);
-                call.enqueue(new Callback<Film>() {
+                compositeDisposable.add(service.getApi().getFilm(id)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableSingleObserver <Film>() {
 
-                    @Override
-                    public void onResponse(@NotNull Call<Film> call, @NotNull retrofit2.Response<Film> response) {
+                            @Override
+                            public void onSuccess(Film item) {
 
-                        list.add(response.body());
-                        filmsData.setValue(list);
-                    }
+                                list.add(item);
+                                filmsData.setValue(list);
+                            }
 
-                    // ignore if missing (let others continue)
-                    @Override
-                    public void onFailure(@NotNull Call<Film> call, @NotNull Throwable t) {
-                        Timber.e("error: %s", t.getMessage());
-                    }
-                });
+                            @Override
+                            public void onError(Throwable t) {
+                                Timber.e("error: %s", t.getMessage());
+                            }
+                        }));
             }
         }
 
@@ -257,21 +238,23 @@ public class DetailViewModel extends ViewModel {
 
                 final int id = FormatUtils.getId(urlList.get(i));
 
-                Call<People> call = service.getApi().getPeople(id);
-                call.enqueue(new Callback<People>() {
+                compositeDisposable.add(service.getApi().getPeople(id)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableSingleObserver <People>() {
 
-                    @Override
-                    public void onResponse(@NotNull Call<People> call, @NotNull retrofit2.Response<People> response) {
+                            @Override
+                            public void onSuccess(People item) {
 
-                        list.add(response.body());
-                        peopleData.setValue(list);
-                    }
+                                list.add(item);
+                                peopleData.setValue(list);
+                            }
 
-                    @Override
-                    public void onFailure(@NotNull Call<People> call, @NotNull Throwable t) {
-                        Timber.e("error: %s", t.getMessage());
-                    }
-                });
+                            @Override
+                            public void onError(Throwable t) {
+                                Timber.e("error: %s", t.getMessage());
+                            }
+                        }));
             }
         }
 
@@ -296,21 +279,23 @@ public class DetailViewModel extends ViewModel {
 
                 final int id = FormatUtils.getId(urlList.get(i));
 
-                Call<Planet> call = service.getApi().getPlanet(id);
-                call.enqueue(new Callback<Planet>() {
+                compositeDisposable.add(service.getApi().getPlanet(id)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableSingleObserver <Planet>() {
 
-                    @Override
-                    public void onResponse(@NotNull Call<Planet> call, @NotNull retrofit2.Response<Planet> response) {
+                            @Override
+                            public void onSuccess(Planet item) {
 
-                        list.add(response.body());
-                        planetsData.setValue(list);
-                    }
+                                list.add(item);
+                                planetsData.setValue(list);
+                            }
 
-                    @Override
-                    public void onFailure(@NotNull Call<Planet> call, @NotNull Throwable t) {
-                        Timber.e("error: %s", t.getMessage());
-                    }
-                });
+                            @Override
+                            public void onError(Throwable t) {
+                                Timber.e("error: %s", t.getMessage());
+                            }
+                        }));
             }
         }
 
@@ -335,21 +320,23 @@ public class DetailViewModel extends ViewModel {
 
                 final int id = FormatUtils.getId(urlList.get(i));
 
-                Call<Species> call = service.getApi().getSpecies(id);
-                call.enqueue(new Callback<Species>() {
+                compositeDisposable.add(service.getApi().getSpecies(id)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableSingleObserver <Species>() {
 
-                    @Override
-                    public void onResponse(@NotNull Call<Species> call, @NotNull retrofit2.Response<Species> response) {
+                            @Override
+                            public void onSuccess(Species item) {
 
-                        list.add(response.body());
-                        speciesData.setValue(list);
-                    }
+                                list.add(item);
+                                speciesData.setValue(list);
+                            }
 
-                    @Override
-                    public void onFailure(@NotNull Call<Species> call, @NotNull Throwable t) {
-                        Timber.e("error: %s", t.getMessage());
-                    }
-                });
+                            @Override
+                            public void onError(Throwable t) {
+                                Timber.e("error: %s", t.getMessage());
+                            }
+                        }));
             }
         }
 
@@ -374,21 +361,23 @@ public class DetailViewModel extends ViewModel {
 
                 final int id = FormatUtils.getId(urlList.get(i));
 
-                Call<Starship> call = service.getApi().getStarship(id);
-                call.enqueue(new Callback<Starship>() {
+                compositeDisposable.add(service.getApi().getStarship(id)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableSingleObserver <Starship>() {
 
-                    @Override
-                    public void onResponse(@NotNull Call<Starship> call, @NotNull retrofit2.Response<Starship> response) {
+                            @Override
+                            public void onSuccess(Starship item) {
 
-                        list.add(response.body());
-                        starshipsData.setValue(list);
-                    }
+                                list.add(item);
+                                starshipsData.setValue(list);
+                            }
 
-                    @Override
-                    public void onFailure(@NotNull Call<Starship> call, @NotNull Throwable t) {
-                        Timber.e("error: %s", t.getMessage());
-                    }
-                });
+                            @Override
+                            public void onError(Throwable t) {
+                                Timber.e("error: %s", t.getMessage());
+                            }
+                        }));
             }
         }
 
@@ -413,21 +402,23 @@ public class DetailViewModel extends ViewModel {
 
                 final int id = FormatUtils.getId(urlList.get(i));
 
-                Call<Vehicle> call = service.getApi().getVehicle(id);
-                call.enqueue(new Callback<Vehicle>() {
+                compositeDisposable.add(service.getApi().getVehicle(id)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableSingleObserver <Vehicle>() {
 
-                    @Override
-                    public void onResponse(@NotNull Call<Vehicle> call, @NotNull retrofit2.Response<Vehicle> response) {
+                            @Override
+                            public void onSuccess(Vehicle item) {
 
-                        list.add(response.body());
-                        vehiclesData.setValue(list);
-                    }
+                                list.add(item);
+                                vehiclesData.setValue(list);
+                            }
 
-                    @Override
-                    public void onFailure(@NotNull Call<Vehicle> call, @NotNull Throwable t) {
-                        Timber.e("error: %s", t.getMessage());
-                    }
-                });
+                            @Override
+                            public void onError(Throwable t) {
+                                Timber.e("error: %s", t.getMessage());
+                            }
+                        }));
             }
         }
 
@@ -435,7 +426,7 @@ public class DetailViewModel extends ViewModel {
     }
 
     /**
-     * Get Planet from homeworld id
+     * Get Planet object for People/Species homeworld value
      *
      * @param id int
      * @return homeWorldData
@@ -447,26 +438,30 @@ public class DetailViewModel extends ViewModel {
         if (homeWorldData == null) {
             homeWorldData = new MutableLiveData<>();
 
-            Call<Planet> call = service.getApi().getPlanet(id);
-            call.enqueue(new Callback<Planet>() {
 
-                @Override
-                public void onResponse(@NotNull Call<Planet> call, @NotNull retrofit2.Response<Planet> response) {
-                    homeWorldData.setValue(response.body());
-                }
+            compositeDisposable.add(service.getApi().getPlanet(id)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeWith(new DisposableSingleObserver <Planet>() {
 
-                @Override
-                public void onFailure(@NotNull Call<Planet> call, @NotNull Throwable t) {
-                    Timber.e("error: %s", t.getMessage());
-                }
-            });
+                        @Override
+                        public void onSuccess(Planet item) {
+
+                            homeWorldData.setValue(item);
+                        }
+
+                        @Override
+                        public void onError(Throwable t) {
+                            Timber.e("error: %s", t.getMessage());
+                        }
+                    }));
         }
 
         return homeWorldData;
     }
 
     /**
-     * Get Species from homeworld id
+     * Get Species object for People species value
      *
      * @param id int
      * @return singleSpeciesData
@@ -477,19 +472,22 @@ public class DetailViewModel extends ViewModel {
         if (singleSpeciesData == null) {
             singleSpeciesData = new MutableLiveData<>();
 
-            Call<Species> call = service.getApi().getSpecies(id);
-            call.enqueue(new Callback<Species>() {
+            compositeDisposable.add(service.getApi().getSpecies(id)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeWith(new DisposableSingleObserver <Species>() {
 
-                @Override
-                public void onResponse(@NotNull Call<Species> call, @NotNull retrofit2.Response<Species> response) {
-                    singleSpeciesData.setValue(response.body());
-                }
+                        @Override
+                        public void onSuccess(Species item) {
 
-                @Override
-                public void onFailure(@NotNull Call<Species> call, @NotNull Throwable t) {
-                    Timber.e("error: %s", t.getMessage());
-                }
-            });
+                            singleSpeciesData.setValue(item);
+                        }
+
+                        @Override
+                        public void onError(Throwable t) {
+                            Timber.e("error: %s", t.getMessage());
+                        }
+                    }));
         }
 
         return singleSpeciesData;

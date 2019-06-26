@@ -78,6 +78,15 @@ public class DetailActivity extends AppCompatActivity {
         addRelatedLists();
     }
 
+    /**
+     * Clear viewModel on exit
+     */
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        viewModel.clear();
+    }
+
 
     /**
      * Make view fullscreen
