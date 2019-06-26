@@ -5,14 +5,12 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.inject.Inject;
 
-import dev.radley.omgstarwars.di.DaggerApiComponent;
+import dev.radley.omgstarwars.dagger.DaggerApiComponent;
 import dev.radley.omgstarwars.network.StarWarsService;
 import dev.radley.omgstarwars.models.Film;
 import dev.radley.omgstarwars.models.People;
@@ -26,12 +24,15 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Call;
-import retrofit2.Callback;
 import timber.log.Timber;
 
 /**
- * ViewModel for DetailAtivity
+ * ViewModel for DetailActivity
+ *
+ * - mostly manages related item lists
+ * - provides liveData for existing related list
+ * - displays custom list titles for models that have custom titles
+ * - resolves finding homeworld and/or single species in models that have those values
  */
 public class DetailViewModel extends ViewModel {
 

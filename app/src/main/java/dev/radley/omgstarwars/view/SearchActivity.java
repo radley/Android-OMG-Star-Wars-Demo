@@ -27,6 +27,25 @@ import dev.radley.omgstarwars.viewmodels.SearchViewModel;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * SearchActivity provides results for search queries
+ *
+ * - launched from CategoriesActivity when user submits query in searchView
+ *      - passes <code>CATEGORY</code> and <code>QUERY</code> extras in bundle
+ * - persists the ToolBar searchView so user can update query
+ * - displays search result count and loading state in <code>resultsText</code>
+ * - uses spinner to switch between categories
+ * - automatically updates (after a delay) when query text or category changes
+ *      - ignores querys less than 2 characters
+ * - provides a recyclerView list to display results
+ *      - result item includes thumbnail and name of item
+ *      - query string is BOLD in item name
+ *      - displays .model value for Starship items because Search also looks in model value
+ * - tapping item will open it in DetailActivity
+ * - shows loading state
+ * - displays Toast on error
+ *
+ */
 public class SearchActivity extends AppCompatActivity {
 
 

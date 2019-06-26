@@ -24,6 +24,21 @@ import dev.radley.omgstarwars.viewmodels.CategoryViewModel;
 import dev.radley.omgstarwars.listeners.RecyclerTouchListener;
 import dev.radley.omgstarwars.adapters.CategoryAdapter;
 
+
+/**
+ * CategoryFragment provides a grid view of items for a category
+ *
+ * - loads items by api page
+ * - adds next page (if available) when scrolled to bottom
+ * - tapping an item will open it in DetailActivity
+ *      - passes the item's model in the Bundle
+ * - displays progress spinners for loading state
+ *      - top spinner for initial load
+ *      - bottom spinner for subsequent loads
+ * - displays Toast on error
+ * - loads different size grid items based on model
+ *
+ */
 public class CategoryFragment extends Fragment {
 
 
