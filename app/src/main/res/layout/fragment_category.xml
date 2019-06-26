@@ -22,17 +22,17 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:spanCount="@integer/grid_span_count_tall" />
 
-    <Button
-        style="@style/Button"
-        android:id="@+id/retry_button"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:text="@string/retry"
-        android:visibility="gone"
-        android:layout_centerInParent="true"/>
-
     <ProgressBar
         android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        android:layout_margin="64dp"/>
+
+    <ProgressBar
+        android:id="@+id/launch_progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

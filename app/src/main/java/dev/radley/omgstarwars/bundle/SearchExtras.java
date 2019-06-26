@@ -16,7 +16,13 @@
 
 package dev.radley.omgstarwars.bundle;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+
+import java.io.Serializable;
+
+import dev.radley.omgstarwars.view.SearchActivity;
 
 /**
  * Holding intent extra names and utility methods for intent handling.
@@ -25,6 +31,25 @@ public class SearchExtras {
     public static final String QUERY = "QUERY";
     public static final String CATEGORY = "CATEGORY";
     public static final String RESULT_LIST = "RESULT_LIST";
+
+    private static Intent intent;
+
+    /**
+     * Intent & bundle builder for SearchActivity
+     *
+     * @param context Context
+     * @param query String
+     * @param category String
+     * @return
+     */
+    public static Intent getIntent(Context context, String query, String category) {
+
+        intent = new Intent(context, SearchActivity.class);
+        intent.putExtra(SearchExtras.QUERY, query);
+        intent.putExtra(SearchExtras.CATEGORY, category);
+
+        return intent;
+    }
 
 
     /**

@@ -17,7 +17,7 @@
         tools:replace="android:icon"
         >
         <activity
-            android:name=".view.BrowserActivity"
+            android:name=".view.CategoriesActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -29,9 +29,11 @@
         <activity android:name=".view.DetailActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
+
         <activity android:name=".view.SearchActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

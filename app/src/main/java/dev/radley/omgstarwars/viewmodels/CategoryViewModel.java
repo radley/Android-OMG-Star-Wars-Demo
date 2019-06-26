@@ -7,23 +7,21 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.inject.Inject;
 
-import dev.radley.omgstarwars.data.Film;
-import dev.radley.omgstarwars.data.People;
-import dev.radley.omgstarwars.data.Planet;
-import dev.radley.omgstarwars.data.SWModel;
-import dev.radley.omgstarwars.data.SWModelList;
-import dev.radley.omgstarwars.data.Species;
-import dev.radley.omgstarwars.data.Starship;
-import dev.radley.omgstarwars.data.Vehicle;
 import dev.radley.omgstarwars.di.DaggerApiComponent;
+import dev.radley.omgstarwars.models.Film;
+import dev.radley.omgstarwars.models.People;
+import dev.radley.omgstarwars.models.Planet;
+import dev.radley.omgstarwars.models.SWModel;
+import dev.radley.omgstarwars.models.SWModelList;
+import dev.radley.omgstarwars.models.Species;
+import dev.radley.omgstarwars.models.Starship;
+import dev.radley.omgstarwars.models.Vehicle;
 import dev.radley.omgstarwars.network.StarWarsService;
+import dev.radley.omgstarwars.utilities.SortUtils;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
@@ -39,17 +37,32 @@ public class CategoryViewModel extends ViewModel {
     private int DEFAULT_PAGE = 1;
     private int page = DEFAULT_PAGE;
     private MutableLiveData<ArrayList<SWModel>> liveData;
+    private MutableLiveData<Boolean> loadError;
+    private MutableLiveData<Boolean> loading;
     private String next;
     private String category;
 
+    /**
+     * ViewModel for CategoryFragment
+     * - instantiate models
+     */
     CategoryViewModel() {
 
         DaggerApiComponent.create().inject(this);
         modelList = new ArrayList<>();
         compositeDisposable = new CompositeDisposable();
+
         liveData = new MutableLiveData<>();
+        loadError = new MutableLiveData<>();
+        loading = new MutableLiveData<>();
     }
 
+    /**
+     * Instantiate liveData, assign category, and load data
+     *
+     * @param category String
+     * @return liveData list
+     */
     public LiveData<ArrayList<SWModel>> getList(String category) {
 
         this.category = category;
@@ -57,6 +70,28 @@ public class CategoryViewModel extends ViewModel {
         return liveData;
     }
 
+    /**
+     * Reports error state
+     *
+     * @return boolean
+     */
+    public LiveData<Boolean> getLoadError() {
+        return loadError;
+    }
+
+    /**
+     * Reports loading state
+     *
+     * @return boolean
+     */
+    public LiveData<Boolean> getLoading() {
+        return loading;
+    }
+
+    /**
+     * Called when recycler view scrolls to bottom
+     * - loads next page of data if there is more
+     */
     public void getNextPage() {
 
         if (next != null) {
@@ -64,6 +99,9 @@ public class CategoryViewModel extends ViewModel {
         }
     }
 
+    /**
+     * Take out the trash...
+     */
     public void clear() {
         compositeDisposable.dispose();
     }
@@ -76,9 +114,12 @@ public class CategoryViewModel extends ViewModel {
         return modelList.get(position);
     }
 
+    /**
+     * Load data based on category
+     */
     private void loadData() {
 
-        //TODO loading state
+        loading.setValue(true);
 
         switch (category) {
             case "films":
@@ -102,6 +143,11 @@ public class CategoryViewModel extends ViewModel {
         }
     }
 
+    /**
+     * Load by page
+     * - return results to applyResults()
+     * - report error to loadError
+     */
     private void fetchFilms() {
 
         compositeDisposable.add(service.getApi().getFilmsByPage(page)
@@ -114,25 +160,23 @@ public class CategoryViewModel extends ViewModel {
 
                         if (list != null) {
 
-                            // sort films by episode
-                            Collections.sort(list.results, (Comparator<SWModel>) (o1, o2) ->
-                                    ((Film) o1).episodeId - ((Film) o2).episodeId);
-
-                            applyResults(list.results, list.next);
+                            ArrayList<Film> films = SortUtils.sortFilmsByEpisode(list.results);
+                            applyResults(films, list.next);
                         }
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
-                        // TODO error state
-                        //countryError.setValue(true);
+                        loadError.setValue(true);
                     }
                 }));
-
-
     }
 
+    /**
+     * Load by page
+     * - return results to applyResults()
+     * - report error to loadError
+     */
     private void fetchPeople() {
 
         compositeDisposable.add(service.getApi().getPeopleByPage(page)
@@ -150,11 +194,16 @@ public class CategoryViewModel extends ViewModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        //countryError.setValue(true);
+                        loadError.setValue(true);
                     }
                 }));
     }
 
+    /**
+     * Load by page
+     * - return results to applyResults()
+     * - report error to loadError
+     */
     private void fetchPlanets() {
 
         compositeDisposable.add(service.getApi().getPlanetsByPage(page)
@@ -172,11 +221,16 @@ public class CategoryViewModel extends ViewModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        //countryError.setValue(true);
+                        loadError.setValue(true);
                     }
                 }));
     }
 
+    /**
+     * Load by page
+     * - return results to applyResults()
+     * - report error to loadError
+     */
     private void fetchSpecies() {
 
         compositeDisposable.add(service.getApi().getSpeciesByPage(page)
@@ -194,25 +248,16 @@ public class CategoryViewModel extends ViewModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        //countryError.setValue(true);
+                        loadError.setValue(true);
                     }
                 }));
     }
 
-    private void applyResults(ArrayList<?> results, String next) {
-
-        page = getNextPage(next);
-
-        for(int i = 0; i < results.size(); i++){
-            Object item = results.get(i);
-            if(item instanceof SWModel){
-                modelList.add((SWModel) item);
-            }
-        }
-
-        liveData.setValue(modelList);
-    }
-
+    /**
+     * Load by page
+     * - return results to applyResults()
+     * - report error to loadError
+     */
     private void fetchStarships() {
 
         compositeDisposable.add(service.getApi().getStarshipsByPage(page)
@@ -230,11 +275,16 @@ public class CategoryViewModel extends ViewModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        //countryError.setValue(true);
+                        loadError.setValue(true);
                     }
                 }));
     }
 
+    /**
+     * Load by page
+     * - return results to applyResults()
+     * - report error to loadError
+     */
     private void fetchVehicles() {
 
         compositeDisposable.add(service.getApi().getVehiclesByPage(page)
@@ -252,11 +302,43 @@ public class CategoryViewModel extends ViewModel {
 
                     @Override
                     public void onError(Throwable e) {
-                        //countryError.setValue(true);
+                        loadError.setValue(true);
                     }
                 }));
     }
 
+    /**
+     * - called by observable onSuccess
+     * - adds various model types as base SWModel to modelList
+     * - clears loading & error states
+     * - sets value to liveData
+     *
+     * @param results Arraylist<?>
+     * @param next    String
+     */
+    private void applyResults(ArrayList<?> results, String next) {
+
+        page = getNextPage(next);
+
+        for (int i = 0; i < results.size(); i++) {
+            Object item = results.get(i);
+            if (item instanceof SWModel) {
+                modelList.add((SWModel) item);
+            }
+        }
+
+        loading.setValue(false);
+        loadError.setValue(false);
+        liveData.setValue(modelList);
+    }
+
+    /**
+     * - updates <code>next</code> to <code>url</code>
+     * - if <code>next</code> exists, parses <code>url</code> for <code>page</code> number
+     *
+     * @param url String
+     * @return next page integer (if any)
+     */
     private int getNextPage(String url) {
 
         next = url;
@@ -265,7 +347,6 @@ public class CategoryViewModel extends ViewModel {
             return DEFAULT_PAGE;
 
         Uri uri = Uri.parse(url);
-        Set<String> args = uri.getQueryParameterNames();
 
         if (uri.getQueryParameter("page") != null) {
             return Integer.parseInt(Objects.requireNonNull(uri.getQueryParameter("page")));

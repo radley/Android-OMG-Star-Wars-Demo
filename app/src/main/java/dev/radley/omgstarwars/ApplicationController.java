@@ -6,6 +6,9 @@ import timber.log.Timber;
 
 public class ApplicationController extends Application {
 
+    /**
+     * Add Timber support for logging
+     */
     @Override
     public void onCreate() {
         super.onCreate();

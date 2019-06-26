@@ -1,6 +1,8 @@
 package dev.radley.omgstarwars.di;
 
 
+import javax.inject.Singleton;
+
 import dagger.Component;
 import dev.radley.omgstarwars.network.StarWarsService;
 import dev.radley.omgstarwars.viewmodels.CategoryViewModel;
@@ -8,6 +10,10 @@ import dev.radley.omgstarwars.viewmodels.DetailViewModel;
 import dev.radley.omgstarwars.viewmodels.SearchViewModel;
 
 
+/**
+ * Injectors
+ */
+@Singleton
 @Component(modules = {ApiModule.class})
 public interface ApiComponent {
 

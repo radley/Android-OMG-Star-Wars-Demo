@@ -1,6 +1,8 @@
 package dev.radley.omgstarwars.di;
 
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import dev.radley.omgstarwars.network.StarWarsApi;
@@ -9,6 +11,10 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+
+/**
+ * Modules
+ */
 @Module
 class ApiModule {
 
@@ -25,6 +31,7 @@ class ApiModule {
                 .create(StarWarsApi.class);
     }
 
+    @Singleton
     @Provides
     StarWarsService provideStarWarsService() {
         return new StarWarsService();

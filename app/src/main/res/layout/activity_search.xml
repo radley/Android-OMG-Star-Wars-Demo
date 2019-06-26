@@ -46,22 +46,37 @@
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/grid"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/grid_padding"
-        android:paddingLeft="@dimen/grid_padding"
-        android:paddingRight="@dimen/grid_padding"
-        android:paddingBottom="@dimen/navbar_padding"
-        android:scrollbarStyle="outsideOverlay"
-        android:scrollbars="vertical"
-        android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:spanCount="@integer/grid_span_count_search" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/grid_padding"
+            android:paddingLeft="@dimen/grid_padding"
+            android:paddingRight="@dimen/grid_padding"
+            android:paddingBottom="@dimen/navbar_padding"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="32dp"/>
+
+    </RelativeLayout>
+
+
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

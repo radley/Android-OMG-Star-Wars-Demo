@@ -16,11 +16,11 @@
 
 package dev.radley.omgstarwars.bundle;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 
 import dev.radley.omgstarwars.view.DetailActivity;
-import dev.radley.omgstarwars.data.SWModel;
+import dev.radley.omgstarwars.models.SWModel;
 
 /**
  * Holding intent extra names and utility methods for intent handling.
@@ -30,6 +30,21 @@ public class DetailExtras {
 
     private static Intent intent;
 
+    /**
+     * Intent builder for DetailActivity
+     *
+     * @param context
+     * @param item SWModel
+     * @return intent
+     */
+    public static Intent getIntent(Context context, SWModel item) {
+
+        intent = new Intent(context, DetailActivity.class);
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.putExtra(DetailExtras.MODEL, item);
+
+        return intent;
+    }
 
     /**
      * Checks if all extras are present in an intent.
@@ -62,14 +77,4 @@ public class DetailExtras {
         }
         return false;
     }
-
-    public static Intent getIntent(Activity activity, SWModel item) {
-
-        intent = new Intent(activity, DetailActivity.class);
-        intent.setAction(Intent.ACTION_VIEW);
-        intent.putExtra(DetailExtras.MODEL, item);
-
-        return intent;
-    }
-
 }

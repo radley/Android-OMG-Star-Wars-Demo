@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -27,14 +28,21 @@ import dev.radley.omgstarwars.adapters.CategoryAdapter;
 
 public class CategoryFragment extends Fragment {
 
-    private Button retryButton;
+
     private CategoryAdapter adapter;
     private CategoryViewModel viewModel;
     private ProgressBar progressBar;
+    private ProgressBar launchProgressBar;
     private RecyclerView recyclerView;
     private RecyclerTouchListener touchListener;
 
 
+    /**
+     * Create instance of category fragment
+     *
+     * @param category
+     * @return CategoryFragent
+     */
     public static CategoryFragment newInstance(String category) {
         CategoryFragment myFragment = new CategoryFragment();
 
@@ -44,6 +52,16 @@ public class CategoryFragment extends Fragment {
         return myFragment;
     }
 
+    /**
+     * - setup layout in view
+     * - setup viewModel
+     * - get category id from bundle and pass it to the viewModel
+     *
+     * @param inflater LayoutInflater
+     * @param container ViewGroup
+     * @param savedInstanceState Bundle
+     * @return view View
+     */
     @Nullable
     @Override
     public View onCreateView(@NotNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -53,12 +71,10 @@ public class CategoryFragment extends Fragment {
         assert getArguments() != null;
         String category = getArguments().getString(SearchExtras.CATEGORY);
 
-        View mView = inflater.inflate(R.layout.fragment_category, container, false);
-
-        retryButton = mView.findViewById(R.id.retry_button);
-        progressBar = mView.findViewById(R.id.progress);
-
-        recyclerView = mView.findViewById(R.id.grid);
+        View view = inflater.inflate(R.layout.fragment_category, container, false);
+        progressBar = view.findViewById(R.id.progress);
+        launchProgressBar = view.findViewById(R.id.launch_progress);
+        recyclerView = view.findViewById(R.id.grid);
 
         assert category != null;
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), getSpanCount(category)));
@@ -68,36 +84,52 @@ public class CategoryFragment extends Fragment {
                 .get(CategoryViewModel.class);
 
         observeViewModel(category);
-        return mView;
+        return view;
     }
 
+    /**
+     * Add viewModel observers for
+     *  - list updates
+     *  - loading state
+     *  - error state
+     *
+     * @param category String
+     */
     private void observeViewModel(String category) {
         viewModel.getList(category).observe(this, swModel -> {
 
-            if(swModel != null) {
-
-                if(adapter != null) {
-                    adapter.notifyDataSetChanged();
-                } else {
-                    adapter = new CategoryAdapter(getActivity(), swModel);
-                    adapter.setOnBottomReachedListener(position -> viewModel.getNextPage());
-
-                    recyclerView.setAdapter(adapter);
-                }
-
-                retryButton.setVisibility(View.GONE);
-                progressBar.setVisibility(View.GONE);
-                recyclerView.setVisibility(View.VISIBLE);
-
-
-                //list.setVisibility(View.VISIBLE);
-                //adapter.notifyDataSetChanged();
+            if(adapter != null) {
+                adapter.notifyDataSetChanged();
             } else {
-                //list.setVisibility(View.GONE);
+                adapter = new CategoryAdapter(swModel);
+                adapter.setOnBottomReachedListener(position -> viewModel.getNextPage());
+
+                recyclerView.setAdapter(adapter);
             }
+            recyclerView.setVisibility(View.VISIBLE);
+            launchProgressBar.setVisibility(View.GONE);
+
+        });
+
+        viewModel.getLoadError().observe(this, (Boolean error) -> {
+
+            if(error) {
+                Toast.makeText(getActivity(), getString(R.string.error_message, viewModel.getId()), Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
+                launchProgressBar.setVisibility(View.GONE);
+            }
+        });
+
+        viewModel.getLoading().observe(this, (Boolean isLoading) -> {
+
+            if(launchProgressBar.getVisibility() == View.GONE)
+                progressBar.setVisibility(isLoading ? View.VISIBLE : View.GONE);
         });
     }
 
+    /**
+     * Start listeners
+     */
     @Override
     public void onStart() {
         super.onStart();
@@ -114,6 +146,9 @@ public class CategoryFragment extends Fragment {
         recyclerView.addOnItemTouchListener(touchListener);
     }
 
+    /**
+     * Stop listeners & remove adapter
+     */
     @Override
     public void onStop() {
         super.onStop();
@@ -122,12 +157,21 @@ public class CategoryFragment extends Fragment {
         recyclerView.removeOnItemTouchListener(touchListener);
     }
 
+    /**
+     * Clear viewModel on exit
+     */
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         viewModel.clear();
     }
 
+    /**
+     * Get recyclerView span count based on model type
+     *
+     * @param id
+     * @return spac count resource
+     */
     private int getSpanCount(String id) {
 
         if(id.equals(getResources().getString(R.string.category_id_starships)) ||
@@ -138,7 +182,12 @@ public class CategoryFragment extends Fragment {
         }
     }
 
-    // called from activity to scroll back to top
+    /**
+     * Called from activity when tab is double-tapped
+     * Enables recyclerView to scroll back to top
+     *
+     * @return
+     */
     public RecyclerView getRecyclerView() {
         return recyclerView;
     }

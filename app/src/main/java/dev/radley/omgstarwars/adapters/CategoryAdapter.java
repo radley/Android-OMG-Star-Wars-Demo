@@ -1,6 +1,5 @@
 package dev.radley.omgstarwars.adapters;
 
-import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,27 +18,32 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
-import dev.radley.omgstarwars.data.SWModel;
+import dev.radley.omgstarwars.models.SWModel;
 import dev.radley.omgstarwars.listeners.OnBottomReachedListener;
-import dev.radley.omgstarwars.utilities.SWCard;
+import dev.radley.omgstarwars.viewmodels.SWCard;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 
     private ArrayList<SWModel> modelList;
-    private Context context;
     private OnBottomReachedListener onBottomReachedListener;
 
-    public CategoryAdapter(Context context, ArrayList<SWModel> list) {
+    /**
+     *
+     * @param list ArrayList<SWModel>
+     */
+    public CategoryAdapter(ArrayList<SWModel> list) {
 
         modelList = list;
-        this.context = context;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    /**
+     * Instantiate ViewHolder with thumbnail and title
+     */
+    static class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView titleText;
         private ImageView thumbnail;
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
 
             super(itemView);
             titleText = itemView.findViewById(R.id.title);
@@ -47,42 +51,68 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         }
     }
 
+    /**
+     *
+     * @param parent ViewGroup
+     * @param viewType not used
+     * @return new ViewHolder
+     */
     @NotNull
     @Override
     public CategoryAdapter.ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
 
-        LayoutInflater inflater = LayoutInflater.from(context);
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         View view = inflater.inflate(R.layout.card_grid, parent, false);
         return new CategoryAdapter.ViewHolder(view);
     }
 
+    /**
+     * Populate ViewHolder with content, add onBottomReached listener
+     *
+     * @param holder ViewHolder
+     * @param position adapter position
+     */
     @Override
     public void onBindViewHolder(@NotNull CategoryAdapter.ViewHolder holder, int position) {
 
         SWModel item = modelList.get(position);
         holder.titleText.setText(item.getTitle());
 
+        // assign default & missing images
         RequestOptions requestOptions = new RequestOptions()
                 .placeholder(SWCard.getPlaceholderImage(item.getCategoryId()))
                 .error(SWCard.getFallbackImage(item.getCategoryId()));
 
+        // add image to thumbnail with fade-in
         Glide.with(holder.thumbnail.getContext())
                 .setDefaultRequestOptions(requestOptions)
                 .load(Uri.parse(item.getImagePath()))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(holder.thumbnail);
 
-        if (position == modelList.size() - 1){
+        // check for more content when user scrolls to bottom
+        if (onBottomReachedListener!=null && position == modelList.size() - 1){
             onBottomReachedListener.onBottomReached(position);
         }
     }
 
+
+    /**
+     *
+     * @return <code>modelList.size()</code>
+     */
     @Override
     public int getItemCount() {
         return modelList.size();
     }
 
+
+    /**
+     * Used to check for more content when user scrolls to bottom
+     *
+     * @param onBottomReachedListener
+     */
     public void setOnBottomReachedListener(OnBottomReachedListener onBottomReachedListener){
 
         this.onBottomReachedListener = onBottomReachedListener;

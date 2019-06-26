@@ -12,16 +12,16 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/card_corner_radius"
-        app:cardElevation="3dp"
-        android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground">
+        app:cardElevation="3dp">
 
         <ImageView
             android:id="@+id/thumbnail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:clickable="true"
             android:cropToPadding="true"
+            android:foreground="?android:attr/selectableItemBackground"
             android:scaleType="fitCenter" />
 
     </androidx.cardview.widget.CardView>

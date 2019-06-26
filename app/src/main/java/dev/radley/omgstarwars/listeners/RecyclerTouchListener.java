@@ -22,10 +22,16 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
+
 public abstract class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
 
     private final GestureDetector gestureDetector;
 
+    /**
+     * Detect when item in recyclerView is touched (onSingleTapUp) and return position
+     *
+     * @param context Context
+     */
     public RecyclerTouchListener(Context context) {
 
         gestureDetector = new GestureDetector(context,
@@ -37,6 +43,11 @@ public abstract class RecyclerTouchListener implements RecyclerView.OnItemTouchL
                 });
     }
 
+    /**
+     *
+     * @param holder ViewHolder
+     * @param position ViewHolder position
+     */
     public abstract void onItemSelected(RecyclerView.ViewHolder holder, int position);
 
     @Override
@@ -51,12 +62,22 @@ public abstract class RecyclerTouchListener implements RecyclerView.OnItemTouchL
         return false;
     }
 
-    
+    /**
+     * Ignore unused touch events
+     *
+     * @param rv RecyclerView
+     * @param e MotionEvent
+     */
     @Override
     public final void onTouchEvent(RecyclerView rv, MotionEvent e) {
         throw new UnsupportedOperationException("Not implemented");
     }
 
+    /**
+     * Ignore unused child / ancestor exclusions
+     *
+     * @param disallowIntercept boolean
+     */
     @Override
     public final void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
         throw new UnsupportedOperationException("Not implemented");
