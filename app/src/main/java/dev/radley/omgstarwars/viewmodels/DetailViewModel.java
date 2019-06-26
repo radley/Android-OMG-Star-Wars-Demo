@@ -75,6 +75,26 @@ public class DetailViewModel extends ViewModel {
         return model.getImagePath();
     }
 
+    public String getHomeWorld()
+    {
+        if(model instanceof People) {
+            return ((People) model).homeWorldUrl;
+        } else if(model instanceof Species) {
+            return ((Species) model).homeWorld;
+        }
+
+        return null;
+    }
+
+    public String getSingleSpecies()
+    {
+        if(model instanceof People) {
+            return ((People) model).getRelatedSpecies().get(0);
+        }
+
+        return null;
+    }
+
     /**
      * Returns related films list from model (if any)
      * @return ArrayList<String>

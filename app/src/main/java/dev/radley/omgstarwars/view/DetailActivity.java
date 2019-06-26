@@ -28,14 +28,18 @@ import net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout;
 import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.adapters.RelatedAdapter;
 import dev.radley.omgstarwars.bundle.DetailExtras;
-import dev.radley.omgstarwars.models.Film;
 import dev.radley.omgstarwars.models.People;
 import dev.radley.omgstarwars.models.Planet;
 import dev.radley.omgstarwars.models.SWModel;
 import dev.radley.omgstarwars.models.Species;
-import dev.radley.omgstarwars.models.Starship;
-import dev.radley.omgstarwars.models.Vehicle;
 import dev.radley.omgstarwars.utilities.FormatUtils;
+import dev.radley.omgstarwars.view.detailview.DetailView;
+import dev.radley.omgstarwars.view.detailview.FilmDetailView;
+import dev.radley.omgstarwars.view.detailview.PeopleDetailView;
+import dev.radley.omgstarwars.view.detailview.PlanetDetailView;
+import dev.radley.omgstarwars.view.detailview.SpeciesDetailView;
+import dev.radley.omgstarwars.view.detailview.StarshipDetailView;
+import dev.radley.omgstarwars.view.detailview.VehicleDetailView;
 import dev.radley.omgstarwars.viewmodels.DetailViewModel;
 import dev.radley.omgstarwars.viewmodels.SWCard;
 
@@ -44,7 +48,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private ActionBar actionBar;
     private LinearLayout layout;
-    private View detailView;
+    private DetailView detailView;
     private DetailViewModel viewModel;
 
     /**
@@ -70,7 +74,7 @@ public class DetailActivity extends AppCompatActivity {
         actionBar.setTitle(viewModel.getTitle());
         updateHeroImage(viewModel.getImage(), SWCard.getFallbackImage(viewModel.getCategory()));
 
-        addFactView();
+        addDetailView();
         addRelatedLists();
     }
 
@@ -114,174 +118,43 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     /**
-     * Add "facts" detail layout based on category
+     * Add detail view based on category
      */
-    protected void addFactView() {
+    protected void addDetailView() {
 
         switch (viewModel.getCategory()) {
+
             case "films":
-                addFilmFacts();
+                detailView = new FilmDetailView(this, viewModel.getModel());
                 break;
+
             case "people":
-                addPeopleFacts();
+                detailView = new PeopleDetailView(this, viewModel.getModel());
+                addHomeWorldTextLink();
+                addSpeciesTextLink();
                 break;
+
             case "planets":
-                addPlanetFacts();
+                detailView = new PlanetDetailView(this, viewModel.getModel());
                 break;
+
             case "species":
-                addSpeciesFacts();
+                detailView = new SpeciesDetailView(this, viewModel.getModel());
+                addHomeWorldTextLink();
                 break;
+
             case "starships":
-                addStarshipFacts();
+                detailView = new StarshipDetailView(this, viewModel.getModel());
                 break;
+
             case "vehicles":
-                addVehicleFacts();
+                detailView = new VehicleDetailView(this, viewModel.getModel());
                 break;
         }
 
+        layout.addView(detailView);
     }
 
-    /**
-     * Function shortcut for adding layout resource
-     *
-     * @param view layout resource id
-     */
-    protected void insertDetailView(int view) {
-
-        LayoutInflater factory = LayoutInflater.from(this);
-        detailView = factory.inflate(view, null);
-        layout.addView(detailView, 0);
-    }
-
-    /**
-     * Function shortcut for applying text to textView
-     * makes it more readable
-     *
-     * @param id   int
-     * @param text String
-     */
-    private void setText(int id, String text) {
-        ((TextView) detailView.findViewById(id)).setText(text);
-    }
-
-    /**
-     * Add facts layout and fill out text
-     */
-    private void addFilmFacts() {
-
-        insertDetailView(R.layout.view_detail_film);
-
-        Film film = (Film) viewModel.getModel();
-
-        setText(R.id.director, film.director);
-        setText(R.id.producer, film.producer);
-        setText(R.id.opening_crawl, film.openingCrawl);
-        setText(R.id.release_date, FormatUtils.getFormattedDate(this, film.created));
-    }
-
-    /**
-     * Add facts layout and fill out text
-     */
-    private void addPeopleFacts() {
-
-        insertDetailView(R.layout.view_detail_person);
-
-        People people = (People) viewModel.getModel();
-
-        setText(R.id.dob, people.birthYear);
-        setText(R.id.hair_color, people.hairColor);
-        setText(R.id.skin_color, people.skinColor);
-        setText(R.id.gender, people.gender);
-        setText(R.id.height, FormatUtils.getFormattedHeightCm(this, people.height));
-        setText(R.id.mass, FormatUtils.getFormattedKg(this, people.mass));
-
-        addHomeWorld(people.homeWorldUrl);
-        addSingleSpecies(people.getRelatedSpecies().get(0));
-    }
-
-    /**
-     * Add facts layout and fill out text
-     */
-    private void addPlanetFacts() {
-
-        insertDetailView(R.layout.view_detail_planet);
-
-        Planet planet = (Planet) viewModel.getModel();
-
-        setText(R.id.climate, planet.climate);
-        setText(R.id.gravity, planet.gravity);
-        setText(R.id.terrain, planet.terrain);
-        setText(R.id.population, FormatUtils.getFormattedNumber(planet.population));
-        setText(R.id.rotation_period, FormatUtils.getFormattedDays(this, planet.rotationPeriod));
-        setText(R.id.orbital_period, FormatUtils.getFormattedDays(this, planet.orbitalPeriod));
-        setText(R.id.diameter, FormatUtils.getFormattedDistance(this, planet.diameter));
-        setText(R.id.surface_water, FormatUtils.getFormattedPercentage(this, planet.surfaceWater));
-    }
-
-    /**
-     * Add facts layout and fill out text
-     */
-    private void addSpeciesFacts() {
-
-        insertDetailView(R.layout.view_detail_species);
-
-        Species species = (Species) viewModel.getModel();
-
-        setText(R.id.classification, species.classification);
-        setText(R.id.designation, species.designation);
-        setText(R.id.skin_colors, species.skinColors);
-        setText(R.id.hair_color, species.hairColors);
-        setText(R.id.eye_colors, species.eyeColors);
-        setText(R.id.language, species.language);
-        setText(R.id.average_height, FormatUtils.getFormattedHeightCm(this, species.averageHeight));
-        setText(R.id.average_lifespan, FormatUtils.getFormattedYears(this, species.averageLifespan));
-
-        addHomeWorld(species.homeWorld);
-    }
-
-    /**
-     * Add facts layout and fill out text
-     */
-    private void addStarshipFacts() {
-
-        insertDetailView(R.layout.view_detail_starship);
-
-        Starship starship = (Starship) viewModel.getModel();
-
-        setText(R.id.hyperdrive_rating, starship.hyperdriveRating);
-        setText(R.id.mglt, starship.mglt);
-        setText(R.id.starship_class, starship.starshipClass);
-
-        setText(R.id.model, starship.model);
-        setText(R.id.manufacturer, starship.manufacturer);
-        setText(R.id.length, FormatUtils.getFormattedLengthM(this, starship.length));
-        setText(R.id.cargo_capacity, FormatUtils.getFormattedTonnage(this, starship.cargoCapacity));
-        setText(R.id.cost_in_credits, FormatUtils.getFormattedCredits(this, starship.costInCredits));
-        setText(R.id.max_atmosphering_speed, FormatUtils.getFormattedSpeedKph(this, starship.maxAtmospheringSpeed));
-        setText(R.id.crew, FormatUtils.getFormattedNumber(starship.crew));
-        setText(R.id.passengers, FormatUtils.getFormattedNumber(starship.passengers));
-        setText(R.id.consumables, FormatUtils.getFormattedNumber(starship.consumables));
-    }
-
-    /**
-     * Add facts layout and fill out text
-     */
-    private void addVehicleFacts() {
-
-        insertDetailView(R.layout.view_detail_vehicle);
-
-        Vehicle vehicle = (Vehicle) viewModel.getModel();
-
-        setText(R.id.model, vehicle.model);
-        setText(R.id.manufacturer, vehicle.manufacturer);
-        setText(R.id.length, FormatUtils.getFormattedLengthM(this, vehicle.length));
-        setText(R.id.cargo_capacity, FormatUtils.getFormattedTonnage(this, vehicle.cargoCapacity));
-        setText(R.id.cost_in_credits, FormatUtils.getFormattedCredits(this, vehicle.costInCredits));
-        setText(R.id.max_atmosphering_speed, FormatUtils.getFormattedSpeedKph(this, vehicle.maxAtmospheringSpeed));
-        setText(R.id.crew, FormatUtils.getFormattedNumber(vehicle.crew));
-        setText(R.id.passengers, FormatUtils.getFormattedNumber(vehicle.passengers));
-        setText(R.id.consumables, FormatUtils.getFormattedNumber(vehicle.consumables));
-    }
 
     /**
      * Add related items lists (if any) in this order...
@@ -456,21 +329,20 @@ public class DetailActivity extends AppCompatActivity {
     /**
      * Adds homeworld text link (if available)
      *
-     * @param homeWorldUrl String
      */
-    protected void addHomeWorld(String homeWorldUrl) {
+    protected void addHomeWorldTextLink() {
 
-        if (homeWorldUrl == null)
+        if (viewModel.getHomeWorld() == null)
             return;
 
         final TextView homeWorldText = detailView.findViewById(R.id.homeworld);
 
-        if (!homeWorldUrl.substring(0, 4).equals("http")) {
-            homeWorldText.setText(homeWorldUrl);
+        if (!viewModel.getHomeWorld().substring(0, 4).equals("http")) {
+            homeWorldText.setText(viewModel.getHomeWorld());
             return;
         }
 
-        int id = FormatUtils.getId(homeWorldUrl);
+        int id = FormatUtils.getId(viewModel.getHomeWorld());
 
         viewModel.getHomeWorlds(id).observe(this, (Planet planet) -> {
 
@@ -482,21 +354,21 @@ public class DetailActivity extends AppCompatActivity {
     /**
      * Adds species text link (if available)
      *
-     * @param speciesUrl String
      */
-    protected void addSingleSpecies(String speciesUrl) {
+    protected void addSpeciesTextLink() {
 
-        if (speciesUrl == null)
+
+        if (viewModel.getSingleSpecies() == null)
             return;
 
         final TextView speciesText = detailView.findViewById(R.id.species);
 
-        if (!speciesUrl.substring(0, 4).equals("http")) {
-            speciesText.setText(speciesUrl);
+        if (!viewModel.getSingleSpecies().substring(0, 4).equals("http")) {
+            speciesText.setText(viewModel.getSingleSpecies());
             return;
         }
 
-        int id = FormatUtils.getId(speciesUrl);
+        int id = FormatUtils.getId(viewModel.getSingleSpecies());
 
         viewModel.getSingleSpecies(id).observe(this, (Species species) -> {
 
