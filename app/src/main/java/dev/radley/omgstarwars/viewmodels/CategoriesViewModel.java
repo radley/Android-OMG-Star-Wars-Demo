@@ -2,15 +2,15 @@ package dev.radley.omgstarwars.viewmodels;
 
 import androidx.lifecycle.ViewModel;
 
-import dev.radley.omgstarwars.models.Categories;
+import dev.radley.omgstarwars.models.Category;
 
 /**
  * ViewModel class for CategoriesActivity
  */
 public class CategoriesViewModel extends ViewModel {
 
-    private static String[] categoryIds = Categories.categoryIds;
-    private static String[] categoryTitles = Categories.categoryTitles;
+    private static String[] categoryIds = Category.categoryIds;
+    private static String[] categoryTitles = Category.categoryTitles;
     private String category = categoryIds[0];
 
     public String getCategory() {

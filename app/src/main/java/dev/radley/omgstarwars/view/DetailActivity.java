@@ -28,6 +28,7 @@ import net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout;
 import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.adapters.RelatedAdapter;
 import dev.radley.omgstarwars.bundle.DetailExtras;
+import dev.radley.omgstarwars.models.Category;
 import dev.radley.omgstarwars.models.People;
 import dev.radley.omgstarwars.models.Planet;
 import dev.radley.omgstarwars.models.SWModel;
@@ -84,7 +85,7 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        viewModel.clear();
+        viewModel.dispose();
     }
 
 
@@ -133,30 +134,30 @@ public class DetailActivity extends AppCompatActivity {
 
         switch (viewModel.getCategory()) {
 
-            case "films":
+            case Category.FILMS:
                 detailView = new FilmDetailView(this, viewModel.getModel());
                 break;
 
-            case "people":
+            case Category.PEOPLE:
                 detailView = new PeopleDetailView(this, viewModel.getModel());
                 addHomeWorldTextLink();
                 addSpeciesTextLink();
                 break;
 
-            case "planets":
+            case Category.PLANETS:
                 detailView = new PlanetDetailView(this, viewModel.getModel());
                 break;
 
-            case "species":
+            case Category.SPECIES:
                 detailView = new SpeciesDetailView(this, viewModel.getModel());
                 addHomeWorldTextLink();
                 break;
 
-            case "starships":
+            case Category.STARSHIPS:
                 detailView = new StarshipDetailView(this, viewModel.getModel());
                 break;
 
-            case "vehicles":
+            case Category.VEHICLES:
                 detailView = new VehicleDetailView(this, viewModel.getModel());
                 break;
         }

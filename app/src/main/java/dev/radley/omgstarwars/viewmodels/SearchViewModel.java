@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
-import dev.radley.omgstarwars.models.Categories;
+import dev.radley.omgstarwars.models.Category;
 import dev.radley.omgstarwars.models.People;
 import dev.radley.omgstarwars.models.Planet;
 import dev.radley.omgstarwars.models.Species;
@@ -42,8 +42,8 @@ public class SearchViewModel extends ViewModel {
     private MutableLiveData<Boolean> error = new MutableLiveData<>();
     private MutableLiveData<Boolean> loading = new MutableLiveData<>();
 
-    private static String[] categoryIds = Categories.categoryIds;
-    private static String[] categoryTitles = Categories.categoryTitles;
+    private static String[] categoryIds = Category.categoryIds;
+    private static String[] categoryTitles = Category.categoryTitles;
     private String category = categoryIds[0];
     private String query = "";
 
@@ -123,7 +123,7 @@ public class SearchViewModel extends ViewModel {
      */
     private void reset() {
 
-        compositeDisposable.dispose();
+        compositeDisposable.clear();
         modelList.clear();
         liveData.setValue(modelList);
         error.setValue(false);
@@ -132,7 +132,7 @@ public class SearchViewModel extends ViewModel {
     /**
      * - clears observers
      */
-    public void clear() {
+    public void dispose() {
 
         compositeDisposable.dispose();
     }
@@ -182,6 +182,7 @@ public class SearchViewModel extends ViewModel {
      */
     private void loadData() {
 
+        Timber.d("loadData");
 
         reset();
         loading.setValue(true);
@@ -189,7 +190,8 @@ public class SearchViewModel extends ViewModel {
         // subscribe to observable based on category
         switch (category) {
 
-            case "films":
+            case Category.FILMS:
+                Timber.d("films");
                 compositeDisposable.add(searchFilms(1, query)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -197,22 +199,25 @@ public class SearchViewModel extends ViewModel {
 
                             @Override
                             public void onNext(SWModelList<Film> list) {
+                                Timber.d("onNext");
                                 updateModelList(list.results);
                             }
 
                             @Override
                             public void onError(Throwable t) {
+                                Timber.d("onError");
                                 onSearchError(t);
                             }
 
                             @Override
                             public void onComplete() {
+                                Timber.d("onComplete");
                                 onSearchComplete();
                             }
                         }));
                 break;
 
-            case "people":
+            case Category.PEOPLE:
                 compositeDisposable.add(searchPeople(1, query)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -235,7 +240,7 @@ public class SearchViewModel extends ViewModel {
                         }));
                 break;
 
-            case "planets":
+            case Category.PLANETS:
                 compositeDisposable.add(searchPlanets(1, query)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -258,7 +263,7 @@ public class SearchViewModel extends ViewModel {
                         }));
                 break;
 
-            case "species":
+            case Category.SPECIES:
                 compositeDisposable.add(searchSpecies(1, query)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -281,7 +286,7 @@ public class SearchViewModel extends ViewModel {
                         }));
                 break;
 
-            case "starships":
+            case Category.STARSHIPS:
                 compositeDisposable.add(searchStarships(1, query)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -304,7 +309,7 @@ public class SearchViewModel extends ViewModel {
                         }));
                 break;
 
-            case "vehicles":
+            case Category.VEHICLES:
                 compositeDisposable.add(searchVehicles(1, query)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -337,6 +342,8 @@ public class SearchViewModel extends ViewModel {
      */
     private void updateModelList(ArrayList<?> list) {
 
+        Timber.d("updateModelList");
+
         for(int i = 0; i < list.size(); i++){
 
             // add various model types as SWModel to list
@@ -354,6 +361,8 @@ public class SearchViewModel extends ViewModel {
      * - updates liveData
      */
     private void onSearchComplete() {
+
+        Timber.d("onSearchComplete");
 
         // sort model list based on result matches
         if(modelList.size() > 0) {

@@ -152,7 +152,7 @@ public class CategoriesActivity extends AppCompatActivity {
 
     /**
      * Tell viewModel category has changed
-     * update searchView hint and clear any query text
+     * update searchView hint and dispose any query text
      *
      * @param position
      */

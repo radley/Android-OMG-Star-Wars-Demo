@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.models.SWModel;
 import dev.radley.omgstarwars.models.Starship;
+import dev.radley.omgstarwars.models.Vehicle;
 import dev.radley.omgstarwars.text.CustomTypefaceSpan;
 import dev.radley.omgstarwars.viewmodels.SWCard;
 
@@ -36,7 +37,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
 
     /**
      *
-     * @param context needed to access font resource
+     * @param context Context
      * @param list ArrayList<SWModel>
      */
     public SearchAdapter(Context context, ArrayList<SWModel> list) {
@@ -50,7 +51,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     /**
      * Assign <code>query</code> value to match in displayed text
      *
-     * @param query string
+     * @param query String
      */
     public void setQuery(String query) {
         this.query = query;
@@ -76,8 +77,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     /**
      *
      * @param parent ViewGroup
-     * @param viewType not used
-     * @return new ViewHolder
+     * @param viewType int (not used)
+     * @return ViewHolder
      */
     @NotNull
     @Override
@@ -92,7 +93,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     /**
      *
      * @param holder ViewHolder
-     * @param position adapter position
+     * @param position int
      */
     @Override
     public void onBindViewHolder(@NotNull SearchAdapter.ViewHolder holder, int position) {
@@ -100,10 +101,12 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         SWModel item = modelList.get(position);
         holder.titleText.setText(getBoldResultText(item.getTitle()));
 
-        // Searching in Starship includes Starship.model result
+        // Searching in Starships includes model result
         // so we should display it as subtitle text
         if(item instanceof Starship) {
             holder.subtitleText.setText(getBoldResultText(((Starship) item).model));
+        } else {
+            holder.subtitleText.setText("");
         }
 
         // assign default & missing images

@@ -159,7 +159,7 @@ public class CategoryFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        viewModel.clear();
+        viewModel.dispose();
     }
 
     /**

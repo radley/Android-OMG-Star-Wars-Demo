@@ -178,7 +178,7 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        viewModel.clear();
+        viewModel.dispose();
     }
 
     /**

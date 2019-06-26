@@ -12,6 +12,7 @@ import java.util.Objects;
 import javax.inject.Inject;
 
 import dev.radley.omgstarwars.di.DaggerApiComponent;
+import dev.radley.omgstarwars.models.Category;
 import dev.radley.omgstarwars.models.Film;
 import dev.radley.omgstarwars.models.People;
 import dev.radley.omgstarwars.models.Planet;
@@ -102,7 +103,7 @@ public class CategoryViewModel extends ViewModel {
     /**
      * Take out the trash...
      */
-    public void clear() {
+    public void dispose() {
         compositeDisposable.dispose();
     }
 
@@ -122,22 +123,22 @@ public class CategoryViewModel extends ViewModel {
         loading.setValue(true);
 
         switch (category) {
-            case "films":
+            case Category.FILMS:
                 fetchFilms();
                 break;
-            case "people":
+            case Category.PEOPLE:
                 fetchPeople();
                 break;
-            case "species":
+            case Category.SPECIES:
                 fetchSpecies();
                 break;
-            case "planets":
+            case Category.PLANETS:
                 fetchPlanets();
                 break;
-            case "starships":
+            case Category.STARSHIPS:
                 fetchStarships();
                 break;
-            case "vehicles":
+            case Category.VEHICLES:
                 fetchVehicles();
                 break;
         }

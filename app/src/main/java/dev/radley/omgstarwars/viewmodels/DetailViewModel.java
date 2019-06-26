@@ -64,7 +64,7 @@ public class DetailViewModel extends ViewModel {
     /**
      * Take out the trash...
      */
-    public void clear() {
+    public void dispose() {
         compositeDisposable.dispose();
     }
 
