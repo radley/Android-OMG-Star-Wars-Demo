@@ -9,6 +9,9 @@ import dev.radley.omgstarwars.models.Planet;
 import dev.radley.omgstarwars.models.SWModel;
 import dev.radley.omgstarwars.utilities.FormatUtils;
 
+/**
+ * Layout for Planet details text
+ */
 public class PlanetDetailView extends DetailView {
     
     Planet model;
@@ -30,6 +33,9 @@ public class PlanetDetailView extends DetailView {
         populateContent();
     }
 
+    /**
+     * Add content to layout
+     */
     void populateContent() {
 
         setText(R.id.climate, model.climate);

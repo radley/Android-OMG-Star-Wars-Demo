@@ -9,6 +9,9 @@ import dev.radley.omgstarwars.models.SWModel;
 import dev.radley.omgstarwars.models.Species;
 import dev.radley.omgstarwars.utilities.FormatUtils;
 
+/**
+ * Layout for Species details text
+ */
 public class SpeciesDetailView extends DetailView {
     
     Species model;
@@ -30,6 +33,9 @@ public class SpeciesDetailView extends DetailView {
         populateContent();
     }
 
+    /**
+     * Add content to layout
+     */
     void populateContent() {
 
         setText(R.id.classification, model.classification);
