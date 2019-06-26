@@ -1,4 +1,4 @@
-package dev.radley.omgstarwars.di;
+package dev.radley.omgstarwars.dagger;
 
 
 import javax.inject.Singleton;
@@ -34,6 +34,6 @@ class ApiModule {
     @Singleton
     @Provides
     StarWarsService provideStarWarsService() {
-        return new StarWarsService();
+        return StarWarsService.getInstance();
     }
 }

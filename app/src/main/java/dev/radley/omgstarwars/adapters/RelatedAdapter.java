@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.models.SWModel;
-import dev.radley.omgstarwars.viewmodels.SWCard;
+import dev.radley.omgstarwars.viewmodels.SWImage;
 
 public class RelatedAdapter extends RecyclerView.Adapter<RelatedAdapter.ViewHolder> {
 
@@ -67,8 +67,8 @@ public class RelatedAdapter extends RecyclerView.Adapter<RelatedAdapter.ViewHold
 
             // assign default & missing images
             RequestOptions requestOptions = new RequestOptions()
-                    .placeholder(SWCard.getPlaceholderImage(item.getCategoryId()))
-                    .error(SWCard.getFallbackImage(item.getCategoryId()));
+                    .placeholder(SWImage.getPlaceholderImage(item.getCategoryId()))
+                    .error(SWImage.getFallbackImage(item.getCategoryId()));
 
             // add image to thumbnail with fade-in
             Glide.with(thumbnail.getContext())

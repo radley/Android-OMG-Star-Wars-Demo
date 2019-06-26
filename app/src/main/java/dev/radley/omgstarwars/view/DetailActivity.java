@@ -42,8 +42,19 @@ import dev.radley.omgstarwars.view.detailview.SpeciesDetailView;
 import dev.radley.omgstarwars.view.detailview.StarshipDetailView;
 import dev.radley.omgstarwars.view.detailview.VehicleDetailView;
 import dev.radley.omgstarwars.viewmodels.DetailViewModel;
-import dev.radley.omgstarwars.viewmodels.SWCard;
+import dev.radley.omgstarwars.viewmodels.SWImage;
 
+/**
+ * DetailActivity shows all details for a SWModel item
+ *
+ * - shows large background photo of item (or fallback image)
+ * - shows name of item as title
+ *      - title has extended and collapsed text formatting to match Material toolbar titles
+ * - loads category-specific detailView to show formatted text details
+ *      - some items have text links for homeworld and/or species
+ * - horizontal lists for related items
+ *
+ */
 public class DetailActivity extends AppCompatActivity {
 
 
@@ -73,7 +84,7 @@ public class DetailActivity extends AppCompatActivity {
         layout = findViewById(R.id.details_layout);
 
         actionBar.setTitle(viewModel.getTitle());
-        updateHeroImage(viewModel.getImage(), SWCard.getFallbackImage(viewModel.getCategory()));
+        updateHeroImage(viewModel.getImage(), SWImage.getFallbackImage(viewModel.getCategory()));
 
         addDetailView();
         addRelatedLists();

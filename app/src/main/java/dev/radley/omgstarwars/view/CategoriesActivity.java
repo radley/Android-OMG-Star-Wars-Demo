@@ -32,6 +32,15 @@ import dev.radley.omgstarwars.utilities.Constants;
 import dev.radley.omgstarwars.viewmodels.CategoriesViewModel;
 import dev.radley.omgstarwars.utilities.FormatUtils;
 
+/**
+ * CategoriesActivity is the main activity for OMG Star Wars
+ *
+ *  - provides tabs and viewPager for viewing all categories
+ *  - loads CategoryFragment for each category
+ *  - allows user to enter a search query and launch the SearchActivity
+ *  - will scroll fragment back to top when tab is double-tapped
+ *
+ */
 public class CategoriesActivity extends AppCompatActivity {
 
     private AppBarLayout appBarLayout;

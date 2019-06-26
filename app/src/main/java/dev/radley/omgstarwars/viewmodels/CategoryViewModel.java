@@ -11,7 +11,7 @@ import java.util.Objects;
 
 import javax.inject.Inject;
 
-import dev.radley.omgstarwars.di.DaggerApiComponent;
+import dev.radley.omgstarwars.dagger.DaggerApiComponent;
 import dev.radley.omgstarwars.models.Category;
 import dev.radley.omgstarwars.models.Film;
 import dev.radley.omgstarwars.models.People;
@@ -28,34 +28,35 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
+/**
+ * ViewModel for CategoryFragment
+ *
+ * - fetches page of items (based on SWModel) based on category
+ * - stores it in <code>modelList</code> ArrayList
+ * - stores <code>page</code> to be loaded
+ * - stores <code>nextUrl</code> to know if next page is available
+ * - provides livedata for list, error state, and loading state
+ */
 public class CategoryViewModel extends ViewModel {
 
     @Inject
     StarWarsService service;
 
-    private ArrayList<SWModel> modelList;
-    private CompositeDisposable compositeDisposable;
+    private ArrayList<SWModel> modelList = new ArrayList<>();
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();;
     private int DEFAULT_PAGE = 1;
     private int page = DEFAULT_PAGE;
-    private MutableLiveData<ArrayList<SWModel>> liveData;
-    private MutableLiveData<Boolean> loadError;
-    private MutableLiveData<Boolean> loading;
-    private String next;
+    private MutableLiveData<ArrayList<SWModel>> liveData = new MutableLiveData<>();
+    private MutableLiveData<Boolean> loadError = new MutableLiveData<>();
+    private MutableLiveData<Boolean> loading = new MutableLiveData<>();
+    private String nextUrl;
     private String category;
 
     /**
-     * ViewModel for CategoryFragment
-     * - instantiate models
+     * - inject service
      */
     CategoryViewModel() {
-
         DaggerApiComponent.create().inject(this);
-        modelList = new ArrayList<>();
-        compositeDisposable = new CompositeDisposable();
-
-        liveData = new MutableLiveData<>();
-        loadError = new MutableLiveData<>();
-        loading = new MutableLiveData<>();
     }
 
     /**
@@ -91,11 +92,11 @@ public class CategoryViewModel extends ViewModel {
 
     /**
      * Called when recycler view scrolls to bottom
-     * - loads next page of data if there is more
+     * - loads nextUrl page of data if there is more
      */
     public void getNextPage() {
 
-        if (next != null) {
+        if (nextUrl != null) {
             loadData();
         }
     }
@@ -334,15 +335,15 @@ public class CategoryViewModel extends ViewModel {
     }
 
     /**
-     * - updates <code>next</code> to <code>url</code>
-     * - if <code>next</code> exists, parses <code>url</code> for <code>page</code> number
+     * - updates <code>nextUrl</code> to <code>url</code>
+     * - if <code>nextUrl</code> exists, parses <code>url</code> for <code>page</code> number
      *
      * @param url String
-     * @return next page integer (if any)
+     * @return nextUrl page integer (if any)
      */
     private int getNextPage(String url) {
 
-        next = url;
+        nextUrl = url;
 
         if (url == null)
             return DEFAULT_PAGE;

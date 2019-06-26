@@ -5,7 +5,9 @@ import androidx.lifecycle.ViewModel;
 import dev.radley.omgstarwars.models.Category;
 
 /**
- * ViewModel class for CategoriesActivity
+ * ViewModel for CategoriesActivity
+ *
+ * - provides category ids and titles for tabs and pages
  */
 public class CategoriesViewModel extends ViewModel {
 

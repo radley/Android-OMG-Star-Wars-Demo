@@ -17,9 +17,13 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 
-
+/**
+ * API interface for StarWars API service
+ */
 public interface StarWarsApi {
 
+
+    // lists by page
 
     @GET(Category.FILMS)
     Single<SWModelList<Film>> getFilmsByPage(@Query("page") int var1);
@@ -40,6 +44,8 @@ public interface StarWarsApi {
     Single<SWModelList<Vehicle>> getVehiclesByPage(@Query("page") int var1);
 
 
+    // search results by page
+
     @GET(Category.FILMS)
     Observable<SWModelList<Film>> searchFilms(@Query("page") int page, @Query("search") String term);
 
@@ -58,6 +64,8 @@ public interface StarWarsApi {
     @GET(Category.VEHICLES)
     Observable<SWModelList<Vehicle>> searchVehicles(@Query("page") int page, @Query("search") String term);
 
+
+    // individual items
 
     @GET(Category.FILMS + "/{id}")
     Single<Film> getFilm(@Path("id") int var1);

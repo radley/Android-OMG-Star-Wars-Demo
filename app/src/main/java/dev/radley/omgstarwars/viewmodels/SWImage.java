@@ -6,7 +6,7 @@ import dev.radley.omgstarwars.models.Category;
 /**
  * Default image resources for Star Wars cards
  */
-public class SWCard {
+public class SWImage {
 
     public static int getPlaceholderImage(String id) {
         switch (id) {

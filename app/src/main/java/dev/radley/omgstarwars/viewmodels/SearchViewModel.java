@@ -14,7 +14,7 @@ import dev.radley.omgstarwars.models.Planet;
 import dev.radley.omgstarwars.models.Species;
 import dev.radley.omgstarwars.models.Starship;
 import dev.radley.omgstarwars.models.Vehicle;
-import dev.radley.omgstarwars.di.DaggerApiComponent;
+import dev.radley.omgstarwars.dagger.DaggerApiComponent;
 import dev.radley.omgstarwars.network.StarWarsService;
 import dev.radley.omgstarwars.models.Film;
 import dev.radley.omgstarwars.models.SWModel;
@@ -30,6 +30,27 @@ import timber.log.Timber;
 
 /**
  * ViewModel for SearchActivity
+ *
+ * - provies liveData for list, loading, and error
+ * - directs search based on category and query
+ * - allows user to tap result item and view more in DetailActivity
+ *      - passes item's model in Bundle
+ *
+ * Swapi search results are not optimized, so we grab ALL search result pages using concatMap
+ * and then sort them for best match:
+ *
+ * 1. Explicit query string match (i.e for "star" query -> "star destroyer", "death star")
+ *    - sort by index position (i.e "star destroyer" before "death star")
+ *
+ * 2. Title contains query string (i.e "starfighter", "starship")
+ *    - sort by index position (i.e "jedi starfighter" before "naboo royal starship")
+ *
+ * 3. Starship special case (swapi also searches in Starship.model)
+ *    a. Explicit query string match in .model
+ *    b. <code>.model</code> title contains query string
+ *
+ * 4. anything left over (shouldn't happen, but future proof)
+ *
  */
 public class SearchViewModel extends ViewModel {
 
