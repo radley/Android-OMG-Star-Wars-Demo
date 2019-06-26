@@ -1,6 +1,5 @@
 package dev.radley.omgstarwars.view;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -18,8 +17,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.lang.ref.WeakReference;
-
 import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.adapters.SearchAdapter;
 import dev.radley.omgstarwars.bundle.DetailExtras;
@@ -30,6 +27,25 @@ import dev.radley.omgstarwars.viewmodels.SearchViewModel;
 
 import static java.util.Objects.requireNonNull;
 
+/**
+ * SearchActivity provides results for search queries
+ *
+ * - launched from CategoriesActivity when user submits query in searchView
+ *      - passes <code>CATEGORY</code> and <code>QUERY</code> extras in bundle
+ * - persists the ToolBar searchView so user can update query
+ * - displays search result count and loading state in <code>resultsText</code>
+ * - uses spinner to switch between categories
+ * - automatically updates (after a delay) when query text or category changes
+ *      - ignores querys less than 2 characters
+ * - provides a recyclerView list to display results
+ *      - result item includes thumbnail and name of item
+ *      - query string is BOLD in item name
+ *      - displays .model value for Starship items because Search also looks in model value
+ * - tapping item will open it in DetailActivity
+ * - shows loading state
+ * - displays Toast on error
+ *
+ */
 public class SearchActivity extends AppCompatActivity {
 
 
@@ -41,7 +57,6 @@ public class SearchActivity extends AppCompatActivity {
     private SearchView searchView;
     private Spinner spinner;
     private TextView resultsText;
-    private WeakReference<Context> context;
 
     private static SearchViewModel viewModel;
 
@@ -50,7 +65,6 @@ public class SearchActivity extends AppCompatActivity {
      * a bundle with SearchExtras.CATEGORY and SearchExtras.QUERY values
      *
      * @param savedInstanceState
-     *
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,14 +75,12 @@ public class SearchActivity extends AppCompatActivity {
         setupToolbar();
 
         viewModel = ViewModelProviders.of(this).get(SearchViewModel.class);
-        viewModel.init(getResources().getStringArray(R.array.category_ids),
-                getResources().getStringArray(R.array.category_titles));
 
-        if(getIntent().hasExtra(SearchExtras.CATEGORY)) {
+        if (getIntent().hasExtra(SearchExtras.CATEGORY)) {
             viewModel.setCategory(getIntent().getStringExtra(SearchExtras.CATEGORY));
         }
 
-        if(getIntent().hasExtra(SearchExtras.QUERY)) {
+        if (getIntent().hasExtra(SearchExtras.QUERY)) {
             viewModel.setQuery(getIntent().getStringExtra(SearchExtras.QUERY));
         }
 
@@ -128,7 +140,6 @@ public class SearchActivity extends AppCompatActivity {
 
     /**
      * Add listeners
-     *
      */
     @Override
     public void onStart() {
@@ -150,7 +161,7 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
 
-                if(!viewModel.getCategory().equals(viewModel.getCategoryByPosition(position))) {
+                if (!viewModel.getCategory().equals(viewModel.getCategoryByPosition(position))) {
 
                     viewModel.setCategory(viewModel.getCategoryByPosition(position));
 
@@ -168,7 +179,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     /**
-     *  Remove adapter & listeners
+     * Remove adapter & listeners
      */
     @Override
     public void onStop() {
@@ -181,7 +192,16 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     /**
-     *  Hide toolbar title and use back arrow to go back
+     * Clear viewModel on exit
+     */
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        viewModel.dispose();
+    }
+
+    /**
+     * Hide toolbar title and use back arrow to go back
      */
     private void setupToolbar() {
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -215,7 +235,7 @@ public class SearchActivity extends AppCompatActivity {
 
         viewModel.getList().observe(this, list -> {
 
-            if(adapter != null) {
+            if (adapter != null) {
                 adapter.notifyDataSetChanged();
             } else {
                 adapter = new SearchAdapter(this, list);
@@ -230,7 +250,7 @@ public class SearchActivity extends AppCompatActivity {
 
         viewModel.getError().observe(this, (Boolean error) -> {
 
-            if(error) {
+            if (error) {
                 resultsText.setText(getString(R.string.error_message));
                 Toast.makeText(this, getString(R.string.search_error_message, viewModel.getQuery()), Toast.LENGTH_SHORT).show();
                 recyclerView.setVisibility(View.GONE);
@@ -239,7 +259,7 @@ public class SearchActivity extends AppCompatActivity {
 
         viewModel.getLoading().observe(this, (Boolean isLoading) -> {
 
-            if(isLoading) {
+            if (isLoading) {
                 resultsText.setText(getString(R.string.search_delay_message));
                 recyclerView.setVisibility(View.GONE);
             }

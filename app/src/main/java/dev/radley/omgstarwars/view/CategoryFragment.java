@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -21,11 +20,25 @@ import java.util.Objects;
 import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.bundle.DetailExtras;
 import dev.radley.omgstarwars.bundle.SearchExtras;
-import dev.radley.omgstarwars.viewmodels.CategoryViewModelFactory;
 import dev.radley.omgstarwars.viewmodels.CategoryViewModel;
 import dev.radley.omgstarwars.listeners.RecyclerTouchListener;
 import dev.radley.omgstarwars.adapters.CategoryAdapter;
 
+
+/**
+ * CategoryFragment provides a grid view of items for a category
+ *
+ * - loads items by api page
+ * - adds next page (if available) when scrolled to bottom
+ * - tapping an item will open it in DetailActivity
+ *      - passes the item's model in the Bundle
+ * - displays progress spinners for loading state
+ *      - top spinner for initial load
+ *      - bottom spinner for subsequent loads
+ * - displays Toast on error
+ * - loads different size grid items based on model
+ *
+ */
 public class CategoryFragment extends Fragment {
 
 
@@ -79,9 +92,7 @@ public class CategoryFragment extends Fragment {
         assert category != null;
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), getSpanCount(category)));
 
-        viewModel = ViewModelProviders.of(this,
-                new CategoryViewModelFactory(Objects.requireNonNull(getActivity()).getApplication(), category))
-                .get(CategoryViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(CategoryViewModel.class);
 
         observeViewModel(category);
         return view;
@@ -163,7 +174,7 @@ public class CategoryFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        viewModel.clear();
+        viewModel.dispose();
     }
 
     /**
@@ -174,8 +185,8 @@ public class CategoryFragment extends Fragment {
      */
     private int getSpanCount(String id) {
 
-        if(id.equals(getResources().getString(R.string.category_id_starships)) ||
-                id.equals(getResources().getString(R.string.category_id_vehicles)) ) {
+        if(id.equals("starships") ||
+                id.equals("vehicles") ) {
             return getResources().getInteger(R.integer.grid_span_count_wide);
         } else {
             return getResources().getInteger(R.integer.grid_span_count_tall);

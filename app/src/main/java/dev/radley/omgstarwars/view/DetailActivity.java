@@ -28,6 +28,7 @@ import net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout;
 import dev.radley.omgstarwars.R;
 import dev.radley.omgstarwars.adapters.RelatedAdapter;
 import dev.radley.omgstarwars.bundle.DetailExtras;
+import dev.radley.omgstarwars.models.Category;
 import dev.radley.omgstarwars.models.People;
 import dev.radley.omgstarwars.models.Planet;
 import dev.radley.omgstarwars.models.SWModel;
@@ -41,8 +42,19 @@ import dev.radley.omgstarwars.view.detailview.SpeciesDetailView;
 import dev.radley.omgstarwars.view.detailview.StarshipDetailView;
 import dev.radley.omgstarwars.view.detailview.VehicleDetailView;
 import dev.radley.omgstarwars.viewmodels.DetailViewModel;
-import dev.radley.omgstarwars.viewmodels.SWCard;
+import dev.radley.omgstarwars.viewmodels.SWImage;
 
+/**
+ * DetailActivity shows all details for a SWModel item
+ *
+ * - shows large background photo of item (or fallback image)
+ * - shows name of item as title
+ *      - title has extended and collapsed text formatting to match Material toolbar titles
+ * - loads category-specific detailView to show formatted text details
+ *      - some items have text links for homeworld and/or species
+ * - horizontal lists for related items
+ *
+ */
 public class DetailActivity extends AppCompatActivity {
 
 
@@ -72,10 +84,19 @@ public class DetailActivity extends AppCompatActivity {
         layout = findViewById(R.id.details_layout);
 
         actionBar.setTitle(viewModel.getTitle());
-        updateHeroImage(viewModel.getImage(), SWCard.getFallbackImage(viewModel.getCategory()));
+        updateHeroImage(viewModel.getImage(), SWImage.getFallbackImage(viewModel.getCategory()));
 
         addDetailView();
         addRelatedLists();
+    }
+
+    /**
+     * Clear viewModel on exit
+     */
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        viewModel.dispose();
     }
 
 
@@ -124,30 +145,30 @@ public class DetailActivity extends AppCompatActivity {
 
         switch (viewModel.getCategory()) {
 
-            case "films":
+            case Category.FILMS:
                 detailView = new FilmDetailView(this, viewModel.getModel());
                 break;
 
-            case "people":
+            case Category.PEOPLE:
                 detailView = new PeopleDetailView(this, viewModel.getModel());
                 addHomeWorldTextLink();
                 addSpeciesTextLink();
                 break;
 
-            case "planets":
+            case Category.PLANETS:
                 detailView = new PlanetDetailView(this, viewModel.getModel());
                 break;
 
-            case "species":
+            case Category.SPECIES:
                 detailView = new SpeciesDetailView(this, viewModel.getModel());
                 addHomeWorldTextLink();
                 break;
 
-            case "starships":
+            case Category.STARSHIPS:
                 detailView = new StarshipDetailView(this, viewModel.getModel());
                 break;
 
-            case "vehicles":
+            case Category.VEHICLES:
                 detailView = new VehicleDetailView(this, viewModel.getModel());
                 break;
         }

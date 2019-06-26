@@ -1,4 +1,4 @@
-package dev.radley.omgstarwars.di;
+package dev.radley.omgstarwars.dagger;
 
 
 import javax.inject.Singleton;

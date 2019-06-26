@@ -4,7 +4,7 @@ package dev.radley.omgstarwars.network;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import dev.radley.omgstarwars.di.DaggerApiComponent;
+import dev.radley.omgstarwars.dagger.DaggerApiComponent;
 
 /**
  * Service for loadind data from StarWars API service

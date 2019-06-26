@@ -1,5 +1,6 @@
 package dev.radley.omgstarwars.network;
 
+import dev.radley.omgstarwars.models.Category;
 import dev.radley.omgstarwars.models.Film;
 import dev.radley.omgstarwars.models.People;
 import dev.radley.omgstarwars.models.Planet;
@@ -16,64 +17,72 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 
-
+/**
+ * API interface for StarWars API service
+ */
 public interface StarWarsApi {
 
 
-    @GET("films")
+    // lists by page
+
+    @GET(Category.FILMS)
     Single<SWModelList<Film>> getFilmsByPage(@Query("page") int var1);
 
-    @GET("people")
+    @GET(Category.PEOPLE)
     Single<SWModelList<People>> getPeopleByPage(@Query("page") int var1);
 
-    @GET("planets")
+    @GET(Category.PLANETS)
     Single<SWModelList<Planet>> getPlanetsByPage(@Query("page") int var1);
 
-    @GET("species")
+    @GET(Category.SPECIES)
     Single<SWModelList<Species>> getSpeciesByPage(@Query("page") int var1);
 
-    @GET("starships")
+    @GET(Category.STARSHIPS)
     Single<SWModelList<Starship>> getStarshipsByPage(@Query("page") int var1);
 
-    @GET("vehicles")
+    @GET(Category.VEHICLES)
     Single<SWModelList<Vehicle>> getVehiclesByPage(@Query("page") int var1);
 
 
-    @GET("films")
+    // search results by page
+
+    @GET(Category.FILMS)
     Observable<SWModelList<Film>> searchFilms(@Query("page") int page, @Query("search") String term);
 
-    @GET("people")
+    @GET(Category.PEOPLE)
     Observable<SWModelList<People>> searchPeople(@Query("page") int page, @Query("search") String term);
 
-    @GET("planets")
+    @GET(Category.PLANETS)
     Observable<SWModelList<Planet>> searchPlanets(@Query("page") int page, @Query("search") String term);
 
-    @GET("species")
+    @GET(Category.SPECIES)
     Observable<SWModelList<Species>> searchSpecies(@Query("page") int page, @Query("search") String term);
 
-    @GET("starships")
+    @GET(Category.STARSHIPS)
     Observable<SWModelList<Starship>> searchStarships(@Query("page") int page, @Query("search") String term);
 
-    @GET("vehicles")
+    @GET(Category.VEHICLES)
     Observable<SWModelList<Vehicle>> searchVehicles(@Query("page") int page, @Query("search") String term);
 
 
+    // individual items
 
-    @GET("people/{id}")
-    Call<People> getPeople(@Path("id") int var1);
+    @GET(Category.FILMS + "/{id}")
+    Single<Film> getFilm(@Path("id") int var1);
 
-    @GET("films/{id}")
-    Call<Film> getFilm(@Path("id") int var1);
+    @GET(Category.PEOPLE + "/{id}")
+    Single<People> getPeople(@Path("id") int var1);
 
-    @GET("planets/{id}")
-    Call<Planet> getPlanet(@Path("id") int var1);
+    @GET(Category.PLANETS + "/{id}")
+    Single<Planet> getPlanet(@Path("id") int var1);
 
-    @GET("starships/{id}")
-    Call<Starship> getStarship(@Path("id") int var1);
+    @GET(Category.SPECIES + "/{id}")
+    Single<Species> getSpecies(@Path("id") int var1);
 
-    @GET("vehicles/{id}")
-    Call<Vehicle> getVehicle(@Path("id") int var1);
+    @GET(Category.STARSHIPS + "/{id}")
+    Single<Starship> getStarship(@Path("id") int var1);
 
-    @GET("species/{id}")
-    Call<Species> getSpecies(@Path("id") int var1);
+    @GET(Category.VEHICLES + "/{id}")
+    Single<Vehicle> getVehicle(@Path("id") int var1);
+
 }

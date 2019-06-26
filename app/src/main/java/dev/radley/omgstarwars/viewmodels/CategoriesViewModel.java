@@ -2,28 +2,18 @@ package dev.radley.omgstarwars.viewmodels;
 
 import androidx.lifecycle.ViewModel;
 
+import dev.radley.omgstarwars.models.Category;
+
 /**
- * ViewModel class for CategoriesActivity
+ * ViewModel for CategoriesActivity
+ *
+ * - provides category ids and titles for tabs and pages
  */
 public class CategoriesViewModel extends ViewModel {
 
-    private static String[] categoryIds;
-    private static String[] categoryTitles;
-    private String category;
-
-    /**
-     * Instantiate category ids, titles, and default category
-     *
-     * @param ids    String[]
-     * @param titles String[]
-     */
-    public void init(String[] ids, String[] titles) {
-
-        categoryIds = ids;
-        categoryTitles = titles;
-        category = categoryIds[0];
-
-    }
+    private static String[] categoryIds = Category.categoryIds;
+    private static String[] categoryTitles = Category.categoryTitles;
+    private String category = categoryIds[0];
 
     public String getCategory() {
         return category;

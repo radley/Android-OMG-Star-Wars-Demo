@@ -1,21 +1,22 @@
 package dev.radley.omgstarwars.viewmodels;
 
 import dev.radley.omgstarwars.R;
+import dev.radley.omgstarwars.models.Category;
 
 /**
  * Default image resources for Star Wars cards
  */
-public class SWCard {
+public class SWImage {
 
     public static int getPlaceholderImage(String id) {
         switch (id) {
-            case "films":
-            case "people":
-            case "species":
+            case Category.FILMS:
+            case Category.PEOPLE:
+            case Category.SPECIES:
                 return R.drawable.placeholder_tall;
 
-            case "starships":
-            case "vehicles":
+            case Category.STARSHIPS:
+            case Category.VEHICLES:
                 return R.drawable.placeholder_wide;
         }
         // planets & fallback
@@ -24,17 +25,17 @@ public class SWCard {
 
     public static int getFallbackImage(String id) {
         switch (id) {
-            case "films":
+            case Category.FILMS:
                 return R.drawable.placeholder_tall;
-            case "people":
+            case Category.PEOPLE:
                 return R.drawable.generic_people;
-            case "planets":
+            case Category.PLANETS:
                 return R.drawable.generic_planet;
-            case "species":
+            case Category.SPECIES:
                 return R.drawable.generic_species;
-            case "starships":
+            case Category.STARSHIPS:
                 return R.drawable.generic_starship;
-            case "vehicles":
+            case Category.VEHICLES:
                 return R.drawable.generic_vehicle;
         }
         // fallback
