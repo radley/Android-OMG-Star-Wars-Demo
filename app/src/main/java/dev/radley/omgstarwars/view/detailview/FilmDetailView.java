@@ -9,6 +9,9 @@ import dev.radley.omgstarwars.models.Film;
 import dev.radley.omgstarwars.models.SWModel;
 import dev.radley.omgstarwars.utilities.FormatUtils;
 
+/**
+ * Layout for Film details text
+ */
 public class FilmDetailView extends DetailView {
 
 
@@ -31,6 +34,9 @@ public class FilmDetailView extends DetailView {
         populateContent();
     }
 
+    /**
+     * Add content to layout
+     */
     void populateContent() {
 
         setText(R.id.director, model.director);

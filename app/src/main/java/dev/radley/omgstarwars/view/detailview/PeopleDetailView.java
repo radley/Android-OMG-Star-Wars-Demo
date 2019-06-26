@@ -9,6 +9,9 @@ import dev.radley.omgstarwars.models.People;
 import dev.radley.omgstarwars.models.SWModel;
 import dev.radley.omgstarwars.utilities.FormatUtils;
 
+/**
+ * Layout for People details text
+ */
 public class PeopleDetailView extends DetailView {
 
     
@@ -31,6 +34,9 @@ public class PeopleDetailView extends DetailView {
         populateContent();
     }
 
+    /**
+     * Add content to layout
+     */
     void populateContent() {
 
         setText(R.id.dob, model.birthYear);

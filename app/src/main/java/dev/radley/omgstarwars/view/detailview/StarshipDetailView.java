@@ -9,6 +9,9 @@ import dev.radley.omgstarwars.models.SWModel;
 import dev.radley.omgstarwars.models.Starship;
 import dev.radley.omgstarwars.utilities.FormatUtils;
 
+/**
+ * Layout for Starship details text
+ */
 public class StarshipDetailView extends DetailView {
 
     Starship model;
@@ -30,6 +33,9 @@ public class StarshipDetailView extends DetailView {
         populateContent();
     }
 
+    /**
+     * Add content to layout
+     */
     void populateContent() {
 
         setText(R.id.hyperdrive_rating, model.hyperdriveRating);

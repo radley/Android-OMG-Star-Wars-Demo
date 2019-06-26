@@ -9,6 +9,9 @@ import dev.radley.omgstarwars.models.SWModel;
 import dev.radley.omgstarwars.models.Vehicle;
 import dev.radley.omgstarwars.utilities.FormatUtils;
 
+/**
+ * Layout for Vehicle details text
+ */
 public class VehicleDetailView extends DetailView {
 
     Vehicle model;
@@ -30,6 +33,9 @@ public class VehicleDetailView extends DetailView {
         populateContent();
     }
 
+    /**
+     * Add content to layout
+     */
     void populateContent() {
 
         setText(R.id.model, model.model);

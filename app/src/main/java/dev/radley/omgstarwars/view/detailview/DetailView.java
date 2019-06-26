@@ -7,10 +7,12 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+/**
+ * Base class for Detail text layouts
+ */
 public class DetailView extends LinearLayout {
 
     Context context;
-    View view;
 
     public DetailView(Context context) {
         super(context);
