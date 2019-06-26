@@ -60,20 +60,20 @@ public interface StarWarsApi {
 
 
     @GET("people/{id}")
-    Call<People> getPeople(@Path("id") int var1);
+    Single<People> getPeople(@Path("id") int var1);
 
     @GET("films/{id}")
-    Call<Film> getFilm(@Path("id") int var1);
+    Single<Film> getFilm(@Path("id") int var1);
 
     @GET("planets/{id}")
-    Call<Planet> getPlanet(@Path("id") int var1);
+    Single<Planet> getPlanet(@Path("id") int var1);
 
     @GET("starships/{id}")
-    Call<Starship> getStarship(@Path("id") int var1);
+    Single<Starship> getStarship(@Path("id") int var1);
 
     @GET("vehicles/{id}")
-    Call<Vehicle> getVehicle(@Path("id") int var1);
+    Single<Vehicle> getVehicle(@Path("id") int var1);
 
     @GET("species/{id}")
-    Call<Species> getSpecies(@Path("id") int var1);
+    Single<Species> getSpecies(@Path("id") int var1);
 }

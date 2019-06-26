@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
+import dev.radley.omgstarwars.models.Categories;
 import dev.radley.omgstarwars.models.People;
 import dev.radley.omgstarwars.models.Planet;
 import dev.radley.omgstarwars.models.Species;
@@ -20,11 +21,12 @@ import dev.radley.omgstarwars.models.SWModel;
 import dev.radley.omgstarwars.models.SWModelList;
 import dev.radley.omgstarwars.utilities.SortUtils;
 import io.reactivex.Observable;
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Function;
+import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 /**
  * ViewModel for SearchActivity
@@ -35,40 +37,27 @@ public class SearchViewModel extends ViewModel {
     StarWarsService service;
 
     private ArrayList<SWModel> modelList = new ArrayList<>();
-    private String category;
-    private String query;
-    private String[] categoryIds;
-    private String[] categoryTitles;
-
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
     private MutableLiveData<ArrayList<SWModel>> liveData;
-    private MutableLiveData<Boolean> error;
-    private MutableLiveData<Boolean> loading;
+    private MutableLiveData<Boolean> error = new MutableLiveData<>();
+    private MutableLiveData<Boolean> loading = new MutableLiveData<>();
 
+    private static String[] categoryIds = Categories.categoryIds;
+    private static String[] categoryTitles = Categories.categoryTitles;
+    private String category = categoryIds[0];
+    private String query = "";
 
     /**
-     * Instantiate service and state models
+     * - inject service
+     * -
      */
     public SearchViewModel() {
 
         DaggerApiComponent.create().inject(this);
-        error = new MutableLiveData<>();
-        loading = new MutableLiveData<>();
     }
 
     /**
-     * Get category ids & titles
-     *
-     * @param ids String[]
-     * @param titles String[]
-     */
-    public void init(String[] ids, String[] titles) {
-
-        categoryIds = ids;
-        categoryTitles = titles;
-    }
-
-    /**
-     * Update category and load new data if liveData is ready
+     * Update category and loads new data if liveData is ready
      *
      * @param category String
      */
@@ -102,20 +91,20 @@ public class SearchViewModel extends ViewModel {
 
 
     /**
-     * Update query value
-     * - clear everything if too short
-     * - otherwise load new data if liveData is ready
+     * - updates query value if new value
+     * - loads new data if liveData is ready and query string has more than one character
      *
      * @param query String
      */
     public void setQuery(String query) {
 
+        if(this.query.equals(query)) {
+            return;
+        }
+
         this.query = query;
 
-        if(query.length() < 2) {
-            clear();
-
-        } else if(liveData != null) {
+        if(liveData != null && query.length() > 1) {
             loadData();
         }
     }
@@ -129,16 +118,29 @@ public class SearchViewModel extends ViewModel {
     }
 
     /**
-     * Clear modelList and liveData
+     * - clears observers & list data
+     * - sets error state to false
      */
-    private void clear() {
+    private void reset() {
+
+        compositeDisposable.dispose();
         modelList.clear();
         liveData.setValue(modelList);
+        error.setValue(false);
+    }
+
+    /**
+     * - clears observers
+     */
+    public void clear() {
+
+        compositeDisposable.dispose();
     }
 
 
     /**
-     * Instantiate liveData and then load data
+     * - instantiates liveData if null
+     * - loads data
      *
      * @return liveData
      */
@@ -153,16 +155,17 @@ public class SearchViewModel extends ViewModel {
     }
 
     /**
-     * Instantiate error state liveData
+     * Instantiate error state observable
      *
      * @return error LiveData
      */
     public LiveData<Boolean> getError() {
         return error;
     }
+    
 
     /**
-     * Instantiate loading state liveData
+     * Instantiate loading state observable
      *
      * @return loading LiveData
      */
@@ -171,104 +174,223 @@ public class SearchViewModel extends ViewModel {
     }
 
 
-
     /**
-     * - create observer and create observable based on category
-     * - get results from observable and add to modelList
+     * - resets data
+     * - treigger loading state
+     * - loads observable and creates disposableObserver based on category
+     * - results forwarded to local methods
      */
     private void loadData() {
 
-        Observer observer = new Observer() {
-            @Override
-            public void onSubscribe(Disposable d) {
 
-                // fresh start
-                error.setValue(false);
-                modelList.clear();
-                liveData.setValue(modelList);
-                loading.setValue(true);
-            }
-
-            @Override
-            public void onNext(Object list) {
-
-                for(int i = 0; i < ((SWModelList) list).results.size(); i++){
-
-                    // add various model types as SWModel to list
-                    Object item = ((SWModelList) list).results.get(i);
-                    if(item instanceof SWModel){
-                        modelList.add((SWModel) item);
-                    }
-                }
-
-                // sort model list based on result matches
-                if(modelList.size() > 0) {
-                    ArrayList<SWModel> sortList = SortUtils.sortForBestQueryMatch(modelList, query);
-
-                    // must keep adapter reference
-                    modelList.clear();
-                    modelList.addAll(sortList);
-                }
-
-                loading.setValue(false);
-                liveData.setValue(modelList);
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-                // clear list and show error
-                error.setValue(true);
-                loading.setValue(false);
-
-                modelList.clear();
-                liveData.setValue(modelList);
-            }
-
-            @Override
-            public void onComplete() {
-
-            }
-        };
+        reset();
+        loading.setValue(true);
 
         // subscribe to observable based on category
         switch (category) {
+
             case "films":
-                Observable<SWModelList<Film>> filmObservable = searchFilms(1, query);
-                filmObservable.subscribe(observer);
+                compositeDisposable.add(searchFilms(1, query)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableObserver<SWModelList<Film>>() {
+
+                            @Override
+                            public void onNext(SWModelList<Film> list) {
+                                updateModelList(list.results);
+                            }
+
+                            @Override
+                            public void onError(Throwable t) {
+                                onSearchError(t);
+                            }
+
+                            @Override
+                            public void onComplete() {
+                                onSearchComplete();
+                            }
+                        }));
                 break;
 
             case "people":
-                Observable<SWModelList<People>> peopleObservable = searchPeople(1, query);
-                peopleObservable.subscribe(observer);
+                compositeDisposable.add(searchPeople(1, query)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableObserver<SWModelList<People>>() {
+
+                            @Override
+                            public void onNext(SWModelList<People> list) {
+                                updateModelList(list.results);
+                            }
+
+                            @Override
+                            public void onError(Throwable t) {
+                                onSearchError(t);
+                            }
+
+                            @Override
+                            public void onComplete() {
+                                onSearchComplete();
+                            }
+                        }));
                 break;
 
             case "planets":
-                Observable<SWModelList<Planet>> planetsObservable = searchPlanets(1, query);
-                planetsObservable.subscribe(observer);
+                compositeDisposable.add(searchPlanets(1, query)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableObserver<SWModelList<Planet>>() {
+
+                            @Override
+                            public void onNext(SWModelList<Planet> list) {
+                                updateModelList(list.results);
+                            }
+
+                            @Override
+                            public void onError(Throwable t) {
+                                onSearchError(t);
+                            }
+
+                            @Override
+                            public void onComplete() {
+                                onSearchComplete();
+                            }
+                        }));
                 break;
 
             case "species":
-                Observable<SWModelList<Species>> speciesObservable = searchSpecies(1, query);
-                speciesObservable.subscribe(observer);
+                compositeDisposable.add(searchSpecies(1, query)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableObserver<SWModelList<Species>>() {
+
+                            @Override
+                            public void onNext(SWModelList<Species> list) {
+                                updateModelList(list.results);
+                            }
+
+                            @Override
+                            public void onError(Throwable t) {
+                                onSearchError(t);
+                            }
+
+                            @Override
+                            public void onComplete() {
+                                onSearchComplete();
+                            }
+                        }));
                 break;
 
             case "starships":
-                Observable<SWModelList<Starship>> starshipsObservable = searchStarships(1, query);
-                starshipsObservable.subscribe(observer);
+                compositeDisposable.add(searchStarships(1, query)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableObserver<SWModelList<Starship>>() {
+
+                            @Override
+                            public void onNext(SWModelList<Starship> list) {
+                                updateModelList(list.results);
+                            }
+
+                            @Override
+                            public void onError(Throwable t) {
+                                onSearchError(t);
+                            }
+
+                            @Override
+                            public void onComplete() {
+                                onSearchComplete();
+                            }
+                        }));
                 break;
 
             case "vehicles":
-                Observable<SWModelList<Vehicle>> vehiclesObservable = searchVehicles(1, query);
-                vehiclesObservable.subscribe(observer);
+                compositeDisposable.add(searchVehicles(1, query)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableObserver<SWModelList<Vehicle>>() {
+
+                            @Override
+                            public void onNext(SWModelList<Vehicle> list) {
+                                updateModelList(list.results);
+                            }
+
+                            @Override
+                            public void onError(Throwable t) {
+                                onSearchError(t);
+                            }
+
+                            @Override
+                            public void onComplete() {
+                                onSearchComplete();
+                            }
+                        }));
                 break;
 
         }
     }
 
     /**
+     * Updates modelList using base model class
+     * 
+     * @param list ArrayList<?>
+     */
+    private void updateModelList(ArrayList<?> list) {
+
+        for(int i = 0; i < list.size(); i++){
+
+            // add various model types as SWModel to list
+            Object item = list.get(i);
+            if(item instanceof SWModel){
+                modelList.add((SWModel) item);
+            }
+        }
+    }
+
+    /**
+     * Called after search finishes concatenated loops
+     * - sorts list for best query match
+     * - clears loading state
+     * - updates liveData
+     */
+    private void onSearchComplete() {
+
+        // sort model list based on result matches
+        if(modelList.size() > 0) {
+            ArrayList<SWModel> sortList = SortUtils.sortForBestQueryMatch(modelList, query);
+
+            // must keep adapter reference
+            modelList.clear();
+            modelList.addAll(sortList);
+        }
+
+        loading.setValue(false);
+        liveData.setValue(modelList);
+    }
+
+    /**
+     * Called on search error
+     * - sets error state to true
+     * - sets loading state to false
+     * - clears model list
+     * 
+     * @param t Throwable
+     */
+    private void onSearchError(Throwable t) {
+
+        Timber.e("error: %s", t.getMessage());
+
+        // reset list and show error
+        error.setValue(true);
+        loading.setValue(false);
+
+        modelList.clear();
+        liveData.setValue(modelList);
+    }
+
+    /**
      * Search films based on query
-     * - Get all results pages before returning Observable
+     * - concats result pages
      *
       * @param page int
      * @param query String
@@ -291,7 +413,7 @@ public class SearchViewModel extends ViewModel {
 
     /**
      * Search people based on query
-     * - Get all results pages before returning Observable
+     * - concats result pages
      *
      * @param page int
      * @param query String
@@ -314,7 +436,7 @@ public class SearchViewModel extends ViewModel {
 
     /**
      * Search species based on query
-     * - Get all results pages before returning Observable
+     * - concats result pages
      *
      * @param page int
      * @param query String
@@ -337,7 +459,7 @@ public class SearchViewModel extends ViewModel {
 
     /**
      * Search planets based on query
-     * - Get all results pages before returning Observable
+     * - concats result pages
      *
      * @param page int
      * @param query String
@@ -360,7 +482,7 @@ public class SearchViewModel extends ViewModel {
 
     /**
      * Search starships based on query
-     * - Get all results pages before returning Observable
+     * - concats result pages
      *
      * @param page int
      * @param query String
@@ -383,7 +505,7 @@ public class SearchViewModel extends ViewModel {
 
     /**
      * Search vehicles based on query
-     * - Get all results pages before returning Observable
+     * - concats result pages
      *
      * @param page int
      * @param query String

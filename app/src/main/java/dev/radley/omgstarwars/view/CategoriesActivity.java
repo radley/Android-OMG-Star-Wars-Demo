@@ -58,8 +58,6 @@ public class CategoriesActivity extends AppCompatActivity {
         setupToolbar();
 
         viewModel = ViewModelProviders.of(this).get(CategoriesViewModel.class);
-        viewModel.init(getResources().getStringArray(R.array.category_ids),
-                getResources().getStringArray(R.array.category_titles));
 
         setupLayout();
     }

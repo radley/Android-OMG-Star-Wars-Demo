@@ -2,44 +2,6 @@
 
     <string name="app_name">OMG Star Wars!</string>
 
-
-    <string name="category_id_people">people</string>
-    <string name="category_id_films">films</string>
-    <string name="category_id_planets">planets</string>
-    <string name="category_id_species">species</string>
-    <string name="category_id_starships">starships</string>
-    <string name="category_id_vehicles">vehicles</string>
-
-    <string name="category_people">People!</string>
-    <string name="category_films">Films!</string>
-    <string name="category_planets">Planets!</string>
-    <string name="category_species">Species!</string>
-    <string name="category_starships">Starships!</string>
-    <string name="category_vehicles">Vehicles!</string>
-
-    <string name="category_characters">Characters!</string>
-    <string name="category_residents">Residents!</string>
-    <string name="category_pilots">Pilots!</string>
-
-
-    <string-array name="category_ids">
-        <item>@string/category_id_films</item>
-        <item>@string/category_id_people</item>
-        <item>@string/category_id_species</item>
-        <item>@string/category_id_starships</item>
-        <item>@string/category_id_vehicles</item>
-        <item>@string/category_id_planets</item>
-    </string-array>
-
-    <string-array name="category_titles">
-        <item>@string/category_films</item>
-        <item>@string/category_people</item>
-        <item>@string/category_species</item>
-        <item>@string/category_starships</item>
-        <item>@string/category_vehicles</item>
-        <item>@string/category_planets</item>
-    </string-array>
-
     <!-- film -->
     <string name="opening_crawl">Opening Crawl</string>
     <string name="release_date">Release Date</string>
