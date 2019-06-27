@@ -1,5 +1,5 @@
 # OMG Star Wars!
-Practice exercise for loading and displaying content from the Star Wars API:
+Android exercise for loading and displaying content from the Star Wars API:
 
 https://swapi.co/
 
