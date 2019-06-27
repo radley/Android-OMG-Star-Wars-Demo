@@ -25,7 +25,7 @@ android {
 
 def lifeCycleExtensionsVersion = '2.2.0-alpha01'
 def retrofitVersion = '2.5.0'
-def daggerVersion = '2.13'
+def daggerVersion = '2.15'
 def glideVersion = '4.9.0'
 def rxJavaVersion = '2.1.0'
 
