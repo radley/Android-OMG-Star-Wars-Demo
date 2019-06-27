@@ -3,8 +3,6 @@ Practice exercise for loading and displaying content from the Star Wars API:
 
 https://swapi.co/
 
-This was an example exercise for a prospective gig. It started as a quick demo of basic Android UX design skills, but soon shifted into a deployable code demo requiring dependency injection.
-
 <h3>Technologies Used</h3>
 
 <ul>
