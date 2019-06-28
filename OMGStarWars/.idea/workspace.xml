@@ -1,415 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AvailableLibraryUpdateStorage">
+    <library-updates>
+      <library-update>
+        <group-id>com.google.dagger</group-id>
+        <name>dagger-android-support</name>
+        <version>2.23.2</version>
+        <repository>JCenter</repository>
+      </library-update>
+      <library-update>
+        <group-id>io.reactivex.rxjava2</group-id>
+        <name>rxandroid</name>
+        <version>2.1.1</version>
+        <repository>Maven Central</repository>
+      </library-update>
+      <library-update>
+        <group-id>io.reactivex.rxjava2</group-id>
+        <name>rxjava</name>
+        <version>2.2.10</version>
+        <repository>Maven Central</repository>
+      </library-update>
+      <library-update>
+        <group-id>androidx.test.espresso</group-id>
+        <name>espresso-core</name>
+        <version>3.3.0-alpha01</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>com.jakewharton.timber</group-id>
+        <name>timber</name>
+        <version>4.7.1</version>
+        <repository>JCenter,Maven Central</repository>
+      </library-update>
+      <library-update>
+        <group-id>androidx.test</group-id>
+        <name>runner</name>
+        <version>1.3.0-alpha01</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>androidx.recyclerview</group-id>
+        <name>recyclerview</name>
+        <version>1.1.0-alpha06</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>androidx.lifecycle</group-id>
+        <name>lifecycle-viewmodel</name>
+        <version>2.2.0-alpha01</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>androidx.lifecycle</group-id>
+        <name>lifecycle-compiler</name>
+        <version>2.2.0-alpha01</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>androidx.lifecycle</group-id>
+        <name>lifecycle-extensions</name>
+        <version>2.2.0-alpha01</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>com.squareup.retrofit2</group-id>
+        <name>converter-gson</name>
+        <version>2.6.0</version>
+        <repository>JCenter,Maven Central</repository>
+      </library-update>
+      <library-update>
+        <group-id>com.google.android.material</group-id>
+        <name>material</name>
+        <version>1.1.0-alpha07</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>com.google.dagger</group-id>
+        <name>dagger</name>
+        <version>2.23.2</version>
+        <repository>JCenter,Maven Central</repository>
+      </library-update>
+      <library-update>
+        <group-id>com.google.dagger</group-id>
+        <name>dagger-compiler</name>
+        <version>2.23.2</version>
+        <repository>JCenter,Maven Central</repository>
+      </library-update>
+      <library-update>
+        <group-id>com.github.bumptech.glide</group-id>
+        <name>glide</name>
+        <version>4.9.0</version>
+        <repository>JCenter,Maven Central</repository>
+      </library-update>
+      <library-update>
+        <group-id>com.google.dagger</group-id>
+        <name>dagger-android-processor</name>
+        <version>2.23.2</version>
+        <repository>JCenter,Maven Central</repository>
+      </library-update>
+      <library-update>
+        <group-id>com.github.bumptech.glide</group-id>
+        <name>compiler</name>
+        <version>4.9.0</version>
+        <repository>JCenter,Maven Central</repository>
+      </library-update>
+      <library-update>
+        <group-id>androidx.annotation</group-id>
+        <name>annotation</name>
+        <version>1.1.0</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>com.squareup.retrofit2</group-id>
+        <name>adapter-rxjava2</name>
+        <version>2.6.0</version>
+        <repository>JCenter,Maven Central</repository>
+      </library-update>
+      <library-update>
+        <group-id>com.squareup.retrofit2</group-id>
+        <name>retrofit</name>
+        <version>2.6.0</version>
+        <repository>JCenter,Maven Central</repository>
+      </library-update>
+      <library-update>
+        <group-id>junit</group-id>
+        <name>junit</name>
+        <version>4.13-beta-3</version>
+        <repository>JCenter,Maven Central</repository>
+      </library-update>
+      <library-update>
+        <group-id>androidx.appcompat</group-id>
+        <name>appcompat</name>
+        <version>1.1.0-beta01</version>
+        <repository>Google</repository>
+      </library-update>
+    </library-updates>
+    <last-search-timestamp>1561680232391</last-search-timestamp>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="4f812ea9-6d2f-4b84-b16d-020c4bb2b913" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_0_0_alpha08_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_annotation_annotation_1_1_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_alpha05_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_1_0_alpha05_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_common_2_1_0_beta01_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_1_0_beta01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_asynclayoutinflater_asynclayoutinflater_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cardview_cardview_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_collection_collection_1_1_0_rc01_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_concurrent_concurrent_futures_1_0_0_beta01_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_coordinatorlayout_coordinatorlayout_1_1_0_alpha01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_1_0_beta01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_documentfile_documentfile_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_1_0_alpha08_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_ui_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_utils_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_v4_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_2_0_alpha01_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_extensions_2_2_0_alpha01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_2_0_alpha01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_2_0_alpha01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_process_2_2_0_alpha01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_2_0_alpha01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_service_2_2_0_alpha01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_2_0_alpha01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_media_media_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_print_print_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_recyclerview_recyclerview_1_1_0_alpha05_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_beta01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_slidingpanelayout_slidingpanelayout_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_swiperefreshlayout_swiperefreshlayout_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_2_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_2_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_monitor_1_2_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_runner_1_2_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_transition_transition_1_0_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_beta01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_beta01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_beta01_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager2_viewpager2_1_0_0_alpha04_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_annotations_4_9_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_disklrucache_4_9_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_9_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_9_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_material_material_1_1_0_alpha07_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_2_0_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_2_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_dagger_dagger_2_15_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_dagger_dagger_android_2_15_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_dagger_dagger_android_support_2_15_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_listenablefuture_1_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_jakewharton_timber_timber_4_7_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp3_okhttp_3_12_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okio_okio_1_15_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_adapter_rxjava2_2_5_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_converter_gson_2_5_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_retrofit_2_5_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxandroid_2_1_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxjava_2_2_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_inject_javax_inject_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_12_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_opacapp_multiline_collapsingtoolbar_27_1_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_integration_1_3_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_annotations_16_0_1_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_reactivestreams_reactive_streams_1_0_2_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/androidTest/java/dev/radley/omgstarwars/ExampleInstrumentedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/films/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/films/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/films/3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/films/4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/films/5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/films/6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/films/7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/hero/films.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/hero/people.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/hero/planets.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/hero/species.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/hero/starships.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/hero/vehicles.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/14.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/16.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/18.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/19.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/20.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/21.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/22.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/23.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/24.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/25.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/26.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/27.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/28.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/29.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/30.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/31.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/32.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/33.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/34.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/35.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/36.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/37.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/38.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/39.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/40.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/41.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/42.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/43.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/44.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/45.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/46.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/47.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/48.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/49.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/50.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/51.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/52.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/53.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/54.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/55.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/56.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/57.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/58.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/59.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/60.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/61.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/62.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/63.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/64.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/66.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/67.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/68.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/69.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/70.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/71.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/72.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/73.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/74.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/75.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/76.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/77.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/78.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/79.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/80.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/81.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/82.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/83.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/84.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/85.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/86.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/87.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/88.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/people/9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/planets/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/planets/10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/planets/11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/planets/12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/planets/13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/planets/14.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/planets/15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/planets/16.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/planets/17.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/planets/18.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/planets/19.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/planets/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/planets/21.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/planets/3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/planets/4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/planets/5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/planets/6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/planets/7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/planets/8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/planets/9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/14.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/16.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/17.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/18.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/19.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/20.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/21.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/22.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/23.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/24.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/25.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/26.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/27.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/28.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/29.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/30.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/31.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/32.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/33.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/34.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/35.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/36.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/37.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/79.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/species/9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/11.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/13.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/15.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/21.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/22.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/23.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/27.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/28.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/29.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/31.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/39.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/40.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/41.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/43.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/47.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/48.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/starships/9.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/vehicles/14.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/vehicles/16.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/vehicles/18.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/vehicles/19.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/vehicles/20.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/vehicles/24.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/vehicles/25.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/vehicles/26.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/vehicles/30.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/vehicles/33.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/vehicles/34.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/vehicles/35.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/vehicles/36.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/vehicles/37.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/vehicles/38.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/vehicles/4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/vehicles/42.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/vehicles/6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/vehicles/7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/assets/vehicles/8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/ic_chewy-web.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/ApplicationController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/adapters/CategoryAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/adapters/RelatedAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/adapters/SearchAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/bundle/DetailExtras.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/bundle/SearchExtras.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/dagger/ApiComponent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/dagger/ApiModule.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/listeners/OnBottomReachedListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/listeners/RecyclerTouchListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/models/Category.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/models/Film.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/models/People.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/models/Planet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/models/SWModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/models/SWModelList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/models/Species.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/models/Starship.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/models/Vehicle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/network/StarWarsApi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/network/StarWarsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/text/CustomTypefaceSpan.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/utilities/Constants.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/utilities/FormatUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/utilities/SortUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/view/CategoriesActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/view/CategoryFragment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/view/DetailActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/view/SearchActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/view/detailview/DetailView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/view/detailview/FilmDetailView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/view/detailview/PeopleDetailView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/view/detailview/PlanetDetailView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/view/detailview/SpeciesDetailView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/view/detailview/StarshipDetailView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/view/detailview/VehicleDetailView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/viewmodels/CategoriesViewModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/viewmodels/CategoryViewModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/viewmodels/DetailViewModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/viewmodels/SWImage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/java/dev/radley/omgstarwars/viewmodels/SearchViewModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/drawable-anydpi-v21/ic_search_black_24dp.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/drawable-nodpi/big_placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/drawable-nodpi/generic_people.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/drawable-nodpi/generic_planet.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/drawable-nodpi/generic_species.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/drawable-nodpi/generic_starship.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/drawable-nodpi/generic_vehicle.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/drawable-nodpi/hero.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/drawable-nodpi/placeholder_hero.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/drawable-nodpi/placeholder_square.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/drawable-nodpi/placeholder_tall.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/drawable-nodpi/placeholder_wide.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/drawable/detail_hero_gradient.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/font/nunito_sans.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/font/nunito_sans_extrabold.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/font/nunito_sans_italic.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/font/passion_one.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/activity_categories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/activity_detail.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/activity_search.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/card_grid.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/card_result.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/card_row.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/card_row_wide.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/fragment_category.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/spinner_dropdown_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/spinner_item.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/view_detail_film.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/view_detail_people.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/view_detail_planet.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/view_detail_related_list.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/view_detail_species.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/view_detail_starship.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/layout/view_detail_vehicle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/menu/menu_categories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/menu/menu_search.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-anydpi-v26/ic_chewy.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-anydpi-v26/ic_chewy_round.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-hdpi/ic_app.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-hdpi/ic_app_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-hdpi/ic_chewy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-hdpi/ic_chewy_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-mdpi/ic_app.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-mdpi/ic_app_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-mdpi/ic_chewy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-mdpi/ic_chewy_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xhdpi/ic_app.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xhdpi/ic_app_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xhdpi/ic_chewy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xhdpi/ic_chewy_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xxhdpi/ic_app.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xxhdpi/ic_app_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xxhdpi/ic_chewy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xxhdpi/ic_chewy_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xxxhdpi/ic_app.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xxxhdpi/ic_app_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xxxhdpi/ic_chewy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xxxhdpi/ic_chewy_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/values/colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/values/dimens.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/values/font_certs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/values/ic_launcher_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/values/integers.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/values/preloaded_fonts.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/values/styles_base.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/values/styles_components.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/main/res/values/themes.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/src/test/java/dev/radley/omgstarwars/ExampleUnitTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -428,7 +158,11 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/build.gradle">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="36" column="65" selection-start-line="36" selection-start-column="65" selection-end-line="36" selection-end-column="65" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -449,6 +183,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -460,54 +197,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="OMGStarWars" type="b2602c69:ProjectViewProjectNode" />
-              <item name="omgstarwars" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="OMGStarWars" type="b2602c69:ProjectViewProjectNode" />
-              <item name="omgstarwars" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="OMGStarWars" type="b2602c69:ProjectViewProjectNode" />
-              <item name="omgstarwars" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OMGStarWars" type="b2602c69:ProjectViewProjectNode" />
-              <item name="omgstarwars" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OMGStarWars" type="b2602c69:ProjectViewProjectNode" />
-              <item name="omgstarwars" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="OMGStarWars" type="b2602c69:ProjectViewProjectNode" />
-              <item name="omgstarwars" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="omgstarwars" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -518,6 +207,9 @@
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="PsdUISettings">
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -607,7 +299,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="731" y="231" width="1640" height="1305" extended-state="0" />
+    <frame x="93" y="75" width="1640" height="1305" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
@@ -619,13 +311,15 @@
       <window_info id="Designer" order="6" />
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
+      <window_info anchor="bottom" id="Run" />
+      <window_info anchor="bottom" id="Debug" />
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Logcat" order="1" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Terminal" order="3" />
       <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Build" order="5" visible="true" weight="0.19455895" />
-      <window_info anchor="bottom" id="Android Profiler" order="6" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Build" order="5" visible="true" weight="0.15169002" />
+      <window_info anchor="bottom" id="Android Profiler" order="6" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
@@ -635,7 +329,11 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="65" selection-start-line="36" selection-start-column="65" selection-end-line="36" selection-end-column="65" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
