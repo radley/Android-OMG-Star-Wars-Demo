@@ -12,3 +12,14 @@ https://swapi.co/
 * [Timber](https://github.com/JakeWharton/timber) - Logger
 * [Androidx](https://developer.android.com/jetpack/androidx) - Support library
 * [opacapp/multiline-collapsingtoolbar](https://github.com/opacapp/multiline-collapsingtoolbar) - multiline toolbar title
+
+## Screenshots (v2)
+
+| Categories | Search |
+| --- | --- |
+| ![](screenshots/categories.jpg "Categories Browser") | ![](screenshots/search.jpg "Search") |
+
+
+| Detail | Detail (scrolled) |
+| --- | --- |
+| ![](screenshots/detail.jpg "Detail") | ![](screenshots/detail-scrolled.jpg "Detail (scrolled)") |
