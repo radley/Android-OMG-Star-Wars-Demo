@@ -3,6 +3,7 @@ package dev.radley.omgstarwars.adapters;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.view.LayoutInflater;
@@ -43,8 +44,10 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
 
         modelList = list;
 
-        // custom fonts require us to use typeface to display bold text style
-        boldTypeface = ResourcesCompat.getFont(context, R.font.nunito_sans_extrabold);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // custom fonts require us to use typeface to display bold text style
+            boldTypeface = ResourcesCompat.getFont(context, R.font.nunito_sans_extrabold);
+        }
     }
 
     /**
@@ -142,10 +145,12 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
 
         if (text.toLowerCase().contains(query.toLowerCase())) {
 
-            spannable.setSpan(new CustomTypefaceSpan("", boldTypeface),
-                    text.toLowerCase().indexOf(query.toLowerCase()),
-                    text.toLowerCase().indexOf(query.toLowerCase()) + query.length(),
-                    Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                spannable.setSpan(new CustomTypefaceSpan("", boldTypeface),
+                        text.toLowerCase().indexOf(query.toLowerCase()),
+                        text.toLowerCase().indexOf(query.toLowerCase()) + query.length(),
+                        Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+            }
         }
         return spannable;
     }

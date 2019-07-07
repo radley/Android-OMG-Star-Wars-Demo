@@ -2,10 +2,15 @@ package dev.radley.omgstarwars.utilities;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Build;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Locale;
 
 import dev.radley.omgstarwars.R;
 
@@ -55,9 +60,25 @@ public class FormatUtils {
      */
     public static String getFormattedDate(Context context, String date) {
 
-        return Instant.parse(date)
-                .atOffset(ZoneOffset.UTC)
-                .format(DateTimeFormatter.ofPattern(context.getResources().getString(R.string.detail_date_format)));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            return Instant.parse(date)
+                    .atOffset(ZoneOffset.UTC)
+                    .format(DateTimeFormatter.ofPattern(context.getResources().getString(R.string.detail_date_format)));
+
+        } else {
+            SimpleDateFormat sdf = new SimpleDateFormat(context.getResources().getString(R.string.detail_date_format), Locale.US);
+            Date testDate;
+            try {
+                testDate = sdf.parse(date);
+                SimpleDateFormat formatter = new SimpleDateFormat(context.getResources().getString(R.string.detail_date_format), Locale.US);
+                return formatter.format(testDate);
+            }catch(Exception ex){
+                ex.printStackTrace();
+            }
+
+        }
+
+        return date;
     }
 
     /**
@@ -225,7 +246,7 @@ public class FormatUtils {
      * @param value String
      * @return boolean
      */
-    public static boolean isUnknown(Context context, String value) {
+    private static boolean isUnknown(Context context, String value) {
         return value.equals("") ||
                 value.toLowerCase().equals(context.getString(R.string.detail_na)) ||
                 value.toLowerCase().equals(context.getString(R.string.unknown));

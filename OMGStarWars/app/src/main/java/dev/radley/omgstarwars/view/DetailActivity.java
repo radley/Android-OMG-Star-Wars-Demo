@@ -111,7 +111,11 @@ public class DetailActivity extends AppCompatActivity {
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
 
-        getWindow().setStatusBarColor(getResources().getColor(R.color.transparentPrimaryDark, null));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getWindow().setStatusBarColor(getResources().getColor(R.color.transparentPrimaryDark, null));
+        } else {
+            getWindow().setStatusBarColor(getResources().getColor(R.color.transparentPrimaryDark));
+        }
     }
 
     /**
@@ -124,11 +128,13 @@ public class DetailActivity extends AppCompatActivity {
 
         mToolbar.setNavigationOnClickListener(v -> finish());
 
-        // Third-party CollapsingToolbarLayout won't load typeface via styles, must do it here
-        CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.toolbar_layout);
-        Typeface typeface = ResourcesCompat.getFont(this, R.font.passion_one);
-        collapsingToolbarLayout.setCollapsedTitleTypeface(typeface);
-        collapsingToolbarLayout.setExpandedTitleTypeface(typeface);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Third-party CollapsingToolbarLayout won't load typeface via styles, must do it here
+            CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.toolbar_layout);
+            Typeface typeface = ResourcesCompat.getFont(this, R.font.passion_one);
+            collapsingToolbarLayout.setCollapsedTitleTypeface(typeface);
+            collapsingToolbarLayout.setExpandedTitleTypeface(typeface);
+        }
 
         actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -367,7 +373,11 @@ public class DetailActivity extends AppCompatActivity {
 
         viewModel.getHomeWorlds(id).observe(this, (Planet planet) -> {
 
-            homeWorldText.setText(Html.fromHtml(getString(R.string.link_text, planet.getTitle()), Build.VERSION.SDK_INT));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                homeWorldText.setText(Html.fromHtml(getString(R.string.link_text, planet.getTitle()), Build.VERSION.SDK_INT));
+            } else {
+                homeWorldText.setText(Html.fromHtml(getString(R.string.link_text, planet.getTitle())));
+            }
             homeWorldText.setOnClickListener(v -> startDetailActivity(planet));
         });
     }
@@ -393,7 +403,11 @@ public class DetailActivity extends AppCompatActivity {
 
         viewModel.getSingleSpecies(id).observe(this, (Species species) -> {
 
-            speciesText.setText(Html.fromHtml(getString(R.string.link_text, species.getTitle()), Build.VERSION.SDK_INT));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                speciesText.setText(Html.fromHtml(getString(R.string.link_text, species.getTitle()), Build.VERSION.SDK_INT));
+            } else {
+                speciesText.setText(Html.fromHtml(getString(R.string.link_text, species.getTitle())));
+            }
             speciesText.setOnClickListener(v -> startDetailActivity(species));
         });
     }

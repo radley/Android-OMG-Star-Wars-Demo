@@ -25,10 +25,10 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light"/>
 
-    <style name="AppShapeAppearance.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
-        <item name="cornerFamilyBottomRight">cut</item>
-        <item name="cornerSizeBottomRight">16dp</item>
-    </style>
+    <!--<style name="AppShapeAppearance.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">-->
+        <!--<item name="cornerFamilyBottomRight">cut</item>-->
+        <!--<item name="cornerSizeBottomRight">16dp</item>-->
+    <!--</style>-->
 
 
 </resources>

@@ -1,6 +1,7 @@
 package dev.radley.omgstarwars.view;
 
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -46,7 +47,6 @@ public class CategoriesActivity extends AppCompatActivity {
     private AppBarLayout appBarLayout;
     private AppBarLayout.OnOffsetChangedListener appBarOffsetListener;
     private SearchView searchView;
-    private SearchView.SearchAutoComplete searchAutoComplete;
     private TabLayout tabLayout;
     private TabLayout.ViewPagerOnTabSelectedListener tabListener;
     private ViewPager viewPager;
@@ -120,7 +120,11 @@ public class CategoriesActivity extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
 
                 if (hasFocus) {
-                    searchView.setBackgroundColor(getColor(R.color.transparentPrimary));
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        searchView.setBackgroundColor(getColor(R.color.transparentPrimary));
+                    } else {
+                        searchView.setBackgroundColor(getResources().getColor(R.color.transparentPrimary));
+                    }
                 } else {
                     searchView.setBackground(null);
                 }
@@ -163,7 +167,7 @@ public class CategoriesActivity extends AppCompatActivity {
      * Tell viewModel category has changed
      * update searchView hint and dispose any query text
      *
-     * @param position
+     * @param position pager index
      */
     private void updateCategory(int position) {
 
@@ -221,7 +225,11 @@ public class CategoriesActivity extends AppCompatActivity {
 
             // show background onionskin behind tabs when app bar is extended
             if (Math.abs(verticalOffset) < 24) {
-                tabLayout.setBackgroundColor(getApplicationContext().getColor(R.color.transparentPrimaryDark));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    tabLayout.setBackgroundColor(getApplicationContext().getColor(R.color.transparentPrimaryDark));
+                } else {
+                    tabLayout.setBackgroundColor(getResources().getColor(R.color.transparentPrimaryDark));
+                }
 
             } else {
                 tabLayout.setBackground(null);
