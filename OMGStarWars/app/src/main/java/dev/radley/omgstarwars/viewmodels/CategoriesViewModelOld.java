@@ -3,16 +3,17 @@ package dev.radley.omgstarwars.viewmodels;
 import androidx.lifecycle.ViewModel;
 
 import dev.radley.omgstarwars.models.Category;
+import dev.radley.omgstarwars.models.CategoryOld;
 
 /**
  * ViewModel for CategoriesActivityOld
  *
  * - provides category ids and titles for tabs and pages
  */
-public class CategoriesViewModel extends ViewModel {
+public class CategoriesViewModelOld extends ViewModel {
 
-    private static String[] categoryIds = Category.categoryIds;
-    private static String[] categoryTitles = Category.categoryTitles;
+    private static String[] categoryIds = CategoryOld.categories;
+    private static String[] categoryTitles = CategoryOld.categoryTitles;
     private String category = categoryIds[0];
 
     public String getCategory() {

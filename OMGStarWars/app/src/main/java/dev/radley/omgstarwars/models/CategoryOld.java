@@ -9,6 +9,6 @@ public class CategoryOld {
     public static final String VEHICLES = "vehicles";
     public static final String PLANETS = "planets";
 
-    public static String[] categoryIds = {FILMS, PEOPLE, SPECIES, STARSHIPS, VEHICLES, PLANETS};
+    public static String[] categories = {FILMS, PEOPLE, SPECIES, STARSHIPS, VEHICLES, PLANETS};
     public static String[] categoryTitles = {"Films!", "People!", "Species!", "Starships!", "Vehicles!", "Planets!"};
 }
