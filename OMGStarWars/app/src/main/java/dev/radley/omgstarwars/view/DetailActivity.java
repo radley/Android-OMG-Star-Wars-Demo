@@ -203,7 +203,7 @@ public class DetailActivity extends AppCompatActivity {
                 .placeholder(R.drawable.placeholder_tall)
                 .error(fallback);
 
-        ImageView imageView = findViewById(R.id.hero_image);
+        ImageView imageView = findViewById(R.id.heroImage);
 
         // load image and fade in
         Glide.with(this)

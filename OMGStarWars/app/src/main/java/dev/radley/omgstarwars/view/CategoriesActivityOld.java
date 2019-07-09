@@ -247,7 +247,7 @@ public class CategoriesActivity extends AppCompatActivity {
     /**
      * Adapter for page tabs
      */
-    public static class MyPagerAdapter extends FragmentStatePagerAdapter {
+    public class MyPagerAdapter extends FragmentStatePagerAdapter {
 
         private MyPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);

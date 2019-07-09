@@ -1,6 +1,6 @@
 package dev.radley.omgstarwars.models;
 
-public class Category {
+public class CategoryOld {
 
     public static final String FILMS = "films";
     public static final String PEOPLE = "people";

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
+import dev.radley.omgstarwars.models.CategoryOld;
 import dev.radley.omgstarwars.models.Category;
 import dev.radley.omgstarwars.models.People;
 import dev.radley.omgstarwars.models.Planet;
@@ -63,8 +64,8 @@ public class SearchViewModel extends ViewModel {
     private MutableLiveData<Boolean> error = new MutableLiveData<>();
     private MutableLiveData<Boolean> loading = new MutableLiveData<>();
 
-    private static String[] categoryIds = Category.categoryIds;
-    private static String[] categoryTitles = Category.categoryTitles;
+    private String[] categoryIds = CategoryOld.categories;
+    private String[] categoryTitles = CategoryOld.categoryTitles;
     private String category = categoryIds[0];
     private String query = "";
 
@@ -183,7 +184,7 @@ public class SearchViewModel extends ViewModel {
     public LiveData<Boolean> getError() {
         return error;
     }
-    
+
 
     /**
      * Instantiate loading state observable
@@ -358,7 +359,7 @@ public class SearchViewModel extends ViewModel {
 
     /**
      * Updates modelList using base model class
-     * 
+     *
      * @param list ArrayList<?>
      */
     private void updateModelList(ArrayList<?> list) {
@@ -403,7 +404,7 @@ public class SearchViewModel extends ViewModel {
      * - sets error state to true
      * - sets loading state to false
      * - clears model list
-     * 
+     *
      * @param t Throwable
      */
     private void onSearchError(Throwable t) {

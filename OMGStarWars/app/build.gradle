@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 28
@@ -23,7 +25,7 @@ android {
     }
 }
 
-def lifeCycleExtensionsVersion = '2.2.0-alpha01'
+def lifeCycleExtensionsVersion = '2.2.0-alpha02'
 def retrofitVersion = '2.5.0'
 def daggerVersion = '2.15'
 def glideVersion = '4.9.0'
@@ -64,4 +66,11 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation "androidx.core:core-ktx:+"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-alpha02"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

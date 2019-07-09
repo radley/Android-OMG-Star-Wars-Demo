@@ -30,7 +30,7 @@ import static java.util.Objects.requireNonNull;
 /**
  * SearchActivity provides results for search queries
  *
- * - launched from CategoriesActivity when user submits query in searchView
+ * - launched from Categories Activity when user submits query in searchView
  *      - passes <code>CATEGORY</code> and <code>QUERY</code> extras in bundle
  * - persists the ToolBar searchView so user can update query
  * - displays search result count and loading state in <code>resultsText</code>
@@ -61,7 +61,7 @@ public class SearchActivity extends AppCompatActivity {
     private static SearchViewModel viewModel;
 
     /**
-     * Activity is opened from search query in CategoriesActivity which will always pass
+     * Activity is opened from search query in Categories Activity which will always pass
      * a bundle with SearchExtras.CATEGORY and SearchExtras.QUERY values
      *
      * @param savedInstanceState
