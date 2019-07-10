@@ -29,7 +29,7 @@ import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * ViewModel for CategoryFragment
+ * ViewModel for Category Fragment
  *
  * - fetches page of items (based on SWModel) based on category
  * - stores it in <code>modelList</code> ArrayList

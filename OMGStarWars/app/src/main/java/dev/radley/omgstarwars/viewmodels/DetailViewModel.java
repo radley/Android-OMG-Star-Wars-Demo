@@ -27,7 +27,7 @@ import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
 /**
- * ViewModel for DetailActivity
+ * ViewModel for Detail Activity
  *
  * - mostly manages related item lists
  * - provides liveData for existing related list

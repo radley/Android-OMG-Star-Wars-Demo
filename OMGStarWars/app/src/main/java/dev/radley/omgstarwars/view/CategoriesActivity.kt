@@ -141,6 +141,7 @@ class CategoriesActivity : AppCompatActivity() {
 
     private fun updateCategory(position: Int) {
         category = categories[position]
+        searchView.queryHint = getString(R.string.search_query_hint, category)
         updateHeroImage()
     }
 

@@ -30,11 +30,11 @@ import io.reactivex.schedulers.Schedulers;
 import timber.log.Timber;
 
 /**
- * ViewModel for SearchActivity
+ * ViewModel for Search Activity
  *
  * - provies liveData for list, loading, and error
  * - directs search based on category and query
- * - allows user to tap result item and view more in DetailActivity
+ * - allows user to tap result item and view more in Detail Activity
  *      - passes item's model in Bundle
  *
  * Swapi search results are not optimized, so we grab ALL search result pages using concatMap

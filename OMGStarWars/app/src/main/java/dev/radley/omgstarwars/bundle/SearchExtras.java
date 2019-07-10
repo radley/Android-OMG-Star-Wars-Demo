@@ -18,9 +18,6 @@ package dev.radley.omgstarwars.bundle;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-
-import java.io.Serializable;
 
 import dev.radley.omgstarwars.view.SearchActivity;
 
@@ -35,7 +32,7 @@ public class SearchExtras {
     private static Intent intent;
 
     /**
-     * Intent & bundle builder for SearchActivity
+     * Intent & bundle builder for Search Activity
      *
      * @param context Context
      * @param query String

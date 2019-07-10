@@ -3,10 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".view.CategoryFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/grid"
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
@@ -23,7 +25,7 @@
         app:spanCount="@integer/grid_span_count_tall" />
 
     <ProgressBar
-        android:id="@+id/progress"
+        android:id="@+id/progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -32,7 +34,7 @@
         android:layout_margin="64dp"/>
 
     <ProgressBar
-        android:id="@+id/launch_progress"
+        android:id="@+id/launch_progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

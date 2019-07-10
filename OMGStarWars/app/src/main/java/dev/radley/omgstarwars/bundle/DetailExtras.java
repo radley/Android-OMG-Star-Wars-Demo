@@ -31,7 +31,7 @@ public class DetailExtras {
     private static Intent intent;
 
     /**
-     * Intent builder for DetailActivity
+     * Intent builder for Detail Activity
      *
      * @param context
      * @param item SWModel

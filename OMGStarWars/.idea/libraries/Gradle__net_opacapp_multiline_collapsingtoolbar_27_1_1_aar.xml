@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: net.opacapp:multiline-collapsingtoolbar:27.1.1@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c58c5ce882f16c607dd019f3baed71d3/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4eaedd87f6bf89bf97eb8568d22af795/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c58c5ce882f16c607dd019f3baed71d3/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c58c5ce882f16c607dd019f3baed71d3/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4eaedd87f6bf89bf97eb8568d22af795/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4eaedd87f6bf89bf97eb8568d22af795/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
