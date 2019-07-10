@@ -27,6 +27,7 @@ import dev.radley.omgstarwars.view.detailview.*
 import dev.radley.omgstarwars.viewmodels.DetailViewModel
 import dev.radley.omgstarwars.viewmodels.SWImage
 import net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout
+import java.util.ArrayList
 
 class DetailActivity : AppCompatActivity() {
 
@@ -130,10 +131,11 @@ class DetailActivity : AppCompatActivity() {
         }
 
         val recyclerView = getRelatedListView(viewModel.relatedFilmsTitle)
-        viewModel.getFilmsList(viewModel.films).observe(this, Observer { list ->
-            val adapter = RelatedAdapter(list, RelatedAdapter.OnItemClickListener { startDetailActivity(it) })
+        viewModel.getFilmsList(viewModel.films).observe(this, Observer(fun(list: ArrayList<SWModel>) {
+
+            val adapter = RelatedAdapter(list) { item: SWModel -> startDetailActivity(item) }
             recyclerView.adapter = adapter
-        })
+        }))
     }
 
     private fun addRelatedPeople() {
@@ -143,10 +145,11 @@ class DetailActivity : AppCompatActivity() {
         }
 
         val recyclerView = getRelatedListView(viewModel.relatedPeopleTitle)
-        viewModel.getPeopleList(viewModel.people).observe(this, Observer { list ->
-            val adapter = RelatedAdapter(list, RelatedAdapter.OnItemClickListener { startDetailActivity(it) })
+        viewModel.getPeopleList(viewModel.people).observe(this, Observer(fun(list: ArrayList<SWModel>) {
+
+            val adapter = RelatedAdapter(list) { item: SWModel -> startDetailActivity(item) }
             recyclerView.adapter = adapter
-        })
+        }))
     }
 
     private fun addRelatedPlanets() {
@@ -156,10 +159,11 @@ class DetailActivity : AppCompatActivity() {
         }
 
         val recyclerView = getRelatedListView(viewModel.relatedPlanetsTitle)
-        viewModel.getPlanetsList(viewModel.planets).observe(this, Observer { list ->
-            val adapter = RelatedAdapter(list, RelatedAdapter.OnItemClickListener { startDetailActivity(it) })
+        viewModel.getPlanetsList(viewModel.planets).observe(this, Observer(fun(list: ArrayList<SWModel>) {
+
+            val adapter = RelatedAdapter(list) { item: SWModel -> startDetailActivity(item) }
             recyclerView.adapter = adapter
-        })
+        }))
     }
 
     private fun addRelatedSpecies() {
@@ -171,10 +175,11 @@ class DetailActivity : AppCompatActivity() {
         }
 
         val recyclerView = getRelatedListView(viewModel.relatedSpeciesTitle)
-        viewModel.getSpeciesList(viewModel.species).observe(this, Observer { list ->
-            val adapter = RelatedAdapter(list, RelatedAdapter.OnItemClickListener { startDetailActivity(it) })
+        viewModel.getSpeciesList(viewModel.species).observe(this, Observer(fun(list: ArrayList<SWModel>) {
+
+            val adapter = RelatedAdapter(list) { item: SWModel -> startDetailActivity(item) }
             recyclerView.adapter = adapter
-        })
+        }))
     }
 
     private fun addRelatedStarships() {
@@ -184,10 +189,11 @@ class DetailActivity : AppCompatActivity() {
         }
 
         val recyclerView = getRelatedListView(viewModel.relatedStarshipsTitle)
-        viewModel.getStarshipsList(viewModel.starships).observe(this, Observer { list ->
-            val adapter = RelatedAdapter(list, RelatedAdapter.OnItemClickListener { startDetailActivity(it) })
+        viewModel.getStarshipsList(viewModel.starships).observe(this, Observer(fun(list: ArrayList<SWModel>) {
+
+            val adapter = RelatedAdapter(list) { item: SWModel -> startDetailActivity(item) }
             recyclerView.adapter = adapter
-        })
+        }))
     }
 
     private fun addRelatedVehicles() {
@@ -197,10 +203,11 @@ class DetailActivity : AppCompatActivity() {
         }
 
         val recyclerView = getRelatedListView(viewModel.relatedVehiclesTitle)
-        viewModel.getVehiclesList(viewModel.vehicles).observe(this, Observer { list ->
-            val adapter = RelatedAdapter(list, RelatedAdapter.OnItemClickListener { startDetailActivity(it) })
+        viewModel.getVehiclesList(viewModel.vehicles).observe(this, Observer(fun(list: ArrayList<SWModel>) {
+
+            val adapter = RelatedAdapter(list) { item: SWModel -> startDetailActivity(item) }
             recyclerView.adapter = adapter
-        })
+        }))
     }
 
     private fun addHomeWorldTextLink() {

@@ -18,6 +18,7 @@ import dev.radley.omgstarwars.bundle.SearchExtras
 import dev.radley.omgstarwars.listeners.RecyclerTouchListener
 import dev.radley.omgstarwars.models.CategoryOld
 import dev.radley.omgstarwars.viewmodels.CategoryViewModel
+import timber.log.Timber
 import java.util.*
 
 class CategoryFragment : Fragment() {
@@ -97,9 +98,17 @@ class CategoryFragment : Fragment() {
 
             adapter?.notifyDataSetChanged() ?: run {
                 adapter = CategoryAdapter(swModel)
-                adapter!!.setOnBottomReachedListener { viewModel.getNextPage() }
-
                 recyclerView.adapter = adapter
+
+                recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+
+                    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+
+                        super.onScrolled(recyclerView, dx, dy)
+                        if( !recyclerView.canScrollVertically(RecyclerView.FOCUS_DOWN))
+                            viewModel.getNextPage()
+                    }
+                })
             }
 
             recyclerView.visibility = View.VISIBLE
