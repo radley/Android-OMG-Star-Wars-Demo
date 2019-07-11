@@ -1,0 +1,10 @@
+#Wed Jul 10 20:42:02 PDT 2019
+path.2=classes.dex
+path.1=classes.dex
+path.0=classes.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+base.2=/Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/build/intermediates/transforms/dexMerger/debug/3
+base.1=/Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/build/intermediates/transforms/dexMerger/debug/1
+base.0=/Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/build/intermediates/transforms/dexMerger/debug/0
