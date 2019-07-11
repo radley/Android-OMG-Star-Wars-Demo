@@ -16,10 +16,8 @@ import dev.radley.omgstarwars.adapters.CategoryAdapter
 import dev.radley.omgstarwars.bundle.DetailExtras
 import dev.radley.omgstarwars.bundle.SearchExtras
 import dev.radley.omgstarwars.listeners.RecyclerTouchListener
-import dev.radley.omgstarwars.models.CategoryOld
+import dev.radley.omgstarwars.models.Category
 import dev.radley.omgstarwars.viewmodels.CategoryViewModel
-import timber.log.Timber
-import java.util.*
 
 class CategoryFragment : Fragment() {
 
@@ -70,10 +68,12 @@ class CategoryFragment : Fragment() {
 
         touchListener = object : RecyclerTouchListener(context) {
 
-            override fun onItemSelected(holder: RecyclerView.ViewHolder, position: Int) {
 
-                startActivity(DetailExtras.getIntent(Objects.requireNonNull(activity),
-                        viewModel.getItem(position)))
+            override fun onItemSelected(holder: RecyclerView.ViewHolder?, position: Int) {
+
+                startActivity(context?.let {
+                    DetailExtras.getIntent(it, viewModel.getItem(position))
+                })
             }
         }
 
@@ -94,18 +94,36 @@ class CategoryFragment : Fragment() {
 
 
     private fun observeViewModel(category: String) {
+
+        viewModel.getLoadError().observe(this, Observer { error ->
+
+            if (error) {
+                Toast.makeText(activity, getString(R.string.error_message, viewModel.getId()), Toast.LENGTH_SHORT).show()
+                progressBar.visibility = View.GONE
+                launchProgressBar.visibility = View.GONE
+            }
+        })
+
+        viewModel.getLoading().observe(this, Observer { isLoading ->
+
+            if (launchProgressBar.visibility == View.GONE) {
+                progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+            }
+        })
+
+
         viewModel.getList(category).observe(this, Observer { swModel ->
 
             adapter?.notifyDataSetChanged() ?: run {
                 adapter = CategoryAdapter(swModel)
                 recyclerView.adapter = adapter
 
-                recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+                recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
 
                     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
 
                         super.onScrolled(recyclerView, dx, dy)
-                        if( !recyclerView.canScrollVertically(RecyclerView.FOCUS_DOWN))
+                        if (!recyclerView.canScrollVertically(RecyclerView.FOCUS_DOWN))
                             viewModel.getNextPage()
                     }
                 })
@@ -114,28 +132,12 @@ class CategoryFragment : Fragment() {
             recyclerView.visibility = View.VISIBLE
             launchProgressBar.visibility = View.GONE
         })
-
-        viewModel.loadError.observe(this, Observer { error ->
-
-            if(error) {
-                Toast.makeText(activity, getString(R.string.error_message, viewModel.id), Toast.LENGTH_SHORT).show()
-                progressBar.visibility = View.GONE
-                launchProgressBar.visibility = View.GONE
-            }
-        })
-
-        viewModel.loading.observe(this, Observer { isLoading ->
-
-            if (launchProgressBar.visibility == View.GONE) {
-                progressBar.visibility = if(isLoading) View.VISIBLE else View.GONE
-            }
-        })
     }
 
 
     private fun getSpanCount(id: String): Int {
 
-        return if (id == CategoryOld.STARSHIPS || id == CategoryOld.VEHICLES) {
+        return if (id == Category.STARSHIPS || id == Category.VEHICLES) {
             resources.getInteger(R.integer.grid_span_count_wide)
         } else {
             resources.getInteger(R.integer.grid_span_count_tall)

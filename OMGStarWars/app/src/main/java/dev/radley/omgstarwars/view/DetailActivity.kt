@@ -21,13 +21,15 @@ import com.bumptech.glide.request.RequestOptions
 import dev.radley.omgstarwars.R
 import dev.radley.omgstarwars.adapters.RelatedAdapter
 import dev.radley.omgstarwars.bundle.DetailExtras
-import dev.radley.omgstarwars.models.*
+import dev.radley.omgstarwars.models.Category
+import dev.radley.omgstarwars.models.People
+import dev.radley.omgstarwars.models.SWModel
 import dev.radley.omgstarwars.utilities.FormatUtils
 import dev.radley.omgstarwars.view.detailview.*
 import dev.radley.omgstarwars.viewmodels.DetailViewModel
 import dev.radley.omgstarwars.viewmodels.SWImage
 import net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout
-import java.util.ArrayList
+import java.util.*
 
 class DetailActivity : AppCompatActivity() {
 
@@ -49,8 +51,8 @@ class DetailActivity : AppCompatActivity() {
 
         layout = findViewById(R.id.details_layout)
 
-        supportActionBar!!.title = viewModel.title
-        updateHeroImage(viewModel.image, SWImage.getFallbackImage(viewModel.category))
+        supportActionBar!!.title = viewModel.getTitle()
+        updateHeroImage(viewModel.getImage(), SWImage.getFallbackImage(viewModel.getCategory()))
 
         addDetailView()
         addRelatedLists()
@@ -89,26 +91,26 @@ class DetailActivity : AppCompatActivity() {
 
     private fun addDetailView() {
 
-        when (viewModel.category) {
+        when (viewModel.getCategory()) {
 
-            Category.FILMS -> detailView = FilmDetailView(this, viewModel.model)
+            Category.FILMS -> detailView = FilmDetailView(this, viewModel.getModel())
 
             Category.PEOPLE -> {
-                detailView = PeopleDetailView(this, viewModel.model)
+                detailView = PeopleDetailView(this, viewModel.getModel())
                 addHomeWorldTextLink()
                 addSpeciesTextLink()
             }
 
-            Category.PLANETS -> detailView = PlanetDetailView(this, viewModel.model)
+            Category.PLANETS -> detailView = PlanetDetailView(this, viewModel.getModel())
 
             Category.SPECIES -> {
-                detailView = SpeciesDetailView(this, viewModel.model)
+                detailView = SpeciesDetailView(this, viewModel.getModel())
                 addHomeWorldTextLink()
             }
 
-            Category.STARSHIPS -> detailView = StarshipDetailView(this, viewModel.model)
+            Category.STARSHIPS -> detailView = StarshipDetailView(this, viewModel.getModel())
 
-            Category.VEHICLES -> detailView = VehicleDetailView(this, viewModel.model)
+            Category.VEHICLES -> detailView = VehicleDetailView(this, viewModel.getModel())
         }
 
         layout.addView(detailView)
@@ -126,12 +128,12 @@ class DetailActivity : AppCompatActivity() {
 
     private fun addRelatedFilms() {
 
-        if (viewModel.films == null || viewModel.films.size <= 0) {
+        if (viewModel.getFilms() == null || viewModel.getFilms()!!.size <= 0) {
             return
         }
 
-        val recyclerView = getRelatedListView(viewModel.relatedFilmsTitle)
-        viewModel.getFilmsList(viewModel.films).observe(this, Observer(fun(list: ArrayList<SWModel>) {
+        val recyclerView = getRelatedListView(viewModel.getRelatedFilmsTitle())
+        viewModel.getFilmsList().observe(this, Observer(fun(list: ArrayList<SWModel>) {
 
             val adapter = RelatedAdapter(list) { item: SWModel -> startDetailActivity(item) }
             recyclerView.adapter = adapter
@@ -140,12 +142,12 @@ class DetailActivity : AppCompatActivity() {
 
     private fun addRelatedPeople() {
 
-        if (viewModel.people == null || viewModel.people.size <= 0) {
+        if (viewModel.getPeople() == null || viewModel.getPeople()!!.size <= 0) {
             return
         }
 
-        val recyclerView = getRelatedListView(viewModel.relatedPeopleTitle)
-        viewModel.getPeopleList(viewModel.people).observe(this, Observer(fun(list: ArrayList<SWModel>) {
+        val recyclerView = getRelatedListView(viewModel.getRelatedPeopleTitle())
+        viewModel.getPeopleList().observe(this, Observer(fun(list: ArrayList<SWModel>) {
 
             val adapter = RelatedAdapter(list) { item: SWModel -> startDetailActivity(item) }
             recyclerView.adapter = adapter
@@ -154,12 +156,12 @@ class DetailActivity : AppCompatActivity() {
 
     private fun addRelatedPlanets() {
 
-        if (viewModel.planets == null || viewModel.planets.size <= 0) {
+        if (viewModel.getPlanets() == null || viewModel.getPlanets()!!.size <= 0) {
             return
         }
 
-        val recyclerView = getRelatedListView(viewModel.relatedPlanetsTitle)
-        viewModel.getPlanetsList(viewModel.planets).observe(this, Observer(fun(list: ArrayList<SWModel>) {
+        val recyclerView = getRelatedListView(viewModel.getRelatedPlanetsTitle())
+        viewModel.getPlanetsList().observe(this, Observer(fun(list: ArrayList<SWModel>) {
 
             val adapter = RelatedAdapter(list) { item: SWModel -> startDetailActivity(item) }
             recyclerView.adapter = adapter
@@ -168,14 +170,14 @@ class DetailActivity : AppCompatActivity() {
 
     private fun addRelatedSpecies() {
 
-        if (viewModel.model is People ||
-                viewModel.species == null ||
-                viewModel.species.size <= 0) {
+        if (viewModel.getModel() is People ||
+                viewModel.getSpecies() == null ||
+                viewModel.getSpecies()!!.size <= 0) {
             return
         }
 
-        val recyclerView = getRelatedListView(viewModel.relatedSpeciesTitle)
-        viewModel.getSpeciesList(viewModel.species).observe(this, Observer(fun(list: ArrayList<SWModel>) {
+        val recyclerView = getRelatedListView(viewModel.getRelatedSpeciesTitle())
+        viewModel.getSpeciesList().observe(this, Observer(fun(list: ArrayList<SWModel>) {
 
             val adapter = RelatedAdapter(list) { item: SWModel -> startDetailActivity(item) }
             recyclerView.adapter = adapter
@@ -184,12 +186,12 @@ class DetailActivity : AppCompatActivity() {
 
     private fun addRelatedStarships() {
 
-        if (viewModel.starships == null || viewModel.starships.size <= 0) {
+        if (viewModel.getStarships() == null || viewModel.getStarships()!!.size <= 0) {
             return
         }
 
-        val recyclerView = getRelatedListView(viewModel.relatedStarshipsTitle)
-        viewModel.getStarshipsList(viewModel.starships).observe(this, Observer(fun(list: ArrayList<SWModel>) {
+        val recyclerView = getRelatedListView(viewModel.getRelatedStarshipsTitle())
+        viewModel.getStarshipsList().observe(this, Observer(fun(list: ArrayList<SWModel>) {
 
             val adapter = RelatedAdapter(list) { item: SWModel -> startDetailActivity(item) }
             recyclerView.adapter = adapter
@@ -198,12 +200,12 @@ class DetailActivity : AppCompatActivity() {
 
     private fun addRelatedVehicles() {
 
-        if (viewModel.vehicles == null || viewModel.vehicles.size <= 0) {
+        if (viewModel.getVehicles() == null || viewModel.getVehicles()!!.size <= 0) {
             return
         }
 
-        val recyclerView = getRelatedListView(viewModel.relatedVehiclesTitle)
-        viewModel.getVehiclesList(viewModel.vehicles).observe(this, Observer(fun(list: ArrayList<SWModel>) {
+        val recyclerView = getRelatedListView(viewModel.getRelatedVehiclesTitle())
+        viewModel.getVehiclesList().observe(this, Observer(fun(list: ArrayList<SWModel>) {
 
             val adapter = RelatedAdapter(list) { item: SWModel -> startDetailActivity(item) }
             recyclerView.adapter = adapter
@@ -212,17 +214,17 @@ class DetailActivity : AppCompatActivity() {
 
     private fun addHomeWorldTextLink() {
 
-        if (viewModel.homeWorld == null)
+        if (viewModel.getHomeWorld() == null)
             return
 
         val homeWorldText = detailView.findViewById<TextView>(R.id.homeworld)
 
-        if (viewModel.homeWorld!!.substring(0, 4) != "http") {
-            homeWorldText.text = viewModel.homeWorld
+        if (viewModel.getHomeWorld()!!.substring(0, 4) != "http") {
+            homeWorldText.text = viewModel.getHomeWorld()
             return
         }
 
-        val id = FormatUtils.getId(viewModel.homeWorld!!)
+        val id = FormatUtils.getId(viewModel.getHomeWorld()!!)
 
         viewModel.getHomeWorlds(id).observe(this, Observer { planet ->
             homeWorldText.text = Html.fromHtml(getString(R.string.link_text, planet.title), Build.VERSION.SDK_INT)
@@ -233,17 +235,17 @@ class DetailActivity : AppCompatActivity() {
     private fun addSpeciesTextLink() {
 
 
-        if (viewModel.singleSpecies == null)
+        if (viewModel.getSingleSpecies() == null)
             return
 
         val speciesText = detailView.findViewById<TextView>(R.id.species)
 
-        if (viewModel.singleSpecies!!.substring(0, 4) != "http") {
-            speciesText.text = viewModel.singleSpecies
+        if (viewModel.getSingleSpecies()!!.substring(0, 4) != "http") {
+            speciesText.text = viewModel.getSingleSpecies()
             return
         }
 
-        val id = FormatUtils.getId(viewModel.singleSpecies!!)
+        val id = FormatUtils.getId(viewModel.getSingleSpecies()!!)
 
         viewModel.getSingleSpecies(id).observe(this, Observer { species ->
             speciesText.text = Html.fromHtml(getString(R.string.link_text, species.title), Build.VERSION.SDK_INT)

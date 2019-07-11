@@ -24,7 +24,7 @@ import java.util.ArrayList
 
 class SearchAdapter(var context: Context, private var modelList: ArrayList<SWModel>) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
-    private var query: String? = null
+    private var query: String = ""
     private val boldTypeface: Typeface? = ResourcesCompat.getFont(context, R.font.nunito_sans_extrabold)
 
     fun setQuery(query: String) {
@@ -41,11 +41,13 @@ class SearchAdapter(var context: Context, private var modelList: ArrayList<SWMod
 
             if (item is Starship) {
                 subtitleText.text = getBoldResultText(item.model, boldTypeface)
+                subtitleText.visibility = View.VISIBLE
             } else {
                 subtitleText.text = ""
+                subtitleText.visibility = View.GONE
             }
 
-            titleText.text = getBoldResultText(item.getTitle(), boldTypeface)
+            titleText.text = getBoldResultText(item.title, boldTypeface)
 
             // assign default & missing images
             val requestOptions = RequestOptions()
@@ -75,16 +77,15 @@ class SearchAdapter(var context: Context, private var modelList: ArrayList<SWMod
 
         val spannable = SpannableString(text)
 
-        query?.let {
-            if (text.toLowerCase().contains(it.toLowerCase())) {
+        if (text.toLowerCase().contains(query.toLowerCase())) {
 
-                spannable.setSpan(CustomTypefaceSpan("", boldTypeface),
-                        text.toLowerCase().indexOf(it.toLowerCase()),
-                        text.toLowerCase().indexOf(it.toLowerCase()) + it.length,
-                        Spannable.SPAN_INCLUSIVE_INCLUSIVE)
-            }
+            spannable.setSpan(CustomTypefaceSpan("", boldTypeface),
+                    text.toLowerCase().indexOf(query.toLowerCase()),
+                    text.toLowerCase().indexOf(query.toLowerCase()) + query.length,
+                    Spannable.SPAN_INCLUSIVE_INCLUSIVE)
         }
 
         return spannable
     }
 }
+

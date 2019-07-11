@@ -42,16 +42,13 @@ class SearchActivity : AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
 
-        if (intent.hasExtra(SearchExtras.CATEGORY)) {
-            viewModel.category = intent.getStringExtra(SearchExtras.CATEGORY)
-        }
+        if (SearchExtras.hasAll(intent, SearchExtras.CATEGORY, SearchExtras.QUERY)) {
 
-        if (intent.hasExtra(SearchExtras.QUERY)) {
-            viewModel.query = intent.getStringExtra(SearchExtras.QUERY)
+            viewModel.setQueryAndCategory(intent.getStringExtra(SearchExtras.QUERY),
+                    intent.getStringExtra(SearchExtras.CATEGORY))
+            setupLayout()
+            observeViewModel()
         }
-
-        setupLayout()
-        observeViewModel()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -59,8 +56,8 @@ class SearchActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.menu_search, menu)
 
         searchView = menu.findItem(R.id.action_search).actionView as SearchView
-        searchView.queryHint = getString(R.string.search_query_hint, viewModel.category)
-        searchView.setQuery(viewModel.query, false)
+        searchView.queryHint = getString(R.string.search_query_hint, viewModel.getCategory())
+        searchView.setQuery(viewModel.getQuery(), false)
         searchView.isIconified = false
         searchView.clearFocus()
 
@@ -81,10 +78,10 @@ class SearchActivity : AppCompatActivity() {
 
                 queryDelay.postDelayed({
 
-                    if (viewModel.query != newQuery) {
+                    if (viewModel.getQuery() != newQuery) {
 
-                        viewModel.query = FormatUtils.getTrimmedQuery(query)
-                        adapter?.setQuery(viewModel.query)
+                        viewModel.setQuery(FormatUtils.getTrimmedQuery(query))
+                        adapter?.setQuery(viewModel.getQuery())
                     }
                 }, 500)
 
@@ -100,9 +97,9 @@ class SearchActivity : AppCompatActivity() {
 
         mtouchListener = object : RecyclerTouchListener(this) {
 
-            override fun onItemSelected(holder: RecyclerView.ViewHolder, position: Int) {
+            override fun onItemSelected(holder: RecyclerView.ViewHolder?, position: Int) {
 
-                startActivity(DetailExtras.getIntent(holder.itemView.context, viewModel.getItem(position)))
+                startActivity(DetailExtras.getIntent(holder?.itemView!!.context, viewModel.getItem(position)))
             }
         }
 
@@ -112,19 +109,17 @@ class SearchActivity : AppCompatActivity() {
 
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
 
-                if (viewModel.category != viewModel.getCategoryByPosition(position)) {
+                if (viewModel.getCategory() != viewModel.getCategoryByPosition(position)) {
 
-                    viewModel.category = viewModel.getCategoryByPosition(position)
+                    viewModel.setCategory(viewModel.getCategoryByPosition(position))
 
                     searchView.clearFocus()
                     resultsText.text = ""
-                    searchView.queryHint = getString(R.string.search_query_hint, viewModel.category)
+                    searchView.queryHint = getString(R.string.search_query_hint, viewModel.getCategory())
                 }
             }
 
-            override fun onNothingSelected(parentView: AdapterView<*>) {
-
-            }
+            override fun onNothingSelected(parentView: AdapterView<*>) {}
         }
     }
 
@@ -159,36 +154,36 @@ class SearchActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.grid)
 
         spinner = findViewById(R.id.spinner)
-        val spinnerAdapter = ArrayAdapter<String>(this, R.layout.spinner_item, viewModel.categoryTitles)
+        val spinnerAdapter = ArrayAdapter(this, R.layout.spinner_item, viewModel.getCategoryTitles())
         spinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
         spinner.adapter = spinnerAdapter
-        spinner.setSelection(viewModel.categoryPosition)
+        spinner.setSelection(viewModel.getCategoryPosition())
     }
 
     private fun observeViewModel() {
 
-        viewModel.list.observe(this, Observer { list ->
+        viewModel.getList().observe(this, Observer { list ->
 
             adapter?.notifyDataSetChanged() ?: run {
                 adapter = SearchAdapter(this, list)
-                adapter?.setQuery(viewModel.query)
+                adapter?.setQuery(viewModel.getQuery())
                 recyclerView.adapter = adapter
             }
 
             resultsText.text = resources.getQuantityString(R.plurals.result_count,
-                    list.size, list.size, viewModel.query)
+                    list.size, list.size, viewModel.getQuery())
             recyclerView.visibility = View.VISIBLE
         })
 
-        viewModel.error.observe(this, Observer { error ->
+        viewModel.getError().observe(this, Observer { error ->
             if (error!!) {
                 resultsText.text = getString(R.string.error_message)
-                Toast.makeText(this, getString(R.string.search_error_message, viewModel.query), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.search_error_message, viewModel.getQuery()), Toast.LENGTH_SHORT).show()
                 recyclerView.visibility = View.GONE
             }
         })
 
-        viewModel.loading.observe(this, Observer { isLoading ->
+        viewModel.getLoading().observe(this, Observer { isLoading ->
             if (isLoading!!) {
                 resultsText.text = getString(R.string.search_delay_message)
                 recyclerView.visibility = View.GONE
