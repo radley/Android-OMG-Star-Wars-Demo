@@ -8,7 +8,7 @@
     tools:context=".view.DetailActivity">
 
     <ImageView
-        android:id="@+id/hero_image"
+        android:id="@+id/heroImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
@@ -17,7 +17,7 @@
         tools:ignore="ContentDescription" />
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="536dp"
         android:background="@drawable/detail_hero_gradient"
@@ -25,7 +25,7 @@
 
         <!-- enables multiline text in detail activity expanded title -->
         <net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
+            android:id="@+id/toolbarLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:contentScrim="?attr/colorPrimary"
@@ -37,6 +37,7 @@
                 style="@style/TextView.Headline4"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="top"
                 android:theme="@style/AppThemeToolbar"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
@@ -56,8 +57,8 @@
             android:id="@+id/details_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/navbar_padding"
-            android:orientation="vertical" />
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/navbar_padding" />
 
     </androidx.core.widget.NestedScrollView>
 

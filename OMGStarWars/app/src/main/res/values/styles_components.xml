@@ -19,11 +19,9 @@
         <item name="android:minLines">2</item>
     </style>
 
-    <style name="TextView.Card.Result" parent="TextView.Body2">
-    </style>
+    <style name="TextView.Card.Result" parent="TextView.Body2"></style>
 
-    <style name="TextView.Card.Subtitle" parent="TextView.Caption">
-    </style>
+    <style name="TextView.Card.Subtitle" parent="TextView.Caption"></style>
 
     <style name="TextView.Card.Small" parent="TextView.Caption">
         <item name="android:maxLines">2</item>
