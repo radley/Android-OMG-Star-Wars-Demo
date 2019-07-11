@@ -1,4 +1,3 @@
-
 <resources>
     <integer name="grid_span_count_row">1</integer>
     <integer name="grid_span_count_tall">3</integer>
