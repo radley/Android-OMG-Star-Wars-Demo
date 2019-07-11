@@ -10,7 +10,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -28,7 +27,7 @@ import dev.radley.omgstarwars.utilities.FormatUtils
 import dev.radley.omgstarwars.view.detailview.*
 import dev.radley.omgstarwars.viewmodels.DetailViewModel
 import dev.radley.omgstarwars.viewmodels.SWImage
-import net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout
+import kotlinx.android.synthetic.main.activity_detail.*
 import java.util.*
 
 class DetailActivity : AppCompatActivity() {
@@ -41,21 +40,22 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setupFullscreen()
+        setContentView(R.layout.activity_detail)
+
         setupToolbar()
 
-        val intent = intent
-
         viewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
-        viewModel.setModel(intent.getSerializableExtra(DetailExtras.MODEL))
 
-        layout = findViewById(R.id.details_layout)
+        if (DetailExtras.hasAll(intent, DetailExtras.MODEL)) {
+            viewModel.setModel(intent.getSerializableExtra(DetailExtras.MODEL))
+            layout = findViewById(R.id.details_layout)
 
-        supportActionBar!!.title = viewModel.getTitle()
-        updateHeroImage(viewModel.getImage(), SWImage.getFallbackImage(viewModel.getCategory()))
+            supportActionBar!!.title = viewModel.getTitle()
+            updateHeroImage(viewModel.getImage(), SWImage.getFallbackImage(viewModel.getCategory()))
 
-        addDetailView()
-        addRelatedLists()
+            addDetailView()
+            addRelatedLists()
+        }
     }
 
     public override fun onDestroy() {
@@ -63,26 +63,16 @@ class DetailActivity : AppCompatActivity() {
         viewModel.dispose()
     }
 
-    private fun setupFullscreen() {
-
-        //TODO why isn't status bar transparent?
-
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-        window.statusBarColor = resources.getColor(R.color.transparentPrimaryDark, null)
-    }
-
     private fun setupToolbar() {
-        setContentView(R.layout.activity_detail)
-        val mToolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(mToolbar)
 
-        mToolbar.setNavigationOnClickListener { finish() }
+        setSupportActionBar(toolbar)
+        toolbar.setNavigationOnClickListener { finish() }
 
         // Third-party CollapsingToolbarLayout won't load typeface via styles, must do it here
-        val collapsingToolbarLayout = findViewById<CollapsingToolbarLayout>(R.id.toolbar_layout)
         val typeface = ResourcesCompat.getFont(this, R.font.passion_one)
-        collapsingToolbarLayout.setCollapsedTitleTypeface(typeface)
-        collapsingToolbarLayout.setExpandedTitleTypeface(typeface)
+        toolbarLayout.setCollapsedTitleTypeface(typeface)
+        toolbarLayout.setExpandedTitleTypeface(typeface)
+
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)

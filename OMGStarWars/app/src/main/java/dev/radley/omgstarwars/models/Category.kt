@@ -1,6 +1,6 @@
 package dev.radley.omgstarwars.models
 
-public object Category {
+object Category {
 
 
     const val FILMS = "films"

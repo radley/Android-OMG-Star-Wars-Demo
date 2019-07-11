@@ -16,7 +16,7 @@ class PlanetDetailView : DetailView {
 
     internal lateinit var model: Planet
 
-    constructor(context: Context) : super(context) {}
+    constructor(context: Context) : super(context)
 
     constructor(context: Context, model: SWModel) : super(context) {
 
@@ -32,7 +32,7 @@ class PlanetDetailView : DetailView {
     /**
      * Add content to layout
      */
-    internal fun populateContent() {
+    private fun populateContent() {
 
         setText(R.id.climate, model.climate)
         setText(R.id.gravity, model.gravity)

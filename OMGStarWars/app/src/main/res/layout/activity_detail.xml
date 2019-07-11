@@ -25,7 +25,7 @@
 
         <!-- enables multiline text in detail activity expanded title -->
         <net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
+            android:id="@+id/toolbarLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:contentScrim="?attr/colorPrimary"
@@ -37,6 +37,7 @@
                 style="@style/TextView.Headline4"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="top"
                 android:theme="@style/AppThemeToolbar"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />

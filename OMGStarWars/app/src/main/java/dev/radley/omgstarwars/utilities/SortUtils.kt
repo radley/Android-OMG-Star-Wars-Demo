@@ -60,7 +60,6 @@ object SortUtils {
 
 
         // get titles that match explicit query
-        // TODO match for plurals?
 
         for (model in list) {
 

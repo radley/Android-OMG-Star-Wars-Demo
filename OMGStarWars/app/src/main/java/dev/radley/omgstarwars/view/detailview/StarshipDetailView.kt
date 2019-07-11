@@ -16,7 +16,7 @@ class StarshipDetailView : DetailView {
 
     internal lateinit var model: Starship
 
-    constructor(context: Context) : super(context) {}
+    constructor(context: Context) : super(context)
 
     constructor(context: Context, model: SWModel) : super(context) {
 
@@ -32,7 +32,7 @@ class StarshipDetailView : DetailView {
     /**
      * Add content to layout
      */
-    internal fun populateContent() {
+    private fun populateContent() {
 
         setText(R.id.hyperdrive_rating, model.hyperdriveRating)
         setText(R.id.mglt, model.mglt)

@@ -45,9 +45,6 @@ object DetailExtras {
         return intent
     }
 
-
-    // TODO: implement SearchExtra.hasAll()
-
     /**
      * Checks if all extras are present in an intent.
      *

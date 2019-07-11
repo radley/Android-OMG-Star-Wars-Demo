@@ -15,12 +15,12 @@ import dev.radley.omgstarwars.models.SWModel
 import dev.radley.omgstarwars.viewmodels.SWImage
 import java.util.ArrayList
 
-class CategoryAdapter(var modelList: ArrayList<SWModel>) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
+class CategoryAdapter(private var modelList: ArrayList<SWModel>) : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        val titleText: TextView = view.findViewById(R.id.title)
-        val thumbnail: ImageView = view.findViewById(R.id.thumbnail)
+        private val titleText: TextView = view.findViewById(R.id.title)
+        private val thumbnail: ImageView = view.findViewById(R.id.thumbnail)
 
         fun bind(item: SWModel) {
 

@@ -15,7 +15,7 @@ import dev.radley.omgstarwars.models.SWModel
 import dev.radley.omgstarwars.viewmodels.SWImage
 import java.util.ArrayList
 
-class RelatedAdapter(var modelList: ArrayList<SWModel>, var clickListener: (SWModel) -> Unit) : RecyclerView.Adapter<RelatedAdapter.ViewHolder>() {
+class RelatedAdapter(private var modelList: ArrayList<SWModel>, var clickListener: (SWModel) -> Unit) : RecyclerView.Adapter<RelatedAdapter.ViewHolder>() {
 
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

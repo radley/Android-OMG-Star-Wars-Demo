@@ -124,22 +124,22 @@ class CategoryViewModel : ViewModel() {
 
         compositeDisposable.add(
                 service.api.getFilmsByPage(page)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object: DisposableSingleObserver<SWModelList<Film>>() {
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(object : DisposableSingleObserver<SWModelList<Film>>() {
 
-                    override fun onSuccess(list: SWModelList<Film>) {
+                            override fun onSuccess(list: SWModelList<Film>) {
 
-                        list.results?.let {
-                            val films = SortUtils.sortFilmsByEpisode(it)
-                            applyResults(films, list.next)
-                        }
-                    }
+                                list.results?.let {
+                                    val films = SortUtils.sortFilmsByEpisode(it)
+                                    applyResults(films, list.next)
+                                }
+                            }
 
-                    override fun onError(e: Throwable) {
-                        loadError.value = true
-                    }
-                }))
+                            override fun onError(e: Throwable) {
+                                loadError.value = true
+                            }
+                        }))
     }
 
     /**
@@ -221,7 +221,7 @@ class CategoryViewModel : ViewModel() {
         compositeDisposable.add(service.api.getStarshipsByPage(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object: DisposableSingleObserver<SWModelList<Starship>>() {
+                .subscribeWith(object : DisposableSingleObserver<SWModelList<Starship>>() {
 
                     override fun onSuccess(list: SWModelList<Starship>) {
 

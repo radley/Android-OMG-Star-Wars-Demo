@@ -12,8 +12,6 @@ import dev.radley.omgstarwars.dagger.DaggerApiComponent
 @Singleton
 class StarWarsService {
 
-    private val BASE_URL = "https://swapi.co/api/"
-
     @Inject
     lateinit var api: StarWarsApi
 

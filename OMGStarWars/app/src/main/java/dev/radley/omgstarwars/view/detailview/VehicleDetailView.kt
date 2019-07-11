@@ -16,7 +16,7 @@ class VehicleDetailView : DetailView {
 
     internal lateinit var model: Vehicle
 
-    constructor(context: Context) : super(context) {}
+    constructor(context: Context) : super(context)
 
     constructor(context: Context, model: SWModel) : super(context) {
         this.model = model as Vehicle
@@ -31,7 +31,7 @@ class VehicleDetailView : DetailView {
     /**
      * Add content to layout
      */
-    internal fun populateContent() {
+    private fun populateContent() {
 
         setText(R.id.model, model.model)
         setText(R.id.manufacturer, model.manufacturer)

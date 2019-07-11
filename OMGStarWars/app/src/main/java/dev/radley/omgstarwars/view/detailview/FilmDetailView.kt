@@ -17,7 +17,7 @@ class FilmDetailView : DetailView {
 
     internal lateinit var model: Film
 
-    constructor(context: Context) : super(context) {}
+    constructor(context: Context) : super(context)
 
     constructor(context: Context, model: SWModel) : super(context) {
 
@@ -33,7 +33,7 @@ class FilmDetailView : DetailView {
     /**
      * Add content to layout
      */
-    internal fun populateContent() {
+    private fun populateContent() {
 
         setText(R.id.director, model.director)
         setText(R.id.producer, model.producer)

@@ -17,7 +17,7 @@ class PeopleDetailView : DetailView {
 
     internal lateinit var model: People
 
-    constructor(context: Context) : super(context) {}
+    constructor(context: Context) : super(context)
 
     constructor(context: Context, model: SWModel) : super(context) {
 
@@ -33,7 +33,7 @@ class PeopleDetailView : DetailView {
     /**
      * Add content to layout
      */
-    internal fun populateContent() {
+    private fun populateContent() {
 
         setText(R.id.dob, model.birthYear)
         setText(R.id.hair_color, model.hairColor)

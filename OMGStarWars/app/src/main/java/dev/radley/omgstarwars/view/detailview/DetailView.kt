@@ -1,9 +1,6 @@
 package dev.radley.omgstarwars.view.detailview
 
 import android.content.Context
-import android.util.AttributeSet
-import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 
@@ -19,7 +16,7 @@ open class DetailView(context: Context) : LinearLayout(context) {
      * @param id   int
      * @param text String
      */
-    public fun setText(id: Int, text: String) {
+    fun setText(id: Int, text: String) {
         findViewById<TextView>(id).text = text
     }
 }

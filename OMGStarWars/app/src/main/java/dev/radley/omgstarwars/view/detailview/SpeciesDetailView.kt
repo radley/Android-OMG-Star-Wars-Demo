@@ -16,7 +16,7 @@ class SpeciesDetailView : DetailView {
 
     internal lateinit var model: Species
 
-    constructor(context: Context) : super(context) {}
+    constructor(context: Context) : super(context)
 
     constructor(context: Context, model: SWModel) : super(context) {
 
@@ -32,7 +32,7 @@ class SpeciesDetailView : DetailView {
     /**
      * Add content to layout
      */
-    internal fun populateContent() {
+    private fun populateContent() {
 
         setText(R.id.classification, model.classification)
         setText(R.id.designation, model.designation)
