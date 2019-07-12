@@ -1,19 +1,11 @@
 package dev.radley.omgstarwars.network
 
-import dev.radley.omgstarwars.models.Category
-import dev.radley.omgstarwars.models.Film
-import dev.radley.omgstarwars.models.People
-import dev.radley.omgstarwars.models.Planet
-import dev.radley.omgstarwars.models.SWModelList
-import dev.radley.omgstarwars.models.Species
-import dev.radley.omgstarwars.models.Starship
-import dev.radley.omgstarwars.models.Vehicle
-
 import io.reactivex.Observable
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import dev.radley.omgstarwars.models.*
 
 
 /**
@@ -23,7 +15,6 @@ interface StarWarsApi {
 
 
     // lists by page
-
     @GET(Category.FILMS)
     fun getFilmsByPage(@Query("page") var1: Int): Single<SWModelList<Film>>
 
