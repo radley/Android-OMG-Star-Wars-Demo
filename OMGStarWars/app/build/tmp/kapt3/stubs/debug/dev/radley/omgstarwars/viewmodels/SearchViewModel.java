@@ -166,7 +166,7 @@ public final class SearchViewModel extends androidx.lifecycle.ViewModel {
      *
      * @param page int
      * @param query String
-     * @return Observable<SWModelList></SWModelList><Film>>
+     * @return Observable
      *   </Film>
      */
     private final io.reactivex.Observable<dev.radley.omgstarwars.models.SWModelList<dev.radley.omgstarwars.models.Film>> searchFilms(int page, java.lang.String query) {
@@ -179,7 +179,7 @@ public final class SearchViewModel extends androidx.lifecycle.ViewModel {
      *
      * @param page int
      * @param query String
-     * @return Observable<SWModelList></SWModelList><People>>
+     * @return Observable
      *   </People>
      */
     private final io.reactivex.Observable<dev.radley.omgstarwars.models.SWModelList<dev.radley.omgstarwars.models.People>> searchPeople(int page, java.lang.String query) {
@@ -192,7 +192,7 @@ public final class SearchViewModel extends androidx.lifecycle.ViewModel {
      *
      * @param page int
      * @param query String
-     * @return Observable<SWModelList></SWModelList><Species>>
+     * @return Observable
      *   </Species>
      */
     private final io.reactivex.Observable<dev.radley.omgstarwars.models.SWModelList<dev.radley.omgstarwars.models.Species>> searchSpecies(int page, java.lang.String query) {
@@ -205,7 +205,7 @@ public final class SearchViewModel extends androidx.lifecycle.ViewModel {
      *
      * @param page int
      * @param query String
-     * @return Observable<SWModelList></SWModelList><Planet>>
+     * @return Observable
      *   </Planet>
      */
     private final io.reactivex.Observable<dev.radley.omgstarwars.models.SWModelList<dev.radley.omgstarwars.models.Planet>> searchPlanets(int page, java.lang.String query) {
@@ -218,7 +218,7 @@ public final class SearchViewModel extends androidx.lifecycle.ViewModel {
      *
      * @param page int
      * @param query String
-     * @return Observable<SWModelList></SWModelList><Starship>>
+     * @return Observable
      *   </Starship>
      */
     private final io.reactivex.Observable<dev.radley.omgstarwars.models.SWModelList<dev.radley.omgstarwars.models.Starship>> searchStarships(int page, java.lang.String query) {
@@ -231,7 +231,7 @@ public final class SearchViewModel extends androidx.lifecycle.ViewModel {
      *
      * @param page int
      * @param query String
-     * @return Observable<SWModelList></SWModelList><Vehicle>>
+     * @return Observable
      *   </Vehicle>
      */
     private final io.reactivex.Observable<dev.radley.omgstarwars.models.SWModelList<dev.radley.omgstarwars.models.Vehicle>> searchVehicles(int page, java.lang.String query) {
