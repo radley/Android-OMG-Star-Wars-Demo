@@ -28,26 +28,26 @@ class CategoryViewModel : ViewModel() {
 
     private var modelList = ArrayList<SWModel>()
     private var liveData = MutableLiveData<ArrayList<SWModel>>()
-    private var loadError = MutableLiveData<Boolean>()
-    private var loading = MutableLiveData<Boolean>()
+    private var hasLoadError = MutableLiveData<Boolean>()
+    private var isLoading = MutableLiveData<Boolean>()
 
 
     private var nextUrl: String? = null
-    private var category: String = ""
+    private var categoryId: String = ""
 
     init {
         DaggerApiComponent.create().inject(this)
     }
 
     /**
-     * Instantiate liveData, assign category, and load data
+     * Instantiate liveData, assign categoryId, and load data
      *
      * @param category String
      * @return liveData list
      */
     fun getList(category: String): LiveData<ArrayList<SWModel>> {
 
-        this.category = category
+        this.categoryId = category
         loadData()
         return liveData
     }
@@ -59,16 +59,16 @@ class CategoryViewModel : ViewModel() {
      * @return boolean
      */
     fun getLoadError(): LiveData<Boolean> {
-        return loadError
+        return hasLoadError
     }
 
     /**
-     * Reports loading state
+     * Reports isLoading state
      *
      * @return boolean
      */
     fun getLoading(): LiveData<Boolean> {
-        return loading
+        return isLoading
     }
 
     /**
@@ -90,7 +90,7 @@ class CategoryViewModel : ViewModel() {
     }
 
     fun getId(): String {
-        return category
+        return categoryId
     }
 
     fun getItem(position: Int): SWModel {
@@ -98,13 +98,13 @@ class CategoryViewModel : ViewModel() {
     }
 
     /**
-     * Load data based on category
+     * Load data based on categoryId
      */
     private fun loadData() {
 
-        loading.value = true
+        isLoading.value = true
 
-        when (category) {
+        when (categoryId) {
             Category.FILMS -> fetchFilms()
             Category.PEOPLE -> fetchPeople()
             Category.SPECIES -> fetchSpecies()
@@ -114,16 +114,15 @@ class CategoryViewModel : ViewModel() {
         }
     }
 
-
     /**
      * Load by page
      * - return results to applyResults()
-     * - report error to loadError
+     * - report error to hasLoadError
      */
     private fun fetchFilms() {
 
         compositeDisposable.add(
-                service.api.getFilmsByPage(page)
+                service.getFilmsByPage(page)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<SWModelList<Film>>() {
@@ -137,7 +136,7 @@ class CategoryViewModel : ViewModel() {
                             }
 
                             override fun onError(e: Throwable) {
-                                loadError.value = true
+                                hasLoadError.value = true
                             }
                         }))
     }
@@ -145,11 +144,11 @@ class CategoryViewModel : ViewModel() {
     /**
      * Load by page
      * - return results to applyResults()
-     * - report error to loadError
+     * - report error to hasLoadError
      */
     private fun fetchPeople() {
 
-        compositeDisposable.add(service.api.getPeopleByPage(page)
+        compositeDisposable.add(service.getPeopleByPage(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<SWModelList<People>>() {
@@ -160,7 +159,7 @@ class CategoryViewModel : ViewModel() {
                     }
 
                     override fun onError(e: Throwable) {
-                        loadError.value = true
+                        hasLoadError.value = true
                     }
                 }))
     }
@@ -168,11 +167,11 @@ class CategoryViewModel : ViewModel() {
     /**
      * Load by page
      * - return results to applyResults()
-     * - report error to loadError
+     * - report error to hasLoadError
      */
     private fun fetchPlanets() {
 
-        compositeDisposable.add(service.api.getPlanetsByPage(page)
+        compositeDisposable.add(service.getPlanetsByPage(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<SWModelList<Planet>>() {
@@ -183,7 +182,7 @@ class CategoryViewModel : ViewModel() {
                     }
 
                     override fun onError(e: Throwable) {
-                        loadError.value = true
+                        hasLoadError.value = true
                     }
                 }))
     }
@@ -191,11 +190,11 @@ class CategoryViewModel : ViewModel() {
     /**
      * Load by page
      * - return results to applyResults()
-     * - report error to loadError
+     * - report error to hasLoadError
      */
     private fun fetchSpecies() {
 
-        compositeDisposable.add(service.api.getSpeciesByPage(page)
+        compositeDisposable.add(service.getSpeciesByPage(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<SWModelList<Species>>() {
@@ -206,7 +205,7 @@ class CategoryViewModel : ViewModel() {
                     }
 
                     override fun onError(e: Throwable) {
-                        loadError.value = true
+                        hasLoadError.value = true
                     }
                 }))
     }
@@ -214,11 +213,11 @@ class CategoryViewModel : ViewModel() {
     /**
      * Load by page
      * - return results to applyResults()
-     * - report error to loadError
+     * - report error to hasLoadError
      */
     private fun fetchStarships() {
 
-        compositeDisposable.add(service.api.getStarshipsByPage(page)
+        compositeDisposable.add(service.getStarshipsByPage(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<SWModelList<Starship>>() {
@@ -229,7 +228,7 @@ class CategoryViewModel : ViewModel() {
                     }
 
                     override fun onError(e: Throwable) {
-                        loadError.value = true
+                        hasLoadError.value = true
                     }
                 }))
     }
@@ -237,11 +236,11 @@ class CategoryViewModel : ViewModel() {
     /**
      * Load by page
      * - return results to applyResults()
-     * - report error to loadError
+     * - report error to hasLoadError
      */
     private fun fetchVehicles() {
 
-        compositeDisposable.add(service.api.getVehiclesByPage(page)
+        compositeDisposable.add(service.getVehiclesByPage(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<SWModelList<Vehicle>>() {
@@ -252,7 +251,7 @@ class CategoryViewModel : ViewModel() {
                     }
 
                     override fun onError(e: Throwable) {
-                        loadError.value = true
+                        hasLoadError.value = true
                     }
                 }))
     }
@@ -260,7 +259,7 @@ class CategoryViewModel : ViewModel() {
     /**
      * - called by observable onSuccess
      * - adds various model types as base SWModel to modelList
-     * - clears loading & error states
+     * - clears isLoading & error states
      * - sets value to liveData
      *
      * @param results Arraylist
@@ -277,8 +276,8 @@ class CategoryViewModel : ViewModel() {
             }
         }
 
-        loading.value = false
-        loadError.value = false
+        isLoading.value = false
+        hasLoadError.value = false
         liveData.value = modelList
     }
 
@@ -301,5 +300,9 @@ class CategoryViewModel : ViewModel() {
 
         return defaultPage
     }
+
+}
+
+private fun <E> AbstractList<E>.add(element: E) {
 
 }

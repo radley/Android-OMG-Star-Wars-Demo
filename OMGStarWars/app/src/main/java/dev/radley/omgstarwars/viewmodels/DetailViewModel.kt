@@ -167,7 +167,7 @@ class DetailViewModel : ViewModel() {
 
                 val id = FormatUtils.getId(it[i])
 
-                compositeDisposable.add(service.api.getFilm(id)
+                compositeDisposable.add(service.getFilm(id)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<Film>() {
@@ -204,7 +204,7 @@ class DetailViewModel : ViewModel() {
 
                 val id = FormatUtils.getId(it[i])
 
-                compositeDisposable.add(service.api.getPeople(id)
+                compositeDisposable.add(service.getPeople(id)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<People>() {
@@ -241,7 +241,7 @@ class DetailViewModel : ViewModel() {
 
                 val id = FormatUtils.getId(it[i])
 
-                compositeDisposable.add(service.api.getPlanet(id)
+                compositeDisposable.add(service.getPlanet(id)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<Planet>() {
@@ -278,7 +278,7 @@ class DetailViewModel : ViewModel() {
 
                 val id = FormatUtils.getId(it[i])
 
-                compositeDisposable.add(service.api.getSpecies(id)
+                compositeDisposable.add(service.getSpecies(id)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<Species>() {
@@ -315,7 +315,7 @@ class DetailViewModel : ViewModel() {
 
                 val id = FormatUtils.getId(it[i])
 
-                compositeDisposable.add(service.api.getStarship(id)
+                compositeDisposable.add(service.getStarship(id)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<Starship>() {
@@ -352,7 +352,7 @@ class DetailViewModel : ViewModel() {
 
                 val id = FormatUtils.getId(it[i])
 
-                compositeDisposable.add(service.api.getVehicle(id)
+                compositeDisposable.add(service.getVehicle(id)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(object : DisposableSingleObserver<Vehicle>() {
@@ -387,7 +387,7 @@ class DetailViewModel : ViewModel() {
         homeWorldData = MutableLiveData()
 
 
-        compositeDisposable.add(service.api.getPlanet(id)
+        compositeDisposable.add(service.getPlanet(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<Planet>() {
@@ -416,7 +416,7 @@ class DetailViewModel : ViewModel() {
 
         singleSpeciesData = MutableLiveData()
 
-        compositeDisposable.add(service.api.getSpecies(id)
+        compositeDisposable.add(service.getSpecies(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<Species>() {

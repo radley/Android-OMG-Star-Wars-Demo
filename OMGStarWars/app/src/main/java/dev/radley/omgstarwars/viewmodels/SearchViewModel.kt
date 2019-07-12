@@ -1,5 +1,6 @@
 package dev.radley.omgstarwars.viewmodels
 
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -35,7 +36,6 @@ class SearchViewModel : ViewModel() {
 
     /**
      * - inject service
-     * -
      */
     init {
         DaggerApiComponent.create().inject(this)
@@ -183,19 +183,11 @@ class SearchViewModel : ViewModel() {
                         .subscribeWith(object : DisposableObserver<SWModelList<Film>>() {
 
                             override fun onNext(list: SWModelList<Film>) {
-                                Timber.d("onNext")
                                 updateModelList(list.results!!)
                             }
 
-                            override fun onError(t: Throwable) {
-                                Timber.d("onError")
-                                onSearchError(t)
-                            }
-
-                            override fun onComplete() {
-                                Timber.d("onComplete")
-                                onSearchComplete()
-                            }
+                            override fun onError(t: Throwable) { onSearchError(t) }
+                            override fun onComplete() { onSearchComplete() }
                         }))
             }
 
@@ -208,13 +200,8 @@ class SearchViewModel : ViewModel() {
                             updateModelList(list.results!!)
                         }
 
-                        override fun onError(t: Throwable) {
-                            onSearchError(t)
-                        }
-
-                        override fun onComplete() {
-                            onSearchComplete()
-                        }
+                        override fun onError(t: Throwable) { onSearchError(t) }
+                        override fun onComplete() { onSearchComplete() }
                     }))
 
             Category.PLANETS -> compositeDisposable.add(searchPlanets(1, query)
@@ -226,13 +213,8 @@ class SearchViewModel : ViewModel() {
                             updateModelList(list.results!!)
                         }
 
-                        override fun onError(t: Throwable) {
-                            onSearchError(t)
-                        }
-
-                        override fun onComplete() {
-                            onSearchComplete()
-                        }
+                        override fun onError(t: Throwable) { onSearchError(t) }
+                        override fun onComplete() { onSearchComplete() }
                     }))
 
             Category.SPECIES -> compositeDisposable.add(searchSpecies(1, query)
@@ -244,13 +226,8 @@ class SearchViewModel : ViewModel() {
                             updateModelList(list.results!!)
                         }
 
-                        override fun onError(t: Throwable) {
-                            onSearchError(t)
-                        }
-
-                        override fun onComplete() {
-                            onSearchComplete()
-                        }
+                        override fun onError(t: Throwable) { onSearchError(t) }
+                        override fun onComplete() { onSearchComplete() }
                     }))
 
             Category.STARSHIPS -> compositeDisposable.add(searchStarships(1, query)
@@ -262,13 +239,8 @@ class SearchViewModel : ViewModel() {
                             updateModelList(list.results!!)
                         }
 
-                        override fun onError(t: Throwable) {
-                            onSearchError(t)
-                        }
-
-                        override fun onComplete() {
-                            onSearchComplete()
-                        }
+                        override fun onError(t: Throwable) { onSearchError(t) }
+                        override fun onComplete() { onSearchComplete() }
                     }))
 
             Category.VEHICLES -> compositeDisposable.add(searchVehicles(1, query)
@@ -280,13 +252,8 @@ class SearchViewModel : ViewModel() {
                             updateModelList(list.results!!)
                         }
 
-                        override fun onError(t: Throwable) {
-                            onSearchError(t)
-                        }
-
-                        override fun onComplete() {
-                            onSearchComplete()
-                        }
+                        override fun onError(t: Throwable) { onSearchError(t) }
+                        override fun onComplete() { onSearchComplete() }
                     }))
         }
     }
@@ -360,11 +327,11 @@ class SearchViewModel : ViewModel() {
      *
      * @param page int
      * @param query String
-     * @return Observable<SWModelList></SWModelList><Film>>
+     * @return Observable
     </Film> */
     private fun searchFilms(page: Int, query: String): Observable<SWModelList<Film>> {
 
-        return service.api.searchFilms(page, query)
+        return service.searchFilms(page, query)
                 .concatMap { response ->
                     if (response.next == null) {
                         Observable.just(response)
@@ -380,11 +347,11 @@ class SearchViewModel : ViewModel() {
      *
      * @param page int
      * @param query String
-     * @return Observable<SWModelList></SWModelList><People>>
+     * @return Observable
     </People> */
     private fun searchPeople(page: Int, query: String): Observable<SWModelList<People>> {
 
-        return service.api.searchPeople(page, query)
+        return service.searchPeople(page, query)
                 .concatMap { response ->
                     if (response.next == null) {
                         Observable.just(response)
@@ -400,11 +367,11 @@ class SearchViewModel : ViewModel() {
      *
      * @param page int
      * @param query String
-     * @return Observable<SWModelList></SWModelList><Species>>
+     * @return Observable
     </Species> */
     private fun searchSpecies(page: Int, query: String): Observable<SWModelList<Species>> {
 
-        return service.api.searchSpecies(page, query)
+        return service.searchSpecies(page, query)
                 .concatMap { response ->
                     if (response.next == null) {
                         Observable.just(response)
@@ -420,11 +387,11 @@ class SearchViewModel : ViewModel() {
      *
      * @param page int
      * @param query String
-     * @return Observable<SWModelList></SWModelList><Planet>>
+     * @return Observable
     </Planet> */
     private fun searchPlanets(page: Int, query: String): Observable<SWModelList<Planet>> {
 
-        return service.api.searchPlanets(page, query)
+        return service.searchPlanets(page, query)
                 .concatMap { response ->
                     if (response.next == null) {
                         Observable.just(response)
@@ -440,11 +407,11 @@ class SearchViewModel : ViewModel() {
      *
      * @param page int
      * @param query String
-     * @return Observable<SWModelList></SWModelList><Starship>>
+     * @return Observable
     </Starship> */
     private fun searchStarships(page: Int, query: String): Observable<SWModelList<Starship>> {
 
-        return service.api.searchStarships(page, query)
+        return service.searchStarships(page, query)
                 .concatMap { response ->
                     if (response.next == null) {
                         Observable.just(response)
@@ -460,11 +427,11 @@ class SearchViewModel : ViewModel() {
      *
      * @param page int
      * @param query String
-     * @return Observable<SWModelList></SWModelList><Vehicle>>
+     * @return Observable
     </Vehicle> */
     private fun searchVehicles(page: Int, query: String): Observable<SWModelList<Vehicle>> {
 
-        return service.api.searchVehicles(page, query)
+        return service.searchVehicles(page, query)
                 .concatMap { response ->
                     if (response.next == null) {
                         Observable.just(response)
@@ -473,6 +440,4 @@ class SearchViewModel : ViewModel() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
     }
-
-
 }
