@@ -26,6 +26,19 @@ object SortUtils {
         return list
     }
 
+    /**
+     * Sort films based on release date
+     *
+     * @param list
+     * @return sorted list
+     */
+    fun sortSWModelByEpisode(list: ArrayList<SWModel>): ArrayList<SWModel> {
+
+        list.sortWith(Comparator { o1, o2 -> (o1 as Film).episodeId - (o2 as Film).episodeId })
+
+        return list
+    }
+
 
     /**
      * A series of sorting filters that alphabetizes and then lists results in this order:

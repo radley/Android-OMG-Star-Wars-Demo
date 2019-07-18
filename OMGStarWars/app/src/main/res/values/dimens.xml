@@ -8,9 +8,10 @@
 
     <dimen name="corner_radius">8dp</dimen>
 
-    <dimen name="detail_padding">24dp</dimen>
+    <dimen name="detail_padding">22dp</dimen>
     <dimen name="grid_padding">8dp</dimen>
     <dimen name="thumbnail_padding">2dp</dimen>
     <dimen name="navbar_padding">56dp</dimen>
-    <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="card_corner_radius">4dp</dimen>
+    <dimen name="card_category_radius">4dp</dimen>
 </resources>

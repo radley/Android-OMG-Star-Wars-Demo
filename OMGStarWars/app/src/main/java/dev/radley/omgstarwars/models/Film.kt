@@ -14,6 +14,9 @@ class Film : SWModel(), Serializable {
     var director: String = ""
     var producer: String = ""
 
+    override val subtitle: String
+        get() = "Episode $episodeId"
+
 
     @SerializedName("episode_id")
     var episodeId: Int = 0

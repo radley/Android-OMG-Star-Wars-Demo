@@ -10,7 +10,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +20,7 @@ import dev.radley.omgstarwars.R
 import dev.radley.omgstarwars.adapters.RelatedAdapter
 import dev.radley.omgstarwars.bundle.DetailExtras
 import dev.radley.omgstarwars.models.Category
+import dev.radley.omgstarwars.models.Film
 import dev.radley.omgstarwars.models.People
 import dev.radley.omgstarwars.models.SWModel
 import dev.radley.omgstarwars.utilities.FormatUtils
@@ -28,7 +28,9 @@ import dev.radley.omgstarwars.view.detailview.*
 import dev.radley.omgstarwars.viewmodels.DetailViewModel
 import dev.radley.omgstarwars.viewmodels.SWImage
 import kotlinx.android.synthetic.main.activity_detail.*
+import timber.log.Timber
 import java.util.*
+import kotlin.math.ceil
 
 class DetailActivity : AppCompatActivity() {
 
@@ -50,7 +52,9 @@ class DetailActivity : AppCompatActivity() {
             viewModel.setModel(intent.getSerializableExtra(DetailExtras.MODEL))
             layout = findViewById(R.id.details_layout)
 
-            supportActionBar!!.title = viewModel.getTitle()
+            heroTitle.text = viewModel.getTitle()
+            heroSubtitle.text = viewModel.getSubTitle()
+
             updateHeroImage(viewModel.getImage(), SWImage.getFallbackImage(viewModel.getCategory()))
 
             addDetailView()
@@ -69,9 +73,9 @@ class DetailActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener { finish() }
 
         // Third-party CollapsingToolbarLayout won't load typeface via styles, must do it here
-        val typeface = ResourcesCompat.getFont(this, R.font.passion_one)
-        toolbarLayout.setCollapsedTitleTypeface(typeface)
-        toolbarLayout.setExpandedTitleTypeface(typeface)
+//        val typeface = ResourcesCompat.getFont(this, R.font.passion_one)
+//        toolbarLayout.setCollapsedTitleTypeface(typeface)
+//        toolbarLayout.setExpandedTitleTypeface(typeface)
 
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
@@ -122,11 +126,39 @@ class DetailActivity : AppCompatActivity() {
             return
         }
 
+
+        var filmsPlaceholder = ""
+
+        // add enough room for more than one row of text to avoid jumping layout
+        val count = viewModel.getFilms()!!.size
+        if (count > 2) {
+            for(i in 1 until ceil(count / 2f).toInt()) {
+                filmsPlaceholder += " \n"
+            }
+        }
+
+        heroFilms.text = filmsPlaceholder
+
         val recyclerView = getRelatedListView(viewModel.getRelatedFilmsTitle())
         viewModel.getFilmsList().observe(this, Observer(fun(list: ArrayList<SWModel>) {
 
             val adapter = RelatedAdapter(list) { item: SWModel -> startDetailActivity(item) }
             recyclerView.adapter = adapter
+
+            var filmsText = ""
+
+            if(list.size > 0) {
+                filmsText = (list[0] as Film).title
+            }
+
+            if(list.size > 1) {
+                for (i in 1 until list.size) {
+                    filmsText += if(i % 2 == 0) { "\n" } else { " • " }
+                    filmsText += (list[i] as Film).title
+                }
+            }
+
+            heroFilms.text = filmsText
         }))
     }
 
@@ -219,6 +251,8 @@ class DetailActivity : AppCompatActivity() {
         viewModel.getHomeWorlds(id).observe(this, Observer { planet ->
             homeWorldText.text = Html.fromHtml(getString(R.string.link_text, planet.title), Build.VERSION.SDK_INT)
             homeWorldText.setOnClickListener { startDetailActivity(planet) }
+
+            heroSubtitle.text = planet.title
         })
     }
 
@@ -273,7 +307,8 @@ class DetailActivity : AppCompatActivity() {
         val view = factory.inflate(R.layout.view_detail_related_list, layout, false)
         layout.addView(view)
 
-        (view.findViewById<View>(R.id.title) as TextView).text = String.format("%s!", title)
+//        (view.findViewById<View>(R.id.title) as TextView).text = String.format("%s!", title)
+        (view.findViewById<View>(R.id.title) as TextView).text = title
         return view.findViewById(R.id.recycler_view)
     }
 }

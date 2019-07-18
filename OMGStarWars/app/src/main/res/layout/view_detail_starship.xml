@@ -2,261 +2,232 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="@dimen/detail_padding"
     android:paddingLeft="@dimen/detail_padding"
     android:paddingRight="@dimen/detail_padding"
     android:paddingBottom="48dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1">
+    <LinearLayout style="@style/LinearLayout.DetailRow"
+        android:weightSum="10">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingRight="16dp"
-            android:layout_weight="0.4">
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="4">
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/model"/>
+            <LinearLayout style="@style/LinearLayout.DetailItem">
 
-            <TextView
-                android:id="@+id/model"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/model" />
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="0.6">
+                <TextView
+                    android:id="@+id/model"
+                    style="@style/TextView.DetailItem" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/manufacturer"/>
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="6">
 
-            <TextView
-                android:id="@+id/manufacturer"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
+            <LinearLayout style="@style/LinearLayout.DetailItem">
 
-        </LinearLayout>
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/manufacturer" />
 
+                <TextView
+                    android:id="@+id/manufacturer"
+                    style="@style/TextView.DetailItem" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingRight="16dp"
-            android:layout_weight="0.4">
+    <LinearLayout style="@style/LinearLayout.DetailRow"
+        android:weightSum="10">
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/starship_class"/>
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="4">
 
-            <TextView
-                android:id="@+id/starship_class"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
+            <LinearLayout style="@style/LinearLayout.DetailItem">
 
-        </LinearLayout>
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/starship_class" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="0.6">
+                <TextView
+                    android:id="@+id/starship_class"
+                    style="@style/TextView.DetailItem" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/cost_in_credits"/>
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="6">
 
-            <TextView
-                android:id="@+id/cost_in_credits"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
-        </LinearLayout>
+            <LinearLayout style="@style/LinearLayout.DetailItem">
 
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/cost_in_credits" />
+
+                <TextView
+                    android:id="@+id/cost_in_credits"
+                    style="@style/TextView.DetailItem" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="16dp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="0.4">
+    <LinearLayout style="@style/LinearLayout.DetailRow"
+        android:weightSum="10">
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/length"/>
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="4">
 
-            <TextView
-                android:id="@+id/length"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
-        </LinearLayout>
+            <LinearLayout style="@style/LinearLayout.DetailItem">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="0.6">
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/length" />
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/cargo_capacity"/>
+                <TextView
+                    android:id="@+id/length"
+                    style="@style/TextView.DetailItem" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                android:id="@+id/cargo_capacity"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
-        </LinearLayout>
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="6">
+
+            <LinearLayout style="@style/LinearLayout.DetailItem">
+
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/cargo_capacity" />
+
+                <TextView
+                    android:id="@+id/cargo_capacity"
+                    style="@style/TextView.DetailItem" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="0.4">
+    <LinearLayout style="@style/LinearLayout.DetailRow"
+        android:weightSum="10">
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/crew"/>
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="4">
 
-            <TextView
-                android:id="@+id/crew"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
-        </LinearLayout>
+            <LinearLayout style="@style/LinearLayout.DetailItem">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="0.3">
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/crew" />
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/passengers"/>
+                <TextView
+                    android:id="@+id/crew"
+                    style="@style/TextView.DetailItem" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                android:id="@+id/passengers"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
-        </LinearLayout>
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="3">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="0.3">
+            <LinearLayout style="@style/LinearLayout.DetailItem">
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/consumables"/>
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/passengers" />
 
-            <TextView
-                android:id="@+id/consumables"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/passengers"
+                    style="@style/TextView.DetailItem" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="3">
+
+            <LinearLayout style="@style/LinearLayout.DetailItem">
+
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/consumables" />
+
+                <TextView
+                    android:id="@+id/consumables"
+                    style="@style/TextView.DetailItem" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="0.4">
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/hyperdrive_rating"/>
+    <LinearLayout style="@style/LinearLayout.DetailRow"
+        android:weightSum="10">
 
-            <TextView
-                android:id="@+id/hyperdrive_rating"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
-        </LinearLayout>
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="4">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="0.3">
+            <LinearLayout style="@style/LinearLayout.DetailItem">
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/mglt"/>
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/hyperdrive_rating" />
 
-            <TextView
-                android:id="@+id/mglt"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/hyperdrive_rating"
+                    style="@style/TextView.DetailItem" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="0.3">
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="3">
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/max_atmosphering_speed"/>
+            <LinearLayout style="@style/LinearLayout.DetailItem">
 
-            <TextView
-                android:id="@+id/max_atmosphering_speed"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
-        </LinearLayout>
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/mglt" />
+
+                <TextView
+                    android:id="@+id/mglt"
+                    style="@style/TextView.DetailItem" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="3">
+
+            <LinearLayout style="@style/LinearLayout.DetailItem">
+
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/max_atmosphering_speed" />
+
+                <TextView
+                    android:id="@+id/max_atmosphering_speed"
+                    style="@style/TextView.DetailItem" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
-    
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="32dp" />
 </LinearLayout>

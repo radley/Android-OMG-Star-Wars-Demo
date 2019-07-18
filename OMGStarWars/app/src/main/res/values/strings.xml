@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">OMG Star Wars!</string>
+    <string name="app_name">OMG Star Wars</string>
 
     <!-- film -->
     <string name="opening_crawl">Opening Crawl</string>
@@ -16,7 +16,7 @@
     <string name="hair_color">Hair</string>
     <string name="skin_color">Skin</string>
     <string name="eye_color">Eyes</string>
-    <string name="dob">Date of Birth</string>
+    <string name="dob">DoB</string>
     <string name="gender">Gender</string>
     <string name="homeworld">Home World</string>
 
@@ -84,5 +84,6 @@
     <string name="detail_credits">%s CR</string>
     <string name="detail_speed_kph">%s kph</string>
     <string name="search_query_hint">Search %s…</string>
-    <string name="link_text"><![CDATA[<font color=\'#00be3d\'><u>%s</u></font>]]></string>
+    <string name="link_text"><![CDATA[<u>%s</u>]]></string>
+    <!--<string name="link_text"><![CDATA[<font color=\'#00be3d\'><u>%s</u></font>]]></string>-->
 </resources>

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#33333a</color>
-    <color name="colorPrimaryDark">#22222a</color>
-    <color name="colorAccent">#00be3d</color>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#FEC616</color>
+    <color name="colorAccent">#FEC616</color>
     <color name="transparentPrimaryDark">#4422222a</color>
     <color name="transparentPrimary">#cc33333a</color>
     <color name="cardGrey">#42424b</color>
     <color name="transparentDark">#d411111a</color>
     <color name="white">#fff</color>
+    <color name="tab_text_color_selected">#ff000000</color>
+    <color name="text_low_emphasis_color">#66000000</color>
 </resources>

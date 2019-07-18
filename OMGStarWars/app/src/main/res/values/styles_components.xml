@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <style name="ActionBar.Title.Detail">
@@ -14,44 +14,130 @@
         <item name="fontFamily">@font/passion_one</item>
     </style>
 
-    <style name="TextView.Card" parent="TextView.Body2">
-        <item name="android:maxLines">2</item>
-        <item name="android:minLines">2</item>
+    <style name="Card.DetailItem">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="cardElevation">2dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!--<item name="shapeAppearanceOverlay">@style/CornerCut</item>-->
     </style>
 
-    <style name="TextView.Card.Result" parent="TextView.Body2"></style>
+    <style name="Card.Category">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginLeft">4dp</item>
+        <item name="android:layout_marginRight">4dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="cardElevation">8dp</item>
+        <item name="cardCornerRadius">@dimen/card_category_radius</item>
+        <item name="strokeColor">@color/white</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!--<item name="shapeAppearanceOverlay">@style/CategoryCardCorners</item>-->
+        <item name="android:clickable">true</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
 
-    <style name="TextView.Card.Subtitle" parent="TextView.Caption"></style>
+    <style name="LinearLayout.DetailItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="LinearLayout.DetailRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="TextView.Caption.Center">
+        <item name="android:gravity">center</item>
+    </style>
+
+
+    <style name="TextView.Card" parent="TextView.Caption">
+        <item name="android:maxLines">2</item>
+        <item name="android:minLines">2</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="TextView.Card.Result" parent="TextView.Body2" />
+
+    <style name="TextView.Card.Subtitle" parent="TextView.Caption" />
 
     <style name="TextView.Card.Small" parent="TextView.Caption">
         <item name="android:maxLines">2</item>
         <item name="android:minLines">2</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:padding">8dp</item>
     </style>
 
-    <style name="TextView.Detail" parent="TextView.Body2">
+    <style name="TextView.DetailItem" parent="TextView.Caption">
+        <item name="android:minLines">2</item>
         <item name="android:lineSpacingMultiplier">1.0</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">match_parent</item>
     </style>
 
-    <style name="TextView.Headline4.Detail">
+    <style name="TextView.DetailItem.Clickable">
+        <item name="android:clickable">true</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
+
+    <style name="TextView.DetailHeroFilms" parent="TextView.DetailItem">
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextView.DetailHeroTitle" parent="TextView.Headline4">
         <item name="android:textAllCaps">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:lineSpacingMultiplier">0.75</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:fontFamily">@font/passion_one</item>
+        <item name="fontFamily">@font/passion_one</item>
+    </style>
+
+    <style name="TextView.DetailHeroSubtitle" parent="TextView.Caption">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_low_emphasis_color</item>
+    </style>
+
+    <style name="TextView.DetailRowTitle" parent="TextView.Body1">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="TextView.Spinner" parent="TextView.Headline5">
         <item name="android:textAllCaps">true</item>
     </style>
 
-    <style name="TextView.Overline.Detail">
-        <item name="android:paddingTop">24dp</item>
+    <style name="TextView.Overline.DetailItem">
         <item name="android:paddingBottom">8dp</item>
+        <item name="android:layout_width">match_parent</item>
     </style>
 
 
     <style name="TextView.Tab" parent="TextAppearance.Design.Tab">
-        <item name="android:fontFamily">@font/passion_one</item>
-        <item name="fontFamily">@font/passion_one</item>
-        <item name="android:paddingLeft">64dp</item>
-        <item name="android:paddingRight">64dp</item>
-        <item name="android:textSize">28dp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_low_emphasis_color</item>
     </style>
 
 </resources>
