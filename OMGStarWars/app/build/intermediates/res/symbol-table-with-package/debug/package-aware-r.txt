@@ -1354,6 +1354,7 @@ font nunito_sans
 font nunito_sans_extrabold
 font nunito_sans_italic
 font passion_one
+font roboto_condensed_bold
 id ALT
 id CTRL
 id FUNCTION
@@ -1477,6 +1478,7 @@ id end
 id end_padder
 id enterAlways
 id enterAlwaysCollapsed
+id episode
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -1759,7 +1761,7 @@ layout abc_tooltip
 layout activity_categories
 layout activity_detail
 layout activity_search
-layout card_grid
+layout card_category_item
 layout card_result
 layout card_row
 layout card_row_wide

@@ -41,7 +41,7 @@ class CategoryAdapter(private var modelList: ArrayList<SWModel>) : RecyclerView.
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.card_grid, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.card_category_item, parent, false)
     )
 
     override fun getItemCount() = modelList.size

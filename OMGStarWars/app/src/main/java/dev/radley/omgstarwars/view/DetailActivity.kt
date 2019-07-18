@@ -53,7 +53,15 @@ class DetailActivity : AppCompatActivity() {
             layout = findViewById(R.id.details_layout)
 
             heroTitle.text = viewModel.getTitle()
-            heroSubtitle.text = viewModel.getSubTitle()
+
+            if(viewModel.getModel() is Film ) {
+
+                episode.text = viewModel.getSubTitle()
+                episode.visibility = View.VISIBLE
+            } else {
+                heroSubtitle.text = viewModel.getSubTitle()
+                heroSubtitle.visibility = View.VISIBLE
+            }
 
             updateHeroImage(viewModel.getImage(), SWImage.getFallbackImage(viewModel.getCategory()))
 
@@ -137,6 +145,7 @@ class DetailActivity : AppCompatActivity() {
             }
         }
 
+        heroFilms.visibility = View.VISIBLE
         heroFilms.text = filmsPlaceholder
 
         val recyclerView = getRelatedListView(viewModel.getRelatedFilmsTitle())
