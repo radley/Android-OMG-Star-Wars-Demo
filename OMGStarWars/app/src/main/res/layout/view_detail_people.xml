@@ -76,7 +76,7 @@
                     android:text="@string/height" />
 
                 <TextView
-                    android:id="@+id/height"
+                    android:id="@+id/person_height"
                     style="@style/TextView.DetailItem" />
 
             </LinearLayout>

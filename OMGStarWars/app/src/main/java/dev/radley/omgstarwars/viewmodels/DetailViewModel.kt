@@ -119,7 +119,7 @@ class DetailViewModel : ViewModel() {
      * @return String
      */
     fun getSingleSpecies(): String? {
-        return if (model is People) {
+        return if (model is People && (model as People).relatedSpecies!!.size > 0) {
             (model as People).relatedSpecies!![0]
         } else null
 

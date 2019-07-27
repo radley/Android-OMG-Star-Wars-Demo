@@ -8,6 +8,10 @@
     <color name="cardGrey">#42424b</color>
     <color name="transparentDark">#d411111a</color>
     <color name="white">#fff</color>
-    <color name="tab_text_color_selected">#ff000000</color>
-    <color name="text_low_emphasis_color">#66000000</color>
+
+    <color name="text_dark">#44444a</color>
+
+    <color name="tab_text_color_selected">#22222a</color>
+    <color name="text_low_emphasis_color">#8822222a</color>
+
 </resources>

@@ -1,17 +1,16 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:2:1-44:12
-INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:2:1-44:12
-INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:2:1-44:12
-INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:2:1-44:12
+ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:2:1-44:12
+INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:2:1-44:12
+INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:2:1-44:12
+INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:2:1-44:12
 MERGED from [com.jakewharton.timber:timber:4.7.1] /Users/radley/.gradle/caches/transforms-2/files-2.1/1f7da51b24ddff8c078a5d53ccb7998e/AndroidManifest.xml:2:1-9:12
-MERGED from [net.opacapp:multiline-collapsingtoolbar:27.1.1] /Users/radley/.gradle/caches/transforms-2/files-2.1/52bd55bd7bb55021e5f1738ef9992730/AndroidManifest.xml:2:1-11:12
+MERGED from [com.github.BluRe-CN:ComplexView:v1.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/2ad16ac6e1461d57303abbd83fd24253/AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.android.material:material:1.1.0-alpha08] /Users/radley/.gradle/caches/transforms-2/files-2.1/7daab90a4e481e2599a866829c0bcdf4/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.core:core-ktx:1.0.2] /Users/radley/.gradle/caches/transforms-2/files-2.1/095f0f165d36d07d1fae896eef3a22f4/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.dagger:dagger-android-support:2.15] /Users/radley/.gradle/caches/transforms-2/files-2.1/1598ed91b2ace8b950fe14d84bb6eeda/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.appcompat:appcompat:1.1.0-rc01] /Users/radley/.gradle/caches/transforms-2/files-2.1/ab8aef34420d9671d3993ceb315e7c52/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.cardview:cardview:1.0.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/091a9b01d9ffcb28a15337ca89d95499/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/e71185eae0b84f97c2a597030064053c/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/c90def8e364f12eee0dafe660c97f65d/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0-beta01] /Users/radley/.gradle/caches/transforms-2/files-2.1/84cdba9b8fd7751f3422fe4819d74dff/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/e9755ab4124e8c39dbf709a629e5bcea/AndroidManifest.xml:17:1-22:12
@@ -29,7 +28,6 @@ MERGED from [androidx.activity:activity:1.1.0-alpha01] /Users/radley/.gradle/cac
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.2.0-alpha02] /Users/radley/.gradle/caches/transforms-2/files-2.1/b589958862cc665650fb15bee06e5fea/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-process:2.2.0-alpha02] /Users/radley/.gradle/caches/transforms-2/files-2.1/e44c341221e4f8c9ecc76dfb0cfe58e3/AndroidManifest.xml:17:1-32:12
 MERGED from [androidx.lifecycle:lifecycle-service:2.2.0-alpha02] /Users/radley/.gradle/caches/transforms-2/files-2.1/0117ab89e291a9ab5ffa7363c472f268/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.media:media:1.0.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/a4270b85782cc9d3e7dd3773255c5cd4/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/3d60129ece3b51d4ed1372ec13e9b750/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/506ce44ff9333cdcccad47ee18f2af35/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/213cfdabc45d2ade08c11f8f280aa8fc/AndroidManifest.xml:17:1-22:12
@@ -52,33 +50,33 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/
 MERGED from [androidx.print:print:1.0.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/ca8980d0845b8900ada5cd7a4124b128/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-beta01] /Users/radley/.gradle/caches/transforms-2/files-2.1/4427293ef342c8b58ccfedee14d442fb/AndroidManifest.xml:17:1-25:12
 MERGED from [io.reactivex.rxjava2:rxandroid:2.1.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/c19a6812ed62bca2e19d044f92a5b99d/AndroidManifest.xml:15:1-20:12
-INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:2:1-44:12
-INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:2:1-44:12
-INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:2:1-44:12
+INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:2:1-44:12
+INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:2:1-44:12
+INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:2:1-44:12
 	package
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:4:5-37
-		INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:4:5-37
+		INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:2:1-44:12
-		INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:2:1-44:12
+		INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
 	xmlns:tools
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:3:5-51
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:3:5-51
 	android:versionCode
-		INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:2:1-44:12
-		INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:2:1-44:12
+		INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:2:11-69
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:2:11-69
 	tools:ignore
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:5:5-44
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:5:5-44
 uses-permission#android.permission.INTERNET
-ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:7:5-67
+ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:7:5-67
 	android:name
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:7:22-64
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:7:22-64
 application
-ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:9:5-42:19
+ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:9:5-42:19
 MERGED from [com.jakewharton.timber:timber:4.7.1] /Users/radley/.gradle/caches/transforms-2/files-2.1/1f7da51b24ddff8c078a5d53ccb7998e/AndroidManifest.xml:7:5-20
 MERGED from [com.jakewharton.timber:timber:4.7.1] /Users/radley/.gradle/caches/transforms-2/files-2.1/1f7da51b24ddff8c078a5d53ccb7998e/AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.material:material:1.1.0-alpha08] /Users/radley/.gradle/caches/transforms-2/files-2.1/7daab90a4e481e2599a866829c0bcdf4/AndroidManifest.xml:22:5-20
@@ -98,71 +96,71 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-beta01] /Use
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.2.0-alpha01] /Users/radley/.gradle/caches/transforms-2/files-2.1/1f8eb420e36c8d8758ad1864fb3030fc/AndroidManifest.xml:22:18-86
 	android:supportsRtl
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:16:9-35
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:16:9-35
 	android:label
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:14:9-41
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:14:9-41
 	android:fullBackupContent
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:12:9-41
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:12:9-41
 	android:roundIcon
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:15:9-51
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:15:9-51
 	android:icon
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:13:9-40
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:13:9-40
 	android:allowBackup
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:11:9-35
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:11:9-35
 	android:theme
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:17:9-40
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:17:9-40
 	tools:replace
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:18:9-37
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:18:9-37
 	android:name
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:10:9-46
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:10:9-46
 activity#dev.radley.omgstarwars.view.CategoriesActivity
-ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:19:9-27:20
+ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:19:9-27:20
 	android:screenOrientation
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:21:13-49
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:21:13-49
 	android:theme
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:22:13-56
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:22:13-56
 	android:name
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:20:13-52
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:20:13-52
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:23:13-26:29
+ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:23:13-26:29
 action#android.intent.action.MAIN
-ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:24:17-69
+ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:24:17-69
 	android:name
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:24:25-66
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:24:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:25:17-77
+ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:25:17-77
 	android:name
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:25:27-74
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:25:27-74
 activity#dev.radley.omgstarwars.view.DetailActivity
-ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:29:9-32:59
+ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:29:9-32:59
 	android:screenOrientation
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:31:13-49
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:31:13-49
 	android:theme
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:32:13-56
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:32:13-56
 	android:name
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:30:13-48
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:30:13-48
 activity#dev.radley.omgstarwars.view.SearchActivity
-ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:34:9-37:59
+ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:34:9-37:59
 	android:screenOrientation
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:36:13-49
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:36:13-49
 	android:theme
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:37:13-56
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:37:13-56
 	android:name
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:35:13-48
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:35:13-48
 meta-data#preloaded_fonts
-ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:39:9-41:57
+ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:39:9-41:57
 	android:resource
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:41:13-54
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:41:13-54
 	android:name
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:40:13-43
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml:40:13-43
 uses-sdk
-INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
-INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
+INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
+INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
 MERGED from [com.jakewharton.timber:timber:4.7.1] /Users/radley/.gradle/caches/transforms-2/files-2.1/1f7da51b24ddff8c078a5d53ccb7998e/AndroidManifest.xml:5:5-43
 MERGED from [com.jakewharton.timber:timber:4.7.1] /Users/radley/.gradle/caches/transforms-2/files-2.1/1f7da51b24ddff8c078a5d53ccb7998e/AndroidManifest.xml:5:5-43
-MERGED from [net.opacapp:multiline-collapsingtoolbar:27.1.1] /Users/radley/.gradle/caches/transforms-2/files-2.1/52bd55bd7bb55021e5f1738ef9992730/AndroidManifest.xml:7:5-9:41
-MERGED from [net.opacapp:multiline-collapsingtoolbar:27.1.1] /Users/radley/.gradle/caches/transforms-2/files-2.1/52bd55bd7bb55021e5f1738ef9992730/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.BluRe-CN:ComplexView:v1.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/2ad16ac6e1461d57303abbd83fd24253/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.BluRe-CN:ComplexView:v1.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/2ad16ac6e1461d57303abbd83fd24253/AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.android.material:material:1.1.0-alpha08] /Users/radley/.gradle/caches/transforms-2/files-2.1/7daab90a4e481e2599a866829c0bcdf4/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.1.0-alpha08] /Users/radley/.gradle/caches/transforms-2/files-2.1/7daab90a4e481e2599a866829c0bcdf4/AndroidManifest.xml:20:5-44
 MERGED from [androidx.core:core-ktx:1.0.2] /Users/radley/.gradle/caches/transforms-2/files-2.1/095f0f165d36d07d1fae896eef3a22f4/AndroidManifest.xml:5:5-44
@@ -173,8 +171,6 @@ MERGED from [androidx.appcompat:appcompat:1.1.0-rc01] /Users/radley/.gradle/cach
 MERGED from [androidx.appcompat:appcompat:1.1.0-rc01] /Users/radley/.gradle/caches/transforms-2/files-2.1/ab8aef34420d9671d3993ceb315e7c52/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.cardview:cardview:1.0.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/091a9b01d9ffcb28a15337ca89d95499/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/091a9b01d9ffcb28a15337ca89d95499/AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/e71185eae0b84f97c2a597030064053c/AndroidManifest.xml:20:5-44
-MERGED from [androidx.legacy:legacy-support-v4:1.0.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/e71185eae0b84f97c2a597030064053c/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/c90def8e364f12eee0dafe660c97f65d/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/c90def8e364f12eee0dafe660c97f65d/AndroidManifest.xml:20:5-44
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0-beta01] /Users/radley/.gradle/caches/transforms-2/files-2.1/84cdba9b8fd7751f3422fe4819d74dff/AndroidManifest.xml:20:5-22:41
@@ -209,8 +205,6 @@ MERGED from [androidx.lifecycle:lifecycle-process:2.2.0-alpha02] /Users/radley/.
 MERGED from [androidx.lifecycle:lifecycle-process:2.2.0-alpha02] /Users/radley/.gradle/caches/transforms-2/files-2.1/e44c341221e4f8c9ecc76dfb0cfe58e3/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-service:2.2.0-alpha02] /Users/radley/.gradle/caches/transforms-2/files-2.1/0117ab89e291a9ab5ffa7363c472f268/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-service:2.2.0-alpha02] /Users/radley/.gradle/caches/transforms-2/files-2.1/0117ab89e291a9ab5ffa7363c472f268/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.media:media:1.0.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/a4270b85782cc9d3e7dd3773255c5cd4/AndroidManifest.xml:20:5-44
-MERGED from [androidx.media:media:1.0.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/a4270b85782cc9d3e7dd3773255c5cd4/AndroidManifest.xml:20:5-44
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/3d60129ece3b51d4ed1372ec13e9b750/AndroidManifest.xml:20:5-44
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/3d60129ece3b51d4ed1372ec13e9b750/AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/506ce44ff9333cdcccad47ee18f2af35/AndroidManifest.xml:20:5-44
@@ -255,16 +249,16 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-beta01] /Use
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0-beta01] /Users/radley/.gradle/caches/transforms-2/files-2.1/4427293ef342c8b58ccfedee14d442fb/AndroidManifest.xml:20:5-44
 MERGED from [io.reactivex.rxjava2:rxandroid:2.1.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/c19a6812ed62bca2e19d044f92a5b99d/AndroidManifest.xml:18:5-43
 MERGED from [io.reactivex.rxjava2:rxandroid:2.1.0] /Users/radley/.gradle/caches/transforms-2/files-2.1/c19a6812ed62bca2e19d044f92a5b99d/AndroidManifest.xml:18:5-43
-INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
-INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
+INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
+INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
-		ADDED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
-		INJECTED from /Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
+		ADDED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/src/main/AndroidManifest.xml
 provider#androidx.lifecycle.ProcessLifecycleOwnerInitializer
 ADDED from [androidx.lifecycle:lifecycle-process:2.2.0-alpha02] /Users/radley/.gradle/caches/transforms-2/files-2.1/e44c341221e4f8c9ecc76dfb0cfe58e3/AndroidManifest.xml:25:9-29:43
 	android:authorities

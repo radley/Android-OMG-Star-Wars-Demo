@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
-import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayout
 import dev.radley.omgstarwars.R
 import dev.radley.omgstarwars.bundle.SearchExtras
@@ -19,7 +18,6 @@ import dev.radley.omgstarwars.models.Category
 import dev.radley.omgstarwars.utilities.FormatUtils
 import kotlinx.android.synthetic.main.activity_categories.*
 import timber.log.Timber
-import kotlin.math.abs
 
 
 class CategoriesActivity : AppCompatActivity() {
@@ -29,6 +27,9 @@ class CategoriesActivity : AppCompatActivity() {
 
     private lateinit var pagerAdapter: CategoriesPagerAdapter
     private lateinit var searchView: SearchView
+
+    private val tabTypeface = Typeface.create("sans-serif-light",Typeface.NORMAL)
+    private val tabTypefaceSelected = Typeface.create("sans-serif-black",Typeface.NORMAL)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,6 +52,7 @@ class CategoriesActivity : AppCompatActivity() {
     }
 
     private fun setupSearchView() {
+
 //        searchView.setOnQueryTextFocusChangeListener { _, hasFocus ->
 //
 //            if (hasFocus) {
@@ -84,9 +86,10 @@ class CategoriesActivity : AppCompatActivity() {
 
     private fun setupLayout() {
         pagerAdapter = CategoriesPagerAdapter(supportFragmentManager)
-        viewPager.adapter = pagerAdapter
 
-        viewPager?.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        viewPager.adapter = pagerAdapter
+        viewPager.offscreenPageLimit = 6 // TODO add this line for recording video demo
+        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
 
             override fun onPageSelected(position: Int) {
                 updateCategory(position)
@@ -112,33 +115,36 @@ class CategoriesActivity : AppCompatActivity() {
                 val tabTextView = TextView(this)
                 tab.customView = tabTextView
 
+                tabTextView.typeface = tabTypeface
                 tabTextView.layoutParams.width = ViewGroup.LayoutParams.WRAP_CONTENT
                 tabTextView.layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
 
                 tabTextView.text = tab.text
                 tabTextView.isAllCaps = true
-                tabTextView.textSize = 18f
+                tabTextView.textSize = 24f
+                tabTextView.setTextColor(getColor(R.color.text_low_emphasis_color))
 
-                if (i == 0) {
-                    tabTextView.setTypeface(null, Typeface.BOLD);
-                    tabTextView.setTextColor(getColor(R.color.tab_text_color_selected))
+                val p = tabTextView.layoutParams as ViewGroup.MarginLayoutParams
 
-                    val p = tabTextView.layoutParams as ViewGroup.MarginLayoutParams
-                    p.setMargins(28, 0, 8, 0)
-                    tabTextView.requestLayout()
-
-                } else if (i == tabLayout.tabCount - 1) {
-                    tabTextView.setTextColor(getColor(R.color.text_low_emphasis_color))
-
-                    val p = tabTextView.layoutParams as ViewGroup.MarginLayoutParams
-                    p.setMargins(8, 0, 28, 0)
-                    tabTextView.requestLayout()
-
-                } else {
-                    tabTextView.setTextColor(getColor(R.color.text_low_emphasis_color))
-                    val p = tabTextView.layoutParams as ViewGroup.MarginLayoutParams
-                    p.setMargins(8, 0, 8, 0)
-                    tabTextView.requestLayout()
+                when (i) {
+                    0 -> {
+                        tabTextView.typeface = tabTypefaceSelected
+                        tabTextView.setTextColor(getColor(R.color.tab_text_color_selected))
+                        p.setMargins(28, 0, 8, 0)
+                        tabTextView.requestLayout()
+                    }
+                    tabLayout.tabCount - 1 -> {
+                        tabTextView.typeface = tabTypeface
+                        tabTextView.setTextColor(getColor(R.color.text_low_emphasis_color))
+                        p.setMargins(8, 0, 28, 0)
+                        tabTextView.requestLayout()
+                    }
+                    else -> {
+                        tabTextView.typeface = tabTypeface
+                        tabTextView.setTextColor(getColor(R.color.text_low_emphasis_color))
+                        p.setMargins(8, 0, 8, 0)
+                        tabTextView.requestLayout()
+                    }
                 }
             }
         }
@@ -151,10 +157,11 @@ class CategoriesActivity : AppCompatActivity() {
                 val vg = tabLayout.getChildAt(0) as ViewGroup
                 val vgTab = vg.getChildAt(tab.position) as ViewGroup
                 val tabChildsCount = vgTab.childCount
+
                 for (i in 0 until tabChildsCount) {
                     val tabViewChild = vgTab.getChildAt(i)
                     if (tabViewChild is TextView) {
-                        tabViewChild.setTypeface(null,Typeface.BOLD);
+                        tabViewChild.typeface = tabTypefaceSelected
                         tabViewChild.setTextColor(getColor(R.color.tab_text_color_selected))
                     }
                 }
@@ -164,39 +171,28 @@ class CategoriesActivity : AppCompatActivity() {
 
                 // customize unselected tab text style
                 tab?.let {
+
                     val vg = tabLayout.getChildAt(0) as ViewGroup
                     val vgTab = vg.getChildAt(it.position) as ViewGroup
                     val tabChildsCount = vgTab.childCount
+
                     for (i in 0 until tabChildsCount) {
                         val tabViewChild = vgTab.getChildAt(i)
                         if (tabViewChild is TextView) {
-                            tabViewChild.setTypeface(null, Typeface.NORMAL)
+                            tabViewChild.typeface = tabTypeface
                             tabViewChild.setTextColor(getColor(R.color.text_low_emphasis_color))
                         }
                     }
                 }
 
-                Timber.d("onTabReselected()")
                 val fragment = viewPager.adapter!!.instantiateItem(viewPager, viewPager.currentItem) as CategoryFragment
                 fragment.recyclerView.smoothScrollToPosition(0)
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
 
-                Timber.d("onTabReselected()")
                 val fragment = viewPager.adapter!!.instantiateItem(viewPager, viewPager.currentItem) as CategoryFragment
                 fragment.recyclerView.smoothScrollToPosition(0)
-            }
-        })
-
-        appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, verticalOffset ->
-
-            // show background onionskin behind tabs when app bar is extended
-            if (abs(verticalOffset) < 24) {
-//                tabLayout.setBackgroundColor(applicationContext.getColor(R.color.transparentPrimaryDark))
-
-            } else {
-//                tabLayout.background = null
             }
         })
     }

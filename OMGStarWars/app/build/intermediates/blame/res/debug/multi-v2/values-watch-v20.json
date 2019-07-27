@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/radley/Documents/dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "/Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
                     "source": "/Users/radley/.gradle/caches/transforms-2/files-2.1/ab8aef34420d9671d3993ceb315e7c52/res/values-watch-v20/values-watch-v20.xml",

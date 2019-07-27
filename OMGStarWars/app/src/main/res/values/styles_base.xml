@@ -37,15 +37,15 @@
         <item name="cornerSizeTopLeft">8dp</item>
     </style>
 
-    <style name="CategoryCardCorners" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+    <style name="BottomCutCorner" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerFamilyTopRight">cut</item>
-        <item name="cornerFamilyBottomRight">cut</item>
         <item name="cornerFamilyTopLeft">cut</item>
         <item name="cornerFamilyBottomLeft">cut</item>
-        <item name="cornerSizeTopRight">@dimen/card_category_radius</item>
+        <item name="cornerFamilyBottomRight">cut</item>
+        <item name="cornerSizeTopRight">@dimen/card_no_corner</item>
+        <item name="cornerSizeBottomLeft">@dimen/card_no_corner</item>
+        <item name="cornerSizeTopLeft">@dimen/card_no_corner</item>
         <item name="cornerSizeBottomRight">@dimen/card_category_radius</item>
-        <item name="cornerSizeBottomLeft">@dimen/card_category_radius</item>
-        <item name="cornerSizeTopLeft">@dimen/card_category_radius</item>
     </style>
 
     <style name="CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
@@ -76,7 +76,7 @@
     <style name="TextView" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">?android:textColorPrimary</item>
+        <!--<item name="android:textColor">?android:textColorPrimary</item>-->
         <!--<item name="android:fontFamily">@font/nunito_sans</item>-->
         <!--<item name="fontFamily">@font/nunito_sans</item>-->
     </style>
@@ -90,7 +90,7 @@
     <style name="TextView.Body1">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">?android:textColorPrimary</item>
+        <!--<item name="android:textColor">?android:textColorPrimary</item>-->
         <!--<item name="android:fontFamily">@font/nunito_sans</item>-->
         <!--<item name="fontFamily">@font/nunito_sans</item>-->
     </style>
@@ -98,8 +98,11 @@
     <style name="TextView.Body2" parent="TextAppearance.MaterialComponents.Body2">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">?android:textColorPrimary</item>
-        <!--<item name="android:fontFamily">@font/nunito_sans</item>-->
+        <!--<item name="android:textColor">?android:textColorPrimary</item>-->
+        <!--<item name="fontFamily">sans-serif-medium</item>-->
+        <!--&lt;!&ndash;<item name="android:textSize">14sp</item>&ndash;&gt;-->
+        <!--<item name="android:lineSpacingMultiplier">1.0</item>-->
+        <!--&lt;!&ndash;<item name="android:fontFamily">@font/nunito_sans</item>&ndash;&gt;-->
         <!--<item name="fontFamily">@font/nunito_sans</item>-->
     </style>
 
@@ -133,7 +136,7 @@
     <style name="TextView.Overline" parent="TextAppearance.MaterialComponents.Overline">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">#66000000</item>
+        <item name="android:textColor">@color/text_low_emphasis_color</item>
         <item name="android:textStyle">bold</item>
         <item name="android:letterSpacing">0</item>
         <!--<item name="android:fontFamily">@font/nunito_sans_extrabold</item>-->

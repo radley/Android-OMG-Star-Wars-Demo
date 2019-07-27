@@ -39,7 +39,7 @@ class SearchAdapter(var context: Context, private var modelList: ArrayList<SWMod
 
         fun bind(item: SWModel) {
 
-            if (item is Starship) {
+            if (item is Starship && item.model.toLowerCase() != item.title.toLowerCase()) {
                 subtitleText.text = getBoldResultText(item.model, boldTypeface)
                 subtitleText.visibility = View.VISIBLE
             } else {

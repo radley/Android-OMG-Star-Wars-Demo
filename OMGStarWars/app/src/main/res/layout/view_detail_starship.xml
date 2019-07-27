@@ -20,7 +20,7 @@
                     android:text="@string/model" />
 
                 <TextView
-                    android:id="@+id/model"
+                    android:id="@+id/ship_model"
                     style="@style/TextView.DetailItem" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

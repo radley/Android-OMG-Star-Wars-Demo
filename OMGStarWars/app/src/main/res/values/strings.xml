@@ -60,6 +60,11 @@
         <item quantity="other">%1$d results for \"%2$s\".</item>
     </plurals>
 
+    <plurals name="producers_count">
+        <item quantity="one">Producer</item>
+        <item quantity="other">Producers</item>
+    </plurals>
+
     <string name="search_delay_message">Searching…</string>
     <string name="search_error">Ugh, search error.</string>
 
@@ -85,5 +90,6 @@
     <string name="detail_speed_kph">%s kph</string>
     <string name="search_query_hint">Search %s…</string>
     <string name="link_text"><![CDATA[<u>%s</u>]]></string>
+    <string name="episode_number">Episode %s:</string>
     <!--<string name="link_text"><![CDATA[<font color=\'#00be3d\'><u>%s</u></font>]]></string>-->
 </resources>

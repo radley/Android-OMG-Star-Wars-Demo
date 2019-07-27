@@ -12,6 +12,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
@@ -75,11 +76,15 @@ class CategoryViewModel : ViewModel() {
      * Called when recycler view scrolls to bottom
      * - loads nextUrl page of data if there is more
      */
-    fun getNextPage() {
+    fun loadNextPage() {
 
-        if (nextUrl != null) {
+        if (hasNextPage()) {
             loadData()
         }
+    }
+
+    fun hasNextPage(): Boolean {
+        return (nextUrl != null)
     }
 
     /**
@@ -96,6 +101,8 @@ class CategoryViewModel : ViewModel() {
     fun getItem(position: Int): SWModel {
         return modelList[position]
     }
+
+    fun getCount(): Int = modelList.size
 
     /**
      * Load data based on categoryId
@@ -136,6 +143,7 @@ class CategoryViewModel : ViewModel() {
                             }
 
                             override fun onError(e: Throwable) {
+                                Timber.e(e)
                                 hasLoadError.value = true
                             }
                         }))
@@ -159,6 +167,7 @@ class CategoryViewModel : ViewModel() {
                     }
 
                     override fun onError(e: Throwable) {
+                        Timber.e(e)
                         hasLoadError.value = true
                     }
                 }))
@@ -182,6 +191,7 @@ class CategoryViewModel : ViewModel() {
                     }
 
                     override fun onError(e: Throwable) {
+                        Timber.e(e)
                         hasLoadError.value = true
                     }
                 }))
@@ -205,6 +215,7 @@ class CategoryViewModel : ViewModel() {
                     }
 
                     override fun onError(e: Throwable) {
+                        Timber.e(e)
                         hasLoadError.value = true
                     }
                 }))
@@ -228,6 +239,7 @@ class CategoryViewModel : ViewModel() {
                     }
 
                     override fun onError(e: Throwable) {
+                        Timber.e(e)
                         hasLoadError.value = true
                     }
                 }))
@@ -251,6 +263,7 @@ class CategoryViewModel : ViewModel() {
                     }
 
                     override fun onError(e: Throwable) {
+                        Timber.e(e)
                         hasLoadError.value = true
                     }
                 }))
@@ -267,7 +280,7 @@ class CategoryViewModel : ViewModel() {
      */
     private fun applyResults(results: ArrayList<*>, next: String?) {
 
-        page = getNextPage(next)
+        page = getNextPageInt(next)
 
         for (i in results.indices) {
             val item = results[i]
@@ -288,7 +301,7 @@ class CategoryViewModel : ViewModel() {
      * @param url String
      * @return nextUrl page integer (if any)
      */
-    private fun getNextPage(url: String?): Int {
+    private fun getNextPageInt(url: String?): Int {
 
         nextUrl = url
 
@@ -300,9 +313,4 @@ class CategoryViewModel : ViewModel() {
 
         return defaultPage
     }
-
-}
-
-private fun <E> AbstractList<E>.add(element: E) {
-
 }

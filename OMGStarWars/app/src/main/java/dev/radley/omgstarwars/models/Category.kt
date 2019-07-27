@@ -11,6 +11,6 @@ object Category {
     const val VEHICLES = "vehicles"
 
     val categories = arrayOf(FILMS, PEOPLE, SPECIES, STARSHIPS, VEHICLES, PLANETS)
-    val categoryTitles = arrayOf("Films!", "People!", "Species!", "Starships!", "Vehicles!", "Planets!")
+    val categoryTitles = arrayOf("Films", "People", "Species", "Starships", "Vehicles", "Planets")
 
 }

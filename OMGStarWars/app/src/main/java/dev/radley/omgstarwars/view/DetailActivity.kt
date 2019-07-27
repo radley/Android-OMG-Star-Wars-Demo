@@ -1,21 +1,21 @@
 package dev.radley.omgstarwars.view
 
-import android.net.Uri
+import android.content.res.Resources
+import android.graphics.Point
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.ImageView
+import android.view.ViewTreeObserver
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.doOnLayout
+import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestOptions
 import dev.radley.omgstarwars.R
 import dev.radley.omgstarwars.adapters.RelatedAdapter
 import dev.radley.omgstarwars.bundle.DetailExtras
@@ -24,19 +24,25 @@ import dev.radley.omgstarwars.models.Film
 import dev.radley.omgstarwars.models.People
 import dev.radley.omgstarwars.models.SWModel
 import dev.radley.omgstarwars.utilities.FormatUtils
-import dev.radley.omgstarwars.view.detailview.*
+import dev.radley.omgstarwars.view.detail.description.*
+import dev.radley.omgstarwars.view.detail.hero.HeroLayout
+import dev.radley.omgstarwars.view.detail.hero.SquareHeroLayout
+import dev.radley.omgstarwars.view.detail.hero.TallHeroLayout
+import dev.radley.omgstarwars.view.detail.hero.WideHeroLayout
 import dev.radley.omgstarwars.viewmodels.DetailViewModel
-import dev.radley.omgstarwars.viewmodels.SWImage
 import kotlinx.android.synthetic.main.activity_detail.*
 import timber.log.Timber
 import java.util.*
 import kotlin.math.ceil
+import kotlin.math.roundToInt
+
 
 class DetailActivity : AppCompatActivity() {
 
 
     private lateinit var layout: LinearLayout
-    private lateinit var detailView: DetailView
+    private lateinit var descriptionLayout: DescriptionLayout
+    private lateinit var heroLayout: HeroLayout
     private lateinit var viewModel: DetailViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,28 +50,15 @@ class DetailActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_detail)
 
-        setupToolbar()
-
         viewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
 
         if (DetailExtras.hasAll(intent, DetailExtras.MODEL)) {
             viewModel.setModel(intent.getSerializableExtra(DetailExtras.MODEL))
             layout = findViewById(R.id.details_layout)
 
-            heroTitle.text = viewModel.getTitle()
-
-            if(viewModel.getModel() is Film ) {
-
-                episode.text = viewModel.getSubTitle()
-                episode.visibility = View.VISIBLE
-            } else {
-                heroSubtitle.text = viewModel.getSubTitle()
-                heroSubtitle.visibility = View.VISIBLE
-            }
-
-            updateHeroImage(viewModel.getImage(), SWImage.getFallbackImage(viewModel.getCategory()))
-
-            addDetailView()
+            setupToolbar()
+            addHeroLayout()
+            addDescriptionLayout()
             addRelatedLists()
         }
     }
@@ -80,42 +73,92 @@ class DetailActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         toolbar.setNavigationOnClickListener { finish() }
 
-        // Third-party CollapsingToolbarLayout won't load typeface via styles, must do it here
-//        val typeface = ResourcesCompat.getFont(this, R.font.passion_one)
-//        toolbarLayout.setCollapsedTitleTypeface(typeface)
-//        toolbarLayout.setExpandedTitleTypeface(typeface)
-
-
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
-        supportActionBar!!.title = ""
+        supportActionBar!!.title = " "
     }
 
-    private fun addDetailView() {
+    private fun addHeroLayout() {
+
+        heroLayout = when (viewModel.getCategory()) {
+
+            Category.PLANETS -> SquareHeroLayout(this, viewModel.getModel())
+
+            Category.STARSHIPS, Category.VEHICLES -> WideHeroLayout(this, viewModel.getModel())
+
+            else -> TallHeroLayout(this, viewModel.getModel())
+        }
+
+        layout.addView(heroLayout)
+
+        Timber.d("scrollView = $scrollView")
+
+        var targetY = 0
+        var isShow = true
+
+        val vto: ViewTreeObserver = layout.viewTreeObserver
+
+        heroLayout.title.doOnLayout {
+
+            Timber.d("doOnLayout")
+
+            // get target y position
+            val titleLocation = heroLayout.title.getLocationOnScreen()
+            val layoutLocation = layout.getLocationOnScreen()
+            targetY = titleLocation.y - layoutLocation.y + dpToPx(24) // status bar height
+        }
+
+        scrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { _, _, scrollY, _, _ ->
+
+            if (scrollY > targetY) {
+
+                supportActionBar!!.title = viewModel.getTitle()
+                isShow = true
+
+            } else if (isShow) {
+                supportActionBar!!.title = " "//there should a space between double quote
+                isShow = false
+            }
+        })
+
+    }
+
+    fun dpToPx(dp: Int): Int {
+        val density = Resources.getSystem().displayMetrics.density
+        return (dp.toFloat() * density).roundToInt()
+    }
+
+    fun View.getLocationOnScreen(): Point {
+        val location = IntArray(2)
+        this.getLocationOnScreen(location)
+        return Point(location[0], location[1])
+    }
+
+    private fun addDescriptionLayout() {
 
         when (viewModel.getCategory()) {
 
-            Category.FILMS -> detailView = FilmDetailView(this, viewModel.getModel())
+            Category.FILMS -> descriptionLayout = FilmDescriptionLayout(this, viewModel.getModel())
 
             Category.PEOPLE -> {
-                detailView = PeopleDetailView(this, viewModel.getModel())
+                descriptionLayout = PeopleDescriptionLayout(this, viewModel.getModel())
                 addHomeWorldTextLink()
                 addSpeciesTextLink()
             }
 
-            Category.PLANETS -> detailView = PlanetDetailView(this, viewModel.getModel())
+            Category.PLANETS -> descriptionLayout = PlanetDescriptionLayout(this, viewModel.getModel())
 
             Category.SPECIES -> {
-                detailView = SpeciesDetailView(this, viewModel.getModel())
+                descriptionLayout = SpeciesDescriptionLayout(this, viewModel.getModel())
                 addHomeWorldTextLink()
             }
 
-            Category.STARSHIPS -> detailView = StarshipDetailView(this, viewModel.getModel())
+            Category.STARSHIPS -> descriptionLayout = StarshipDescriptionLayout(this, viewModel.getModel())
 
-            Category.VEHICLES -> detailView = VehicleDetailView(this, viewModel.getModel())
+            Category.VEHICLES -> descriptionLayout = VehicleDescriptionLayout(this, viewModel.getModel())
         }
 
-        layout.addView(detailView)
+        layout.addView(descriptionLayout)
     }
 
     private fun addRelatedLists() {
@@ -140,10 +183,12 @@ class DetailActivity : AppCompatActivity() {
         // add enough room for more than one row of text to avoid jumping layout
         val count = viewModel.getFilms()!!.size
         if (count > 2) {
-            for(i in 1 until ceil(count / 2f).toInt()) {
+            for (i in 1 until ceil(count / 2f).toInt()) {
                 filmsPlaceholder += " \n"
             }
         }
+
+        val heroFilms = heroLayout.findViewById<TextView>(R.id.heroFilms)
 
         heroFilms.visibility = View.VISIBLE
         heroFilms.text = filmsPlaceholder
@@ -156,13 +201,17 @@ class DetailActivity : AppCompatActivity() {
 
             var filmsText = ""
 
-            if(list.size > 0) {
+            if (list.size > 0) {
                 filmsText = (list[0] as Film).title
             }
 
-            if(list.size > 1) {
+            if (list.size > 1) {
                 for (i in 1 until list.size) {
-                    filmsText += if(i % 2 == 0) { "\n" } else { " • " }
+                    filmsText += if (i % 2 == 0) {
+                        "\n"
+                    } else {
+                        " • "
+                    }
                     filmsText += (list[i] as Film).title
                 }
             }
@@ -248,7 +297,7 @@ class DetailActivity : AppCompatActivity() {
         if (viewModel.getHomeWorld() == null)
             return
 
-        val homeWorldText = detailView.findViewById<TextView>(R.id.homeworld)
+        val homeWorldText = descriptionLayout.findViewById<TextView>(R.id.homeworld)
 
         if (viewModel.getHomeWorld()!!.substring(0, 4) != "http") {
             homeWorldText.text = viewModel.getHomeWorld()
@@ -261,7 +310,7 @@ class DetailActivity : AppCompatActivity() {
             homeWorldText.text = Html.fromHtml(getString(R.string.link_text, planet.title), Build.VERSION.SDK_INT)
             homeWorldText.setOnClickListener { startDetailActivity(planet) }
 
-            heroSubtitle.text = planet.title
+            heroLayout.subtitle.text = planet.title
         })
     }
 
@@ -271,7 +320,7 @@ class DetailActivity : AppCompatActivity() {
         if (viewModel.getSingleSpecies() == null)
             return
 
-        val speciesText = detailView.findViewById<TextView>(R.id.species)
+        val speciesText = descriptionLayout.findViewById<TextView>(R.id.species)
 
         if (viewModel.getSingleSpecies()!!.substring(0, 4) != "http") {
             speciesText.text = viewModel.getSingleSpecies()
@@ -292,23 +341,6 @@ class DetailActivity : AppCompatActivity() {
         startActivity(DetailExtras.getIntent(this, item))
     }
 
-
-    private fun updateHeroImage(imagePath: String, fallback: Int) {
-
-        // placeholder
-        val requestOptions = RequestOptions()
-                .placeholder(R.drawable.placeholder_tall)
-                .error(fallback)
-
-        val imageView = findViewById<ImageView>(R.id.heroImage)
-
-        // load image and fade in
-        Glide.with(this)
-                .setDefaultRequestOptions(requestOptions)
-                .load(Uri.parse(imagePath))
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(imageView)
-    }
 
     private fun getRelatedListView(title: String): RecyclerView {
 

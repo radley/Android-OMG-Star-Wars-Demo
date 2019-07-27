@@ -30,12 +30,12 @@
         <item name="android:layout_marginRight">4dp</item>
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:layout_marginBottom">8dp</item>
-        <item name="cardElevation">8dp</item>
-        <item name="cardCornerRadius">@dimen/card_category_radius</item>
-        <item name="strokeColor">@color/white</item>
-        <item name="strokeWidth">1dp</item>
+        <item name="cardElevation">6dp</item>
+        <!--<item name="cardCornerRadius">@dimen/card_no_corner</item>-->
+        <!--<item name="strokeColor">@color/white</item>-->
+        <!--<item name="strokeWidth">1dp</item>-->
         <item name="android:layout_height">wrap_content</item>
-        <!--<item name="shapeAppearanceOverlay">@style/CategoryCardCorners</item>-->
+        <item name="shapeAppearanceOverlay">@style/BottomCutCorner</item>
         <item name="android:clickable">true</item>
         <item name="android:foreground">?android:attr/selectableItemBackground</item>
     </style>
@@ -64,13 +64,17 @@
         <item name="android:minLines">2</item>
         <item name="android:textAlignment">center</item>
         <item name="android:gravity">center</item>
-        <item name="android:textAllCaps">true</item>
+        <!--<item name="android:textAllCaps">true</item>-->
+        <item name="android:textColor">@color/text_dark</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
         <item name="android:paddingTop">12dp</item>
         <item name="android:paddingLeft">8dp</item>
         <item name="android:paddingRight">8dp</item>
         <item name="android:paddingBottom">12dp</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="fontFamily">sans-serif-condensed-medium</item>
+        <!--<item name="android:fontFamily">@font/roboto_condensed_bold</item>-->
+        <item name="fontFamily">sans-serif-medium</item>
     </style>
 
     <style name="TextView.Card.Result" parent="TextView.Body2">
@@ -79,19 +83,19 @@
 
     <style name="TextView.Card.Subtitle" parent="TextView.Caption" />
 
-    <style name="TextView.Card.Small" parent="TextView.Caption">
-        <item name="android:maxLines">2</item>
+    <style name="TextView.Card.Small" parent="TextView.Body2">
         <item name="android:minLines">2</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:padding">8dp</item>
+        <item name="fontFamily">sans-serif-medium</item>
     </style>
 
-    <style name="TextView.DetailItem" parent="TextView.Caption">
+    <style name="TextView.DetailItem" parent="TextView.Body1">
         <item name="android:minLines">2</item>
-        <item name="android:lineSpacingMultiplier">1.0</item>
         <item name="android:gravity">center</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:layout_width">match_parent</item>
+        <item name="fontFamily">sans-serif-medium</item>
+
     </style>
 
     <style name="TextView.DetailItem.Clickable">
@@ -99,9 +103,21 @@
         <item name="android:foreground">?android:attr/selectableItemBackground</item>
     </style>
 
-    <style name="TextView.DetailHeroFilms" parent="TextView.DetailItem">
+
+    <style name="TextView.DetailHeroEpisode" parent="TextView.Body1">
+        <item name="android:textAllCaps">true</item>
         <item name="android:gravity">center</item>
-        <item name="android:textStyle">bold</item>
+        <!--<item name="android:textStyle">bold</item>-->
+        <!--<item name="android:textColor">@color/text_low_emphasis_color</item>-->
+        <item name="android:fontFamily">@font/passion_one</item>
+        <item name="fontFamily">@font/passion_one</item>
+    </style>
+
+    <style name="TextView.DetailHeroFilms" parent="TextView.Body2">
+        <item name="android:lineSpacingMultiplier">1.3</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:layout_width">match_parent</item>
     </style>
 
     <style name="TextView.DetailHeroTitle" parent="TextView.Headline4">
@@ -109,20 +125,29 @@
         <item name="android:gravity">center</item>
         <item name="android:lineSpacingMultiplier">0.8</item>
         <item name="android:textColor">@android:color/black</item>
-        <item name="android:fontFamily">@font/roboto_condensed_bold</item>
-        <item name="fontFamily">@font/roboto_condensed_bold</item>
+        <item name="android:fontFamily">@font/passion_one</item>
+        <item name="fontFamily">@font/passion_one</item>
     </style>
 
-    <style name="TextView.DetailHeroSubtitle" parent="TextView.Caption">
+    <style name="TextView.DetailHeroSubtitle" parent="TextView.Body1">
         <item name="android:textAllCaps">true</item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/text_low_emphasis_color</item>
+        <!--<item name="fontFamily">sans-serif-medium</item>-->
     </style>
+
+    <style name="TextView.DetailOpeningCrawl" parent="TextView.Body1">
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 
     <style name="TextView.DetailRowTitle" parent="TextView.Body1">
         <item name="android:textAllCaps">true</item>
-        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/text_low_emphasis_color</item>
     </style>
 
     <style name="TextView.Spinner" parent="TextView.Headline5">
@@ -136,10 +161,14 @@
 
 
     <style name="TextView.Tab" parent="TextAppearance.Design.Tab">
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="fontFamily">sans-serif</item>
-        <item name="android:textSize">18sp</item>
+        <item name="fontFamily">sans-serif-light</item>
+        <item name="android:textSize">@dimen/tab_text_size</item>
         <item name="android:textColor">@color/text_low_emphasis_color</item>
+    </style>
+
+    <style name="TextView.Toolbar" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="textAllCaps">true</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
 </resources>

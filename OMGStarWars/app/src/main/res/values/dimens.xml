@@ -1,9 +1,4 @@
 <resources>
-    <dimen name="app_bar_height">180dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="text_margin">16dp</dimen>
-
-    <dimen name="image_height">160dp</dimen>
     <dimen name="grid_item_spacing">8dp</dimen>
 
     <dimen name="corner_radius">8dp</dimen>
@@ -11,7 +6,12 @@
     <dimen name="detail_padding">22dp</dimen>
     <dimen name="grid_padding">8dp</dimen>
     <dimen name="thumbnail_padding">2dp</dimen>
+
     <dimen name="navbar_padding">56dp</dimen>
+
     <dimen name="card_corner_radius">4dp</dimen>
-    <dimen name="card_category_radius">4dp</dimen>
+    <dimen name="card_no_corner">0dp</dimen>
+    <dimen name="card_category_radius">8dp</dimen>
+
+    <dimen name="tab_text_size">24sp</dimen>
 </resources>
