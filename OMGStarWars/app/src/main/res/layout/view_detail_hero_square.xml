@@ -23,22 +23,27 @@
             android:layout_marginLeft="32dp"
             android:layout_marginTop="176dp"
             android:layout_marginRight="32dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="48dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/episode"
-                style="@style/TextView.DetailHeroSubtitle"
-                android:layout_gravity="center_horizontal"
-                android:visibility="gone" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/colorAccent"/>
 
             <TextView
                 android:id="@+id/heroTitle"
                 style="@style/TextView.DetailHeroTitle"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="@dimen/detail_hero_text_height"
                 android:visibility="invisible"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorAccent"/>
 
             <TextView
                 android:id="@+id/heroSubtitle"
@@ -51,7 +56,7 @@
                 android:id="@+id/heroFilms"
                 style="@style/TextView.DetailHeroFilms"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="40dp"
                 android:visibility="gone" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

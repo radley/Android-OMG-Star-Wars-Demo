@@ -90,7 +90,7 @@ class CategoriesActivity : AppCompatActivity() {
         pagerAdapter = CategoriesPagerAdapter(supportFragmentManager)
 
         viewPager.adapter = pagerAdapter
-//        viewPager.offscreenPageLimit = 6 // TODO add this line for recording video demo
+        viewPager.offscreenPageLimit = 6 // TODO add this line for recording video demo
         viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
 
             override fun onPageSelected(position: Int) {

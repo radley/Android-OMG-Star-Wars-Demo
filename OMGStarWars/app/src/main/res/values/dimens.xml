@@ -14,4 +14,5 @@
     <dimen name="card_category_radius">8dp</dimen>
 
     <dimen name="tab_text_size">24sp</dimen>
+    <dimen name="detail_hero_text_height">88dp</dimen>
 </resources>

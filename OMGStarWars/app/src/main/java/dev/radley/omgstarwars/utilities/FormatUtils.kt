@@ -2,7 +2,11 @@ package dev.radley.omgstarwars.utilities
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Typeface
+import android.text.Spannable
+import android.text.SpannableString
 import dev.radley.omgstarwars.R
+import dev.radley.omgstarwars.text.CustomTypefaceSpan
 import java.time.Instant
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
@@ -198,18 +202,21 @@ object FormatUtils {
 
     }
 
-    /**
-     * Checks to see if value has known value
-     * (so value can be formatted)
-     *
-     * @param value String
-     * @return boolean
-     */
-    private fun isUnknown(context: Context, value: String): Boolean {
-        return value == "" ||
-                value.toLowerCase() == context.getString(R.string.detail_na) ||
-                value.toLowerCase() == context.getString(R.string.unknown)
+    fun getEmphasizedText(text: String, boldText: String): SpannableString {
 
+        val boldTypeface = Typeface.create("sans-serif-black", Typeface.NORMAL)
+
+        val spannable = SpannableString(text)
+
+        if (text.toLowerCase().contains(boldText.toLowerCase())) {
+
+            spannable.setSpan(CustomTypefaceSpan("", boldTypeface),
+                    text.toLowerCase().indexOf(boldText.toLowerCase()),
+                    text.toLowerCase().indexOf(boldText.toLowerCase()) + boldText.length,
+                    Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+        }
+
+        return spannable
     }
 
     fun IntegerToRomanNumeral(value: Int): String {
@@ -272,5 +279,19 @@ object FormatUtils {
             input -= 1
         }
         return s
+    }
+
+
+    /**
+     * Checks to see if value has known value
+     * (so value can be formatted)
+     *
+     * @param value String
+     * @return boolean
+     */
+    private fun isUnknown(context: Context, value: String): Boolean {
+        return value == "" ||
+                value.toLowerCase() == context.getString(R.string.detail_na) ||
+                value.toLowerCase() == context.getString(R.string.unknown)
     }
 }

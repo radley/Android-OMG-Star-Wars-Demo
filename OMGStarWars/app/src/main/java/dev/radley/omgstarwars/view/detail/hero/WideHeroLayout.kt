@@ -37,10 +37,15 @@ class WideHeroLayout : HeroLayout {
         title = heroTitle
         subtitle = heroSubtitle
 
-        heroSubtitle.text = model.subtitle
-        heroSubtitle.visibility = View.VISIBLE
+
         heroTitle.text = model.title
         heroTitle.visibility = View.VISIBLE
+
+        // some vehicles have the same name & model, so don't show twice
+        if(model.title.toLowerCase() != model.subtitle.toLowerCase()) {
+            heroSubtitle.text = model.subtitle
+            heroSubtitle.visibility = View.VISIBLE
+        }
 
         updateHeroImage(heroImage, model.imagePath, SWImage.getFallbackImage(model.categoryId))
     }

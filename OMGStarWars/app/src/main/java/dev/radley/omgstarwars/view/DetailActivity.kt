@@ -5,6 +5,9 @@ import android.graphics.Point
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewTreeObserver
@@ -35,7 +38,7 @@ import timber.log.Timber
 import java.util.*
 import kotlin.math.ceil
 import kotlin.math.roundToInt
-
+import android.text.style.StyleSpan
 
 
 
@@ -201,24 +204,30 @@ class DetailActivity : AppCompatActivity() {
             val adapter = RelatedAdapter(list) { item: SWModel -> startDetailActivity(item) }
             recyclerView.adapter = adapter
 
+            val boldSpan = StyleSpan(android.graphics.Typeface.BOLD)
+
             var filmsText = ""
+            var start = 0;
 
             if (list.size > 0) {
-                filmsText = (list[0] as Film).title
+
+                //filmsText += getString(R.string.episode_title, FormatUtils.IntegerToRomanNumeral((list[0] as Film).episodeId), (list[0] as Film).title)
+                filmsText += getString(R.string.episode_title_formatted, FormatUtils.IntegerToRomanNumeral((list[0] as Film).episodeId), (list[0] as Film).title)
             }
 
             if (list.size > 1) {
                 for (i in 1 until list.size) {
-                    filmsText += if (i % 2 == 0) {
-                        "\n"
-                    } else {
-                        " • "
-                    }
-                    filmsText += (list[i] as Film).title
+
+//                    filmsText += "\n"
+//                    filmsText += getString(R.string.episode_title, FormatUtils.IntegerToRomanNumeral((list[i] as Film).episodeId), (list[i] as Film).title)
+
+                    filmsText += "<br/>"
+                    filmsText += getString(R.string.episode_title_formatted, FormatUtils.IntegerToRomanNumeral((list[i] as Film).episodeId), (list[i] as Film).title)
                 }
             }
 
-            heroFilms.text = filmsText
+            //heroFilms.text = filmsText
+            heroFilms.text = Html.fromHtml(filmsText, Build.VERSION.SDK_INT)
         }))
     }
 

@@ -16,7 +16,7 @@
     <color name="app_background">#EDE8DB</color>
 
     <!--44444a  colorPrimaryDark 654714-->
-    <color name="text_dark">#44444a</color>
+    <color name="text_dark">#444444</color>
 
     <!--00be3d  colorPrimaryDark -->
     <color name="text_link_color">@color/colorPrimaryDark</color>

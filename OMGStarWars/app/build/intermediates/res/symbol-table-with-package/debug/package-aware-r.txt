@@ -1036,6 +1036,7 @@ dimen design_tab_scrollable_min_width
 dimen design_tab_text_size
 dimen design_tab_text_size_2line
 dimen design_textinput_caption_translate_y
+dimen detail_hero_text_height
 dimen detail_padding
 dimen disabled_alpha_material_dark
 dimen disabled_alpha_material_light
@@ -1946,6 +1947,8 @@ string director
 string dob
 string edited
 string episode_number
+string episode_title
+string episode_title_formatted
 string error_message
 string exposed_dropdown_menu_content_description
 string eye_color
