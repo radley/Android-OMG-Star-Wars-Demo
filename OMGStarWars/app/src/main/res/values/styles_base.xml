@@ -112,6 +112,13 @@
         <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
+    <style name="TextView.Headline2" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <!--<item name="android:fontFamily">@font/passion_one</item>-->
+        <!--<item name="fontFamily">@font/passion_one</item>-->
+    </style>
+
     <style name="TextView.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -137,10 +144,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/text_low_emphasis_color</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:letterSpacing">0</item>
-        <!--<item name="android:fontFamily">@font/nunito_sans_extrabold</item>-->
-        <!--<item name="fontFamily">@font/nunito_sans_extrabold</item>-->
     </style>
 
     <style name="SeekBar">

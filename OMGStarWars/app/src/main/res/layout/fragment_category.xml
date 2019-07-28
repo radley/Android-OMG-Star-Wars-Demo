@@ -8,7 +8,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".view.CategoryFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <dev.radley.omgstarwars.widget.GridRecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,7 +18,7 @@
         android:paddingTop="8dp"
         android:paddingRight="16dp"
         android:scrollbars="none"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:spanCount="@integer/grid_span_count_tall" />

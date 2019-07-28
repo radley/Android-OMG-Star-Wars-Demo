@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -24,6 +25,7 @@ import timber.log.Timber
 
 class CategoryFragment : Fragment() {
 
+    var isLoading = false
     lateinit var recyclerView: RecyclerView
 
     private var adapter: CategoryAdapter? = null
@@ -31,8 +33,6 @@ class CategoryFragment : Fragment() {
     private lateinit var progressBar: ProgressBar
     private lateinit var touchListener: RecyclerTouchListener
     private lateinit var layoutManager: GridLayoutManager
-
-    var isLoading = false
 
 
     companion object {
@@ -63,7 +63,7 @@ class CategoryFragment : Fragment() {
 
             layoutManager = GridLayoutManager(context, getSpanCount(category))
 
-            // this should give us
+            // use alternate span size for progress bar at the end
             layoutManager.setSpanSizeLookup(object : GridLayoutManager.SpanSizeLookup() {
                 override fun getSpanSize(position: Int): Int {
 
@@ -149,6 +149,11 @@ class CategoryFragment : Fragment() {
                 adapter = CategoryAdapter(swModel)
                 adapter?.showFooterProgressBar(viewModel.hasNextPage())
 
+                // option to show rise animation every time we load
+//                val controller = AnimationUtils.loadLayoutAnimation(activity, R.anim.category_layout_rise_animation)
+//                recyclerView.layoutAnimation = controller
+
+
                 recyclerView.adapter = adapter
 
                 recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -183,7 +188,7 @@ class CategoryFragment : Fragment() {
         Timber.d("count = %s", viewModel.getCount())
         Timber.d("SpanCount = %s", getSpanCount(viewModel.getId()))
 
-        if((viewModel.getCount() % getSpanCount(viewModel.getId())) > 0) {
+        if ((viewModel.getCount() % getSpanCount(viewModel.getId())) > 0) {
             return 1
         }
 

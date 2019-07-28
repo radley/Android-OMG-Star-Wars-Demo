@@ -40,6 +40,7 @@ class SquareHeroLayout : HeroLayout {
         heroSubtitle.text = model.subtitle
         heroSubtitle.visibility = View.VISIBLE
         heroTitle.text = model.title
+        heroTitle.visibility = View.VISIBLE
 
         updateHeroImage(heroImage, model.imagePath, SWImage.getFallbackImage(model.categoryId))
     }

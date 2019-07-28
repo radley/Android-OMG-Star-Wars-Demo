@@ -4,6 +4,7 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.view.Menu
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -83,16 +84,30 @@ class CategoriesActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayShowTitleEnabled(false)
     }
 
+    var currentPage = 0
 
     private fun setupLayout() {
         pagerAdapter = CategoriesPagerAdapter(supportFragmentManager)
 
         viewPager.adapter = pagerAdapter
-        viewPager.offscreenPageLimit = 6 // TODO add this line for recording video demo
+//        viewPager.offscreenPageLimit = 6 // TODO add this line for recording video demo
         viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
 
             override fun onPageSelected(position: Int) {
                 updateCategory(position)
+
+                val fragment = viewPager.adapter!!.instantiateItem(viewPager, viewPager.currentItem) as CategoryFragment
+
+                if(position > currentPage) {
+                    val controller = AnimationUtils.loadLayoutAnimation(fragment.activity, R.anim.category_layout_right_to_left_animation)
+                    fragment.recyclerView.layoutAnimation = controller
+                } else {
+                    val controller = AnimationUtils.loadLayoutAnimation(fragment.activity, R.anim.category_layout_left_to_right_animation)
+                    fragment.recyclerView.layoutAnimation = controller
+                }
+
+                currentPage = position
+                fragment.recyclerView.startLayoutAnimation()
             }
 
             override fun onPageScrollStateChanged(state: Int) {}
@@ -215,20 +230,5 @@ class CategoriesActivity : AppCompatActivity() {
     private fun updateCategory(position: Int) {
         category = categories[position]
         searchView.queryHint = getString(R.string.search_query_hint, category)
-//        updateHeroImage()
     }
-//
-//    private fun updateHeroImage() {
-//
-//        // placeholder image
-//        val requestOptions = RequestOptions()
-//                .placeholder(R.drawable.placeholder_hero)
-//
-//        // load with fade in
-//        Glide.with(this)
-//                .setDefaultRequestOptions(requestOptions)
-//                .load(Uri.parse(Constants.HERO_ASSETS_PATH + category + ".jpg"))
-//                .transition(DrawableTransitionOptions.withCrossFade())
-//                .into(heroImage)
-//    }
 }

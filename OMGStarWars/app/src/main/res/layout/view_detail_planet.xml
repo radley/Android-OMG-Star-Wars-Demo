@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:paddingLeft="@dimen/detail_padding"
     android:paddingRight="@dimen/detail_padding"
     android:paddingBottom="48dp">
 
-    <LinearLayout style="@style/LinearLayout.DetailRow"
+    <LinearLayout
+        style="@style/LinearLayout.DetailRow"
         android:weightSum="10">
 
         <com.google.android.material.card.MaterialCardView
@@ -44,8 +46,8 @@
     </LinearLayout>
 
 
-
-    <LinearLayout style="@style/LinearLayout.DetailRow"
+    <LinearLayout
+        style="@style/LinearLayout.DetailRow"
         android:weightSum="10">
 
         <com.google.android.material.card.MaterialCardView
@@ -60,7 +62,7 @@
 
                 <TextView
                     android:id="@+id/population"
-                    style="@style/TextView.DetailItem" />
+                    style="@style/TextView.DetailItem"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -100,7 +102,8 @@
     </LinearLayout>
 
 
-    <LinearLayout style="@style/LinearLayout.DetailRow"
+    <LinearLayout
+        style="@style/LinearLayout.DetailRow"
         android:weightSum="10">
 
         <com.google.android.material.card.MaterialCardView

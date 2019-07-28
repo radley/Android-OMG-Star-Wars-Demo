@@ -89,7 +89,7 @@
     <string name="detail_credits">%s CR</string>
     <string name="detail_speed_kph">%s kph</string>
     <string name="search_query_hint">Search %s…</string>
-    <string name="link_text"><![CDATA[<u>%s</u>]]></string>
+    <!--<string name="link_text"><![CDATA[<u>%s</u>]]></string>-->
     <string name="episode_number">Episode %s:</string>
-    <!--<string name="link_text"><![CDATA[<font color=\'#00be3d\'><u>%s</u></font>]]></string>-->
+    <string name="link_text"><![CDATA[<font color=\'%1$d\'><u>%2$s</u></font>]]></string>
 </resources>

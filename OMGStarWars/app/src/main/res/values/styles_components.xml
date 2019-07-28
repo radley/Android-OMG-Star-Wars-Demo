@@ -73,6 +73,11 @@
         <item name="android:paddingRight">8dp</item>
         <item name="android:paddingBottom">12dp</item>
         <item name="android:layout_width">match_parent</item>
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:autoSizeMinTextSize">8sp</item>
+        <item name="android:breakStrategy">balanced</item>
+        <item name="android:autoSizeMaxTextSize">16sp</item>
+        <item name="android:autoSizeStepGranularity">1sp</item>
         <!--<item name="android:fontFamily">@font/roboto_condensed_bold</item>-->
         <item name="fontFamily">sans-serif-medium</item>
     </style>
@@ -88,14 +93,23 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:padding">8dp</item>
         <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:hyphenationFrequency">normal</item>
     </style>
 
     <style name="TextView.DetailItem" parent="TextView.Body1">
-        <item name="android:minLines">2</item>
+        <item name="android:minLines">3</item>
+        <item name="android:maxLines">3</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="fontFamily">sans-serif-medium</item>
-
+        <!--<item name="fontFamily">sans-serif-medium</item>-->
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:autoSizeMinTextSize">8sp</item>
+        <item name="android:breakStrategy">balanced</item>
+        <item name="android:autoSizeMaxTextSize">18sp</item>
+        <item name="android:autoSizeStepGranularity">2sp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
 
     <style name="TextView.DetailItem.Clickable">
@@ -120,13 +134,21 @@
         <item name="android:layout_width">match_parent</item>
     </style>
 
-    <style name="TextView.DetailHeroTitle" parent="TextView.Headline4">
-        <item name="android:textAllCaps">true</item>
-        <item name="android:gravity">center</item>
-        <item name="android:lineSpacingMultiplier">0.8</item>
+    <style name="TextView.DetailHeroTitle" parent="TextView.Headline2">
+        <item name="android:minLines">2</item>
+        <item name="android:maxLines">2</item>
         <item name="android:textColor">@android:color/black</item>
+        <item name="android:textAllCaps">true</item>
         <item name="android:fontFamily">@font/passion_one</item>
         <item name="fontFamily">@font/passion_one</item>
+        <item name="android:gravity">center</item>
+        <item name="android:lineSpacingMultiplier">0.75</item>
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:autoSizeMinTextSize">40sp</item>
+        <item name="android:autoSizeMaxTextSize">80sp</item>
+        <item name="android:autoSizeStepGranularity">8sp</item>
+        <item name="android:breakStrategy">balanced</item>
+        <item name="android:hyphenationFrequency">none</item>
     </style>
 
     <style name="TextView.DetailHeroSubtitle" parent="TextView.Body1">
@@ -140,23 +162,29 @@
     <style name="TextView.DetailOpeningCrawl" parent="TextView.Body1">
         <item name="android:lineSpacingMultiplier">1.2</item>
         <item name="android:textStyle">italic</item>
-        <item name="android:gravity">center</item>
+        <!--<item name="android:gravity">center</item>-->
+        <!--<item name="fontFamily">sans-serif-medium</item>-->
     </style>
 
 
     <style name="TextView.DetailRowTitle" parent="TextView.Body1">
         <item name="android:textAllCaps">true</item>
         <item name="fontFamily">sans-serif-medium</item>
-        <item name="android:textColor">@color/text_low_emphasis_color</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
 
-    <style name="TextView.Spinner" parent="TextView.Headline5">
+    <style name="TextView.Spinner" parent="TextAppearance.AppCompat.Widget.TextView.SpinnerItem">
         <item name="android:textAllCaps">true</item>
     </style>
 
     <style name="TextView.Overline.DetailItem">
         <item name="android:paddingBottom">8dp</item>
         <item name="android:layout_width">match_parent</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextView.Overline.Black">
+        <item name="fontFamily">sans-serif-black</item>
     </style>
 
 

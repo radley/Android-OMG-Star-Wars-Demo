@@ -37,6 +37,8 @@ import kotlin.math.ceil
 import kotlin.math.roundToInt
 
 
+
+
 class DetailActivity : AppCompatActivity() {
 
 
@@ -307,7 +309,11 @@ class DetailActivity : AppCompatActivity() {
         val id = FormatUtils.getId(viewModel.getHomeWorld()!!)
 
         viewModel.getHomeWorlds(id).observe(this, Observer { planet ->
-            homeWorldText.text = Html.fromHtml(getString(R.string.link_text, planet.title), Build.VERSION.SDK_INT)
+
+
+            val textLink = getString(R.string.link_text, getColor(R.color.text_link_color), planet.title)
+
+            homeWorldText.text = Html.fromHtml(textLink, Build.VERSION.SDK_INT)
             homeWorldText.setOnClickListener { startDetailActivity(planet) }
 
             heroLayout.subtitle.text = planet.title
@@ -330,7 +336,11 @@ class DetailActivity : AppCompatActivity() {
         val id = FormatUtils.getId(viewModel.getSingleSpecies()!!)
 
         viewModel.getSingleSpecies(id).observe(this, Observer { species ->
-            speciesText.text = Html.fromHtml(getString(R.string.link_text, species.title), Build.VERSION.SDK_INT)
+
+
+            val textLink = getString(R.string.link_text, getColor(R.color.text_link_color), species.title)
+
+            speciesText.text = Html.fromHtml(textLink, Build.VERSION.SDK_INT)
             speciesText.setOnClickListener { startDetailActivity(species) }
         })
     }

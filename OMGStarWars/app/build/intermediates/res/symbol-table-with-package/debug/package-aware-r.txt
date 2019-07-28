@@ -23,6 +23,12 @@ anim btn_radio_to_off_mtrl_ring_outer_path_animation
 anim btn_radio_to_on_mtrl_dot_group_animation
 anim btn_radio_to_on_mtrl_ring_outer_animation
 anim btn_radio_to_on_mtrl_ring_outer_path_animation
+anim category_item_left_to_right_animation
+anim category_item_right_to_left_animation
+anim category_item_rise_animation
+anim category_layout_left_to_right_animation
+anim category_layout_right_to_left_animation
+anim category_layout_rise_animation
 anim design_bottom_sheet_slide_in
 anim design_bottom_sheet_slide_out
 anim design_snackbar_in
@@ -713,6 +719,7 @@ color abc_tint_spinner
 color abc_tint_switch_track
 color accent_material_dark
 color accent_material_light
+color app_background
 color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
@@ -779,6 +786,7 @@ color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
+color hero_border
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color ic_launcher_background
@@ -879,6 +887,7 @@ color test_mtrl_calendar_day
 color test_mtrl_calendar_day_selected
 color test_surface_state
 color text_dark
+color text_link_color
 color text_low_emphasis_color
 color tooltip_background_dark
 color tooltip_background_light
@@ -1371,9 +1380,6 @@ drawable placeholder_wide
 drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
-font nunito_sans
-font nunito_sans_extrabold
-font nunito_sans_italic
 font passion_one
 font roboto_condensed_bold
 id ALT
@@ -1585,6 +1591,7 @@ id notification_background
 id notification_main_column
 id notification_main_column_container
 id off
+id omg
 id on
 id openingCrawl
 id orbital_period
@@ -1721,6 +1728,8 @@ integer cancel_button_image_alpha
 integer config_tooltipAnimTime
 integer design_snackbar_text_max_lines
 integer design_tab_indicator_anim_duration_ms
+integer grid_anim_duration
+integer grid_anim_duration_fast
 integer grid_span_count_row
 integer grid_span_count_search
 integer grid_span_count_tall
@@ -2419,11 +2428,13 @@ style TextView_DetailItem
 style TextView_DetailItem_Clickable
 style TextView_DetailOpeningCrawl
 style TextView_DetailRowTitle
+style TextView_Headline2
 style TextView_Headline4
 style TextView_Headline5
 style TextView_Headline6
 style TextView_Italic
 style TextView_Overline
+style TextView_Overline_Black
 style TextView_Overline_DetailItem
 style TextView_Spinner
 style TextView_Tab

@@ -35,12 +35,16 @@
             <TextView
                 android:id="@+id/heroTitle"
                 style="@style/TextView.DetailHeroTitle"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:visibility="invisible"/>
 
             <TextView
                 android:id="@+id/heroSubtitle"
                 style="@style/TextView.DetailHeroSubtitle"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
                 android:visibility="gone" />
 
             <TextView
@@ -53,7 +57,7 @@
     </androidx.cardview.widget.CardView>
 
     <com.blure.complexview.ComplexView
-        android:layout_width="336dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
@@ -64,25 +68,25 @@
         app:shadowColor="#000000"
         app:shadowSpread="2">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/hero_card"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
-        app:cardPreventCornerOverlap="false"
-        app:cardUseCompatPadding="true"
-        app:strokeColor="@color/white"
-        app:strokeWidth="4dp">
-
-        <ImageView
-            android:id="@+id/heroImage"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/hero_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            tools:ignore="ContentDescription" />
+            app:cardCornerRadius="8dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true"
+            app:strokeColor="@color/hero_border"
+            app:strokeWidth="4dp">
 
-    </com.google.android.material.card.MaterialCardView>
+            <ImageView
+                android:id="@+id/heroImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                tools:ignore="ContentDescription" />
+
+        </com.google.android.material.card.MaterialCardView>
     </com.blure.complexview.ComplexView>
 </RelativeLayout>
 

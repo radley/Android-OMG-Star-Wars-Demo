@@ -25,7 +25,7 @@ import java.util.ArrayList
 class SearchAdapter(var context: Context, private var modelList: ArrayList<SWModel>) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
     private var query: String = ""
-    private val boldTypeface: Typeface? = ResourcesCompat.getFont(context, R.font.nunito_sans_extrabold)
+    private val boldTypeface = Typeface.create("sans-serif-black",Typeface.NORMAL)
 
     fun setQuery(query: String) {
         this.query = query
@@ -40,14 +40,14 @@ class SearchAdapter(var context: Context, private var modelList: ArrayList<SWMod
         fun bind(item: SWModel) {
 
             if (item is Starship && item.model.toLowerCase() != item.title.toLowerCase()) {
-                subtitleText.text = getBoldResultText(item.model, boldTypeface)
+                subtitleText.text = getBoldResultText(item.model)
                 subtitleText.visibility = View.VISIBLE
             } else {
                 subtitleText.text = ""
                 subtitleText.visibility = View.GONE
             }
 
-            titleText.text = getBoldResultText(item.title, boldTypeface)
+            titleText.text = getBoldResultText(item.title)
 
             // assign default & missing images
             val requestOptions = RequestOptions()
@@ -73,7 +73,7 @@ class SearchAdapter(var context: Context, private var modelList: ArrayList<SWMod
         holder.bind(modelList[position])
     }
 
-    private fun getBoldResultText(text: String, boldTypeface: Typeface?): SpannableString {
+    private fun getBoldResultText(text: String): SpannableString {
 
         val spannable = SpannableString(text)
 
