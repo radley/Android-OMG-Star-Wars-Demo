@@ -22,8 +22,13 @@ open class SWModel : Serializable {
     var created: String = ""
     var edited: String = ""
 
+
     open val title: String
         get() = name
+
+    open val subtitle: String
+        get() = ""
+
 
     /**
      * Extract id value from url

@@ -2,12 +2,15 @@ package dev.radley.omgstarwars.utilities
 
 import android.annotation.SuppressLint
 import android.content.Context
-
+import android.graphics.Typeface
+import android.text.Spannable
+import android.text.SpannableString
+import dev.radley.omgstarwars.R
+import dev.radley.omgstarwars.text.CustomTypefaceSpan
 import java.time.Instant
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 
-import dev.radley.omgstarwars.R
 
 /**
  * uick utility functions
@@ -199,6 +202,86 @@ object FormatUtils {
 
     }
 
+    fun getEmphasizedText(text: String, boldText: String): SpannableString {
+
+        val boldTypeface = Typeface.create("sans-serif-black", Typeface.NORMAL)
+
+        val spannable = SpannableString(text)
+
+        if (text.toLowerCase().contains(boldText.toLowerCase())) {
+
+            spannable.setSpan(CustomTypefaceSpan("", boldTypeface),
+                    text.toLowerCase().indexOf(boldText.toLowerCase()),
+                    text.toLowerCase().indexOf(boldText.toLowerCase()) + boldText.length,
+                    Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+        }
+
+        return spannable
+    }
+
+    fun IntegerToRomanNumeral(value: Int): String {
+        var input = value
+
+        if (input < 1 || input > 3999) // invalid number
+            return value.toString()
+
+        var s = ""
+        while (input >= 1000) {
+            s += "M"
+            input -= 1000
+        }
+        while (input >= 900) {
+            s += "CM"
+            input -= 900
+        }
+        while (input >= 500) {
+            s += "D"
+            input -= 500
+        }
+        while (input >= 400) {
+            s += "CD"
+            input -= 400
+        }
+        while (input >= 100) {
+            s += "C"
+            input -= 100
+        }
+        while (input >= 90) {
+            s += "XC"
+            input -= 90
+        }
+        while (input >= 50) {
+            s += "L"
+            input -= 50
+        }
+        while (input >= 40) {
+            s += "XL"
+            input -= 40
+        }
+        while (input >= 10) {
+            s += "X"
+            input -= 10
+        }
+        while (input >= 9) {
+            s += "IX"
+            input -= 9
+        }
+        while (input >= 5) {
+            s += "V"
+            input -= 5
+        }
+        while (input >= 4) {
+            s += "IV"
+            input -= 4
+        }
+        while (input >= 1) {
+            s += "I"
+            input -= 1
+        }
+        return s
+    }
+
+
     /**
      * Checks to see if value has known value
      * (so value can be formatted)
@@ -210,6 +293,5 @@ object FormatUtils {
         return value == "" ||
                 value.toLowerCase() == context.getString(R.string.detail_na) ||
                 value.toLowerCase() == context.getString(R.string.unknown)
-
     }
 }

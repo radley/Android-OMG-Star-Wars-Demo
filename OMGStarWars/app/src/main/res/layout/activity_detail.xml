@@ -4,62 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
     android:fitsSystemWindows="true"
     tools:context=".view.DetailActivity">
-
-    <ImageView
-        android:id="@+id/heroImage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:fitsSystemWindows="true"
-        android:scaleType="centerCrop"
-        tools:ignore="ContentDescription" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="536dp"
-        android:background="@drawable/detail_hero_gradient"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="wrap_content"
+        android:background="?attr/colorAccent">
 
-        <!-- enables multiline text in detail activity expanded title -->
-        <net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/toolbarLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            android:layout_height="180dp"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorAccent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleEnabled="false"
             app:toolbarId="@+id/toolbar">
 
-            <androidx.appcompat.widget.Toolbar
+            <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
-                style="@style/TextView.Headline4"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:layout_gravity="top"
-                android:theme="@style/AppThemeToolbar"
+                android:theme="@style/DetailToolbarTheme"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+                app:layout_scrollFlags="noScroll"
+                app:titleTextAppearance="@style/TextView.Toolbar" />
 
-        </net.opacapp.multilinecollapsingtoolbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/transparentDark"
+        android:overScrollMode="never"
+        app:behavior_overlapTop="100dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".view.CategoriesActivity"
+        tools:context=".view.DetailActivity"
         tools:showIn="@layout/activity_detail">
 
         <LinearLayout
             android:id="@+id/details_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/navbar_padding" />
+            android:orientation="vertical" />
 
     </androidx.core.widget.NestedScrollView>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -14,7 +14,6 @@ class Film : SWModel(), Serializable {
     var director: String = ""
     var producer: String = ""
 
-
     @SerializedName("episode_id")
     var episodeId: Int = 0
 

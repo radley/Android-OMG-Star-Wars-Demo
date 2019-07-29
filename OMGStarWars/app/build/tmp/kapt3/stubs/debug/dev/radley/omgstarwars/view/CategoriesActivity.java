@@ -2,12 +2,15 @@ package dev.radley.omgstarwars.view;
 
 import java.lang.System;
 
-@kotlin.Metadata(mv = {1, 1, 15}, bv = {1, 0, 3}, k = 1, d1 = {"\u0000F\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u0011\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0007\n\u0002\u0010\b\n\u0002\b\u0003\u0018\u00002\u00020\u0001:\u0001\u001dB\u0005\u00a2\u0006\u0002\u0010\u0002J\u0012\u0010\f\u001a\u00020\r2\b\u0010\u000e\u001a\u0004\u0018\u00010\u000fH\u0014J\u0012\u0010\u0010\u001a\u00020\u00112\b\u0010\u0012\u001a\u0004\u0018\u00010\u0013H\u0016J\b\u0010\u0014\u001a\u00020\rH\u0002J\b\u0010\u0015\u001a\u00020\rH\u0002J\b\u0010\u0016\u001a\u00020\rH\u0002J\u0010\u0010\u0017\u001a\u00020\r2\u0006\u0010\u0018\u001a\u00020\u0005H\u0002J\u0010\u0010\u0019\u001a\u00020\r2\u0006\u0010\u001a\u001a\u00020\u001bH\u0002J\b\u0010\u001c\u001a\u00020\rH\u0002R\u0016\u0010\u0003\u001a\b\u0012\u0004\u0012\u00020\u00050\u0004X\u0082\u000e\u00a2\u0006\u0004\n\u0002\u0010\u0006R\u000e\u0010\u0007\u001a\u00020\u0005X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u0012\u0010\b\u001a\u00060\tR\u00020\u0000X\u0082.\u00a2\u0006\u0002\n\u0000R\u000e\u0010\n\u001a\u00020\u000bX\u0082.\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u001e"}, d2 = {"Ldev/radley/omgstarwars/view/CategoriesActivity;", "Landroidx/appcompat/app/AppCompatActivity;", "()V", "categories", "", "", "[Ljava/lang/String;", "category", "pagerAdapter", "Ldev/radley/omgstarwars/view/CategoriesActivity$CategoriesPagerAdapter;", "searchView", "Landroidx/appcompat/widget/SearchView;", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onCreateOptionsMenu", "", "menu", "Landroid/view/Menu;", "setupLayout", "setupSearchView", "setupToolbar", "startSearchActivity", "query", "updateCategory", "position", "", "updateHeroImage", "CategoriesPagerAdapter", "app_debug"})
+@kotlin.Metadata(mv = {1, 1, 15}, bv = {1, 0, 3}, k = 1, d1 = {"\u0000N\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u0011\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0010\b\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0000\n\u0002\u0018\u0002\n\u0002\b\t\u0018\u00002\u00020\u0001:\u0001%B\u0005\u00a2\u0006\u0002\u0010\u0002J\u0012\u0010\u0016\u001a\u00020\u00172\b\u0010\u0018\u001a\u0004\u0018\u00010\u0019H\u0014J\u0012\u0010\u001a\u001a\u00020\u001b2\b\u0010\u001c\u001a\u0004\u0018\u00010\u001dH\u0016J\b\u0010\u001e\u001a\u00020\u0017H\u0002J\b\u0010\u001f\u001a\u00020\u0017H\u0002J\b\u0010 \u001a\u00020\u0017H\u0002J\u0010\u0010!\u001a\u00020\u00172\u0006\u0010\"\u001a\u00020\u0005H\u0002J\u0010\u0010#\u001a\u00020\u00172\u0006\u0010$\u001a\u00020\tH\u0002R\u0016\u0010\u0003\u001a\b\u0012\u0004\u0012\u00020\u00050\u0004X\u0082\u000e\u00a2\u0006\u0004\n\u0002\u0010\u0006R\u000e\u0010\u0007\u001a\u00020\u0005X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u001a\u0010\b\u001a\u00020\tX\u0086\u000e\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\n\u0010\u000b\"\u0004\b\f\u0010\rR\u0012\u0010\u000e\u001a\u00060\u000fR\u00020\u0000X\u0082.\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0010\u001a\u00020\u0011X\u0082.\u00a2\u0006\u0002\n\u0000R\u0016\u0010\u0012\u001a\n \u0014*\u0004\u0018\u00010\u00130\u0013X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0016\u0010\u0015\u001a\n \u0014*\u0004\u0018\u00010\u00130\u0013X\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006&"}, d2 = {"Ldev/radley/omgstarwars/view/CategoriesActivity;", "Landroidx/appcompat/app/AppCompatActivity;", "()V", "categories", "", "", "[Ljava/lang/String;", "category", "currentPage", "", "getCurrentPage", "()I", "setCurrentPage", "(I)V", "pagerAdapter", "Ldev/radley/omgstarwars/view/CategoriesActivity$CategoriesPagerAdapter;", "searchView", "Landroidx/appcompat/widget/SearchView;", "tabTypeface", "Landroid/graphics/Typeface;", "kotlin.jvm.PlatformType", "tabTypefaceSelected", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onCreateOptionsMenu", "", "menu", "Landroid/view/Menu;", "setupLayout", "setupSearchView", "setupToolbar", "startSearchActivity", "query", "updateCategory", "position", "CategoriesPagerAdapter", "app_debug"})
 public final class CategoriesActivity extends androidx.appcompat.app.AppCompatActivity {
     private java.lang.String[] categories;
     private java.lang.String category;
     private dev.radley.omgstarwars.view.CategoriesActivity.CategoriesPagerAdapter pagerAdapter;
     private androidx.appcompat.widget.SearchView searchView;
+    private final android.graphics.Typeface tabTypeface = null;
+    private final android.graphics.Typeface tabTypefaceSelected = null;
+    private int currentPage;
     private java.util.HashMap _$_findViewCache;
     
     @java.lang.Override()
@@ -27,6 +30,13 @@ public final class CategoriesActivity extends androidx.appcompat.app.AppCompatAc
     private final void setupToolbar() {
     }
     
+    public final int getCurrentPage() {
+        return 0;
+    }
+    
+    public final void setCurrentPage(int p0) {
+    }
+    
     private final void setupLayout() {
     }
     
@@ -34,9 +44,6 @@ public final class CategoriesActivity extends androidx.appcompat.app.AppCompatAc
     }
     
     private final void updateCategory(int position) {
-    }
-    
-    private final void updateHeroImage() {
     }
     
     public CategoriesActivity() {

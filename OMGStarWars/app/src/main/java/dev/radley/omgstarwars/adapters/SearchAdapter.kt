@@ -1,16 +1,12 @@
 package dev.radley.omgstarwars.adapters
 
 import android.content.Context
-import android.graphics.Typeface
 import android.net.Uri
-import android.text.Spannable
-import android.text.SpannableString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -18,14 +14,13 @@ import com.bumptech.glide.request.RequestOptions
 import dev.radley.omgstarwars.R
 import dev.radley.omgstarwars.models.SWModel
 import dev.radley.omgstarwars.models.Starship
-import dev.radley.omgstarwars.text.CustomTypefaceSpan
+import dev.radley.omgstarwars.utilities.FormatUtils
 import dev.radley.omgstarwars.viewmodels.SWImage
 import java.util.ArrayList
 
 class SearchAdapter(var context: Context, private var modelList: ArrayList<SWModel>) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
     private var query: String = ""
-    private val boldTypeface: Typeface? = ResourcesCompat.getFont(context, R.font.nunito_sans_extrabold)
 
     fun setQuery(query: String) {
         this.query = query
@@ -39,15 +34,15 @@ class SearchAdapter(var context: Context, private var modelList: ArrayList<SWMod
 
         fun bind(item: SWModel) {
 
-            if (item is Starship) {
-                subtitleText.text = getBoldResultText(item.model, boldTypeface)
+            if (item is Starship && item.model.toLowerCase() != item.title.toLowerCase()) {
+                subtitleText.text = FormatUtils.getEmphasizedText(item.model, query)
                 subtitleText.visibility = View.VISIBLE
             } else {
                 subtitleText.text = ""
                 subtitleText.visibility = View.GONE
             }
 
-            titleText.text = getBoldResultText(item.title, boldTypeface)
+            titleText.text = FormatUtils.getEmphasizedText(item.title, query)
 
             // assign default & missing images
             val requestOptions = RequestOptions()
@@ -73,19 +68,5 @@ class SearchAdapter(var context: Context, private var modelList: ArrayList<SWMod
         holder.bind(modelList[position])
     }
 
-    private fun getBoldResultText(text: String, boldTypeface: Typeface?): SpannableString {
-
-        val spannable = SpannableString(text)
-
-        if (text.toLowerCase().contains(query.toLowerCase())) {
-
-            spannable.setSpan(CustomTypefaceSpan("", boldTypeface),
-                    text.toLowerCase().indexOf(query.toLowerCase()),
-                    text.toLowerCase().indexOf(query.toLowerCase()) + query.length,
-                    Spannable.SPAN_INCLUSIVE_INCLUSIVE)
-        }
-
-        return spannable
-    }
 }
 
