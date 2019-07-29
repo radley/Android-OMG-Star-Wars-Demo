@@ -9,6 +9,10 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
+import javax.xml.datatype.DatatypeConstants.SECONDS
+import okhttp3.OkHttpClient
+import java.util.concurrent.TimeUnit
+
 
 /**
  * Modules
@@ -19,10 +23,16 @@ internal class ApiModule {
     @Provides
     fun provideStarWarsApi(): StarWarsApi {
 
+        val okHttpClient = OkHttpClient.Builder()
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .build()
+
         return Retrofit.Builder()
                 .baseUrl(Constants.SWAPI_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(okHttpClient)
                 .build()
                 .create(StarWarsApi::class.java)
     }
@@ -31,4 +41,5 @@ internal class ApiModule {
     fun provideStarWarsService(): StarWarsService {
         return StarWarsService()
     }
+
 }

@@ -18,6 +18,9 @@ open class Vehicle : SWModel(), Serializable {
     var passengers: String = ""
     var consumables: String = ""
 
+    override val subtitle: String
+        get() = model
+
     @SerializedName("vehicle_class")
     var vehicleClass: String = ""
 

@@ -1,68 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:paddingTop="@dimen/detail_padding"
+    android:orientation="vertical"
     android:paddingLeft="@dimen/detail_padding"
     android:paddingRight="@dimen/detail_padding"
     android:paddingBottom="48dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        style="@style/LinearLayout.DetailRow"
+        android:weightSum="3">
 
-        <TextView
-            style="@style/TextView.Overline.Detail"
-            android:layout_width="wrap_content"
-            android:text="@string/opening_crawl" />
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_width="match_parent"
+            android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/opening_crawl"
-            style="@style/TextView.Detail"
-            android:layout_width="wrap_content" />
+            <LinearLayout style="@style/LinearLayout.DetailItem">
+
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/release_date" />
+
+                <TextView
+                    android:id="@+id/release_date"
+                    style="@style/TextView.DetailItem" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_width="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout style="@style/LinearLayout.DetailItem">
+
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/director" />
+
+                <TextView
+                    android:id="@+id/director"
+                    style="@style/TextView.DetailItem" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_width="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout style="@style/LinearLayout.DetailItem">
+
+                <TextView
+                    android:id="@+id/producerCount"
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/producer" />
+
+                <TextView
+                    android:id="@+id/producer"
+                    style="@style/TextView.DetailItem" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/detail_padding"
-        android:orientation="vertical">
-
-        <TextView
-            style="@style/TextView.Overline.Detail"
-            android:layout_width="match_parent"
-            android:text="@string/release_date" />
-
-        <TextView
-            android:id="@+id/release_date"
-            style="@style/TextView.Detail"
-            android:layout_width="match_parent" />
-
-        <TextView
-            style="@style/TextView.Overline.Detail"
-            android:layout_width="match_parent"
-            android:text="@string/director" />
-
-        <TextView
-            android:id="@+id/director"
-            style="@style/TextView.Detail"
-            android:layout_width="match_parent" />
-
-        <TextView
-            style="@style/TextView.Overline.Detail"
-            android:layout_width="match_parent"
-            android:text="@string/producer" />
-
-        <TextView
-            android:id="@+id/producer"
-            style="@style/TextView.Detail"
-            android:layout_width="match_parent" />
-    </LinearLayout>
-
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="32dp" />
-
 </LinearLayout>

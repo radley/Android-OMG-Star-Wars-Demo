@@ -12,7 +12,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/card_corner_radius"
-        app:cardElevation="3dp">
+        app:cardElevation="4dp">
 
         <ImageView
             android:id="@+id/thumbnail"
@@ -22,15 +22,13 @@
             android:clickable="true"
             android:cropToPadding="true"
             android:foreground="?android:attr/selectableItemBackground"
-            android:scaleType="fitCenter" />
+            android:scaleType="centerCrop" />
 
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/title"
-        style="@style/TextView.Card.Small"
-        android:layout_width="match_parent"
-        android:padding="8dp" />
+        style="@style/TextView.Card.Small"/>
 
 </LinearLayout>
 

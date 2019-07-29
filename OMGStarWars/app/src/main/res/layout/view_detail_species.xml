@@ -2,210 +2,176 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="@dimen/detail_padding"
     android:paddingLeft="@dimen/detail_padding"
     android:paddingRight="@dimen/detail_padding"
     android:paddingBottom="48dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1">
+    <LinearLayout style="@style/LinearLayout.DetailRow"
+        android:weightSum="2">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="0.4">
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="1">
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/classification"/>
+            <LinearLayout style="@style/LinearLayout.DetailItem">
 
-            <TextView
-                android:id="@+id/classification"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
-        </LinearLayout>
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/classification" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="0.6">
+                <TextView
+                    android:id="@+id/classification"
+                    style="@style/TextView.DetailItem" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/homeworld"/>
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="1">
 
-            <TextView
-                android:id="@+id/homeworld"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
-        </LinearLayout>
+            <LinearLayout style="@style/LinearLayout.DetailItem">
 
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/homeworld" />
+
+                <TextView
+                    android:id="@+id/homeworld"
+                    style="@style/TextView.DetailItem.Clickable" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1">
+    <LinearLayout style="@style/LinearLayout.DetailRow"
+        android:weightSum="2">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="0.4">
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="1">
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/designation"/>
+            <LinearLayout style="@style/LinearLayout.DetailItem">
 
-            <TextView
-                android:id="@+id/designation"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/designation" />
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/designation"
+                    style="@style/TextView.DetailItem" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="0.6">
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="1">
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/language"/>
+            <LinearLayout style="@style/LinearLayout.DetailItem">
 
-            <TextView
-                android:id="@+id/language"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/language" />
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/language"
+                    style="@style/TextView.DetailItem" />
 
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="0.4">
+    <LinearLayout style="@style/LinearLayout.DetailRow"
+        android:weightSum="2">
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/average_height"/>
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="1">
 
-            <TextView
-                android:id="@+id/average_height"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
+            <LinearLayout style="@style/LinearLayout.DetailItem">
 
-        </LinearLayout>
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/average_height" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="0.6">
+                <TextView
+                    android:id="@+id/average_height"
+                    style="@style/TextView.DetailItem" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/average_lifespan"/>
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="1">
 
-            <TextView
-                android:id="@+id/average_lifespan"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
+            <LinearLayout style="@style/LinearLayout.DetailItem">
 
-        </LinearLayout>
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/average_lifespan" />
 
+                <TextView
+                    android:id="@+id/average_lifespan"
+                    style="@style/TextView.DetailItem" />
 
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingRight="8dp"
-            android:layout_weight="0.4">
+    <LinearLayout style="@style/LinearLayout.DetailRow"
+        android:weightSum="3">
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/skin_colors"/>
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="1">
 
-            <TextView
-                android:id="@+id/skin_colors"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
+            <LinearLayout style="@style/LinearLayout.DetailItem">
 
-        </LinearLayout>
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/skin_colors" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingRight="8dp"
-            android:layout_weight="0.3">
+                <TextView
+                    android:id="@+id/skin_colors"
+                    style="@style/TextView.DetailItem" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/hair_color"/>
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="1">
 
-            <TextView
-                android:id="@+id/hair_color"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
+            <LinearLayout style="@style/LinearLayout.DetailItem">
 
-        </LinearLayout>
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/hair_color" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingRight="8dp"
-            android:layout_weight="0.3">
+                <TextView
+                    android:id="@+id/hair_color"
+                    style="@style/TextView.DetailItem" />
 
-            <TextView
-                style="@style/TextView.Overline.Detail"
-                android:layout_width="wrap_content"
-                android:text="@string/eye_colors"/>
+            </LinearLayout>
 
-            <TextView
-                android:id="@+id/eye_colors"
-                style="@style/TextView.Detail"
-                android:layout_width="wrap_content" />
+        </com.google.android.material.card.MaterialCardView>
 
-        </LinearLayout>
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card.DetailItem"
+            android:layout_weight="1">
 
+            <LinearLayout style="@style/LinearLayout.DetailItem">
+
+                <TextView
+                    style="@style/TextView.Overline.DetailItem"
+                    android:text="@string/eye_colors" />
+
+                <TextView
+                    android:id="@+id/eye_colors"
+                    style="@style/TextView.DetailItem" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
-    
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="32dp" />
-
-
 </LinearLayout>

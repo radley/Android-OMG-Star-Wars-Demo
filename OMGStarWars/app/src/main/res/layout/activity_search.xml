@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@drawable/background_gradient"
     tools:context=".view.SearchActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -19,7 +20,6 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:theme="@style/AppThemeToolbar"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         <LinearLayout
@@ -57,9 +57,9 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:orientation="vertical"
-            android:paddingLeft="@dimen/grid_padding"
-            android:paddingTop="@dimen/grid_padding"
-            android:paddingRight="@dimen/grid_padding"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:paddingRight="16dp"
             android:paddingBottom="@dimen/navbar_padding"
             android:scrollbarStyle="outsideOverlay"
             android:scrollbars="vertical"

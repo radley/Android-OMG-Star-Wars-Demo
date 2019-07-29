@@ -7,6 +7,7 @@ import dev.radley.omgstarwars.dagger.DaggerApiComponent
 import dev.radley.omgstarwars.models.*
 import dev.radley.omgstarwars.network.StarWarsService
 import dev.radley.omgstarwars.utilities.FormatUtils
+import dev.radley.omgstarwars.utilities.SortUtils
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableSingleObserver
@@ -57,6 +58,10 @@ class DetailViewModel : ViewModel() {
 
     fun getTitle(): String {
         return model.title
+    }
+
+    fun getSubTitle(): String {
+        return model.subtitle
     }
 
     fun getImage(): String {
@@ -114,7 +119,7 @@ class DetailViewModel : ViewModel() {
      * @return String
      */
     fun getSingleSpecies(): String? {
-        return if (model is People) {
+        return if (model is People && (model as People).relatedSpecies!!.size > 0) {
             (model as People).relatedSpecies!![0]
         } else null
 
@@ -175,7 +180,13 @@ class DetailViewModel : ViewModel() {
                             override fun onSuccess(item: Film) {
 
                                 list.add(item)
-                                filmsData.value = list
+
+                                // wait until we have them all to sort and load
+                                if(list.size == urlList.size) {
+
+                                    val films = SortUtils.sortSWModelByEpisode(list)
+                                    filmsData.value = films
+                                }
                             }
 
                             override fun onError(t: Throwable) {

@@ -41,12 +41,13 @@ dependencies {
 
 
     // enables multiline text in detail activity expanded title
-    implementation 'net.opacapp:multiline-collapsingtoolbar:27.1.1'
+    //implementation 'net.opacapp:multiline-collapsingtoolbar:27.1.1'
+
+    implementation 'com.github.BluRe-CN:ComplexView:v1.0'
+
     implementation 'androidx.annotation:annotation:1.1.0'
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.0.0"
     implementation 'com.google.android.material:material:1.1.0-alpha08'
-
-
 
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -75,9 +76,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-
-
 }
 repositories {
     mavenCentral()

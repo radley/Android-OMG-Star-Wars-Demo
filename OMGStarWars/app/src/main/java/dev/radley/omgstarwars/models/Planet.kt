@@ -1,6 +1,7 @@
 package dev.radley.omgstarwars.models
 
 import com.google.gson.annotations.SerializedName
+import dev.radley.omgstarwars.utilities.FormatUtils
 
 import java.io.Serializable
 import java.util.ArrayList
@@ -15,6 +16,9 @@ class Planet : SWModel(), Serializable {
     var population: String = ""
     var climate: String = ""
     var terrain: String = ""
+
+    override val subtitle: String
+        get() = "Population: " + FormatUtils.getFormattedNumber(population)
 
     @SerializedName("rotation_period")
     var rotationPeriod: String = ""

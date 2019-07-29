@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:paddingBottom="2dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:elevation="2dp"
+        app:cardCornerRadius="4dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="272dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="48dp"
+            android:orientation="vertical">
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/colorAccent"/>
+
+            <TextView
+                android:id="@+id/episode"
+                style="@style/TextView.DetailHeroEpisode"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/heroTitle"
+                style="@style/TextView.DetailHeroTitle"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/detail_hero_text_height"
+                android:visibility="invisible"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorAccent"/>
+
+            <TextView
+                android:id="@+id/heroSubtitle"
+                android:layout_marginTop="8dp"
+                style="@style/TextView.DetailHeroSubtitle"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/heroFilms"
+                style="@style/TextView.DetailHeroFilms"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/openingCrawl"
+                style="@style/TextView.DetailOpeningCrawl"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:justificationMode="inter_word"
+                android:visibility="gone" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.blure.complexview.ComplexView
+        android:layout_width="296dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:elevation="10dp"
+        app:radius="16dp"
+        app:shadow="true"
+        app:shadowAlpha="65"
+        app:shadowColor="#000000"
+        app:shadowSpread="2">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/hero_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardPreventCornerOverlap="false"
+            app:cardUseCompatPadding="true"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp">
+
+            <ImageView
+                android:id="@+id/heroImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                tools:ignore="ContentDescription" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </com.blure.complexview.ComplexView>
+
+</RelativeLayout>
+
