@@ -144,7 +144,7 @@
         <item name="android:gravity">center</item>
         <item name="android:lineSpacingMultiplier">0.75</item>
         <item name="android:autoSizeTextType">uniform</item>
-        <item name="android:autoSizeMinTextSize">40sp</item>
+        <item name="android:autoSizeMinTextSize">32sp</item>
         <item name="android:autoSizeMaxTextSize">80sp</item>
         <item name="android:autoSizeStepGranularity">8sp</item>
         <item name="android:breakStrategy">balanced</item>
