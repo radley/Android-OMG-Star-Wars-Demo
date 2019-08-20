@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/radley/Documents/Dev/Android/Android Practice Projects/Star Wars Demo/dev/OMGStarWars/omgstarwars/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-eu/values-eu.xml",
+            "outputFile": "/Users/radley/Documents/Dev/Android/Android Practice Projects/OMG Star Wars/dev/OMGStarWars/omgstarwars/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-eu/values-eu.xml",
             "map": [
                 {
                     "source": "/Users/radley/.gradle/caches/transforms-2/files-2.1/1f8eb420e36c8d8758ad1864fb3030fc/res/values-eu/values-eu.xml",
