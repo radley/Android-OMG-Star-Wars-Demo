@@ -6,14 +6,8 @@
     <color name="colorPrimaryDark">#AD833C</color>
 
     <color name="colorAccent">#FEC616</color>
-    <color name="transparentPrimaryDark">#4422222a</color>
-    <color name="transparentPrimary">#cc33333a</color>
-    <color name="cardGrey">#42424b</color>
-    <color name="transparentDark">#d411111a</color>
-    <color name="white">#fff</color>
+    <color name="white">#ffffff</color>
 
-
-    <color name="app_background">#EDE8DB</color>
 
     <!--44444a  colorPrimaryDark 654714-->
     <color name="text_dark">#444444</color>
@@ -23,7 +17,7 @@
 
     <color name="hero_border">@color/white</color>
 
-    <color name="tab_text_color_selected">#22222a</color>
-    <color name="text_low_emphasis_color">#8822222a</color>
+    <color name="tab_text_color_selected">@color/text_dark</color>
+    <color name="text_low_emphasis_color">#88444444</color>
 
 </resources>
