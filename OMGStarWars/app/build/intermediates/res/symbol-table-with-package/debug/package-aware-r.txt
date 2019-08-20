@@ -719,7 +719,6 @@ color abc_tint_spinner
 color abc_tint_switch_track
 color accent_material_dark
 color accent_material_light
-color app_background
 color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
@@ -732,7 +731,6 @@ color bright_foreground_material_dark
 color bright_foreground_material_light
 color button_material_dark
 color button_material_light
-color cardGrey
 color cardview_dark_background
 color cardview_light_background
 color cardview_shadow_end_color
@@ -891,9 +889,6 @@ color text_link_color
 color text_low_emphasis_color
 color tooltip_background_dark
 color tooltip_background_light
-color transparentDark
-color transparentPrimary
-color transparentPrimaryDark
 color white
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
