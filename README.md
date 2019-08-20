@@ -17,9 +17,9 @@ https://swapi.co/
 
 | Categories | Search |
 | --- | --- |
-| ![](screenshots/categories.jpg "Categories Browser") | ![](screenshots/search.jpg "Search") |
+| ![](screenshots-v2/categories.jpg "Categories Browser") | ![](screenshots-v2/search.jpg "Search") |
 
 
 | Detail | Detail (scrolled) |
 | --- | --- |
-| ![](screenshots/detail.jpg "Detail") | ![](screenshots/detail-scrolled.jpg "Detail (scrolled)") |
+| ![](screenshots-v2/detail.jpg "Detail") | ![](screenshots-v2/detail-scrolled.jpg "Detail (scrolled)") |
