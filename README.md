@@ -22,4 +22,4 @@ https://swapi.co/
 
 | Detail | Detail (scrolled) |
 | --- | --- |
-| ![](screenshots-v2/detail.jpg "Detail") | ![](screenshots-v2/detail-scrolled.jpg "Detail (scrolled)") |
+| ![](screenshots-v2/detail.jpg "Detail") | ![](screenshots-v2/detail-scrolled.jpg "Detail (full)") |
